@@ -1,0 +1,94 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim' " required
+
+" color/theme stuff
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/base16-vim'
+
+" utilities
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Raimondi/delimitMate'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+
+" Language specific
+Plugin 'fatih/vim-go'
+
+call vundle#end()            " required
+
+filetype plugin indent on    " required
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+
+" vim-airline
+" -----------
+set laststatus=2 " plugin won't work without this line	
+set noshowmode " hide the default insert/command mode indicator
+let g:airline_powerline_fonts=1 
+set timeoutlen=20 "gets rid of the pause when leaving insert mode
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14 " won't work in macvim without this line
+
+" YCM
+" ---
+set completeopt-=preview " removes the preview at the top of the vim file
+
+" vim-go (https://github.com/fatih/dotfiles/blob/master/vimrc)
+" ------
+"  executes :GoImports and :GoFmt everytime a go file is saved
+"  http://vimdoc.sourceforge.net/htmldoc/autocmd.html
+au FileType go autocmd BufWritePre * :GoImports
+au FileType go autocmd BufWritePre * :GoFmt
+
+" General Setting
+" ---------------
+" remap esc
+inoremap jk <esc>
+
+" insert an empty line between brackets
+inoremap {<CR> {<CR>}<C-o>O<Space><Space><Space> 
+set noerrorbells "no beeps in vim
+" shortcut to change a word since the default behavior of cw is useless 
+nmap cw caw 
+
+" set color themes (from .vim/colors)
+syntax enable
+let base16colorspace=256 " Access colors present in 256 colorspace
+set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+execute "set background=".$BACKGROUND
+execute "colorscheme ".$THEME
+
+set tabstop=4 "set the tab width to 4 spaces
+set number    "show line numbers
+set showcmd   " show me what im typing
+
+" To use caps lock as esc key:
+" http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
+
+set autoindent " keep the indentation on <enter>
+set noswapfile   "don't use swapfile
+set nobackup     "dont create annoying backup files
+set encoding=utf-8 " set default encoding to UTF-8
+
+let mapleader = ","
+" following 3 lines make the mapleader key work
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
+nmap <leader>w :w!<cr> " fast save
+nmap <leader>q :wq<cr> " fast save and quit
+nmap <leader>1 :q!<cr> " fast quit

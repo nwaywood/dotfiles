@@ -1,0 +1,59 @@
+# General
+# =======
+
+# Reload config file
+bind r source-file ~/.tmux.conf \; display "Config Reloaded!"
+
+# tmux display things in 256 colors
+set -g default-terminal "screen-256color"
+set -g status-utf8 on
+
+# automatically renumber tmux windows
+set -g renumber-windows on
+
+# remap prefix to control - a
+set -g prefix C-a
+unbind C-b
+bind C-a send-prefix
+
+# use vim shortcuts
+setw -g mode-keys vi
+set-option -g status-keys vi
+
+# Index start for panes and windows
+set -g base-index 1
+set -g pane-base-index 1
+
+# Mouse support for pane/window switching
+# NOTE: This breaks selectiong/copying text on OSX
+# To select text as expected, hold Option to disable it (iTerm2)
+setw -g mode-mouse on
+set -g mouse-select-pane on
+set -g mouse-resize-pane on
+set -g mouse-select-window on
+
+# Keybinds
+# ========
+
+# vim style pane movements
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# split window
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+
+# disable close window/pane confirmations
+bind-key & kill-window
+bind-key x kill-pane
+
+# Fix window names 
+# http://stackoverflow.com/questions/6041178/keep-the-windows-name-fixed-in-tmux
+set-option -g allow-rename off
+
+### Theme
+# =======
+
+source ~/.dotfiles/tmux/theme.sh

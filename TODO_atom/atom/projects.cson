@@ -1,0 +1,45 @@
+"app-server":
+  title: "app-server"
+  paths: [
+    "/Users/nick/Documents/code/go/src/mrlgit.au.ibm.com/image-analytics/app-server"
+  ]
+"service-server":
+  title: "service-server"
+  paths: [
+    "/Users/nick/Documents/code/go/src/mrlgit.au.ibm.com/image-analytics/service-server"
+  ]
+"web-base":
+  title: "web-base"
+  paths: [
+    "/Users/nick/Documents/code/go/src/nick/web-base"
+  ]
+"go-algorithms":
+  title: "go-algorithms"
+  paths: [
+    "/Users/nick/Documents/code/go/src/nick/go-algorithms"
+  ]
+"docker-containers":
+  title: "docker-containers"
+  paths: [
+    "/Users/nick/Documents/code/go/src/mrlgit.au.ibm.com/image-analytics/docker-containers"
+  ]
+vagrant:
+  title: "vagrant"
+  paths: [
+    "/Users/nick/Documents/code/go/src/mrlgit.au.ibm.com/image-analytics/vagrant"
+  ]
+ia_vagrant:
+  title: "ia_vagrant"
+  paths: [
+    "/Users/nick/Documents/code/go/src/mrlgit.au.ibm.com/image-analytics/vagrant"
+  ]
+"api-key.v1":
+  title: "api-key.v1"
+  paths: [
+    "/Users/nick/Documents/code/go/src/mrlgit.au.ibm.com/mrl-swt-gopkg/api-key.v1"
+  ]
+"storage.v1":
+  title: "storage.v1"
+  paths: [
+    "/Users/nick/Documents/code/go/src/mrlgit.au.ibm.com/mrl-swt-gopkg/storage.v1"
+  ]
