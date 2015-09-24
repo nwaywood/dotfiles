@@ -17,6 +17,7 @@ Vim plugins are managed with [Vundle](https://github.com/VundleVim/Vundle.vim). 
 For the `YouCompleteMe` plugin, the following steps are also required for setup:
 
 `cd ~/.vim/bundle/YouCompleteMe`
+
 `bash install --clang-completer --gocode-completer`
 
 
@@ -24,3 +25,5 @@ For the `YouCompleteMe` plugin, the following steps are also required for setup:
 Add to dotfiles
 - atom
 - node?
+- zsh alias'
+ - ianlunn.co.uk/articles/quickly-showhide-hidden-files-mac-os-x-mavericks
