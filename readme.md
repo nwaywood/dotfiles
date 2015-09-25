@@ -27,4 +27,5 @@ Add to dotfiles
 - node?
 - zsh alias'
  - ianlunn.co.uk/articles/quickly-showhide-hidden-files-mac-os-x-mavericks
+ - tmux 
 - script to run in iterm shell which lists tmux sessions to attach to (link in quiver)
