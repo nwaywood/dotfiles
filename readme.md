@@ -25,4 +25,3 @@ For the `YouCompleteMe` plugin, the following steps are also required for setup:
 Add to dotfiles
 - atom
 - node?
-- script to run in iterm shell which lists tmux sessions to attach to (link in quiver)

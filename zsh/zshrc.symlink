@@ -37,6 +37,9 @@ export PATH=$PATH:$GOPATH/bin
 # add brew path to the start of PATH env var
 export PATH=/usr/local/bin:$PATH
 
+# adding path directory for custom scripts
+export PATH=$DOTFILES/bin:$PATH
+
 # add /usr/local/sbin
 if [[ -d /usr/locla/sbin ]]; then
     export PATH=/usr/local/sbin:$PATH
@@ -62,8 +65,8 @@ source $BASE16_SHELL
 
 # http://superuser.com/questions/742171/zsh-z-shell-numpad-numlock-doesnt-work
 # 0 . Enter
-bindkey -s "^[Op" "0" 
-bindkey -s "^[On" "."  
+bindkey -s "^[Op" "0"
+bindkey -s "^[On" "."
 bindkey -s "^[OM" "^M" # fix the enter key on the numpad
 # 1 2 3
 bindkey -s "^[Oq" "1"
@@ -82,4 +85,3 @@ bindkey -s "^[Ok" "+"
 bindkey -s "^[Om" "-"
 bindkey -s "^[Oj" "*"
 bindkey -s "^[Oo" "/"
-
