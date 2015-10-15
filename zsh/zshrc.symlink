@@ -36,6 +36,7 @@ export PATH=$PATH:$GOPATH/bin
 
 # add brew path to the start of PATH env var
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
 
 # adding path directory for custom scripts
 export PATH=$DOTFILES/bin:$PATH
