@@ -8,7 +8,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim' " required
 
 " color/theme stuff
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
 
 " utilities
@@ -53,13 +53,23 @@ set completeopt-=preview " removes the preview at the top of the vim file
 au FileType go autocmd BufWritePre * :GoImports
 au FileType go autocmd BufWritePre * :GoFmt
 
+" add language specific highlighting
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+" remove red highlighting
+let g:go_highlight_trailing_whitespace_error = 0 
+
 " General Setting
 " ---------------
 " remap esc
 inoremap jk <esc>
 
 " insert an empty line between brackets
-inoremap {<CR> {<CR>}<C-o>O<Space><Space><Space> 
+" inoremap {<CR> {<CR>}<C-o>O<Space><Space><Space> 
 set noerrorbells "no beeps in vim
 " shortcut to change a word since the default behavior of cw is useless 
 nmap cw caw 
@@ -68,6 +78,7 @@ nmap cw caw
 syntax enable
 let base16colorspace=256 " Access colors present in 256 colorspace
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+" e.g. base16-solarized
 execute "set background=".$BACKGROUND
 execute "colorscheme ".$THEME
 
