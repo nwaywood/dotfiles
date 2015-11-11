@@ -16,6 +16,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
 
 " Language specific
 Plugin 'fatih/vim-go'
@@ -34,6 +35,10 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 
+"""""""""
+" Plugins
+"""""""""
+
 " vim-airline
 " -----------
 set laststatus=2 " plugin won't work without this line	
@@ -41,6 +46,32 @@ set noshowmode " hide the default insert/command mode indicator
 let g:airline_powerline_fonts=1 
 set timeoutlen=20 "gets rid of the pause when leaving insert mode
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14 " won't work in macvim without this line
+" buffers to emulate tabs (no ctrlp)
+let g:airline#extensions#tabline#enabled = 1 " enable the list of buffers at the top of the screen
+let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename in the buffer list
+
+" NERDTree
+" --------
+" http://www.cheatography.com/stepk/cheat-sheets/vim-nerdtree/
+
+" close NERDTree after a file is opened
+let g:NERDTreeQuitOnOpen=0
+" show hidden files in NERDTree
+let NERDTreeShowHidden=1
+" Toggle NERDTree
+nmap <silent> <C-n><C-t> :NERDTreeToggle<cr>
+" Focus NERDTree
+nmap <silent> <C-n><C-n> :NERDTree<cr>
+" Find current file in NERDTree
+nmap <silent> <C-n><C-f> :NERDTreeFind<cr>
+" remove some files by extension
+let NERDTreeIgnore = ['\.js.map$', '\.pyc$']
+" start NERDTree automatically when vim starts up
+autocmd vimenter * NERDTree
+" focus the main window instead of NERDTree
+autocmd vimenter * wincmd p 
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " YCM
 " ---
@@ -63,16 +94,15 @@ let g:go_highlight_build_constraints = 1
 " remove red highlighting
 let g:go_highlight_trailing_whitespace_error = 0 
 
+"""""""""""""""""
 " General Setting
-" ---------------
-" remap esc
-inoremap jk <esc>
+""""""""""""""""
 
+" This allows buffers to be hidden if you've modified a buffer
+set hidden
 " insert an empty line between brackets
 " inoremap {<CR> {<CR>}<C-o>O<Space><Space><Space> 
 set noerrorbells "no beeps in vim
-" shortcut to change a word since the default behavior of cw is useless 
-nmap cw caw 
 
 " set color themes (from .vim/colors)
 syntax enable
@@ -100,6 +130,22 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 
-nmap <leader>w :w!<cr> " fast save
-nmap <leader>q :wq<cr> " fast save and quit
-nmap <leader>1 :q!<cr> " fast quit
+"""""""""""""
+" Keymappings
+"""""""""""""
+
+" remap esc
+inoremap jk <esc>
+" shortcut to change a word since the default behavior of cw is useless 
+nmap cw caw 
+
+" buffer navigation
+map <C-h> :bprevious<cr> " move to the previous buffer
+map <C-l> :bnext<cr> " move to the next buffer
+map <leader>t :enew<cr> " Open a new empty buffer
+map <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab')
+
+nmap <leader>w :w<cr> " fast save
+nmap <leader>wq :wq<cr> " fast save and quit
+nmap <leader>q :q<cr> " fast quit
+nmap <leader>1 :q!<cr> " fast force quit
