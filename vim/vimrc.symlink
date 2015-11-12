@@ -12,11 +12,12 @@ Plugin 'VundleVim/Vundle.vim' " required
 Plugin 'chriskempson/base16-vim'
 
 " utilities
+Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
+Plugin 'ryanoasis/vim-devicons'
 
 " Language specific
 Plugin 'fatih/vim-go'
@@ -35,6 +36,64 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 
+"""""""""""""""""
+" General Setting
+""""""""""""""""
+
+" This allows buffers to be hidden if you've modified a buffer
+set hidden
+" insert an empty line between brackets
+" inoremap {<CR> {<CR>}<C-o>O<Space><Space><Space> 
+set noerrorbells "no beeps in vim
+
+" scroll the viewport faster
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
+" set color themes (from .vim/colors)
+syntax enable
+let base16colorspace=256 " Access colors present in 256 colorspace
+set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+" e.g. base16-solarized
+execute "set background=".$BACKGROUND
+execute "colorscheme ".$THEME
+
+set tabstop=4 "set the tab width to 4 spaces
+set number    "show line numbers
+set showcmd   " show me what im typing
+
+set autoindent " keep the indentation on <enter>
+set noswapfile   "don't use swapfile
+set nobackup     "dont create annoying backup files
+set encoding=utf-8 " set default encoding to UTF-8
+
+let mapleader = ","
+" following 3 lines make the mapleader key work
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
+"""""""""""""
+" Keymappings
+"""""""""""""
+
+" remap esc
+inoremap jk <esc>
+" shortcut to change a word since the default behavior of cw is useless 
+nmap cw caw 
+
+" buffer navigation
+map <C-h> :bprevious<cr> " move to the previous buffer
+map <C-l> :bnext<cr> " move to the next buffer
+map <leader>t :enew<cr> " Open a new empty buffer
+map <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab')
+
+nmap <leader>w :w<cr> " fast save
+nmap <leader>wq :wq<cr> " fast save and quit
+nmap <leader>q :q<cr> " fast quit
+nmap <leader>1 :q!<cr> " fast force quit
+
+
 """""""""
 " Plugins
 """""""""
@@ -45,8 +104,9 @@ set laststatus=2 " plugin won't work without this line
 set noshowmode " hide the default insert/command mode indicator
 let g:airline_powerline_fonts=1 
 set timeoutlen=20 "gets rid of the pause when leaving insert mode
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14 " won't work in macvim without this line
-" buffers to emulate tabs (no ctrlp)
+set guifont=Fura\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
+"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
+" buffers to emulate tabs (with no ctrlp)
 let g:airline#extensions#tabline#enabled = 1 " enable the list of buffers at the top of the screen
 let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename in the buffer list
 
@@ -94,58 +154,3 @@ let g:go_highlight_build_constraints = 1
 " remove red highlighting
 let g:go_highlight_trailing_whitespace_error = 0 
 
-"""""""""""""""""
-" General Setting
-""""""""""""""""
-
-" This allows buffers to be hidden if you've modified a buffer
-set hidden
-" insert an empty line between brackets
-" inoremap {<CR> {<CR>}<C-o>O<Space><Space><Space> 
-set noerrorbells "no beeps in vim
-
-" set color themes (from .vim/colors)
-syntax enable
-let base16colorspace=256 " Access colors present in 256 colorspace
-set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-" e.g. base16-solarized
-execute "set background=".$BACKGROUND
-execute "colorscheme ".$THEME
-
-set tabstop=4 "set the tab width to 4 spaces
-set number    "show line numbers
-set showcmd   " show me what im typing
-
-" To use caps lock as esc key:
-" http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
-
-set autoindent " keep the indentation on <enter>
-set noswapfile   "don't use swapfile
-set nobackup     "dont create annoying backup files
-set encoding=utf-8 " set default encoding to UTF-8
-
-let mapleader = ","
-" following 3 lines make the mapleader key work
-set notimeout
-set ttimeout
-set ttimeoutlen=10
-
-"""""""""""""
-" Keymappings
-"""""""""""""
-
-" remap esc
-inoremap jk <esc>
-" shortcut to change a word since the default behavior of cw is useless 
-nmap cw caw 
-
-" buffer navigation
-map <C-h> :bprevious<cr> " move to the previous buffer
-map <C-l> :bnext<cr> " move to the next buffer
-map <leader>t :enew<cr> " Open a new empty buffer
-map <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab')
-
-nmap <leader>w :w<cr> " fast save
-nmap <leader>wq :wq<cr> " fast save and quit
-nmap <leader>q :q<cr> " fast quit
-nmap <leader>1 :q!<cr> " fast force quit
