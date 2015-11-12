@@ -7,4 +7,4 @@ echo "Set a blazingly fast keyboard repeat rate"
 defaults write NSGlobalDomain KeyRepeat -int 2 # lower = faster, 1 delta = 15ms, 2 = 30ms
 
 echo "Set a shorter Delay until key repeat"
-defaults write NSGlobalDomain InitialKeyRepeat -int 5 # lower = faster, 1 delta = 25ms, 15 = 225ms
+defaults write NSGlobalDomain InitialKeyRepeat -int 15 # lower = faster, 1 delta = 25ms, 15 = 225ms
