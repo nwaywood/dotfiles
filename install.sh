@@ -3,6 +3,8 @@
 echo "Initializing submodules"
 git submodule update --init --recursive
 
+echo "Setting up osx settings"
+source installosx.sh
 echo "Brewing all the things"
 source install/brew.sh
 
