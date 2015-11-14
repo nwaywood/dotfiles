@@ -14,6 +14,7 @@ Plugin 'chriskempson/base16-vim'
 " utilities
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
@@ -40,15 +41,13 @@ filetype plugin indent on    " required
 " General Setting
 """"""""""""""""
 
-" This allows buffers to be hidden if you've modified a buffer
-set hidden
-" insert an empty line between brackets
-" inoremap {<CR> {<CR>}<C-o>O<Space><Space><Space> 
-set noerrorbells "no beeps in vim
-
-" scroll the viewport faster
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
+" mapleader
+let mapleader = ","
+let g:mapleader = ","
+" following 3 lines make the mapleader key work
+set notimeout
+set ttimeout
+set ttimeoutlen=10
 
 " set color themes (from .vim/colors)
 syntax enable
@@ -58,20 +57,33 @@ set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 execute "set background=".$BACKGROUND
 execute "colorscheme ".$THEME
 
+" tab control
+set smarttab " tab respects 'tabstop', 'shiftwidth and 'softtabstop
 set tabstop=4 "set the tab width to 4 spaces
-set number    "show line numbers
-set showcmd   " show me what im typing
+set softtabstop=4 " edit as if the tabs are 4 characters wide
+set shiftwidth=4 " number of spaces to use for indent and unindent
+set shiftround " round indent to a multiple of 'shiftwidth
 
+" smarter searching
+set ignorecase " case insensitive searching
+set smartcase " case sensitive if search term explicilty contains a captital
+set incsearch " set incremental search, like modern browsers
+set showmatch
+set hlsearch " highlight search results
+set magic " make searching use normal regex (grep)
+
+" misc
+set noerrorbells "no beeps in vim
+set hidden " This allows buffers to be hidden if you've modified a buffer
+" set number    "show line numbers
+" http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
+set relativenumber " set relative line numbers
+set showcmd   " show me what im typing
 set autoindent " keep the indentation on <enter>
 set noswapfile   "don't use swapfile
 set nobackup     "dont create annoying backup files
 set encoding=utf-8 " set default encoding to UTF-8
-
-let mapleader = ","
-" following 3 lines make the mapleader key work
-set notimeout
-set ttimeout
-set ttimeoutlen=10
+set clipboard=unnamed " for copy/paste with osx
 
 """""""""""""
 " Keymappings
@@ -79,20 +91,47 @@ set ttimeoutlen=10
 
 " remap esc
 inoremap jk <esc>
-" shortcut to change a word since the default behavior of cw is useless 
-nmap cw caw 
+
+" scroll the viewport faster
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
+" will make navigation of wrapped lines worked as you'd expect
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> ^ g^
+nnoremap <silent> $ g$
+
+" add newlines from normal mode
+nnoremap <cr> o<esc>
+nnoremap <S-Enter> O<esc>
+
+" toggle paste mode
+noremap <leader>p :set paste!<cr>
+
+" clear search highlighting and clear any message already displayed
+nnoremap <silent> <space> :nohlsearch<Bar>:echo<cr>
 
 " buffer navigation
 map <C-h> :bprevious<cr> " move to the previous buffer
 map <C-l> :bnext<cr> " move to the next buffer
 map <leader>t :enew<cr> " Open a new empty buffer
-map <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab')
+"map <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab')
 
-nmap <leader>w :w<cr> " fast save
-nmap <leader>wq :wq<cr> " fast save and quit
-nmap <leader>q :q<cr> " fast quit
-nmap <leader>1 :q!<cr> " fast force quit
+nnoremap <leader>w :w<cr> " fast save
+nnoremap <leader>wq :wq<cr> " fast save and quit
+nnoremap <leader>q :q<cr> " fast quit
+nnoremap <leader>1 :q!<cr> " fast force quit
 
+" disable arrow keys until I stopped being a noob
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 
 """""""""
 " Plugins
@@ -119,25 +158,36 @@ let g:NERDTreeQuitOnOpen=0
 " show hidden files in NERDTree
 let NERDTreeShowHidden=1
 " Toggle NERDTree
-nmap <silent> <C-n><C-t> :NERDTreeToggle<cr>
+" nmap <silent> <C-n><C-t> :NERDTreeToggle<cr>
+nnoremap <silent> <leader>t :NERDTreeToggle<cr>
 " Focus NERDTree
-nmap <silent> <C-n><C-n> :NERDTree<cr>
+" nmap <silent> <C-n><C-n> :NERDTree<cr>
 " Find current file in NERDTree
-nmap <silent> <C-n><C-f> :NERDTreeFind<cr>
+" nmap <silent> <C-n><C-f> :NERDTreeFind<cr>
+nnoremap <silent> <leader>n :NERDTreeFind<cr>
 " remove some files by extension
 let NERDTreeIgnore = ['\.js.map$', '\.pyc$']
 " start NERDTree automatically when vim starts up
 autocmd vimenter * NERDTree
-" focus the main window instead of NERDTree
+" focus the main window instead of NERDTree when vim starts up
 autocmd vimenter * wincmd p 
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" CtrlP
+" -----
+" CtrlPMRU
+nnoremap <silent> <leader>r :CtrlPMRU<cr> 
+nnoremap <silent> <leader>b :CtrlPBuffer<cr> 
+let g:ctrlp_map='<leader>f'
+let g:ctrlp_dotfiles=1
+let g:ctrlp_working_path_mode = 'ra'
 
 " YCM
 " ---
 set completeopt-=preview " removes the preview at the top of the vim file
 
-" vim-go (https://github.com/fatih/dotfiles/blob/master/vimrc)
+" vim-go 
 " ------
 "  executes :GoImports and :GoFmt everytime a go file is saved
 "  http://vimdoc.sourceforge.net/htmldoc/autocmd.html
