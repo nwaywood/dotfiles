@@ -113,10 +113,11 @@ noremap <leader>p :set paste!<cr>
 nnoremap <silent> <space> :nohlsearch<Bar>:echo<cr>
 
 " buffer navigation
-map <C-h> :bprevious<cr> " move to the previous buffer
-map <C-l> :bnext<cr> " move to the next buffer
-map <leader>t :enew<cr> " Open a new empty buffer
-"map <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab')
+nnoremap <leader>bh :bprevious<cr> " move to the previous buffer
+nnoremap <leader>bl :bnext<cr> " move to the next buffer
+nnoremap <leader>bc :enew<cr> " Open a new empty buffer
+nnoremap <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab')
+" buffer list command/mapping is in CtrlP section
 
 nnoremap <leader>w :w<cr> " fast save
 nnoremap <leader>wq :wq<cr> " fast save and quit
@@ -178,7 +179,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " -----
 " CtrlPMRU
 nnoremap <silent> <leader>r :CtrlPMRU<cr> 
-nnoremap <silent> <leader>b :CtrlPBuffer<cr> 
+nnoremap <silent> <leader>bb :CtrlPBuffer<cr> 
 let g:ctrlp_map='<leader>f'
 let g:ctrlp_dotfiles=1
 let g:ctrlp_working_path_mode = 'ra'
@@ -193,14 +194,12 @@ set completeopt-=preview " removes the preview at the top of the vim file
 "  http://vimdoc.sourceforge.net/htmldoc/autocmd.html
 au FileType go autocmd BufWritePre * :GoImports
 au FileType go autocmd BufWritePre * :GoFmt
-
 " add language specific highlighting
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-
 " remove red highlighting
 let g:go_highlight_trailing_whitespace_error = 0 
 
