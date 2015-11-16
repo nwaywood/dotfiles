@@ -107,6 +107,9 @@ nnoremap <silent> $ g$
 nnoremap <cr> o<esc>
 nnoremap <S-Enter> O<esc>
 
+" insert empty line between brackets (hacky, need a better way to do this)
+inoremap {<CR> {<CR>}<C-o>O<Space><Space><Space> 
+
 " toggle paste mode
 noremap <leader>p :set paste!<cr>
 
