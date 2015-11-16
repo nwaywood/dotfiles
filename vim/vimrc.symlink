@@ -17,6 +17,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
+Plugin 'sickill/vim-pasta'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ryanoasis/vim-devicons'
 
@@ -207,10 +208,9 @@ set completeopt-=preview " removes the preview at the top of the vim file
 
 " vim-go 
 " ------
-"  executes :GoImports and :GoFmt everytime a go file is saved
-"  http://vimdoc.sourceforge.net/htmldoc/autocmd.html
-"au FileType go autocmd BufWritePre * :GoImports
-"au FileType go autocmd BufWritePre * :GoFmt
+"  executes :GoFmt everytime a go file is saved, using "goimport" makes saving
+"  files slow
+let g:go_fmt_command="gofmt" 
 " add language specific highlighting
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -219,5 +219,3 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " remove red highlighting
 let g:go_highlight_trailing_whitespace_error = 0 
-" fixes issue with go files taking a few seconds to load?
-let g:go_fmt_command="gofmt" 
