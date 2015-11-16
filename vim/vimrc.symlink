@@ -120,7 +120,7 @@ nnoremap <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the pr
 " buffer list command/mapping is in CtrlP section
 
 nnoremap <leader>w :w<cr> " fast save
-nnoremap <leader>wq :wq<cr> " fast save and quit
+"nnoremap <leader>wq :wq<cr> " fast save and quit
 nnoremap <leader>q :q<cr> " fast quit
 nnoremap <leader>1 :q!<cr> " fast force quit
 
@@ -133,6 +133,23 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+" toggle relative/absolute line numbers
+nnoremap <leader>. :call NumberToggle()<cr>
+
+"""""""""""
+" Functions
+"""""""""""
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+	set norelativenumber
+  else
+    set relativenumber
+	set nonumber
+  endif
+endfunc
 
 """""""""
 " Plugins
@@ -192,8 +209,8 @@ set completeopt-=preview " removes the preview at the top of the vim file
 " ------
 "  executes :GoImports and :GoFmt everytime a go file is saved
 "  http://vimdoc.sourceforge.net/htmldoc/autocmd.html
-au FileType go autocmd BufWritePre * :GoImports
-au FileType go autocmd BufWritePre * :GoFmt
+"au FileType go autocmd BufWritePre * :GoImports
+"au FileType go autocmd BufWritePre * :GoFmt
 " add language specific highlighting
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -202,4 +219,5 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " remove red highlighting
 let g:go_highlight_trailing_whitespace_error = 0 
-
+" fixes issue with go files taking a few seconds to load?
+let g:go_fmt_command="gofmt" 
