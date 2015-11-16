@@ -15,6 +15,7 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
 Plugin 'sickill/vim-pasta'
@@ -214,6 +215,8 @@ set completeopt-=preview " removes the preview at the top of the vim file
 "  executes :GoFmt everytime a go file is saved, using "goimport" makes saving
 "  files slow
 let g:go_fmt_command="gofmt" 
+" run go-metalinter on save
+au FileType go autocmd BufWritePre * :GoMetaLinter
 " add language specific highlighting
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
