@@ -14,6 +14,9 @@ git clone https://github.com/chriskempson/base16-shell.git $HOME/.dotfiles/.conf
 echo "Installing vundle (vim package manager)"
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+echo "Installing tpm (tmux package manager)"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 echo "Symlinking dotfiles"
 source install/link.sh
 
