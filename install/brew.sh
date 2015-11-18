@@ -16,11 +16,14 @@ brew install git
 brew install macvim --with-override-system-vim
 brew install tmux
 brew install zsh
+
+# languages and langauge tools
 brew install go --with-cc-all
 
 # CLI tools
 brew install tree
 brew install jq
+brew install ag
 
 # cask apps
 brew cask install atom

@@ -15,6 +15,7 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'mileszs/ack.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Raimondi/delimitMate'
@@ -196,6 +197,10 @@ autocmd vimenter * NERDTree
 autocmd vimenter * wincmd p 
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Ack
+" ---
+let g:ackprg='ag --vimgrep'
 
 " CtrlP
 " -----
