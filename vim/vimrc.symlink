@@ -13,12 +13,13 @@ Plugin 'chriskempson/base16-vim'
 
 " utilities
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
-Plugin 'sickill/vim-pasta'
+Plugin 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 Plugin 'tpope/vim-fugitive'
 Plugin 'ryanoasis/vim-devicons'
 
@@ -37,7 +38,6 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-"
 
 """""""""""""""""
 " General Setting
