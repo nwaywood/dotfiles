@@ -16,6 +16,7 @@ brew install git
 brew install macvim --with-override-system-vim
 brew install tmux
 brew install zsh
+brew install git-flow
 
 # languages and langauge tools
 brew install go --with-cc-all
