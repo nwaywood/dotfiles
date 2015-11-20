@@ -125,10 +125,11 @@ nnoremap <leader>bc :enew<cr> " Open a new empty buffer
 nnoremap <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab')
 " buffer list command/mapping is in CtrlP section
 
-nnoremap <leader>w :w<cr> " fast save
-"nnoremap <leader>wq :wq<cr> " fast save and quit
-nnoremap <leader>q :q<cr> " fast quit
-nnoremap <leader>1 :q!<cr> " fast force quit
+nnoremap <leader>w :w<cr> " save
+"nnoremap <leader>wq :wq<cr> " save and quit
+nnoremap <leader>x :x<cr> " save and quit
+nnoremap <leader>q :q<cr> " quit
+nnoremap <leader>1 :q!<cr> " force quit
 
 " disable arrow keys until I stopped being a noob
 nnoremap <up> <nop>
