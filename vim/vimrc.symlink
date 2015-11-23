@@ -78,6 +78,8 @@ set hlsearch " highlight search results
 set magic " make searching use normal regex (grep)
 
 " misc
+set mouse+=a " lets mouse resize vim windows
+set ttymouse=xterm2 " lets mouse resize vim windows
 set noerrorbells "no beeps in vim
 set hidden " This allows buffers to be hidden if you've modified a buffer
 " set number    "show line numbers
