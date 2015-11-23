@@ -216,8 +216,22 @@ let g:ctrlp_dotfiles=1
 let g:ctrlp_working_path_mode = 'ra'
 
 " vim-dispatch
+" ------------
 autocmd FileType go let b:dispatch='make build' " run a Go makefile by default on :Dispatch
 nnoremap <leader>d :Dispatch<cr>
+
+" Vimux
+" -----
+" Prompt for a command to run
+noremap <Leader>vp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+noremap <Leader>vl :VimuxRunLastCommand<CR>
+" Inspect runner pane
+noremap <Leader>vi :VimuxInspectRunner<CR>
+" Close vim tmux runner opened by VimuxRunCommand
+noremap <Leader>vq :VimuxCloseRunner<CR>
+" Zoom the runner pane (use <bind-key> z to restore runner pane)
+noremap <Leader>vz :call VimuxZoomRunner()<CR>
 
 " YCM
 " ---
