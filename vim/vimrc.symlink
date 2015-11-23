@@ -118,7 +118,8 @@ inoremap {<CR> {<CR>}<C-o>O<Space><Space><Space>
 noremap <leader>p :set paste!<cr>
 
 " clear search highlighting and clear any message already displayed
-nnoremap <silent> <space> :nohlsearch<Bar>:echo<cr>
+"nnoremap <silent> <space> :nohlsearch<Bar>:echo<cr>
+noremap <silent> <space> :set hlsearch! hlsearch?<cr>
 
 " buffer navigation
 nnoremap <leader>bh :bprevious<cr> " move to the previous buffer
@@ -228,7 +229,7 @@ set completeopt-=preview " removes the preview at the top of the vim file
 "  files slow
 let g:go_fmt_command="gofmt" 
 " run go-metalinter on save
-au FileType go autocmd BufWritePre * :GoMetaLinter
+au FileType go autocmd BufWritePre * :GoMetaLinter 
 " add language specific highlighting
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -237,3 +238,6 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " remove red highlighting
 let g:go_highlight_trailing_whitespace_error = 0 
+" gometalinter command
+let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
+			\ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
