@@ -15,6 +15,8 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-dispatch'
+Plugin 'benmills/vimux'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'mileszs/ack.vim'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -183,12 +185,8 @@ let g:NERDTreeQuitOnOpen=0
 " show hidden files in NERDTree
 let NERDTreeShowHidden=1
 " Toggle NERDTree
-" nmap <silent> <C-n><C-t> :NERDTreeToggle<cr>
 nnoremap <silent> <leader>t :NERDTreeToggle<cr>
-" Focus NERDTree
-" nmap <silent> <C-n><C-n> :NERDTree<cr>
 " Find current file in NERDTree
-" nmap <silent> <C-n><C-f> :NERDTreeFind<cr>
 nnoremap <silent> <leader>n :NERDTreeFind<cr>
 " remove some files by extension
 let NERDTreeIgnore = ['\.js.map$', '\.pyc$']
@@ -198,6 +196,10 @@ autocmd vimenter * NERDTree
 autocmd vimenter * wincmd p 
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" remap C-j and C-k commands so it doesnt interfere with vim-tmux-navigator
+" plugin
+let NERDTreeMapJumpNextSibling='C-d'
+let NERDTreeMapJumpPrevSibling='C-u'
 
 " Ack
 " ---
@@ -211,6 +213,10 @@ nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
 let g:ctrlp_map='<leader>f'
 let g:ctrlp_dotfiles=1
 let g:ctrlp_working_path_mode = 'ra'
+
+" vim-dispatch
+autocmd FileType go let b:dispatch='make build' " run a Go makefile by default on :Dispatch
+nnoremap <leader>d :Dispatch<cr>
 
 " YCM
 " ---
