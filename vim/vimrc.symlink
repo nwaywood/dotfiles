@@ -193,6 +193,8 @@ nnoremap <silent> <leader>t :NERDTreeToggle<cr>
 nnoremap <silent> <leader>n :NERDTreeFind<cr>
 " remove some files by extension
 let NERDTreeIgnore = ['\.js.map$', '\.pyc$']
+" Change the NERDTree window width (default=31)
+let g:NERDTreeWinSize=40
 " start NERDTree automatically when vim starts up
 autocmd vimenter * NERDTree
 " focus the main window instead of NERDTree when vim starts up
