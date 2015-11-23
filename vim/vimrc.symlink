@@ -91,6 +91,9 @@ set noswapfile   "don't use swapfile
 set nobackup     "dont create annoying backup files
 set encoding=utf-8 " set default encoding to UTF-8
 set clipboard=unnamed " for copy/paste with osx
+" make default splits split below/right instead of above/left
+set splitbelow
+set splitright
 
 """""""""""""
 " Keymappings
