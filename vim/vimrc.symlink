@@ -23,6 +23,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
 Plugin 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
+Plugin 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
 Plugin 'tpope/vim-fugitive'
 Plugin 'ryanoasis/vim-devicons'
 
