@@ -61,6 +61,11 @@ if [ -z "$BACKGROUND" ]; then
     export BACKGROUND="dark"
 fi
 
+# required to make z command work
+if hash brew 2>/dev/null; then
+	source `brew --prefix`/etc/profile.d/z.sh
+fi
+
 BASE16_SHELL="$DOTFILES/.config/base16-shell/$THEME.$BACKGROUND.sh"
 source $BASE16_SHELL
 
