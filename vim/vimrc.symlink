@@ -24,6 +24,8 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'bling/vim-airline'
 Plugin 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 Plugin 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
+Plugin 'kana/vim-textobj-user' " Allows custom text objects
+Plugin 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae' 
 Plugin 'tpope/vim-fugitive'
 Plugin 'ryanoasis/vim-devicons'
 
