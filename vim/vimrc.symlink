@@ -20,7 +20,7 @@ Plugin 'benmills/vimux'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'mileszs/ack.vim'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'Raimondi/delimitMate'
+" Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
 Plugin 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 Plugin 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
@@ -62,6 +62,13 @@ set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 " e.g. base16-solarized
 execute "set background=".$BACKGROUND
 execute "colorscheme ".$THEME
+" Use vims old regex engine for faster syntax highlighting
+" http://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
+set re=1
+" color to col 128 (dont apply syntax highlighting on long lines)
+set synmaxcol=128
+" mininum number of lines to correctly apply syntax highlighting to
+syntax sync minlines=256
 
 " tab control
 set smarttab " tab respects 'tabstop', 'shiftwidth and 'softtabstop
@@ -261,14 +268,10 @@ au FileType go nmap <C-g>gg <Plug>(go-def)
 au FileType go nmap <C-g>gv <Plug>(go-def-vertical)
 au FileType go nmap <C-g>gd <Plug>(go-doc-vertical)
 au FileType go nnoremap <C-g>i :GoImports<cr>
-" add language specific highlighting
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
+au FileType go nnoremap <C-g>m :GoMetaLinter<cr>
+let g:go_auto_type_info=0
 " remove red highlighting
 let g:go_highlight_trailing_whitespace_error = 0 
 " gometalinter command
 let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
-			\ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
+		    \ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
