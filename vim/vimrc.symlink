@@ -68,7 +68,7 @@ execute "colorscheme ".$THEME
 " http://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
 set re=1
 " color to col 128 (dont apply syntax highlighting on long lines)
-set synmaxcol=128
+" set synmaxcol=128
 " mininum number of lines to correctly apply syntax highlighting to
 syntax sync minlines=256
 
