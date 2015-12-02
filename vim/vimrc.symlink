@@ -180,6 +180,7 @@ function! NumberToggle()
   endif
 endfunc
 
+
 """""""""
 " Plugins
 """""""""
@@ -277,3 +278,25 @@ let g:go_highlight_trailing_whitespace_error = 0
 " gometalinter command
 let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
 		    \ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
+
+
+" Macvim settings
+" ===============
+if (has("gui_running"))
+	" I don't know what this does!
+	set guioptions=egmrt
+	" don't use relative number because of a macvim bug
+	set number
+	set norelativenumber
+	" more syntax highlighting for go code
+	let g:go_highlight_functions = 1
+	let g:go_highlight_methods = 1
+	let g:go_highlight_structs = 1
+	let g:go_highlight_operators = 1
+	let g:go_highlight_build_constraints = 1
+	" show type info for go code
+	let g:go_auto_type_info=1
+
+	" colorscheme solarized
+	" let g:airline_theme='solarized'
+endif
