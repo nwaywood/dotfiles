@@ -89,7 +89,9 @@ set magic " make searching use normal regex (grep)
 
 " misc
 set mouse+=a " lets mouse resize vim windows
-set ttymouse=xterm2 " lets mouse resize vim windows
+if !has('nvim')
+	set ttymouse=xterm2 " lets mouse resize vim windows
+endif
 set noerrorbells "no beeps in vim
 set hidden " This allows buffers to be hidden if you've modified a buffer
 " set number    "show line numbers
@@ -300,4 +302,17 @@ if (has("gui_running"))
 
 	" colorscheme solarized
 	" let g:airline_theme='solarized'
+endif
+
+" neovim settings
+" ===============
+if has('nvim')
+	" more syntax highlighting for go code
+	let g:go_highlight_functions = 1
+	let g:go_highlight_methods = 1
+	let g:go_highlight_structs = 1
+	let g:go_highlight_operators = 1
+	let g:go_highlight_build_constraints = 1
+	" show type info for go code
+	let g:go_auto_type_info=1
 endif
