@@ -201,7 +201,7 @@ let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename in the
 " --------
 " http://www.cheatography.com/stepk/cheat-sheets/vim-nerdtree/
 
-" close NERDTree after a file is opened
+" don't close NERDTree after a file is opened
 let g:NERDTreeQuitOnOpen=0
 " show hidden files in NERDTree
 let NERDTreeShowHidden=1
@@ -213,10 +213,6 @@ nnoremap <silent> <leader>n :NERDTreeFind<cr>
 let NERDTreeIgnore = ['\.js.map$', '\.pyc$']
 " Change the NERDTree window width (default=31)
 let g:NERDTreeWinSize=40
-" start NERDTree automatically when vim starts up
-autocmd vimenter * NERDTree
-" focus the main window instead of NERDTree when vim starts up
-autocmd vimenter * wincmd p 
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " remap C-j and C-k commands so it doesnt interfere with vim-tmux-navigator
@@ -283,8 +279,8 @@ let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
 " Macvim settings
 " ===============
 if (has("gui_running"))
-	" I don't know what this does!
-	set guioptions=egmrt
+	" http://vimdoc.sourceforge.net/htmldoc/options.html#'guioptions'
+	set guioptions=egmt
 	" don't use relative number because of a macvim bug
 	set number
 	set norelativenumber
@@ -296,6 +292,11 @@ if (has("gui_running"))
 	let g:go_highlight_build_constraints = 1
 	" show type info for go code
 	let g:go_auto_type_info=1
+
+	" start NERDTree automatically when vim starts up
+	autocmd vimenter * NERDTree
+	" focus the main window instead of NERDTree when vim starts up
+	autocmd vimenter * wincmd p 
 
 	" colorscheme solarized
 	" let g:airline_theme='solarized'
