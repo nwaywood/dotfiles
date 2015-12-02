@@ -17,7 +17,6 @@ brew install macvim --with-override-system-vim
 brew install reattach-to-user-namespace
 brew install tmux
 brew install zsh
-brew install git-flow
 brew install z
 
 # languages and langauge tools
