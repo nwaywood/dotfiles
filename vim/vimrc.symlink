@@ -315,4 +315,6 @@ if has('nvim')
 	let g:go_highlight_build_constraints = 1
 	" show type info for go code
 	let g:go_auto_type_info=1
+	" fix the cursor shape in insert mode
+	:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1	
 endif
