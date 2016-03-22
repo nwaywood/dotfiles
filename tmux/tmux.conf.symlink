@@ -18,6 +18,11 @@ set -g prefix C-a
 unbind C-b
 bind C-a send-prefix
 
+# Rather than constraining window size to the maximum size of any client
+# connected to the *session*, constrain window size to the maximum size of any
+# client connected to *that window*. Much more reasonable.
+setw -g aggressive-resize on
+
 # use vim shortcuts
 setw -g mode-keys vi
 set-option -g status-keys vi
