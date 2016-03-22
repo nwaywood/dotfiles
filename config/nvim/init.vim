@@ -1,49 +1,31 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim' " required
+call plug#begin('~/.config/nvim/plugged')
 
 " color/theme stuff
-" Plugin 'altercation/vim-colors-solarized'
-Plugin 'chriskempson/base16-vim'
+" Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
 
 " utilities
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-dispatch'
-Plugin 'benmills/vimux'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'mileszs/ack.vim'
-Plugin 'christoomey/vim-tmux-navigator'
-" Plugin 'Raimondi/delimitMate'
-Plugin 'bling/vim-airline'
-Plugin 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
-Plugin 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
-Plugin 'kana/vim-textobj-user' " Allows custom text objects
-Plugin 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae' 
-Plugin 'tpope/vim-fugitive'
-Plugin 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-dispatch'
+Plug 'benmills/vimux'
+Plug 'Valloric/YouCompleteMe'
+Plug 'mileszs/ack.vim'
+Plug 'christoomey/vim-tmux-navigator'
+" Plug 'Raimondi/delimitMate'
+Plug 'bling/vim-airline'
+Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
+Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
+Plug 'kana/vim-textobj-user' " Allows custom text objects
+Plug 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae'
+Plug 'tpope/vim-fugitive'
+Plug 'ryanoasis/vim-devicons'
 
 " Language specific
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
-call vundle#end()            " required
-
-filetype plugin indent on    " required
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+call plug#end()
 
 """""""""""""""""
 " General Setting
@@ -52,6 +34,7 @@ filetype plugin indent on    " required
 " mapleader
 let mapleader = ","
 let g:mapleader = ","
+set nocompatible " not compatible with vi
 " following 3 lines make the mapleader key work
 set notimeout
 set ttimeout
@@ -190,15 +173,15 @@ endfunc
 
 " vim-airline
 " -----------
-set laststatus=2 " plugin won't work without this line	
+set laststatus=2 " plugin won't work without this line
 set noshowmode " hide the default insert/command mode indicator
-let g:airline_powerline_fonts=1 
+let g:airline_powerline_fonts=1
 set timeoutlen=20 "gets rid of the pause when leaving insert mode
 set guifont=Fura\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
 "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
 " buffers to emulate tabs (with no ctrlp)
-let g:airline#extensions#tabline#enabled = 1 " enable the list of buffers at the top of the screen
-let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename in the buffer list
+" let g:airline#extensions#tabline#enabled = 1 " enable the list of buffers at the top of the screen
+" let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename in the buffer list
 
 " NERDTree
 " --------
@@ -230,8 +213,8 @@ let g:ackprg='ag --vimgrep'
 " CtrlP
 " -----
 " CtrlPMRU
-nnoremap <silent> <leader>r :CtrlPMRU<cr> 
-nnoremap <silent> <leader>bb :CtrlPBuffer<cr> 
+nnoremap <silent> <leader>r :CtrlPMRU<cr>
+nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
 let g:ctrlp_map='<leader>f'
 let g:ctrlp_dotfiles=1
 let g:ctrlp_working_path_mode = 'ra'
@@ -258,13 +241,13 @@ noremap <Leader>vz :call VimuxZoomRunner()<CR>
 " ---
 set completeopt-=preview " removes the preview at the top of the vim file
 
-" vim-go 
+" vim-go
 " ------
 "  executes :GoFmt everytime a go file is saved, using "goimport" makes saving
 "  files slow
-let g:go_fmt_command="gofmt" 
+let g:go_fmt_command="gofmt"
 " run go-metalinter on save
-au FileType go autocmd BufWritePre * :GoMetaLinter 
+au FileType go autocmd BufWritePre * :GoMetaLinter
 " golang specific bindings (pseudo 'go mode' <C-g>)
 au FileType go nmap <C-g>gg <Plug>(go-def)
 au FileType go nmap <C-g>gv <Plug>(go-def-vertical)
@@ -273,7 +256,7 @@ au FileType go nnoremap <C-g>i :GoImports<cr>
 au FileType go nnoremap <C-g>m :GoMetaLinter<cr>
 let g:go_auto_type_info=0
 " remove red highlighting
-let g:go_highlight_trailing_whitespace_error = 0 
+let g:go_highlight_trailing_whitespace_error = 0
 " gometalinter command
 let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
 		    \ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
@@ -299,7 +282,7 @@ if (has("gui_running"))
 	" start NERDTree automatically when vim starts up
 	autocmd vimenter * NERDTree
 	" focus the main window instead of NERDTree when vim starts up
-	autocmd vimenter * wincmd p 
+	autocmd vimenter * wincmd p
 
 	" colorscheme solarized
 	" let g:airline_theme='solarized'
@@ -317,5 +300,5 @@ if has('nvim')
 	" show type info for go code
 	let g:go_auto_type_info=1
 	" fix the cursor shape in insert mode
-	:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1	
+	:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif

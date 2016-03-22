@@ -10,15 +10,15 @@ https://www.youtube.com/watch?v=5r6yzFEXajQ
 
 ## vim plugins
 
-Vim plugins are managed with [Vundle](https://github.com/VundleVim/Vundle.vim). To install plugins, run:
+Vim plugins are managed with [vim-plug](https://github.com/junegunn/vim-plug). To install plugins, run:
 
-`vim +PluginInstall +qall`
+`nvim +PlugInstall`
 
 For the `YouCompleteMe` plugin, the following steps are also required for setup:
 
-`cd ~/.vim/bundle/YouCompleteMe`
+`cd ~/.config/nvim/plugged/YouCompleteMe`
 
-`bash install --clang-completer --gocode-completer`
+`./install.py --clang-completer --gocode-completer --tern-completer`
 
 ## tmux plugins
 
@@ -31,4 +31,4 @@ from within tmux
 ## TODO:
 Add to dotfiles
 - atom
-- node?
+- node (nvm)

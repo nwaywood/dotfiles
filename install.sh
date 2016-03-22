@@ -11,9 +11,6 @@ source install/brew.sh
 echo "Adding base16-shell project into .config"
 git clone https://github.com/chriskempson/base16-shell.git $HOME/.dotfiles/.config/base16-shell
 
-echo "Installing vundle (vim package manager)"
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
 echo "Installing tpm (tmux package manager)"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
