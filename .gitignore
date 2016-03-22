@@ -1,2 +1,5 @@
 aliases-local.zsh
 .config
+.netrwhist
+
+config/nvim/plugged
