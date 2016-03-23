@@ -14,7 +14,8 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'mileszs/ack.vim'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'Raimondi/delimitMate'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
 Plug 'kana/vim-textobj-user' " Allows custom text objects
@@ -178,6 +179,7 @@ set noshowmode " hide the default insert/command mode indicator
 let g:airline_powerline_fonts=1
 set timeoutlen=20 "gets rid of the pause when leaving insert mode
 set guifont=Fura\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
+let g:airline_theme='base16'
 "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
 " buffers to emulate tabs (with no ctrlp)
 " let g:airline#extensions#tabline#enabled = 1 " enable the list of buffers at the top of the screen
