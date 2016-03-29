@@ -28,7 +28,7 @@ for config ($DOTFILES/zsh/**/*.zsh) source $config
 source $ZSH/oh-my-zsh.sh
 
 # editor
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # GOPATH
 export GOPATH=$HOME/code
