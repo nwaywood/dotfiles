@@ -24,7 +24,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ryanoasis/vim-devicons'
 
 " Language specific
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'for': 'go' } " go support
 
 call plug#end()
 
