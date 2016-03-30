@@ -10,7 +10,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'benmills/vimux'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
+Plug 'Shougo/deoplete.nvim' " auto code completion
 Plug 'mileszs/ack.vim'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'Raimondi/delimitMate'
@@ -20,11 +21,12 @@ Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
 Plug 'kana/vim-textobj-user' " Allows custom text objects
 Plug 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae'
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive' " Git support
 Plug 'ryanoasis/vim-devicons'
 
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
+Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion
 
 call plug#end()
 
@@ -243,12 +245,29 @@ noremap <Leader>vq :VimuxCloseRunner<CR>
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 noremap <Leader>vz :call VimuxZoomRunner()<CR>
 
-" YCM
+" YCM (deprecated)
 " ---
-set completeopt-=preview " removes the preview at the top of the vim file
+" set completeopt-=preview " removes the preview at the top of the vim file
+
+" deoplete
+" --------
+let g:deoplete#enable_at_startup = 1
+set completeopt+=noinsert
+set completeopt+=noselect
+set completeopt-=preview " disable preview window at the bottom of the screen
+inoremap <silent><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " vim-go
 " ------
+" more syntax highlighting for go code
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_build_constraints = 1
+" show type info for go code
+let g:go_auto_type_info=1
 "  executes :GoFmt everytime a go file is saved, using "goimport" makes saving
 "  files slow
 let g:go_fmt_command="gofmt"
@@ -276,14 +295,6 @@ if (has("gui_running"))
 	" don't use relative number because of a macvim bug
 	set number
 	set norelativenumber
-	" more syntax highlighting for go code
-	let g:go_highlight_functions = 1
-	let g:go_highlight_methods = 1
-	let g:go_highlight_structs = 1
-	let g:go_highlight_operators = 1
-	let g:go_highlight_build_constraints = 1
-	" show type info for go code
-	let g:go_auto_type_info=1
 
 	" start NERDTree automatically when vim starts up
 	autocmd vimenter * NERDTree
@@ -297,14 +308,6 @@ endif
 " neovim settings
 " ===============
 if has('nvim')
-	" more syntax highlighting for go code
-	let g:go_highlight_functions = 1
-	let g:go_highlight_methods = 1
-	let g:go_highlight_structs = 1
-	let g:go_highlight_operators = 1
-	let g:go_highlight_build_constraints = 1
-	" show type info for go code
-	let g:go_auto_type_info=1
 	" fix the cursor shape in insert mode
 	:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
