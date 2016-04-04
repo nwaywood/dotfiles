@@ -27,11 +27,11 @@ brew install tree
 brew install jq
 brew install ag
 
-# cask apps
-brew cask install atom
+# neovim
+brew install neovim/neovim/neovim
 
-# need for YCM vim plugin
-brew install cmake
-
+# for vim tagbar
+brew install ctags-exuberant
+brew install gotags
 
 exit 0

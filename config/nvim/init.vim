@@ -8,12 +8,13 @@ Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'majutsushi/tagbar' " display file scope in side bar
 Plug 'tpope/vim-dispatch'
 Plug 'benmills/vimux'
 "Plug 'Valloric/YouCompleteMe'
 Plug 'Shougo/deoplete.nvim' " auto code completion
-Plug 'mileszs/ack.vim'
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'mileszs/ack.vim' " grep replacement
+Plug 'christoomey/vim-tmux-navigator' " use ctrl-hjkl to navigate between tmux and vim panes
 " Plug 'Raimondi/delimitMate'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -245,10 +246,6 @@ noremap <Leader>vq :VimuxCloseRunner<CR>
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 noremap <Leader>vz :call VimuxZoomRunner()<CR>
 
-" YCM (deprecated)
-" ---
-" set completeopt-=preview " removes the preview at the top of the vim file
-
 " deoplete
 " --------
 let g:deoplete#enable_at_startup = 1
@@ -286,6 +283,36 @@ let g:go_highlight_trailing_whitespace_error = 0
 let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
 		    \ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
 
+" tagbar
+" ------
+" Gotags config
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 
 " Macvim settings
 " ===============
