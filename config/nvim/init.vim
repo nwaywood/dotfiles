@@ -221,12 +221,13 @@ let g:ackprg='ag --vimgrep'
 
 " CtrlP
 " -----
-" CtrlPMRU
 nnoremap <silent> <leader>r :CtrlPMRU<cr>
 nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
 let g:ctrlp_map='<leader>f'
 let g:ctrlp_dotfiles=1
 let g:ctrlp_working_path_mode = 'ra'
+" use ag for searching instead of vims globpath()
+let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 
 " vim-dispatch
 " ------------
