@@ -201,7 +201,7 @@ let g:NERDTreeQuitOnOpen=0
 " show hidden files in NERDTree
 let NERDTreeShowHidden=1
 " Toggle NERDTree
-nnoremap <silent> <leader>t :NERDTreeToggle<cr>
+nnoremap <silent> <leader>e :NERDTreeToggle<cr>
 " Find current file in NERDTree
 nnoremap <silent> <leader>n :NERDTreeFind<cr>
 " remove some files by extension
@@ -286,6 +286,7 @@ let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
 
 " tagbar
 " ------
+nnoremap <silent> <leader>t :TagbarToggle<cr>
 " Gotags config
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
