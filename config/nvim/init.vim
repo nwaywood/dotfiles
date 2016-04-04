@@ -98,6 +98,8 @@ set clipboard=unnamed " for copy/paste with osx
 " make default splits split below/right instead of above/left
 set splitbelow
 set splitright
+" force vim to read *.md files as markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 """""""""""""
 " Keymappings
