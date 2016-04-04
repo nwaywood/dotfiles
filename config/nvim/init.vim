@@ -36,10 +36,12 @@ call plug#end()
 """"""""""""""""
 
 " mapleader
-let mapleader = ","
-let g:mapleader = ","
+" let mapleader = ","
+" let g:mapleader = ","
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 set nocompatible " not compatible with vi
-" following 3 lines make the mapleader key work
+" following 3 lines make the mapleader key work better
 set notimeout
 set ttimeout
 set ttimeoutlen=10
@@ -54,8 +56,6 @@ execute "colorscheme ".$THEME
 " Use vims old regex engine for faster syntax highlighting
 " http://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
 set re=1
-" color to col 128 (dont apply syntax highlighting on long lines)
-" set synmaxcol=128
 " mininum number of lines to correctly apply syntax highlighting to
 syntax sync minlines=256
 
@@ -132,8 +132,7 @@ au FileType json autocmd BufWritePre * :%!jq --indent 4 '.'
 noremap <leader>p :set paste!<cr>
 
 " clear search highlighting and clear any message already displayed
-"nnoremap <silent> <space> :nohlsearch<Bar>:echo<cr>
-noremap <silent> <space> :set hlsearch! hlsearch?<cr>
+noremap <silent> <leader>/ :set hlsearch! hlsearch?<cr>
 
 " buffer navigation
 nnoremap <leader>bh :bprevious<cr> " move to the previous buffer
@@ -189,8 +188,7 @@ let g:airline_powerline_fonts=1
 set timeoutlen=20 "gets rid of the pause when leaving insert mode
 set guifont=Fura\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
 let g:airline_theme='base16'
-"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
-" buffers to emulate tabs (with no ctrlp)
+" buffers to emulate tabs 
 " let g:airline#extensions#tabline#enabled = 1 " enable the list of buffers at the top of the screen
 " let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename in the buffer list
 
