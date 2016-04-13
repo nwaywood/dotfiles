@@ -10,8 +10,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar' " display file scope in side bar
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
+Plug 'tpope/vim-surround' " mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
 Plug 'benmills/vimux'
-"Plug 'Valloric/YouCompleteMe'
 Plug 'Shougo/deoplete.nvim' " auto code completion
 Plug 'mileszs/ack.vim' " grep replacement
 Plug 'christoomey/vim-tmux-navigator' " use ctrl-hjkl to navigate between tmux and vim panes
