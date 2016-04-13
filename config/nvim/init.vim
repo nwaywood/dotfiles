@@ -272,12 +272,12 @@ let g:go_auto_type_info=1
 let g:go_fmt_command="gofmt"
 " run go-metalinter on save
 au FileType go autocmd BufWritePre * :GoMetaLinter
-" golang specific bindings (pseudo 'go mode' <C-g>)
-au FileType go nmap <C-g>gg <Plug>(go-def)
-au FileType go nmap <C-g>gv <Plug>(go-def-vertical)
-au FileType go nmap <C-g>gd <Plug>(go-doc-vertical)
-au FileType go nnoremap <C-g>i :GoImports<cr>
-au FileType go nnoremap <C-g>m :GoMetaLinter<cr>
+" golang specific bindings (pseudo 'go mode' <leader>g)
+au FileType go nmap <Leader>gg <Plug>(go-def)
+au FileType go nmap <Leader>gv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+" au FileType go nnoremap <Leader>gi :GoImports<cr>
+" au FileType go nnoremap <Leader>gm :GoMetaLinter<cr>
 let g:go_auto_type_info=0
 " remove red highlighting
 let g:go_highlight_trailing_whitespace_error = 0
