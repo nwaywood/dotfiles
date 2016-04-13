@@ -1,6 +1,6 @@
 This dotfile project was inspired by the following talk by [Nick Nisi](https://github.com/nicknisi/):
 
-https://www.youtube.com/watch?v=5r6yzFEXajQ
+[vim + tmux - OMG!](https://www.youtube.com/watch?v=5r6yzFEXajQ)
 
 # Install
 
@@ -14,12 +14,6 @@ Vim plugins are managed with [vim-plug](https://github.com/junegunn/vim-plug). T
 
 `nvim +PlugInstall`
 
-For the `YouCompleteMe` plugin, the following steps are also required for setup:
-
-`cd ~/.config/nvim/plugged/YouCompleteMe`
-
-`./install.py --clang-completer --gocode-completer --tern-completer`
-
 ## tmux plugins
 
 Tmux plugins are managed with [tpm](https://github.com/tmux-plugins/tpm). To install plugins, run:
@@ -30,5 +24,4 @@ from within tmux
 
 ## TODO:
 Add to dotfiles
-- atom
 - node (nvm)
