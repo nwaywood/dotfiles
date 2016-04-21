@@ -25,6 +25,7 @@ Plug 'kana/vim-textobj-user' " Allows custom text objects
 Plug 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae'
 Plug 'tpope/vim-fugitive' " Git support
 Plug 'ryanoasis/vim-devicons'
+Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
 
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
@@ -316,6 +317,11 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
+
+" vim-marked
+" -----------
+nmap <leader>m :MarkedOpen<cr>
+nmap <leader>mq :MarkedQuit<cr>
 
 " Macvim settings
 " ===============
