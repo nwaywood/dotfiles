@@ -8,7 +8,7 @@ fi
 echo "Installing homebrew packages..."
 
 # brew stuff
-brew install caskroom/cask/brew-cask
+brew tap caskroom/cask
 
 # core development tools
 brew install mercurial
