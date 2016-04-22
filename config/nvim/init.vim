@@ -120,6 +120,10 @@ nnoremap <silent> k gk
 nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
 
+" faster window splitting
+nnoremap <leader>s :split<cr>
+nnoremap <leader>v :vsplit<cr>
+
 " add newlines from normal mode
 nnoremap <cr> o<esc>
 nnoremap <S-Enter> O<esc>
