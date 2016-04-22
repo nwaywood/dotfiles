@@ -278,8 +278,6 @@ let g:go_auto_type_info=1
 "  executes :GoFmt everytime a go file is saved, using "goimport" makes saving
 "  files slow
 let g:go_fmt_command="gofmt"
-" run go-metalinter on save
-au FileType go autocmd BufWritePre * :GoMetaLinter
 " golang specific bindings (pseudo 'go mode' <leader>g)
 au FileType go nmap <Leader>gg <Plug>(go-def)
 au FileType go nmap <Leader>gv <Plug>(go-def-vertical)
