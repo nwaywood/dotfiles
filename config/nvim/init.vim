@@ -289,9 +289,13 @@ au FileType go nmap <Leader>gd <Plug>(go-doc)
 let g:go_auto_type_info=0
 " remove red highlighting
 let g:go_highlight_trailing_whitespace_error = 0
+" run go-metalinter on save
+au FileType go autocmd BufWritePre * :GoMetaLinter
 " gometalinter command
-let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
-		    \ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
+let g:go_metalinter_command="gometalinter --disable-all --enable=vet
+		    \ --enable=vetshadow --enable=golint --enable=ineffassign --enable=goconst" 
+" let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
+"		 \ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
 
 " tagbar
 " ------
