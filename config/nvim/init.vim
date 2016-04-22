@@ -220,6 +220,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " plugin
 let NERDTreeMapJumpNextSibling='C-d'
 let NERDTreeMapJumpPrevSibling='C-u'
+" change window split keys to match ctrlp mappings
+let NERDTreeMapOpenSplit='s'
+let NERDTreeMapOpenVSplit='v'
 
 " Ack
 " ---
