@@ -331,7 +331,7 @@ let g:tagbar_type_go = {
 
 " vim-marked
 " -----------
-nmap <leader>m :MarkedOpen<cr>
+nmap <leader>mo :MarkedOpen<cr>
 nmap <leader>mq :MarkedQuit<cr>
 
 " Macvim settings
