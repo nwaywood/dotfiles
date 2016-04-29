@@ -81,6 +81,15 @@ set magic " make searching use normal regex (grep)
 " http://stackoverflow.com/questions/7103173/vim-how-to-change-the-highlight-color-for-search-hits-and-quickfix-selection
 hi Search ctermbg=55  
 
+" Line number management
+" http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
+set number    "show line numbers
+set relativenumber " set relative line numbers
+autocmd InsertEnter * :set number
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
+autocmd InsertLeave * :set number
+
 " misc
 set mouse+=a " lets mouse resize vim windows
 if !has('nvim')
@@ -88,9 +97,6 @@ if !has('nvim')
 endif
 set noerrorbells "no beeps in vim
 set hidden " This allows buffers to be hidden if you've modified a buffer
-" set number    "show line numbers
-" http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
-set relativenumber " set relative line numbers
 set showcmd   " show me what im typing
 set autoindent " keep the indentation on <enter>
 set noswapfile   "don't use swapfile
@@ -177,7 +183,7 @@ function! NumberToggle()
 	set norelativenumber
   else
     set relativenumber
-	set nonumber
+	set number
   endif
 endfunc
 
