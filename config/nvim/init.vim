@@ -138,7 +138,9 @@ nnoremap <S-Enter> O<esc>
 inoremap {<CR> {<CR>}<C-o>O
 
 " pretty print json on save
-au FileType json autocmd BufWritePre * :%!jq --indent 4 '.'
+" TODO: Need to find a better way to validate json. This overwrites the json
+" file with the errors if there are any
+" au FileType json autocmd BufWritePre * :%!jq --indent 4 '.'
 
 " toggle paste mode
 noremap <leader>p :set paste!<cr>
