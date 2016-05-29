@@ -200,6 +200,8 @@ set laststatus=2 " plugin won't work without this line
 set noshowmode " hide the default insert/command mode indicator
 let g:airline_powerline_fonts=1
 set timeoutlen=20 "gets rid of the pause when leaving insert mode
+" for the fonts to work in iTerm, install a patch font and set it in iTerm
+" prefs https://github.com/ryanoasis/nerd-fonts
 set guifont=Fura\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
 let g:airline_theme='base16'
 " buffers to emulate tabs 

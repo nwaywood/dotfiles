@@ -35,4 +35,3 @@ brew install python3
 brew install ctags-exuberant
 brew install gotags
 
-exit 0
