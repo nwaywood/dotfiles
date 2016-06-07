@@ -358,6 +358,16 @@ if (has("gui_running"))
 	" let g:airline_theme='solarized'
 endif
 
+" Nyaovim settings
+" ================
+if exists('g:nyaovim_version')
+	" Fix the airline bar in nyaovim
+	let g:airline_theme='solarized'
+	let g:airline_powerline_fonts=0
+	let g:airline_left_sep=''
+	let g:airline_right_sep=''
+endif
+
 " neovim settings
 " ===============
 if has('nvim')
