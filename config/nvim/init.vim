@@ -264,6 +264,10 @@ noremap <Leader>vq :VimuxCloseRunner<CR>
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 noremap <Leader>vz :call VimuxZoomRunner()<CR>
 
+" Fugitive 
+" --------
+nmap <silent> <leader>gs :Gstatus<cr>
+
 " deoplete
 " --------
 let g:deoplete#enable_at_startup = 1
