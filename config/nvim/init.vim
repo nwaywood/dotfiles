@@ -303,7 +303,7 @@ let g:go_highlight_trailing_whitespace_error = 0
 au FileType go autocmd BufWritePre * :GoMetaLinter
 " gometalinter command
 let g:go_metalinter_command="gometalinter --disable-all --enable=vet
-		    \ --enable=vetshadow --enable=golint --enable=ineffassign --enable=goconst" 
+			\ --enable=vetshadow --enable=golint --enable=ineffassign --enable=goconst --enable=gofmt" 
 " let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
 "		 \ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
 
