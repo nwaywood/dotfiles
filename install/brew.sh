@@ -29,9 +29,9 @@ brew install ag
 
 # neovim
 brew install neovim/neovim/neovim
+brew install python3
 
 # for vim tagbar
 brew install ctags-exuberant
 brew install gotags
 
-exit 0
