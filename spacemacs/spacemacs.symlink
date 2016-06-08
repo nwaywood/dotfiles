@@ -29,6 +29,7 @@ values."
      go
      javascript
      haskell
+     vimscript
      emacs-lisp
      git
      markdown
