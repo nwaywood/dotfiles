@@ -276,11 +276,14 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
   (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
 
+  ;; scroll the viewport faster
+  (setq-default evil-scroll-line-count 3)
+
   ;; fix j and k navigation for wrapped lines
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
-  ;; change the powerline seperator
+  ;; change the powerline separator
   (setq powerline-default-separator 'nil)
   (spaceline-compile)
   )
