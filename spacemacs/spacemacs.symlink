@@ -267,6 +267,19 @@ you should place your code here."
   ;; absolute/relative line numbers
   ;; http://emacs.stackexchange.com/questions/18670/turning-relative-numbering-on-with-linum-relative-in-spacemacs-only-when-in-no
 
+  ;; minimise the smooth scrolling impact on vim navigations (e.g. C-e and C-y)
+ (setq-default smooth-scroll-margin 1)
+
+  ;; add vim C-hjkl binding for window navigation
+  (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+  (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+  (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+  (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+
+  ;; fix j and k navigation for wrapped lines
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
   ;; change the powerline seperator
   (setq powerline-default-separator 'nil)
   (spaceline-compile)
