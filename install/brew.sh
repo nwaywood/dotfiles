@@ -31,6 +31,9 @@ brew install ag
 brew install neovim/neovim/neovim
 brew install python3
 
+# tool for spacemacs flycheck
+brew install ispell --with-lang-en
+
 # for vim tagbar
 brew install ctags-exuberant
 brew install gotags
