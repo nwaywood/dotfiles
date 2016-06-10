@@ -283,6 +283,9 @@ you should place your code here."
   ;; scroll the viewport faster
   (setq-default evil-scroll-line-count 3)
 
+  ;; default tab width to 4 instead of 2
+  (setq-default tab-width 4)
+
   ;; fix j and k navigation for wrapped lines
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
