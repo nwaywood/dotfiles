@@ -261,6 +261,9 @@ you should place your code here."
   ;; set escape keybinding to "jk"
   (setq-default evil-escape-key-sequence "jk")
 
+  ;; show file path in the frame title
+  (setq-default frame-title-format "%b - %f")
+
   ;; fix window maximize bug
   ;; http://stackoverflow.com/questions/27758800/why-does-emacs-leave-a-gap-when-trying-to-maximize-the-frame
   (setq frame-resize-pixelwise t)
