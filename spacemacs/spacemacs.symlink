@@ -272,7 +272,7 @@ you should place your code here."
   ;; http://emacs.stackexchange.com/questions/18670/turning-relative-numbering-on-with-linum-relative-in-spacemacs-only-when-in-no
 
   ;; minimise the smooth scrolling impact on vim navigations (e.g. C-e and C-y)
- (setq-default smooth-scroll-margin 1)
+ (setq-default smooth-scroll-margin 2)
 
   ;; add vim C-hjkl binding for window navigation
   (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
