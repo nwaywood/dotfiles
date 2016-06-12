@@ -38,8 +38,6 @@ call plug#end()
 """"""""""""""""
 
 " mapleader
-" let mapleader = ","
-" let g:mapleader = ","
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 set nocompatible " not compatible with vi
