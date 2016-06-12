@@ -130,10 +130,6 @@ nnoremap <silent> $ g$
 nnoremap <leader>s :split<cr>
 nnoremap <leader>v :vsplit<cr>
 
-" add newlines from normal mode
-nnoremap <cr> o<esc>
-nnoremap <S-Enter> O<esc>
-
 " insert empty line between brackets (hacky, need a better way to do this)
 inoremap {<CR> {<CR>}<C-o>O
 
