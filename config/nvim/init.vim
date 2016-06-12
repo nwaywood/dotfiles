@@ -374,3 +374,15 @@ if has('nvim')
 	" fix the cursor shape in insert mode
 	:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
+
+" neovim-dot-app settings
+" ===============
+if exists("neovim_dot_app")
+	" colorscheme=solarized
+	" set background=dark
+	" Fix the airline bar in gnvim
+	let g:airline_theme='solarized'
+	let g:airline_powerline_fonts=0
+	let g:airline_left_sep=''
+	let g:airline_right_sep=''
+endif
