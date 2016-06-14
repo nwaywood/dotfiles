@@ -5,6 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'chriskempson/base16-vim'
 
 " utilities
+" Plug 'wikitopian/hardmode' " learning vim like a boss
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -12,7 +13,7 @@ Plug 'majutsushi/tagbar' " display file scope in side bar
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
 Plug 'tpope/vim-surround' " mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
-Plug 'benmills/vimux'
+Plug 'benmills/vimux' " quickly run commands in a tmux pane
 Plug 'Shougo/deoplete.nvim' " auto code completion
 Plug 'mileszs/ack.vim' " grep replacement
 Plug 'christoomey/vim-tmux-navigator' " use ctrl-hjkl to navigate between tmux and vim panes
@@ -26,6 +27,7 @@ Plug 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae'
 Plug 'tpope/vim-fugitive' " Git support
 Plug 'ryanoasis/vim-devicons'
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
+Plug 'shougo/unite.vim' " generic fuzzy finder for lists (ie. amazing!)
 
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
