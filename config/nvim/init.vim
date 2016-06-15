@@ -130,6 +130,9 @@ nnoremap <silent> $ g$
 nnoremap <leader>s :split<cr>
 nnoremap <leader>v :vsplit<cr>
 
+" edit ~/.config/nvim/init.vim
+map <leader>0 :e ~/.config/nvim/init.vim<cr>
+
 " insert empty line between brackets (hacky, need a better way to do this)
 inoremap {<CR> {<CR>}<C-o>O
 
