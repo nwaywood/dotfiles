@@ -28,6 +28,7 @@ Plug 'tpope/vim-fugitive' " Git support
 Plug 'ryanoasis/vim-devicons'
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
 Plug 'shougo/unite.vim' " generic fuzzy finder for lists (ie. amazing!)
+Plug 'shougo/unite-outline' " show unite list of headings for the current buffer (function names, structs, variables etc)
 
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
@@ -344,6 +345,36 @@ let g:tagbar_type_go = {
 " -----------
 nmap <leader>mo :MarkedOpen<cr>
 nmap <leader>mq :MarkedQuit<cr>
+
+" Unite.vim
+" ---------
+" Like ctrlp.vim settings.
+call unite#custom#profile('default', 'context', {
+\   'start_insert': 1,
+\   'winheight': 10,
+\   'direction': 'botright',
+\ })
+" fuzzy searching by default
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+" unite_source_rec_async_command to use ag, do this apply to /neovim aswell?
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+	" Enable navigation with control-j and control-k in insert mode
+	imap <buffer> <C-j> <Plug>(unite_select_next_line)
+	imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+	" Runs 'split' or 'vsplit' action
+	imap <silent><buffer><expr> <C-s> unite#do_action('split')
+	imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+	" close window with C-g (same as ctrp and emacs)
+endfunction
+
+" mappings for unite lists
+" nnoremap <leader>a :UniteWithProjectDir file_rec/neovim<cr>
+nnoremap <leader>l :Unite bookmark<cr>
+nnoremap <leader>bj :Unite outline<cr>
 
 " Macvim settings
 " ===============
