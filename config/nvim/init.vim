@@ -109,6 +109,8 @@ set splitbelow
 set splitright
 " force vim to read *.md files as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" make read read *.raml files as yaml
+autocmd BufNewFile,BufRead *.raml set filetype=yaml
 
 """""""""""""
 " Keymappings
