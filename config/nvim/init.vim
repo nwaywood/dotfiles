@@ -130,8 +130,8 @@ nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
 
 " faster window splitting
-nnoremap <leader>s :split<cr>
-nnoremap <leader>v :vsplit<cr>
+nnoremap <C-s> :split<cr>
+nnoremap <C-v> :vsplit<cr>
 
 " edit ~/.config/nvim/init.vim
 map <leader>0 :e ~/.config/nvim/init.vim<cr>
