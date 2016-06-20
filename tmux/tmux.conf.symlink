@@ -71,6 +71,7 @@ set-option -g allow-rename off
 
 # Send the same command to all panes/windows/sessions
 # http://kaushalmodi.github.io/2014/03/06/send-a-command-to-every-pane-slash-window-slash-session-in-tmux/
+# run 'source ~/.zshrc' to apply shell changes to all tmux sessions/windows/panes
 bind E command-prompt -p "Command:" \
           "run \"tmux list-sessions                  -F '##{session_name}'        | xargs -I SESS \
                  tmux list-windows  -t SESS          -F 'SESS:##{window_index}'   | xargs -I SESS_WIN \
