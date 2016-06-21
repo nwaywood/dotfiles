@@ -210,6 +210,10 @@ let g:airline_theme='base16'
 " buffers to emulate tabs 
 " let g:airline#extensions#tabline#enabled = 1 " enable the list of buffers at the top of the screen
 " let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename in the buffer list
+" remove the patched arrows 
+let g:airline_powerline_fonts=0
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " NERDTree
 " --------
