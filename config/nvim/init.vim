@@ -411,6 +411,16 @@ endif
 if has('nvim')
 	" fix the cursor shape in insert mode
 	:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+	" terminal mode keybindings
+	" -------------------------
+	" escape from terminal mode to normal mode
+	tnoremap jk <C-\><C-n>
+	" window navigation
+	tnoremap <C-h> <C-\><C-n><C-w>h
+	tnoremap <C-j> <C-\><C-n><C-w>j
+	tnoremap <C-k> <C-\><C-n><C-w>k
+	tnoremap <C-l> <C-\><C-n><C-w>l
 endif
 
 " neovim-dot-app settings
