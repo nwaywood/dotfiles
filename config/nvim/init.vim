@@ -6,6 +6,7 @@ Plug 'chriskempson/base16-vim'
 
 " utilities
 " Plug 'wikitopian/hardmode' " learning vim like a boss
+Plug 'vimwiki/vimwiki'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -347,6 +348,23 @@ let g:tagbar_type_go = {
 " -----------
 nmap <leader>mo :MarkedOpen<cr>
 nmap <leader>mq :MarkedQuit<cr>
+
+" vimwiki
+" -------
+" change the default global prefix to o for 'organiser'
+let g:vimwiki_map_prefix = '<Leader>o'
+
+" change wiki path 
+let g:vimwiki_list = [{'path': '/Users/nick/Google Drive/vimwiki'}]
+
+" heading highlighting
+let g:vimwiki_hl_headers = 1
+
+" unbind tpope/vim-unimpaired bindings that interfere with vimwiki '=' 
+" normal mode binding
+" http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
+autocmd VimEnter * nunmap =p
+autocmd VimEnter * nunmap =P
 
 " Unite.vim
 " ---------
