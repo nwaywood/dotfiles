@@ -30,6 +30,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
 Plug 'shougo/unite.vim' " generic fuzzy finder for lists (ie. amazing!)
 Plug 'shougo/unite-outline' " show unite list of headings for the current buffer (function names, structs, variables etc)
+Plug 'ujihisa/unite-colorscheme' " show unite list of available colorschemes
 
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
@@ -397,8 +398,18 @@ endfunction
 
 " mappings for unite lists
 " nnoremap <leader>a :UniteWithProjectDir file_rec/neovim<cr>
-nnoremap <leader>l :Unite bookmark<cr>
-nnoremap <leader>bj :Unite outline<cr>
+" projects list
+nnoremap <leader>l :Unite -default-action=lcd bookmark<cr> 
+" heading in the current buffer
+nnoremap <leader>bj :Unite outline<cr> 
+" change colorscheme (atm only works in gui nvim for some reason...)
+nnoremap <leader>T :Unite colorscheme<cr> 
+" help ex commands
+nnoremap <leader>hc :Unite command<cr> 
+" help key mappings
+nnoremap <leader>hm :Unite mapping<cr> 
+" help functions
+nnoremap <leader>hf :Unite function<cr> 
 
 " Macvim settings
 " ===============
