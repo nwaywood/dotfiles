@@ -294,10 +294,12 @@ inoremap <silent><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " more syntax highlighting for go code
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
 " show type info for go code
 let g:go_auto_type_info=1
 "  executes :GoFmt everytime a go file is saved, using "goimport" makes saving
