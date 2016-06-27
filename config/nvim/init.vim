@@ -317,12 +317,14 @@ au FileType go nnoremap <Leader>gv <Plug>(go-def-vertical)
 au FileType go nnoremap <Leader>gd <Plug>(go-doc)
 " au FileType go nnoremap <Leader>gi :GoImports<cr>
 " au FileType go nnoremap <Leader>gm :GoMetaLinter<cr>
-let g:go_auto_type_info=0
 " remove red highlighting
 let g:go_highlight_trailing_whitespace_error = 0
-" run go-metalinter on save
-au FileType go autocmd BufWritePre * :GoMetaLinter
-" gometalinter command
+" run go-metalinter and gofmt on save
+let g:go_fmt_autosave = 1
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'vetshadow', 'ineffassign', 'goconst']
+" gometalinter command when executed via :GoMetaLinter
+" au FileType go autocmd BufWritePre * :GoMetaLinter
 let g:go_metalinter_command="gometalinter --disable-all --enable=vet
 			\ --enable=vetshadow --enable=golint --enable=ineffassign --enable=goconst --enable=gofmt" 
 " let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
