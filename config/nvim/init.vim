@@ -279,7 +279,13 @@ noremap <Leader>vz :call VimuxZoomRunner()<CR>
 
 " Fugitive 
 " --------
-nmap <silent> <leader>gs :Gstatus<cr>
+nnoremap <silent> <leader>gs :Gstatus<cr> 
+" Revert current file back to last checked in version - HEAD (:Git checkout %)
+nnoremap <silent> <leader>gr :Gread<cr>  
+" Stage the current file to the index (:Git add %)
+nnoremap <silent> <leader>gw :Gwrite<cr>
+nnoremap <silent> <leader>gc :Gcommit<cr>
+nnoremap <silent> <leader>gb :Gblame<cr>
 
 " deoplete
 " --------
