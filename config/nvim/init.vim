@@ -306,9 +306,9 @@ let g:go_auto_type_info=1
 "  files slow
 let g:go_fmt_command="gofmt"
 " golang specific bindings (pseudo 'go mode' <leader>g)
-au FileType go nmap <Leader>gg <Plug>(go-def)
-au FileType go nmap <Leader>gv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nnoremap <Leader>gg <Plug>(go-def)
+au FileType go nnoremap <Leader>gv <Plug>(go-def-vertical)
+au FileType go nnoremap <Leader>gd <Plug>(go-doc)
 " au FileType go nnoremap <Leader>gi :GoImports<cr>
 " au FileType go nnoremap <Leader>gm :GoMetaLinter<cr>
 let g:go_auto_type_info=0
@@ -356,8 +356,8 @@ let g:tagbar_type_go = {
 
 " vim-marked
 " -----------
-nmap <leader>mo :MarkedOpen<cr>
-nmap <leader>mq :MarkedQuit<cr>
+nnoremap <leader>mo :MarkedOpen<cr>
+nnoremap <leader>mq :MarkedQuit<cr>
 
 " vimwiki
 " -------
