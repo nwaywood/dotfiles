@@ -160,11 +160,14 @@ nnoremap <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the pr
 nnoremap <leader>b. <c-^> " toggle between current and previous buffer
 " buffer list command/mapping is in CtrlP section
 
-nnoremap <leader>w :w<cr> " save
-"nnoremap <leader>wq :wq<cr> " save and quit
-nnoremap <leader>x :x<cr> " save and quit
-nnoremap <leader>q :q<cr> " quit
-nnoremap <leader>1 :q!<cr> " force quit
+" quick save
+nnoremap <leader>w :w<cr>
+" quick save and quit
+nnoremap <leader>x :x<cr>
+" quick quit
+nnoremap <leader>q :q<cr>
+" quick force quit
+nnoremap <leader>1 :q!<cr>
 
 " disable arrow keys until I stopped being a noob
 nnoremap <up> <nop>
