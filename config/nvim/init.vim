@@ -286,6 +286,7 @@ nnoremap <silent> <leader>gr :Gread<cr>
 nnoremap <silent> <leader>gw :Gwrite<cr>
 nnoremap <silent> <leader>gc :Gcommit<cr>
 nnoremap <silent> <leader>gb :Gblame<cr>
+nnoremap <silent> <leader>gd :Gdiff<cr>
 
 " deoplete
 " --------
