@@ -249,6 +249,8 @@ let NERDTreeMapJumpPrevSibling='C-u'
 " change window split keys to match ctrlp mappings
 let NERDTreeMapOpenSplit='s'
 let NERDTreeMapOpenVSplit='v'
+" don't override netrw (this interferes with vim-vinegar)
+let NERDTreeHijackNetrw=0
 
 " Ack
 " ---
