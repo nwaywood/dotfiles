@@ -1,3 +1,4 @@
+" Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
 " color/theme stuff
@@ -40,9 +41,9 @@ Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion
 
 call plug#end()
 
-"""""""""""""""""
-" General Setting
-""""""""""""""""
+" }}}
+
+" General Setting {{{
 
 " mapleader
 let mapleader = "\<Space>"
@@ -116,9 +117,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " make read read *.raml files as yaml
 autocmd BufNewFile,BufRead *.raml set filetype=yaml
 
-"""""""""""""
-" Keymappings
-"""""""""""""
+" }}}
+
+" Keymappings {{{
 
 " remap esc
 inoremap jk <esc>
@@ -187,9 +188,9 @@ inoremap <right> <nop>
 " toggle relative/absolute line numbers
 nnoremap <leader>. :call NumberToggle()<cr>
 
-"""""""""""
-" Functions
-"""""""""""
+" }}}
+
+" Functions {{{
 
 function! NumberToggle()
   if(&relativenumber == 1)
@@ -201,10 +202,9 @@ function! NumberToggle()
   endif
 endfunc
 
+" }}}
 
-"""""""""
-" Plugins
-"""""""""
+" Plugins settings {{{
 
 " vim-airline
 " -----------
@@ -433,6 +433,10 @@ nnoremap <leader>hm :Unite mapping<cr>
 " help functions
 nnoremap <leader>hf :Unite function<cr> 
 
+" }}}
+
+" GUI settings {{{
+
 " Macvim settings
 " ===============
 if (has("gui_running"))
@@ -496,3 +500,8 @@ if exists("neovim_dot_app")
 	let g:airline_left_sep=''
 	let g:airline_right_sep=''
 endif
+
+" }}}
+
+
+" vim:foldmethod=marker:foldlevel=0
