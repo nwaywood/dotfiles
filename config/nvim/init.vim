@@ -289,6 +289,7 @@ nnoremap <silent> <leader>gs :Gstatus<cr>
 nnoremap <silent> <leader>gr :Gread<cr>  
 " Stage the current file to the index (:Git add %)
 nnoremap <silent> <leader>gw :Gwrite<cr>
+nnoremap <silent> <leader>ge :Gedit<cr>
 nnoremap <silent> <leader>gc :Gcommit<cr>
 nnoremap <silent> <leader>gb :Gblame<cr>
 nnoremap <silent> <leader>gd :Gdiff<cr>
