@@ -123,6 +123,9 @@ autocmd BufNewFile,BufRead *.raml set filetype=yaml
 " remap esc
 inoremap jk <esc>
 
+" make Y have the same behavior as C and D
+nnoremap Y y$
+
 " scroll the viewport faster
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
