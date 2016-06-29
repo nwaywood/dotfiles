@@ -320,7 +320,7 @@ let g:go_fmt_command="gofmt"
 " golang specific bindings (pseudo 'go mode' <leader>g)
 au FileType go nnoremap <Leader>gg <Plug>(go-def)
 au FileType go nnoremap <Leader>gv <Plug>(go-def-vertical)
-au FileType go nnoremap <Leader>gd <Plug>(go-doc)
+" au FileType go nnoremap <Leader>gd <Plug>(go-doc)
 " au FileType go nnoremap <Leader>gi :GoImports<cr>
 " au FileType go nnoremap <Leader>gm :GoMetaLinter<cr>
 " remove red highlighting
