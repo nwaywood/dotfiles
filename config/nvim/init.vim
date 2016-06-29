@@ -9,6 +9,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'vimwiki/vimwiki'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-vinegar' " netrw replacement
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar' " display file scope in side bar
 Plug 'tpope/vim-dispatch'
@@ -23,6 +24,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
+Plug 'tpope/vim-repeat' " adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
 Plug 'kana/vim-textobj-user' " Allows custom text objects
 Plug 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae'
 Plug 'tpope/vim-fugitive' " Git support
