@@ -338,7 +338,7 @@ let g:go_metalinter_command="gometalinter --disable-all --enable=vet
 
 " tagbar
 " ------
-nnoremap <silent> <leader>t :TagbarToggle<cr>
+nnoremap <silent> <leader>tt :TagbarToggle<cr>
 " Gotags config
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
@@ -463,6 +463,13 @@ endif
 if has('nvim')
 	" fix the cursor shape in insert mode
 	:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+	" https://github.com/neovim/neovim/wiki/FAQ - How can I use true colors in
+	" the terminal?
+	" set termguicolors
+
+	" splits
+	nnoremap <leader>ts :10sp term://$SHELL<cr>i
+	nnoremap <leader>tv :vsp term://$SHELL<cr>i
 
 	" terminal mode keybindings
 	" -------------------------
