@@ -460,6 +460,10 @@ endif
 " Nyaovim settings
 " ================
 if exists('g:nyaovim_version')
+	" " e.g. base16-solarized
+	 execute "set background=".$BACKGROUND
+	 execute "colorscheme ".$THEME
+
 	" Fix the airline bar in nyaovim
 	let g:airline_theme='solarized'
 	let g:airline_powerline_fonts=0
