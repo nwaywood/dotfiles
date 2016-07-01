@@ -2,7 +2,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " color/theme stuff
-" Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
 
 " utilities
@@ -56,11 +56,13 @@ set ttimeoutlen=10
 
 " set color themes (from .vim/colors)
 syntax enable
-let base16colorspace=256 " Access colors present in 256 colorspace
-set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-" e.g. base16-solarized
-execute "set background=".$BACKGROUND
-execute "colorscheme ".$THEME
+" let base16colorspace=256 " Access colors present in 256 colorspace
+" set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+" " e.g. base16-solarized
+" execute "set background=".$BACKGROUND
+" execute "colorscheme ".$THEME
+set background=dark
+colorscheme solarized
 " Use vims old regex engine for faster syntax highlighting
 " http://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
 set re=1
