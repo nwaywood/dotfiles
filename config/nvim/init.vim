@@ -84,7 +84,7 @@ set incsearch " set incremental search, like modern browsers
 set showmatch
 set hlsearch " highlight search results
 set magic " make searching use normal regex (grep)
-" Change the backgroud for search terms
+" Change the backgroud for search terms to purple
 " https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg
 " http://stackoverflow.com/questions/7103173/vim-how-to-change-the-highlight-color-for-search-hits-and-quickfix-selection
 hi Search ctermbg=55  
