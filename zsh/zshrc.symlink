@@ -66,8 +66,9 @@ if hash brew 2>/dev/null; then
 	source `brew --prefix`/etc/profile.d/z.sh
 fi
 
-BASE16_SHELL="$DOTFILES/.config/base16-shell/$THEME.$BACKGROUND.sh"
-source $BASE16_SHELL
+# commented out while I'm trying 'true' solarized instead of base16 version
+# BASE16_SHELL="$DOTFILES/.config/base16-shell/$THEME.$BACKGROUND.sh"
+# source $BASE16_SHELL
 
 # http://superuser.com/questions/565178/how-do-i-get-the-numpad-to-work-in-vim-using-iterm2-on-osx-with-term-xterm
 # OR
