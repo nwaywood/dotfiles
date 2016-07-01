@@ -475,8 +475,8 @@ if has('nvim')
 	" set termguicolors
 
 	" splits
-	nnoremap <leader>ts :10sp term://$SHELL<cr>i
-	nnoremap <leader>tv :vsp term://$SHELL<cr>i
+	nnoremap <silent> <leader>ts :10sp term://$SHELL<cr>i
+	nnoremap <silent> <leader>tv :vsp term://$SHELL<cr>i
 
 	" terminal mode keybindings
 	" -------------------------
