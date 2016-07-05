@@ -323,9 +323,10 @@ let g:go_auto_type_info=1
 "  files slow
 let g:go_fmt_command="gofmt"
 " golang specific bindings (pseudo 'go mode' <leader>g)
-au FileType go nnoremap <Leader>gg <Plug>(go-def)
-au FileType go nnoremap <Leader>gv <Plug>(go-def-vertical)
-" au FileType go nnoremap <Leader>gd <Plug>(go-doc)
+" NOTE: These bindings must be nmap and not nnoremap to work!
+au FileType go nmap <Leader>gg <Plug>(go-def)
+au FileType go nmap <Leader>gv <Plug>(go-def-vertical)
+
 " au FileType go nnoremap <Leader>gi :GoImports<cr>
 " au FileType go nnoremap <Leader>gm :GoMetaLinter<cr>
 " remove red highlighting
