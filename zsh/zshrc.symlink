@@ -46,6 +46,9 @@ if [[ -d /usr/locla/sbin ]]; then
     export PATH=/usr/local/sbin:$PATH
 fi
 
+# hub integration with git command
+eval "$(hub alias -s)"
+
 [ -z "$TMUX" ] && export TERM=xterm-256color
 
 # http://apple.stackexchange.com/questions/75571/the-history-is-shared-between-my-iterm2-terminal-tabs-how-can-i-switch-that-off
