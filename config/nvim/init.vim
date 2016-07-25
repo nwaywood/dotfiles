@@ -299,6 +299,7 @@ nnoremap <silent> <leader>ge :Gedit<cr>
 nnoremap <silent> <leader>gc :Gcommit<cr>
 nnoremap <silent> <leader>gb :Gblame<cr>
 nnoremap <silent> <leader>gd :Gdiff<cr>
+nnoremap <silent> <leader>gl :Glog<cr>
 
 " deoplete
 " --------
