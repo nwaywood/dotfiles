@@ -139,6 +139,12 @@ nnoremap <silent> k gk
 nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
 
+" resize panes
+nnoremap <silent> <Right> :vertical resize +5<cr>
+nnoremap <silent> <Left> :vertical resize -5<cr>
+nnoremap <silent> <Up> :resize +5<cr>
+nnoremap <silent> <Down> :resize -5<cr>
+
 " faster window splitting
 nnoremap <C-s> :split<cr>
 nnoremap <C-v> :vsplit<cr>
@@ -178,10 +184,6 @@ nnoremap <leader>q :q<cr>
 nnoremap <leader>1 :q!<cr>
 
 " disable arrow keys until I stopped being a noob
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
