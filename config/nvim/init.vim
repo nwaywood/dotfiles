@@ -326,10 +326,13 @@ let g:go_auto_type_info=1
 "  executes :GoFmt everytime a go file is saved, using "goimport" makes saving
 "  files slow
 let g:go_fmt_command="gofmt"
-" golang specific bindings (pseudo 'go mode' <leader>g)
+" golang specific bindings (pseudo 'major mode' <leader>m)
 " NOTE: These bindings must be nmap and not nnoremap to work!
-au FileType go nmap <Leader>gg <Plug>(go-def)
-au FileType go nmap <Leader>gv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>mgg <Plug>(go-def)
+au FileType go nmap <Leader>mgv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>mgs <Plug>(go-def-split)
+au FileType go nmap <Leader>mgt <Plug>(go-def-tab)
+au FileType go nmap <Leader>md <Plug>(go-doc)
 
 " au FileType go nnoremap <Leader>gi :GoImports<cr>
 " au FileType go nnoremap <Leader>gm :GoMetaLinter<cr>
