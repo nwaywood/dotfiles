@@ -18,7 +18,11 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode)
+plugins=(git vi-mode history-substring-search)
+
+# fix for history searching with vi-mode https://github.com/robbyrussell/oh-my-zsh/issues/1479#issuecomment-42633554
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
 
 # User configuration
 export DOTFILES=$HOME/.dotfiles
@@ -77,23 +81,23 @@ fi
 # OR
 # http://superuser.com/questions/742171/zsh-z-shell-numpad-numlock-doesnt-work
 # 0 . Enter
-#bindkey -s "^[Op" "0"
-#bindkey -s "^[On" "."
-#bindkey -s "^[OM" "^M" # fix the enter key on the numpad
+bindkey -s "^[Op" "0"
+bindkey -s "^[On" "."
+bindkey -s "^[OM" "^M" # fix the enter key on the numpad
 # 1 2 3
-#bindkey -s "^[Oq" "1"
-#bindkey -s "^[Or" "2"
-#bindkey -s "^[Os" "3"
+bindkey -s "^[Oq" "1"
+bindkey -s "^[Or" "2"
+bindkey -s "^[Os" "3"
 # 4 5 6
-#bindkey -s "^[Ot" "4"
-#bindkey -s "^[Ou" "5"
-#bindkey -s "^[Ov" "6"
+bindkey -s "^[Ot" "4"
+bindkey -s "^[Ou" "5"
+bindkey -s "^[Ov" "6"
 # 7 8 9
-#bindkey -s "^[Ow" "7"
-#bindkey -s "^[Ox" "8"
-#bindkey -s "^[Oy" "9"
+bindkey -s "^[Ow" "7"
+bindkey -s "^[Ox" "8"
+bindkey -s "^[Oy" "9"
 # + -  * /
-#bindkey -s "^[Ok" "+"
-#bindkey -s "^[Om" "-"
-#bindkey -s "^[Oj" "*"
-#bindkey -s "^[Oo" "/"
+bindkey -s "^[Ok" "+"
+bindkey -s "^[Om" "-"
+bindkey -s "^[Oj" "*"
+bindkey -s "^[Oo" "/"
