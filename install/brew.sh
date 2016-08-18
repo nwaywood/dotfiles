@@ -13,7 +13,7 @@ brew tap caskroom/cask
 # core development tools
 brew install mercurial
 brew install git
-brew install macvim --with-override-system-vim
+# brew install macvim --with-override-system-vim
 brew install reattach-to-user-namespace
 brew install tmux
 brew install zsh
@@ -31,8 +31,8 @@ brew install ag
 brew install neovim/neovim/neovim
 brew install python3
 
-# tool for spacemacs flycheck
-brew install ispell --with-lang-en
+# haskell https://github.com/bitemyapp/learnhaskell
+brew install haskell-stack
 
 # for vim tagbar
 brew install ctags-exuberant
