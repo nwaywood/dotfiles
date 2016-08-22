@@ -37,7 +37,10 @@ Plug 'ujihisa/unite-colorscheme' " show unite list of available colorschemes
 
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
-Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion
+Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion integration with deoplete
+
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' } " better syntax highlighting and indenting for haskell
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' } " haskell autocompletion integration with deoplete
 
 call plug#end()
 

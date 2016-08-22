@@ -45,6 +45,9 @@ export PATH=/usr/local/sbin:$PATH
 # adding path directory for custom scripts
 export PATH=$DOTFILES/bin:$PATH
 
+# add .local to PATH (haskell binaries go here)
+export PATH=$HOME/.local/bin:$PATH
+
 # add /usr/local/sbin
 if [[ -d /usr/locla/sbin ]]; then
     export PATH=/usr/local/sbin:$PATH
