@@ -21,6 +21,8 @@ brew install z
 
 # languages and langauge tools
 brew install go --with-cc-all
+# https://github.com/bitemyapp/learnhaskell
+brew install haskell-stack
 
 # CLI tools
 brew install tree
@@ -31,8 +33,6 @@ brew install ag
 brew install neovim/neovim/neovim
 brew install python3
 
-# haskell https://github.com/bitemyapp/learnhaskell
-brew install haskell-stack
 
 # for vim tagbar
 brew install ctags-exuberant

@@ -1,12 +1,14 @@
 #!/bin/bash
 
-echo "Initializing submodules"
-git submodule update --init --recursive
+if [ "$(uname)" == "Darwin" ]; then
+	echo -e "\n\nRunning on OSX"
 
-echo "Setting up osx settings"
-source installosx.sh
-echo "Brewing all the things"
-source install/brew.sh
+	echo "Setting up osx settings"
+	source install/osx.sh
+
+	echo "Brewing all the things"
+	source install/brew.sh
+fi
 
 echo "Adding base16-shell project into .config"
 git clone https://github.com/chriskempson/base16-shell.git $HOME/.dotfiles/.config/base16-shell
@@ -16,7 +18,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "Symlinking dotfiles"
 source install/link.sh
-
 
 echo "go getting all the things"
 source install/go.sh
