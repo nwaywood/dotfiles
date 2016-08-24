@@ -1,0 +1,15 @@
+[user]
+	name = Nick Waywood
+	email = nwaywood@au1.ibm.com
+[github]
+	user = nwaywood
+[alias]
+	co = checkout
+	s = status
+	b = branch
+	cm = commit -m
+	aa = add -A
+[core]
+	excludesfile = ~/.gitignore_global
+[push]
+	default = simple
