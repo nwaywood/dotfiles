@@ -78,7 +78,6 @@ set tabstop=4 "set the tab width to 4 spaces
 set softtabstop=4 " edit as if the tabs are 4 characters wide
 set shiftwidth=4 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth
-autocmd FileType haskell setlocal expandtab " Use spaces instead of tabs for haskell files
 
 " smarter searching
 set ignorecase " case insensitive searching
