@@ -79,6 +79,11 @@ set softtabstop=4 " edit as if the tabs are 4 characters wide
 set shiftwidth=4 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth
 
+" folds
+set foldmethod=indent " default folding based on indentation
+set nofoldenable " don't fold by default
+set foldnestmax=1 " deepest fold is 1 level
+
 " smarter searching
 set ignorecase " case insensitive searching
 set smartcase " case sensitive if search term explicilty contains a captital
@@ -514,4 +519,4 @@ endif
 " }}}
 
 
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker:foldlevel=0:foldenable
