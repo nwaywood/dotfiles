@@ -23,15 +23,17 @@ brew install z
 brew install go --with-cc-all
 # https://github.com/bitemyapp/learnhaskell
 brew install haskell-stack
+brew cask install elm-platform
 
 # CLI tools
 brew install tree
 brew install jq
 brew install ag
 
-# neovim
+# neovim and atom
 brew install neovim/neovim/neovim
 brew install python3
+brew cask install atom
 
 
 # for vim tagbar
