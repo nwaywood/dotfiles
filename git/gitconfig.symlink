@@ -6,6 +6,7 @@
 [alias]
 	co = checkout
 	s = status
+	l = log
 	b = branch
 	cm = commit -m
 	ca = commit -am
