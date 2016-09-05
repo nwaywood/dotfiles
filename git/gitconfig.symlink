@@ -8,6 +8,7 @@
 	s = status
 	b = branch
 	cm = commit -m
+	ca = commit -am
 	aa = add -A
 [core]
 	excludesfile = ~/.gitignore_global
