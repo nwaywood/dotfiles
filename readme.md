@@ -23,5 +23,5 @@ Tmux plugins are managed with [tpm](https://github.com/tmux-plugins/tpm). To ins
 from within tmux
 
 ## TODO:
-Add to dotfiles
-- node (nvm)
+
+- Add `/atom/*` files to `link.sh` script

@@ -1,0 +1,76 @@
+"*":
+  "atom-beautify":
+    _analyticsUserId: "d8ae87d4-2a3c-4a4b-9baf-8439c37289e3"
+    general:
+      _analyticsUserId: "5cfcac46-9937-423b-b69a-8b6173af6e63"
+    language_go_disabled: true
+  "atom-terminal":
+    app: "/Applications/iTerm.app"
+    surpressDirectoryArgument: false
+  core: {}
+  editor:
+    fontSize: 15
+    invisibles: {}
+    preferredLineLength: 120
+    softWrap: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "55402b61-6e86-16de-5aef-c3ef9fe96cea"
+  "go-debug":
+    panelInitialVisible: false
+  "go-plus":
+    goPath: "/Users/nick/code"
+  gofmt:
+    formatTool: "gofmt"
+  "gometalinter-linter": {}
+  "haskell-ghc-mod":
+    ghcModPath: "/Users/nick/.cabal/packages/hackage.haskell.org/ghc-mod"
+  "haskell-pointfree":
+    pointfreePath: "/Users/nick/.cabal/bin/pointfree"
+    pointfulPath: "/Users/nick/.cabal/bin/pointful"
+  "language-elm": {}
+  linter:
+    subtleLinterErrors: [
+      "golinter"
+    ]
+  "linter-golinter":
+    executablePath: "/Users/nick/code/bin/golint"
+  "linter-hlint":
+    hlintExecutablePath: "/Users/nick/.cabal/bin/hlint"
+  "linter-jshint":
+    disableWhenNoJshintrcFileInPath: false
+    lintInlineJavaScript: false
+  "project-manager": {}
+  "tabs-to-spaces":
+    onSave: "untabify"
+  "tree-view": {}
+  "vim-mode": {}
+  welcome:
+    showOnStartup: false
+".clojure.source":
+  editor:
+    preferredLineLength: 120
+".diff.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
+".elm.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
+".js.regexp.replacement.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
+".js.regexp.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
+".js.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
+".raml.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
