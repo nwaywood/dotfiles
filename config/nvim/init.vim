@@ -42,6 +42,8 @@ Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion integration with d
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' } " better syntax highlighting and indenting for haskell
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' } " haskell autocompletion integration with deoplete
 
+Plug 'elmcast/elm-vim', { 'for': 'elm' } " elm support
+
 call plug#end()
 
 " }}}
@@ -386,6 +388,15 @@ let g:tagbar_type_go = {
 " -----------
 nnoremap <leader>mo :MarkedOpen<cr>
 nnoremap <leader>mq :MarkedQuit<cr>
+
+" elm-vim
+" -----------
+let g:elm_format_autosave = 1
+let g:elm_setup_keybindings = 0 " disable built-in keybindings
+let g:elm_detailed_complete = 1 " show types in autocompletion
+" autocomplete only on attributes; doesn't seem to complete local vars
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.elm = '\.'
 
 " vimwiki
 " -------
