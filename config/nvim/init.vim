@@ -461,35 +461,22 @@ nnoremap <leader>hf :Unite function<cr>
 
 " Macvim settings
 " ===============
-if (has("gui_running"))
-	" http://vimdoc.sourceforge.net/htmldoc/options.html#'guioptions'
-	set guioptions=egmt
-	" don't use relative number because of a macvim bug
-	set number
-	set norelativenumber
+" if (has("gui_running"))
+" 	" http://vimdoc.sourceforge.net/htmldoc/options.html#'guioptions'
+" 	set guioptions=egmt
+" 	" don't use relative number because of a macvim bug
+" 	set number
+" 	set norelativenumber
 
-	" start NERDTree automatically when vim starts up
-	autocmd vimenter * NERDTree
-	" focus the main window instead of NERDTree when vim starts up
-	autocmd vimenter * wincmd p
+" 	" start NERDTree automatically when vim starts up
+" 	autocmd vimenter * NERDTree
+" 	" focus the main window instead of NERDTree when vim starts up
+" 	autocmd vimenter * wincmd p
 
-	" colorscheme solarized
-	" let g:airline_theme='solarized'
-endif
+" 	" colorscheme solarized
+" 	" let g:airline_theme='solarized'
+" endif
 
-" Nyaovim settings
-" ================
-if exists('g:nyaovim_version')
-	" " e.g. base16-solarized
-	 execute "set background=".$BACKGROUND
-	 execute "colorscheme ".$THEME
-
-	" Fix the airline bar in nyaovim
-	let g:airline_theme='solarized'
-	let g:airline_powerline_fonts=0
-	let g:airline_left_sep=''
-	let g:airline_right_sep=''
-endif
 
 " neovim settings
 " ===============
@@ -515,17 +502,33 @@ if has('nvim')
 	tnoremap <C-l> <C-\><C-n><C-w>l
 endif
 
-" neovim-dot-app settings
-" ===============
-if exists("neovim_dot_app")
-	" colorscheme=solarized
-	" set background=dark
-	" Fix the airline bar in gnvim
+" Nyaovim settings
+" ================
+if exists('g:nyaovim_version')
+	" " e.g. base16-solarized-dark
+	 execute "set background=".$BACKGROUND
+	 execute "colorscheme ".$THEME
+	 "colorscheme onedark
+
+	" Fix the airline bar in nyaovim
 	let g:airline_theme='solarized'
 	let g:airline_powerline_fonts=0
 	let g:airline_left_sep=''
 	let g:airline_right_sep=''
 endif
+
+" neovim-dot-app settings
+" ===============
+" if exists("neovim_dot_app")
+" 	" colorscheme=solarized
+" 	set background=dark
+" 	colorscheme base16-solarized-dark
+" 	" Fix the airline bar in gnvim
+" 	let g:airline_theme='solarized'
+" 	let g:airline_powerline_fonts=0
+" 	let g:airline_left_sep=''
+" 	let g:airline_right_sep=''
+" endif
 
 " }}}
 

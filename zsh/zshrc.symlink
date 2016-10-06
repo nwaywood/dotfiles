@@ -65,7 +65,7 @@ unsetopt share_history
 
 # Base16 shell
 if [ -z "$THEME" ]; then
-    export THEME="base16-solarized"
+    export THEME="base16-solarized-dark"
 fi
 if [ -z "$BACKGROUND" ]; then
     export BACKGROUND="dark"
