@@ -7,6 +7,7 @@ apm install project-manager
 # vim emulation
 apm install relative-numbers
 apm install vim-mode
+apm install ex-mode
 
 # language specific
 
