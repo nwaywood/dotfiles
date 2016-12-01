@@ -70,7 +70,9 @@
     'right': 'core:nop'
 
     'g c': 'vim-mode-plus:toggle-line-comments'
-    # TODO: get gcc working
+
+'atom-text-editor.vim-mode-plus.operator-pending-mode.toggle-line-comments-pending':
+  'c': 'vim-mode-plus:toggle-line-comments'
 
 # visual mode bindings
 'atom-text-editor.vim-mode-plus.visual-mode':
