@@ -29,12 +29,16 @@
 'atom-text-editor':
     'ctrl-k': 'unset!'
 
+'atom-workspace atom-pane':
+    'up': 'pane:increase-size'
+    'down': 'pane:decrease-size'
+
 # vim-mode-plus
 # =============
 # vim mode plus guys dotfiles https://github.com/t9md/dotfiles/blob/master/atom/keymap.cson
 
 # insert mode bindings
-'atom-workspace atom-text-editor.vim-mode-plus.insert-mode':
+'atom-text-editor.vim-mode-plus.insert-mode':
     'j k': 'vim-mode-plus:activate-normal-mode'
     # 'space e': 'unset!'
 
@@ -58,6 +62,12 @@
 
     'ctrl-v': 'pane:split-right-and-copy-active-item'
     'ctrl-s': 'pane:split-down-and-copy-active-item'
+
+    # disable noob navigation
+    'up': 'unset!'
+    'down': 'unset!'
+    'left': 'core:nop'
+    'right': 'core:nop'
 
     'g c': 'vim-mode-plus:toggle-line-comments'
     # TODO: get gcc working
