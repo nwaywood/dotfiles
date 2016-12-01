@@ -1,4 +1,21 @@
 "*":
+  # general
+  welcome:
+    showOnStartup: false
+  core:
+    telemetryConsent: "limited"
+  editor:
+    fontSize: 15
+    invisibles: {}
+    preferredLineLength: 120
+    softWrap: true
+    tabLength: 4
+  linter:
+    subtleLinterErrors: [
+      "golinter"
+    ]
+
+  #plugins
   "atom-beautify":
     general:
       _analyticsUserId: "d8ae87d4-2a3c-4a4b-9baf-8439c37289e3"
@@ -11,19 +28,17 @@
   "autocomplete-plus":
     confirmCompletion: "enter"
     useCoreMovementCommands: false
-  core:
-    telemetryConsent: "limited"
-  editor:
-    fontSize: 15
-    invisibles: {}
-    preferredLineLength: 120
-    softWrap: true
-    tabLength: 4
-  "ex-mode":
-    splitbelow: true
-    splitright: true
   "exception-reporting":
     userId: "55402b61-6e86-16de-5aef-c3ef9fe96cea"
+  "haskell-ghc-mod":
+    ghcModPath: "/Users/nick/.cabal/packages/hackage.haskell.org/ghc-mod"
+  "language-elm": {}
+  "linter-hlint":
+    hlintExecutablePath: "/Users/nick/.cabal/bin/hlint"
+  "project-manager": {}
+  "tree-view": {}
+
+  # go
   "go-debug":
     panelInitialVisible: false
   "go-plus":
@@ -32,30 +47,10 @@
   gofmt:
     formatTool: "gofmt"
   "gometalinter-linter": {}
-  "haskell-ghc-mod":
-    ghcModPath: "/Users/nick/.cabal/packages/hackage.haskell.org/ghc-mod"
-  "haskell-pointfree":
-    pointfreePath: "/Users/nick/.cabal/bin/pointfree"
-    pointfulPath: "/Users/nick/.cabal/bin/pointful"
-  "language-elm": {}
-  linter:
-    subtleLinterErrors: [
-      "golinter"
-    ]
   "linter-golinter":
     executablePath: "/Users/nick/code/bin/golint"
-  "linter-hlint":
-    hlintExecutablePath: "/Users/nick/.cabal/bin/hlint"
-  "linter-jshint":
-    disableWhenNoJshintrcFileInPath: false
-    lintInlineJavaScript: false
-  "project-manager": {}
-  "tabs-to-spaces":
-    onSave: "untabify"
-  "tree-view": {}
-  "vim-mode": {}
-  welcome:
-    showOnStartup: false
+
+# filetype settings
 ".clojure.source":
   editor:
     preferredLineLength: 120
