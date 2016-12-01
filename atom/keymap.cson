@@ -42,6 +42,7 @@
 'atom-text-editor.vim-mode-plus.normal-mode':
     'space e': 'tree-view:toggle'
     'space f': 'fuzzy-finder:toggle-file-finder'
+    ':': 'vim-mode-plus-ex-mode:open'
 
     # vim-surround
     'y s': 'vim-mode-plus:surround'
@@ -65,10 +66,6 @@
 'atom-text-editor.vim-mode-plus.visual-mode':
     # vim-surround
     'S': 'vim-mode-plus:surround'
-
-# faster viewport scrolling
-#'atom-text-editor.vim-mode:not(.insert-mode)':
-#  'ctrl-y': 'vim-mode:scroll-up:3'
 
 
 # tree-view
