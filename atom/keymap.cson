@@ -35,6 +35,7 @@
 'atom-text-editor.vim-mode-plus.normal-mode':
     'space f': 'fuzzy-finder:toggle-file-finder'
     'space w': 'core:save'
+    'space q': 'core:close'
     ':': 'vim-mode-plus-ex-mode:open'
 
     # vim-surround
