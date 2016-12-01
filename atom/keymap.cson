@@ -9,9 +9,11 @@
 #
 # Here's an example taken from Atom's built-in keymap:
 #
+# NOTE: atom-text-editor is keybinding for when the editor window is focused (any vim-mode)
 # 'atom-text-editor':
 #   'enter': 'editor:newline'
 #
+# NOTE: atom-workspace is global keybindings
 # 'atom-workspace':
 #   'ctrl-shift-p': 'core:move-up'
 #   'ctrl-p': 'core:move-down'
@@ -24,14 +26,66 @@
 # If you are unfamiliar with CSON, you can read more about it here:
 # https://github.com/bevry/cson#what-is-cson
 
+'atom-text-editor':
+    'ctrl-k': 'unset!'
 
-# vim-mode
-# ========
+# vim-mode-plus
+# =============
+# vim mode plus guys dotfiles https://github.com/t9md/dotfiles/blob/master/atom/keymap.cson
 
-# keybinding for escape
-'atom-text-editor.vim-mode:not(.normal-mode)':
-    'j k': 'vim-mode:activate-normal-mode'
+# insert mode bindings
+'atom-workspace atom-text-editor.vim-mode-plus.insert-mode':
+    'j k': 'vim-mode-plus:activate-normal-mode'
+    # 'space e': 'unset!'
+
+# normal mode bindings
+'atom-text-editor.vim-mode-plus.normal-mode':
+    'space e': 'tree-view:toggle'
+    'space f': 'fuzzy-finder:toggle-file-finder'
+
+    # vim-surround
+    'y s': 'vim-mode-plus:surround'
+    'd s': 'vim-mode-plus:delete-surround'
+    'c s': 'vim-mode-plus:change-surround'
+
+# not insert mode bindings (normal and visual)
+'atom-text-editor.vim-mode-plus:not(.insert-mode)':
+    'ctrl-h': 'window:focus-pane-on-left'
+    'ctrl-l': 'window:focus-pane-on-right'
+    'ctrl-j': 'window:focus-pane-below'
+    'ctrl-k': 'window:focus-pane-above'
+
+    'ctrl-v': 'pane:split-right-and-copy-active-item'
+    'ctrl-s': 'pane:split-down-and-copy-active-item'
+
+    'g c': 'vim-mode-plus:toggle-line-comments'
+    # TODO: get gcc working
+
+# visual mode bindings
+'atom-text-editor.vim-mode-plus.visual-mode':
+    # vim-surround
+    'S': 'vim-mode-plus:surround'
 
 # faster viewport scrolling
 #'atom-text-editor.vim-mode:not(.insert-mode)':
 #  'ctrl-y': 'vim-mode:scroll-up:3'
+
+
+# tree-view
+# =========
+'.tree-view':
+    'space e': 'tree-view:toggle'
+
+# fuzzy-finder
+# ============
+'.fuzzy-finder':
+    'ctrl-v': 'pane:split-right'
+    'ctrl-s': 'pane:split-down'
+    'ctrl-j': 'core:move-down'
+    'ctrl-k': 'core:move-up'
+
+# autocomplete-plus
+'atom-text-editor.autocomplete-active':
+    'tab': 'autocomplete-plus:move-down'
+    'down': 'autocomplete-plus:move-down'
+    'up': 'autocomplete-plus:move-up'

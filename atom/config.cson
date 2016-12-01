@@ -1,25 +1,34 @@
 "*":
   "atom-beautify":
-    _analyticsUserId: "d8ae87d4-2a3c-4a4b-9baf-8439c37289e3"
     general:
-      _analyticsUserId: "5cfcac46-9937-423b-b69a-8b6173af6e63"
-    language_go_disabled: true
+      _analyticsUserId: "d8ae87d4-2a3c-4a4b-9baf-8439c37289e3"
+    go:
+      disabled: true
+    js: {}
   "atom-terminal":
     app: "/Applications/iTerm.app"
     surpressDirectoryArgument: false
-  core: {}
+  "autocomplete-plus":
+    confirmCompletion: "enter"
+    useCoreMovementCommands: false
+  core:
+    telemetryConsent: "limited"
   editor:
     fontSize: 15
     invisibles: {}
     preferredLineLength: 120
     softWrap: true
     tabLength: 4
+  "ex-mode":
+    splitbelow: true
+    splitright: true
   "exception-reporting":
     userId: "55402b61-6e86-16de-5aef-c3ef9fe96cea"
   "go-debug":
     panelInitialVisible: false
   "go-plus":
     goPath: "/Users/nick/code"
+    panelDisplayMode: "closed"
   gofmt:
     formatTool: "gofmt"
   "gometalinter-linter": {}
@@ -50,6 +59,10 @@
 ".clojure.source":
   editor:
     preferredLineLength: 120
+".diff":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
 ".diff.source":
   editor:
     preferredLineLength: 120

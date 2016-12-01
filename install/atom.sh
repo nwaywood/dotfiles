@@ -1,19 +1,22 @@
 # general
 apm install atom-beautify
 apm install file-icons
-apm install pigments
 apm install project-manager
+
+# frontend
+apm install pigments
 
 # vim emulation
 apm install relative-numbers
-apm install vim-mode
-apm install ex-mode
+apm install vim-mode-plus
+apm install vim-mode-plus-ex-mode
 
 # language specific
 
 apm install language-elm
 apm install language-haskell
 apm install language-viml
+apm install atom-ternjs
 
 apm install autocomplete-go
 apm install builder-go
@@ -30,4 +33,4 @@ apm install linter
 apm install linter-golinter
 apm install linter-hlint
 apm install linter-htmlhint
-apm install linter-jshint
+apm install linter-eslint
