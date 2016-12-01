@@ -533,4 +533,4 @@ endif
 " }}}
 
 
-" vim:foldmethod=marker:foldlevel=0:foldenable
+" vim:foldmethod=marker:foldlevel=0
