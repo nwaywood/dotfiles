@@ -93,6 +93,5 @@
 
 # autocomplete-plus
 'atom-text-editor.autocomplete-active':
-    'tab': 'autocomplete-plus:move-down'
-    'down': 'autocomplete-plus:move-down'
-    'up': 'autocomplete-plus:move-up'
+    'ctrl-j': 'autocomplete-plus:move-down'
+    'ctrl-k': 'autocomplete-plus:move-up'

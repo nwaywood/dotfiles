@@ -9,7 +9,6 @@
     app: "/Applications/iTerm.app"
     surpressDirectoryArgument: false
   "autocomplete-plus":
-    confirmCompletion: "enter"
     useCoreMovementCommands: false
   core:
     telemetryConsent: "no"
