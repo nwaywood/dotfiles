@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
 " color/theme stuff
 Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
+Plug 'joshdick/onedark.vim'
 
 " utilities
 " Plug 'wikitopian/hardmode' " learning vim like a boss
@@ -300,7 +301,8 @@ noremap <Leader>vz :call VimuxZoomRunner()<CR>
 
 " Fugitive 
 " --------
-nnoremap <silent> <leader>gs :Gstatus<cr> 
+"  http://vi.stackexchange.com/questions/4673/open-gstatus-in-new-tab
+nnoremap <silent> <leader>gs :Gstatus<cr>
 " Revert current file back to last checked in version - HEAD (:Git checkout %)
 nnoremap <silent> <leader>gr :Gread<cr>  
 " Stage the current file to the index (:Git add %)
