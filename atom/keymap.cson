@@ -17,9 +17,6 @@
 'atom-text-editor':
     'ctrl-k': 'unset!'
 
-'atom-workspace atom-pane':
-    'up': 'pane:increase-size'
-    'down': 'pane:decrease-size'
 
 # vim-mode-plus
 # =============
@@ -53,9 +50,9 @@
     'ctrl-v': 'pane:split-right-and-copy-active-item'
     'ctrl-s': 'pane:split-down-and-copy-active-item'
 
-    # disable noob navigation
-    'up': 'unset!'
-    'down': 'unset!'
+    # disable noob navigation and enable quick pane resizing
+    'up': 'pane:increase-size'
+    'down': 'pane:decrease-size'
     'left': 'core:nop'
     'right': 'core:nop'
 
