@@ -1,4 +1,5 @@
 {
-  "processors": ["/usr/local/lib/node_modules/stylelint-processor-html/index.js"]
+  "extends": "stylelint-config-standard",
+  "processors": ["stylelint-processor-html"]
 }
 
