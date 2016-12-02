@@ -1,0 +1,4 @@
+{
+  "processors": ["/usr/local/lib/node_modules/stylelint-processor-html/index.js"]
+}
+
