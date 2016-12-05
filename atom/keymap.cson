@@ -11,8 +11,10 @@
 # You can find more information about keymaps in this guide:
 # * http://flight-manual.atom.io/behind-atom/sections/keymaps-in-depth/
 
+# global key bindings
 'atom-workspace':
     'space e': 'tree-view:toggle'
+    'space f': 'fuzzy-finder:toggle-file-finder'
 
 'atom-text-editor':
     'ctrl-k': 'unset!'
@@ -30,7 +32,6 @@
 
 # normal mode bindings
 'atom-text-editor.vim-mode-plus.normal-mode':
-    'space f': 'fuzzy-finder:toggle-file-finder'
     'space w': 'core:save'
     'space q': 'core:close'
     ':': 'vim-mode-plus-ex-mode:open'
@@ -58,6 +59,13 @@
 
     'g c': 'vim-mode-plus:toggle-line-comments'
 
+    # vim tabs https://atom.io/packages/atom-vim-like-tab
+    'space t e': 'atom-vim-like-tab:new' # mean 'tab create'
+    'space t c': 'atom-vim-like-tab:close'
+    'g T': 'atom-vim-like-tab:previous'
+    'g t': 'atom-vim-like-tab:next'
+    'space t l': 'atom-vim-like-tab:list'
+
 'atom-text-editor.vim-mode-plus.operator-pending-mode.toggle-line-comments-pending':
   'c': 'vim-mode-plus:toggle-line-comments'
 
@@ -74,8 +82,23 @@
     'ctrl-s': 'pane:split-down'
     'ctrl-j': 'core:move-down'
     'ctrl-k': 'core:move-up'
+    'ctrl-g': 'core:cancel'
 
 # autocomplete-plus
+# =================
 'atom-text-editor.autocomplete-active':
     'ctrl-j': 'autocomplete-plus:move-down'
     'ctrl-k': 'autocomplete-plus:move-up'
+
+# command-palette
+# ===============
+'.command-palette':
+    'ctrl-j': 'core:move-down'
+    'ctrl-k': 'core:move-up'
+    'ctrl-g': 'core:cancel'
+
+# tree-view
+# =========
+'.tree-view':
+    'v': 'tree-view:open-selected-entry-right'
+    's': 'tree-view:open-selected-entry-down'
