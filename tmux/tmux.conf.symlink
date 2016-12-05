@@ -1,21 +1,17 @@
 # General
 # =======
 
-# Reload config file
-bind r source-file ~/.tmux.conf \; display "Config Reloaded!"
-
 set -g default-command "reattach-to-user-namespace -l zsh"
 
 # tmux display things in 256 colors
 set -g default-terminal "screen-256color"
-set -g status-utf8 on
 
 # automatically renumber tmux windows
 set -g renumber-windows on
 
 # remap prefix to control - a
-set -g prefix C-a
 unbind C-b
+set -g prefix C-a
 bind C-a send-prefix
 
 # Rather than constraining window size to the maximum size of any client
@@ -34,13 +30,13 @@ set -g pane-base-index 1
 # Mouse support for pane/window switching
 # NOTE: This breaks selectiong/copying text on OSX
 # To select text as expected, hold Option to disable it (iTerm2)
-setw -g mode-mouse on
-set -g mouse-select-pane on
-set -g mouse-resize-pane on
-set -g mouse-select-window on
+setw -g mouse on
 
 # Keybinds
 # ========
+
+# Reload config file
+bind r source-file ~/.tmux.conf \; display "Config Reloaded!"
 
 # Smart pane switching with awareness of vim splits
 # See: https://github.com/christoomey/vim-tmux-navigator
