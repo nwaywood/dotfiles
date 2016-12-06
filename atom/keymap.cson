@@ -34,6 +34,7 @@
 'atom-text-editor.vim-mode-plus.normal-mode':
     'space w': 'core:save'
     'space q': 'core:close'
+    'space x': 'custom:save-and-quit'
     ':': 'vim-mode-plus-ex-mode:open'
 
     # vim-surround
