@@ -51,6 +51,10 @@
     'ctrl-v': 'pane:split-right-and-copy-active-item'
     'ctrl-s': 'pane:split-down-and-copy-active-item'
 
+    # fix j and k to include soft wrapping
+    'j': 'vim-mode-plus:move-down-screen'
+    'k': 'vim-mode-plus:move-up-screen'
+
     # disable noob navigation and enable quick pane resizing
     'up': 'pane:increase-size'
     'down': 'pane:decrease-size'
