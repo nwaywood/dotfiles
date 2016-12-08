@@ -15,3 +15,15 @@
 atom.commands.add 'atom-text-editor', 'custom:save-and-quit', ->
     atom.workspace.saveActivePaneItem()
     atom.workspace.closeActivePaneItemOrEmptyPaneOrWindow()
+
+atom.commands.add 'atom-text-editor', 'custom:unimpaired-new-line-below', ->
+    editor = atom.workspace.getActiveTextEditor()
+    atom.commands.dispatch(atom.views.getView(editor), "vim-mode-plus:insert-below-with-newline")
+    atom.commands.dispatch(atom.views.getView(editor), "vim-mode-plus:activate-normal-mode")
+    atom.commands.dispatch(atom.views.getView(editor), "vim-mode-plus:move-up")
+
+atom.commands.add 'atom-text-editor', 'custom:unimpaired-new-line-above', ->
+    editor = atom.workspace.getActiveTextEditor()
+    atom.commands.dispatch(atom.views.getView(editor), "vim-mode-plus:insert-above-with-newline")
+    atom.commands.dispatch(atom.views.getView(editor), "vim-mode-plus:activate-normal-mode")
+    atom.commands.dispatch(atom.views.getView(editor), "vim-mode-plus:move-down")

@@ -42,6 +42,10 @@
     'd s': 'vim-mode-plus:delete-surround'
     'c s': 'vim-mode-plus:change-surround'
 
+    # vim-unimpaired
+    '] space': 'custom:unimpaired-new-line-below'
+    '[ space': 'custom:unimpaired-new-line-above'
+
 # not insert mode bindings (normal and visual)
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
     'ctrl-h': 'window:focus-pane-on-left'
