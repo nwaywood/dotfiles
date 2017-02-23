@@ -31,7 +31,8 @@ set -g window-status-format "#I #W"
 # active window title colors
 set-window-option -g window-status-current-fg $tm_color_active
 set-window-option -g window-status-current-bg default
-set-window-option -g  window-status-current-format "#[bold]#I #W"
+# surround window name in parenthesis when zoomed http://superuser.com/questions/830450/tmux-no-pane-zoom-indication-after-customising-status-bar
+set-window-option -g  window-status-current-format "#[bold]#I #{?window_zoomed_flag,(,}#W#{?window_zoomed_flag,),}"
 
 # pane border
 set-option -g pane-border-fg $tm_color_inactive
