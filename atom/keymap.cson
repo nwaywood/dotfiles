@@ -43,8 +43,8 @@
     'c s': 'vim-mode-plus:change-surround'
 
     # vim-unimpaired
-    '] space': 'custom:unimpaired-new-line-below'
-    '[ space': 'custom:unimpaired-new-line-above'
+    '] space': 'vim-mode-plus:add-blank-line-below'
+    '[ space': 'vim-mode-plus:add-blank-line-above'
 
 # not insert mode bindings (normal and visual)
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
