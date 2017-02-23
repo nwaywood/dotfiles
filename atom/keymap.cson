@@ -111,3 +111,5 @@
 '.tree-view':
     'v': 'tree-view:open-selected-entry-right'
     's': 'tree-view:open-selected-entry-down'
+    'g g': 'core:move-to-top'
+    'G': 'core:move-to-bottom'
