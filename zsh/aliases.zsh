@@ -1,7 +1,9 @@
 # misc aliases
 
-# docker-machine
+# docker shiz
 alias dm='docker-machine'
+alias dc='docker-compose'
+alias d='docker'
 
 # neovim
 alias vim='nvim'
