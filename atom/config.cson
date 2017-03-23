@@ -22,6 +22,7 @@
     tabType: "soft"
   "exception-reporting":
     userId: "55402b61-6e86-16de-5aef-c3ef9fe96cea"
+  "git-plus": {}
   "go-debug":
     panelInitialVisible: false
   "go-plus":
@@ -41,8 +42,19 @@
     executablePath: "/Users/nick/code/bin/golint"
   "linter-hlint":
     hlintExecutablePath: "/Users/nick/.cabal/bin/hlint"
+  "linter-ui-default":
+    panelHeight: 231
+    showPanel: true
+  "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
+    useEslint: true
   "project-manager": {}
+  "relative-numbers":
+    softWrapsCount: false
   "tree-view": {}
+  "vim-mode-plus":
+    useClipboardAsDefaultRegister: true
   welcome:
     showOnStartup: false
 ".clojure.source":
