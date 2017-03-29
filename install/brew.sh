@@ -40,3 +40,5 @@ brew cask install atom
 brew install ctags-exuberant
 brew install gotags
 
+# gif creation app
+brew cask install licecap
