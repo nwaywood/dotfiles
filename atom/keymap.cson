@@ -66,6 +66,7 @@
     'left': 'core:nop'
     'right': 'core:nop'
 
+    # emulate vim-commentary binding
     'g c': 'vim-mode-plus:toggle-line-comments'
 
     # vim tabs https://atom.io/packages/atom-vim-like-tab
@@ -74,6 +75,10 @@
     'g T': 'atom-vim-like-tab:previous'
     'g t': 'atom-vim-like-tab:next'
     'space t l': 'atom-vim-like-tab:list'
+
+    # blackhole register shortcut
+    # https://github.com/t9md/atom-vim-mode-plus/wiki/TIPS#delete-without-saving-to-register
+    '\\': 'vim-mode-plus:set-register-name-to-_'
 
 'atom-text-editor.vim-mode-plus.operator-pending-mode.toggle-line-comments-pending':
   'c': 'vim-mode-plus:toggle-line-comments'
