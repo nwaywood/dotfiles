@@ -9,18 +9,19 @@
  */
 
  .editor, syntax--atom-text-editor {
-   .invisible-character {
-     color: white;
-   }
+     .invisible-character {
+         color: white;
+     }
  }
 
-/* increase the default width of the tree-view */
-
+// increase the default width of the tree-view
  .tree-view-resizer {
      min-width: 300px;
  }
 
-/* Fixes https://github.com/t9md/atom-vim-mode-plus/issues/706 */
- .linter-cursor-line .relative {
-     visibility: hidden;
- }
+// https://github.com/justmoon/relative-numbers/issues/34
+ .linter-row {
+     .absolute, .relative {
+         display:none !important;
+     }
+}
