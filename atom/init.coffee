@@ -11,19 +11,35 @@
 #     console.log "Saved! #{editor.getPath()}"
 
 
-# add vim :x command
+# add vim :x command, bound to `space x` in keymap.cson
 atom.commands.add 'atom-text-editor', 'custom:save-and-quit', ->
     atom.workspace.saveActivePaneItem()
     atom.workspace.closeActivePaneItemOrEmptyPaneOrWindow()
 
-atom.commands.add 'atom-text-editor', 'custom:unimpaired-new-line-below', ->
-    editor = atom.workspace.getActiveTextEditor()
-    atom.commands.dispatch(atom.views.getView(editor), "vim-mode-plus:insert-below-with-newline")
-    atom.commands.dispatch(atom.views.getView(editor), "vim-mode-plus:activate-normal-mode")
-    atom.commands.dispatch(atom.views.getView(editor), "vim-mode-plus:move-up")
 
-atom.commands.add 'atom-text-editor', 'custom:unimpaired-new-line-above', ->
-    editor = atom.workspace.getActiveTextEditor()
-    atom.commands.dispatch(atom.views.getView(editor), "vim-mode-plus:insert-above-with-newline")
-    atom.commands.dispatch(atom.views.getView(editor), "vim-mode-plus:activate-normal-mode")
-    atom.commands.dispatch(atom.views.getView(editor), "vim-mode-plus:move-down")
+# General service consumer function, used for extending VMP
+consumeService = (packageName, providerName, fn) ->
+  if atom.packages.isPackageActive(packageName)
+    pack = atom.packages.getActivePackage(packageName)
+    fn(pack.mainModule[providerName]())
+  else
+    disposable = atom.packages.onDidActivatePackage (pack) ->
+      if pack.name is packageName
+        disposable.dispose()
+        fn(pack.mainModule[providerName]())
+
+consumeService 'vim-mode-plus', 'provideVimModePlus', (service) ->
+  {Base} = service
+
+  ScrollUp = Base.getClass('ScrollUp')
+  ScrollDown = Base.getClass('ScrollDown')
+
+  class ScrollThreeLinesUp extends ScrollUp
+    @commandPrefix: 'vim-mode-plus-user'
+    @registerCommand()
+    defaultCount: 3
+
+  class ScrollThreeLinesDown extends ScrollDown
+    @commandPrefix: 'vim-mode-plus-user'
+    @registerCommand()
+    defaultCount: 3

@@ -80,6 +80,10 @@
     # https://github.com/t9md/atom-vim-mode-plus/wiki/TIPS#delete-without-saving-to-register
     '\\': 'vim-mode-plus:set-register-name-to-_'
 
+    # faster vertical viewport scrolling
+    'ctrl-e': 'vim-mode-plus-user:scroll-three-lines-down'
+    'ctrl-y': 'vim-mode-plus-user:scroll-three-lines-up'
+
 'atom-text-editor.vim-mode-plus.operator-pending-mode.toggle-line-comments-pending':
   'c': 'vim-mode-plus:toggle-line-comments'
 
