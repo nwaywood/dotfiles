@@ -2,6 +2,8 @@
 apm install atom-beautify
 apm install file-icons
 apm install project-manager
+apm install platformio-ide-terminal
+apm install atom-terminal
 
 # frontend
 apm install pigments

@@ -45,6 +45,17 @@
   "linter-ui-default":
     panelHeight: 231
     showPanel: true
+  "platformio-ide-terminal":
+    ansiColors:
+      zBright:
+        brightBlue: "#268bc8"
+        brightCyan: "#28a198"
+        brightGreen: "#859901"
+        brightRed: "#dc322f"
+        brightWhite: "#7d9496"
+        brightYellow: "#b58901"
+    style:
+      theme: "one-dark"
   "prettier-atom":
     formatOnSaveOptions:
       enabled: true
