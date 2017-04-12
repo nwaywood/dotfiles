@@ -65,6 +65,9 @@
   "prettier-atom":
     formatOnSaveOptions:
       enabled: true
+      excludedGlobs: [
+        "**/*.html"
+      ]
     useEslint: true
   "project-manager": {}
   "relative-numbers":
