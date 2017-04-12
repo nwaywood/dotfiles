@@ -15,6 +15,9 @@
 'atom-workspace':
     'space e': 'tree-view:toggle'
     'space f': 'fuzzy-finder:toggle-file-finder'
+    # vim jumplist emulation (cursor-history plugin)
+    'ctrl-i':     'cursor-history:next'
+    'ctrl-o':     'cursor-history:prev'
 
 'atom-text-editor':
     'ctrl-k': 'unset!'

@@ -12,6 +12,7 @@ apm install pigments
 apm install relative-numbers
 apm install vim-mode-plus
 apm install vim-mode-plus-ex-mode
+apm install cursor-history
 apm install atom-keyboard-macros
 apm install atom-keyboard-macros-vim
 apm install atom-vim-like-tab
