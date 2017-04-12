@@ -5,6 +5,9 @@
     go:
       disabled: true
     js: {}
+    json:
+      indent_size: 2
+      jslint_happy: true
   "atom-terminal":
     app: "/Applications/iTerm.app"
     surpressDirectoryArgument: false
