@@ -41,4 +41,7 @@ brew install ctags-exuberant
 brew install gotags
 
 # gif creation app
-brew cask install licecap
+# brew cask install licecap
+
+# show key presses for demos/talks
+# brew cask install keycastr
