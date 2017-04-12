@@ -49,6 +49,9 @@
     '] space': 'vim-mode-plus:add-blank-line-below'
     '[ space': 'vim-mode-plus:add-blank-line-above'
 
+    # make Y work like C and D
+    'Y': 'vim-mode-plus:yank-to-last-character-of-line'
+
 # not insert mode bindings (normal and visual)
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
     'ctrl-h': 'window:focus-pane-on-left'
