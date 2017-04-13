@@ -13,8 +13,9 @@ apm install relative-numbers
 apm install vim-mode-plus
 apm install vim-mode-plus-ex-mode
 apm install cursor-history
-apm install atom-keyboard-macros
-apm install atom-keyboard-macros-vim
+# Commenting these out for now since they are hella buggy
+# apm install atom-keyboard-macros
+# apm install atom-keyboard-macros-vim
 apm install atom-vim-like-tab
 
 # language specific
