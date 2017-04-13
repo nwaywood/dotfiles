@@ -12,9 +12,7 @@
 # * http://flight-manual.atom.io/behind-atom/sections/keymaps-in-depth/
 
 # global key bindings
-'atom-workspace':
-    'space e': 'tree-view:toggle'
-    'space f': 'fuzzy-finder:toggle-file-finder'
+'atom-workspace:not([mini])':
     # vim jumplist emulation (cursor-history plugin)
     'ctrl-i':     'cursor-history:next'
     'ctrl-o':     'cursor-history:prev'
@@ -57,6 +55,11 @@
 
 # not insert mode bindings (normal and visual)
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
+    # bindings duplicated in .tree-view and vim-mode-plus:not(.insert-mode)
+    # so they are not active in `/` container, `file-finder` container etc
+    'space e': 'tree-view:toggle'
+    'space f': 'fuzzy-finder:toggle-file-finder'
+
     'ctrl-h': 'window:focus-pane-on-left'
     'ctrl-l': 'window:focus-pane-on-right'
     'ctrl-j': 'window:focus-pane-below'
@@ -127,6 +130,11 @@
 # tree-view
 # =========
 '.tree-view':
+    # bindings duplicated in .tree-view and vim-mode-plus:not(.insert-mode)
+    # so they are not active in `/` container, `file-finder` container etc
+    'space e': 'tree-view:toggle'
+    'space f': 'fuzzy-finder:toggle-file-finder'
+
     'v': 'tree-view:open-selected-entry-right'
     's': 'tree-view:open-selected-entry-down'
     'g g': 'core:move-to-top'
