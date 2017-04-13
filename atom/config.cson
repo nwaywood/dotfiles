@@ -18,6 +18,7 @@
       "spell-check"
     ]
     telemetryConsent: "no"
+    titleBar: "hidden"
     warnOnLargeFileLimit: 2
   editor:
     fontSize: 15
