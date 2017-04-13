@@ -29,6 +29,9 @@ Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to commen
 Plug 'tpope/vim-repeat' " adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
 Plug 'kana/vim-textobj-user' " Allows custom text objects
 Plug 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae'
+Plug 'kana/vim-textobj-fold' " Adds the text objects 'iz' and 'az'
+Plug 'kana/vim-textobj-function' " Adds the text objects 'if' and 'af'
+Plug 'kana/vim-textobj-line' " Adds the text objects 'il' and 'al'
 Plug 'tpope/vim-fugitive' " Git support
 Plug 'ryanoasis/vim-devicons'
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
