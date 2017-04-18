@@ -69,13 +69,24 @@
       excludedGlobs: [
         "**/*.html"
       ]
+    prettierOptions:
+      semi: false
     useEslint: true
   "project-manager": {}
   "relative-numbers":
     softWrapsCount: false
   "tree-view": {}
   "vim-mode-plus":
+    clearMultipleCursorsOnEscapeInsertMode: true
+    ignoreCaseForSearch: true
+    incrementalSearch: true
+    keymapPToPutWithAutoIndent: true
+    smoothScrollOnFullScrollMotion: true
+    smoothScrollOnHalfScrollMotion: true
+    smoothScrollOnHalfScrollMotionDuration: 250
+    statusBarModeStringStyle: "long"
     useClipboardAsDefaultRegister: true
+    useSmartcaseForSearch: true
   welcome:
     showOnStartup: false
 ".clojure.source":
