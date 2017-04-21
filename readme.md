@@ -60,3 +60,4 @@ from within tmux. This installs the `tmux-resurrect` plugin which lets tmux sess
 ## TODO:
 
 - Add `/atom/*` files to `link.sh` script
+- Port from oh-my-zsh to zplug
