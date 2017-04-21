@@ -25,3 +25,4 @@ alias dark='it2prof Default'
 # misc
 alias c='clear'
 alias zz='z | ag --nocolor'
+alias vimf='vim +CtrlP'
