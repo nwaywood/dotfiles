@@ -25,6 +25,9 @@ plugins=(git vi-mode history-substring-search)
 # bindkey '^[[A' history-substring-search-up
 # bindkey '^[[B' history-substring-search-down
 
+# map jk to enter normal mode in zsh
+bindkey -M viins 'jk' vi-cmd-mode
+
 # User configuration
 export DOTFILES=$HOME/.dotfiles
 # load .zsh files
