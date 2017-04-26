@@ -31,6 +31,7 @@ Plug 'kana/vim-textobj-user' " Allows custom text objects
 Plug 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae'
 Plug 'kana/vim-textobj-fold' " Adds the text objects 'iz' and 'az'
 Plug 'kana/vim-textobj-function' " Adds the text objects 'if' and 'af'
+Plug 'thinca/vim-textobj-function-javascript' " Adds 'if' and 'af' for javascript
 Plug 'kana/vim-textobj-line' " Adds the text objects 'il' and 'al'
 Plug 'tpope/vim-fugitive' " Git support
 Plug 'ryanoasis/vim-devicons'
