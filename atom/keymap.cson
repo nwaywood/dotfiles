@@ -88,6 +88,10 @@
     'g t': 'atom-vim-like-tab:next'
     'space t l': 'atom-vim-like-tab:list'
 
+    # unimpaired style next/prev function
+    '] f': 'vim-mode-plus:move-to-next-function'
+    '[ f': 'vim-mode-plus:move-to-previous-function'
+
     # blackhole register shortcut
     # https://github.com/t9md/atom-vim-mode-plus/wiki/TIPS#delete-without-saving-to-register
     '\\': 'vim-mode-plus:set-register-name-to-_'
