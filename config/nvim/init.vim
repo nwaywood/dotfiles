@@ -273,7 +273,9 @@ let NERDTreeHijackNetrw=0
 
 " Ack
 " ---
-let g:ackprg='ag --vimgrep'
+let g:ackprg='ag --vimgrep --smart-case'
+cnoreabbrev ag Ack!
+cnoreabbrev Ag Ack!
 
 " CtrlP
 " -----
