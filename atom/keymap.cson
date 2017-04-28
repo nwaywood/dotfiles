@@ -144,3 +144,4 @@
     'g g': 'core:move-to-top'
     'G': 'core:move-to-bottom'
     'o': 'tree-view:open-selected-entry'
+    'r': 'tree-view:show-in-file-manager'
