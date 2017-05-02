@@ -19,7 +19,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode history-substring-search)
+plugins=(git zsh-nvm vi-mode history-substring-search)
 
 # fix for history searching with vi-mode https://github.com/robbyrussell/oh-my-zsh/issues/1479#issuecomment-42633554
 # bindkey '^[[A' history-substring-search-up
