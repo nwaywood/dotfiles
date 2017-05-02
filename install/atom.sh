@@ -7,6 +7,7 @@ apm install atom-terminal
 
 # frontend
 apm install pigments
+apm install emmet
 
 # vim emulation
 apm install relative-numbers
