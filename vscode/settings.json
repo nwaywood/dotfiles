@@ -7,7 +7,7 @@
     "css.validate": false,
     "stylelint.enable": true,
     "workbench.colorTheme": "One Monokai",
-    "workbench.iconTheme": "file-icons",
+    "workbench.iconTheme": "vscode-icons",
 
     // color theming
     "workbench.experimental.colorCustomizations":{
@@ -20,6 +20,10 @@
     // ----
     "flow.useNPMPackagedFlow": true,
     "javascript.validate.enable": false,
+
+    // vscode-icons
+    // ------------
+    "vsicons.presets.foldersAllDefaultIcon": true,
 
     // ------------
     // Vim settings
