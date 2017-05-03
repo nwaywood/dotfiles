@@ -1,0 +1,50 @@
+{
+    "window.zoomLevel": 1,
+    // hide stupid open editors section in file explorer
+    "explorer.openEditors.visible": 0,
+    "editor.fontSize": 13,
+    // https://github.com/Microsoft/vscode/issues/14999
+    "css.validate": false,
+    "stylelint.enable": true,
+    "workbench.colorTheme": "One Monokai",
+    "workbench.iconTheme": "file-icons",
+
+    // color theming
+    "workbench.experimental.colorCustomizations":{
+        "activeTabBackground": "#282c34",
+        "activityBarBackground":"#282c34",
+        "editorGroupBackground": "#282c34",
+        "sideBarBackground": "#282c34"
+    },
+    // Flow
+    // ----
+    "flow.useNPMPackagedFlow": true,
+    "javascript.validate.enable": false,
+
+    // ------------
+    // Vim settings
+    // ------------
+
+    // In normal mode, block shouldn't blink
+    "vim.useSolidBlockCursor": true,
+    "editor.cursorBlinking": "solid",
+    "vim.leader": "<space>",
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j","k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "e"],
+            "commands": [
+                {
+                    "command": "workbench.action.toggleSidebarVisibility"
+                }
+            ]
+        }
+    ]
+}
