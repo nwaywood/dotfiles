@@ -17,5 +17,13 @@
         "key": "ctrl+k",
         "command": "workbench.action.quickOpenSelectPrevious",
         "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+cmd+p",
+        "command": "projectManager.listProjects"
+    },
+    {
+        "key": "alt+cmd+p",
+        "command": "-projectManager.listProjects"
     }
 ]

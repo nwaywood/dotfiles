@@ -20,6 +20,7 @@
     // ----
     "flow.useNPMPackagedFlow": true,
     "javascript.validate.enable": false,
+    "flow.showStatus": false,
 
     // vscode-icons
     // ------------
@@ -34,6 +35,7 @@
     "editor.cursorBlinking": "solid",
     "vim.leader": "<space>",
     "vim.incsearch": true,
+    "vim.hlsearch": true,
     "vim.useSystemClipboard": true,
     "vim.insertModeKeyBindings": [
         {
@@ -42,11 +44,72 @@
         }
     ],
     "vim.otherModesKeyBindingsNonRecursive": [
+        // misc editor vim-style style bindings
         {
             "before": ["<leader>", "e"],
             "commands": [
                 {
                     "command": "workbench.action.toggleSidebarVisibility"
+                }
+            ]
+        },
+        // rebind to use normal vim-commentary bindings
+        {
+            "before": ["g", "c"],
+            "after": ["g", "b"]
+        },
+        {
+            "before": ["g", "C"],
+            "after": ["g", "B"]
+        },
+        // fix j and k to work with line wraps
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
+        },
+        // clear search highlighting
+        {
+            "before":["leader", "/"],
+            "after":[],
+            "commands": [
+                {
+                    "command": ":nohl",
+                    "args": []
+                }
+            ]
+        },
+        // save and quit commands
+        {
+            "before": ["leader", "w"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["leader", "q"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["leader", "x"],
+            "after": [],
+            "commands": [
+                {
+                    "command": ":x",
+                    "args": []
                 }
             ]
         }
