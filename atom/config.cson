@@ -17,6 +17,9 @@
     disabledPackages: [
       "spell-check"
     ]
+    packagesWithKeymapsDisabled: [
+      "goto-definition"
+    ]
     telemetryConsent: "no"
     titleBar: "hidden"
     warnOnLargeFileLimit: 2
@@ -38,6 +41,9 @@
   gofmt:
     formatTool: "gofmt"
   "gometalinter-linter": {}
+  "goto-definition":
+    contextMenuDisplayAtFirst: false
+    performanceMode: true
   "haskell-ghc-mod":
     ghcModPath: "/Users/nick/.cabal/packages/hackage.haskell.org/ghc-mod"
   "language-elm": {}

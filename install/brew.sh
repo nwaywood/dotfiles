@@ -29,6 +29,7 @@ brew cask install elm-platform
 brew install tree
 brew install jq
 brew install ag
+brew install ripgrep
 
 # neovim and atom
 brew install neovim/neovim/neovim
