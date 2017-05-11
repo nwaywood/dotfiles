@@ -7,14 +7,20 @@
     "css.validate": false,
     "stylelint.enable": true,
     "workbench.colorTheme": "One Monokai",
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.iconTheme": "file-icons",
 
-    // color theming
-    "workbench.experimental.colorCustomizations":{
-        "activeTabBackground": "#282c34",
-        "activityBarBackground":"#282c34",
-        "editorGroupBackground": "#282c34",
-        "sideBarBackground": "#282c34"
+    // workbench theming
+    // https://github.com/Binaryify/OneDark-Pro/blob/master/themes/OneDark-Pro.json
+    "workbench.colorCustomizations":{
+        "activityBar.background":"#282c34",
+        "editorGroup.background": "#181A1F",
+        "editorGroupHeader.tabsBackground": "#21252B",
+        "sideBar.background": "#21252b",
+        "titleBar.activeBackground": "#282c34",
+        "tab.inactiveBackground": "#21252B",
+        "tab.activeBackground": "#282c34",
+        "tab.border": "#181A1F",
+        "list.activeSelectionBackground": "#2c313a"
     },
     // Flow
     // ----
@@ -50,6 +56,14 @@
             "commands": [
                 {
                     "command": "workbench.action.toggleSidebarVisibility"
+                }
+            ]
+        },
+        {
+            "before": ["<leader>", "f"],
+            "commands": [
+                {
+                    "command": "workbench.action.quickOpen"
                 }
             ]
         },
