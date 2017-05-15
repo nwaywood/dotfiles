@@ -58,6 +58,9 @@
     # clear highlighted search
     'space /': 'vim-mode-plus:clear-highlight-search'
 
+    # goto symbol in current file
+    'g s': 'goto:file-symbol'
+
 # not insert mode bindings (normal and visual)
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
     # bindings duplicated in .tree-view and vim-mode-plus:not(.insert-mode)

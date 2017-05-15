@@ -452,8 +452,8 @@ endfunction
 " nnoremap <leader>a :UniteWithProjectDir file_rec/neovim<cr>
 " projects list
 nnoremap <leader>l :Unite -default-action=lcd bookmark<cr>
-" heading in the current buffer
-nnoremap <leader>bj :Unite outline<cr>
+" heading in the current buffer (goto symbol)
+nnoremap <leader>gs :Unite outline<cr>
 " change colorscheme (atm only works in gui nvim for some reason...)
 nnoremap <leader>T :Unite colorscheme<cr>
 " help ex commands
