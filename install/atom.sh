@@ -7,6 +7,7 @@ apm install platformio-ide-terminal
 apm install atom-terminal
 apm install goto-definition
 apm install todo-show
+apm install focus-pane-or-panel
 apm install pain-split
 
 # git

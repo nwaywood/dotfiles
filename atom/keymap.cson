@@ -20,12 +20,6 @@
 'atom-text-editor':
     'ctrl-k': 'unset!'
 
-# emmet
-# =====
-# emmet support for jsx
-'atom-text-editor[data-grammar="source js jsx"]:not([mini])':
-    'tab': 'emmet:expand-abbreviation-with-tab'
-
 # vim-mode-plus
 # =============
 # vim mode plus guys dotfiles https://github.com/t9md/dotfiles/blob/master/atom/keymap.cson
@@ -65,10 +59,10 @@
     'space e': 'tree-view:toggle'
     'space f': 'fuzzy-finder:toggle-file-finder'
 
-    'ctrl-h': 'window:focus-pane-on-left'
-    'ctrl-l': 'window:focus-pane-on-right'
-    'ctrl-j': 'window:focus-pane-below'
-    'ctrl-k': 'window:focus-pane-above'
+    'ctrl-j': 'focus-pane-or-panel:focus-below'
+    'ctrl-k': 'focus-pane-or-panel:focus-above'
+    'ctrl-h': 'focus-pane-or-panel:focus-on-left'
+    'ctrl-l': 'focus-pane-or-panel:focus-on-right'
 
     'ctrl-v': 'pane:split-right-and-copy-active-item'
     'ctrl-s': 'pane:split-down-and-copy-active-item'
@@ -156,10 +150,19 @@
     'ctrl-j': 'core:move-down'
     'ctrl-k': 'core:move-up'
     'ctrl-g': 'core:cancel'
+    
+# emmet
+# =====
+# emmet support for jsx
+'atom-text-editor[data-grammar="source js jsx"]:not([mini])':
+    'tab': 'emmet:expand-abbreviation-with-tab'
 
 # tree-view
 # =========
 '.tree-view':
+    # focus-pane-or-panel navigation
+    'ctrl-h': 'focus-pane-or-panel:focus-on-left'
+    'ctrl-l': 'focus-pane-or-panel:focus-on-right'
     # bindings duplicated in .tree-view and vim-mode-plus:not(.insert-mode)
     # so they are not active in `/` container, `file-finder` container etc
     'space e': 'tree-view:toggle'
@@ -171,3 +174,13 @@
     'G': 'core:move-to-bottom'
     'o': 'tree-view:open-selected-entry'
     'r': 'tree-view:show-in-file-manager'
+
+# focus-pane-or-panel navigation for cmd-f panel
+'.platform-darwin .find-and-replace atom-text-editor':
+  'ctrl-j': 'focus-pane-or-panel:focus-below'
+  'ctrl-k': 'focus-pane-or-panel:focus-above'
+
+# focus-pane-or-panel navigation for cmd-shift-f panel
+'.platform-darwin .project-find atom-text-editor':
+  'ctrl-j': 'focus-pane-or-panel:focus-below'
+  'ctrl-k': 'focus-pane-or-panel:focus-above'
