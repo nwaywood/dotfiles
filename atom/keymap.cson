@@ -58,9 +58,6 @@
     # clear highlighted search
     'space /': 'vim-mode-plus:clear-highlight-search'
 
-    # goto symbol in current file
-    'g s': 'goto:file-symbol'
-
 # not insert mode bindings (normal and visual)
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
     # bindings duplicated in .tree-view and vim-mode-plus:not(.insert-mode)
@@ -111,6 +108,18 @@
     # Go to definition keybinding
     'g d': 'goto-definition:go'
 
+    # narrow
+    # ======
+    # search in project (ag)
+    'space s': 'narrow:search'
+    'space S': 'narrow:search-by-current-word'
+    # search lines in buffer
+    'space l': 'narrow:scan'
+    'space L': 'narrow:scan-by-current-word'
+    # goto symbol in current file
+    'g s': 'narrow:symbols'
+    'cmd-r': 'narrow:symbols'
+
 'atom-text-editor.vim-mode-plus.operator-pending-mode.toggle-line-comments-pending':
   'c': 'vim-mode-plus:toggle-line-comments'
 
@@ -119,6 +128,12 @@
     # vim-surround
     'S': 'vim-mode-plus:surround'
 
+# narrow-ui
+# =========
+'atom-text-editor.narrow.narrow-editor[data-grammar="source narrow"],
+ atom-text-editor.narrow.narrow-editor.vim-mode-plus.insert-mode[data-grammar="source narrow"]':
+     'ctrl-j': 'narrow-ui:preview-next-item'
+     'ctrl-k': 'narrow-ui:preview-previous-item'
 
 # fuzzy-finder
 # ============

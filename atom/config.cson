@@ -58,6 +58,11 @@
   "linter-ui-default":
     panelHeight: 231
     showPanel: true
+  narrow:
+    Scan:
+      directionToOpen: "down"
+    Symbols:
+      directionToOpen: "down"
   "platformio-ide-terminal":
     ansiColors:
       zBright:
