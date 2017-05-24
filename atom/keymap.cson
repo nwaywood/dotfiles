@@ -59,13 +59,26 @@
     'space e': 'tree-view:toggle'
     'space f': 'fuzzy-finder:toggle-file-finder'
 
+    # vim-like window navigation for pane and panels
     'ctrl-j': 'focus-pane-or-panel:focus-below'
     'ctrl-k': 'focus-pane-or-panel:focus-above'
     'ctrl-h': 'focus-pane-or-panel:focus-on-left'
     'ctrl-l': 'focus-pane-or-panel:focus-on-right'
 
+    # vim-like bindings for moving panes
+    'ctrl-w j': 'window:move-active-item-to-pane-on-below'
+    'ctrl-w k': 'window:move-active-item-to-pane-on-above'
+    'ctrl-w h': 'window:move-active-item-to-pane-on-left'
+    'ctrl-w l': 'window:move-active-item-to-pane-on-right'
+
+    # split and duplicate (default vim splits)
     'ctrl-v': 'pane:split-right-and-copy-active-item'
     'ctrl-s': 'pane:split-down-and-copy-active-item'
+    # split and move
+    'ctrl-w v': 'pane:split-right-moving-current-tab'
+    'ctrl-w s': 'pane:split-down-moving-current-tab'
+    # merge all panes together again
+    'ctrl-w m': 'pane:merge-all-panes'
 
     # fix j and k to include soft wrapping
     'j': 'vim-mode-plus:move-down-screen'
@@ -150,7 +163,7 @@
     'ctrl-j': 'core:move-down'
     'ctrl-k': 'core:move-up'
     'ctrl-g': 'core:cancel'
-    
+
 # emmet
 # =====
 # emmet support for jsx
