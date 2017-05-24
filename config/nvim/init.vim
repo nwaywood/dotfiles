@@ -69,9 +69,9 @@ syntax enable
 " let base16colorspace=256 " Access colors present in 256 colorspace
 " set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 " " e.g. base16-solarized
-" execute "set background=".$BACKGROUND
 " execute "colorscheme ".$THEME
-set background=dark
+" set background=dark
+execute "set background=".$BACKGROUND
 colorscheme solarized
 " Use vims old regex engine for faster syntax highlighting
 " http://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting

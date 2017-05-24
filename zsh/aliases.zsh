@@ -19,8 +19,8 @@ alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 
 # iterm theme
 # http://superuser.com/questions/414560/is-there-a-keyboard-shortcut-to-alternate-between-color-schemes-in-iterm2
-alias light='it2prof Light'
-alias dark='it2prof Default'
+alias light='it2prof Light && export BACKGROUND=light'
+alias dark='it2prof Default && export BACKGROUND=dark'
 
 # misc
 alias c='clear'
