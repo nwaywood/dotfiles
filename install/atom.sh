@@ -9,6 +9,7 @@ apm install goto-definition
 apm install todo-show
 apm install focus-pane-or-panel
 apm install pain-split
+apm install import-sf-mono
 
 # git
 apm install git-blame

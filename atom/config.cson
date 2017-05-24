@@ -24,6 +24,7 @@
     titleBar: "hidden"
     warnOnLargeFileLimit: 2
   editor:
+    fontFamily: "SF Mono"
     fontSize: 15
     invisibles: {}
     preferredLineLength: 120
@@ -56,7 +57,7 @@
   "linter-hlint":
     hlintExecutablePath: "/Users/nick/.cabal/bin/hlint"
   "linter-ui-default":
-    panelHeight: 231
+    panelHeight: 200
     showPanel: true
   narrow:
     Scan:
