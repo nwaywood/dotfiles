@@ -22,7 +22,8 @@ apm install emmet
 # vim emulation
 apm install relative-numbers
 apm install vim-mode-plus
-apm install vim-mode-plus-ex-mode
+# apm install vim-mode-plus-ex-mode
+apm install ex-mode
 apm install cursor-history
 # Commenting these out for now since they are hella buggy
 # apm install atom-keyboard-macros

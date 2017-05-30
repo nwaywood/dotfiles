@@ -35,7 +35,7 @@
     'space w': 'core:save'
     'space q': 'core:close'
     'space x': 'custom:save-and-quit'
-    ':': 'vim-mode-plus-ex-mode:open'
+    # ':': 'vim-mode-plus-ex-mode:open'
 
     # vim-surround
     'y s': 'vim-mode-plus:surround'
