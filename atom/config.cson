@@ -23,6 +23,8 @@
     ]
     packagesWithKeymapsDisabled: [
       "goto-definition"
+      "emmet"
+      "term3"
     ]
     telemetryConsent: "no"
     titleBar: "hidden"
@@ -61,6 +63,7 @@
   "linter-hlint":
     hlintExecutablePath: "/Users/nick/.cabal/bin/hlint"
   "linter-ui-default":
+    panelHeight: 69
     showPanel: true
   narrow:
     Scan:
@@ -90,6 +93,17 @@
   "project-manager": {}
   "relative-numbers":
     softWrapsCount: false
+  term3:
+    colors:
+      background: "#282c34"
+      brightBlue: "#268bc8"
+      brightCyan: "#28a198"
+      brightGreen: "#859901"
+      brightRed: "#dc322f"
+      brightWhite: "#7d9496"
+      brightYellow: "#b58901"
+      foreground: "#9aabad"
+      normalRed: "#dc322f"
   "tree-view": {}
   "vim-mode-plus":
     clearMultipleCursorsOnEscapeInsertMode: true

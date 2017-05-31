@@ -4,6 +4,7 @@ apm install atom-open-marked
 apm install file-icons
 apm install project-manager
 apm install platformio-ide-terminal
+apm install term3
 apm install atom-terminal
 apm install goto-definition
 apm install todo-show
