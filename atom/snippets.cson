@@ -16,3 +16,11 @@
 # This file uses CoffeeScript Object Notation (CSON).
 # If you are unfamiliar with CSON, you can read more about it here:
 # https://github.com/bevry/cson#what-is-cson
+
+'.source.js':
+    'React functional component':
+        'prefix': 'rfc'
+        'body': "// @flow\n\nimport React from \"react\"\n\ntype Props = {\n\t${2}\n}\n\nconst ${1} = (props: Props) => (\n\t${3}\n)\n\nexport default ${1}"
+    'React class component':
+        'prefix': 'rcc'
+        'body': "// @flow\n\nimport React from \"react\"\n\nclass ${1} extends React.Component {\n\tconstructor(props: Object) {\n\t\tsuper(props)\n\t}\n\n\trender() {\n\t\treturn (\n\t\t\t${2}\n\t\t)\n\t}\n}\n\nexport default ${1}"
