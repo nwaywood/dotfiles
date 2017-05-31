@@ -142,6 +142,9 @@
      'ctrl-j': 'narrow-ui:preview-next-item'
      'ctrl-k': 'narrow-ui:preview-previous-item'
 
+     # Danger: apply change on narrow-editor to real file by `cmd-s`.
+     'cmd-s': 'narrow-ui:update-real-file'
+
 # fuzzy-finder
 # ============
 '.fuzzy-finder':

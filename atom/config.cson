@@ -12,6 +12,10 @@
     app: "/Applications/iTerm.app"
     surpressDirectoryArgument: false
   "autocomplete-plus":
+    confirmCompletion: "enter"
+    suppressActivationForEditorClasses: [
+      "narrow"
+    ]
     useCoreMovementCommands: false
   core:
     disabledPackages: [
@@ -89,6 +93,9 @@
   "tree-view": {}
   "vim-mode-plus":
     clearMultipleCursorsOnEscapeInsertMode: true
+    highlightSearchExcludeScopes: [
+      "narrow"
+    ]
     ignoreCaseForSearch: true
     incrementalSearch: true
     keymapPToPutWithAutoIndent: true
