@@ -154,6 +154,13 @@
     'ctrl-k': 'core:move-up'
     'ctrl-g': 'core:cancel'
 
+# project-manager
+# ===============
+'.project-manager':
+    'ctrl-j': 'core:move-down'
+    'ctrl-k': 'core:move-up'
+    'ctrl-g': 'core:cancel'
+
 # autocomplete-plus
 # =================
 'atom-text-editor.autocomplete-active':
