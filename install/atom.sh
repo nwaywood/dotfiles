@@ -52,3 +52,4 @@ apm install linter-golinter
 apm install linter-hlint
 apm install linter-htmlhint
 apm install linter-eslint
+apm install linter-jsonlint
