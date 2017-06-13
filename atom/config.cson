@@ -23,7 +23,6 @@
     ]
     packagesWithKeymapsDisabled: [
       "goto-definition"
-      "emmet"
       "term3"
     ]
     telemetryConsent: "no"
@@ -63,6 +62,7 @@
   "linter-hlint":
     hlintExecutablePath: "/Users/nick/.cabal/bin/hlint"
   "linter-ui-default":
+    hidePanelWhenEmpty: true
     panelHeight: 69
     showPanel: true
   narrow:
