@@ -45,6 +45,12 @@ apm install go-plus
 apm install go-debug
 apm install go-signature-statusbar
 
+apm install ocaml-merlin
+apm install language-ocaml
+apm install language-reason
+apm install reason-refmt
+apm install ocaml-indent
+
 # linting
 apm install linter
 apm install linter-ui-default
@@ -53,3 +59,4 @@ apm install linter-hlint
 apm install linter-htmlhint
 apm install linter-eslint
 apm install linter-jsonlint
+apm install linter-refmt
