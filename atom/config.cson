@@ -80,6 +80,7 @@
         brightWhite: "#7d9496"
         brightYellow: "#b58901"
     style:
+      animationSpeed: 2
       theme: "one-dark"
   "prettier-atom":
     formatOnSaveOptions:
