@@ -11,6 +11,7 @@ apm install todo-show
 apm install focus-pane-or-panel
 apm install pain-split
 apm install import-sf-mono
+apm install atom-spotify2
 
 # git
 apm install git-blame

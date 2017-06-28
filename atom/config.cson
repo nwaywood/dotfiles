@@ -8,6 +8,9 @@
     json:
       indent_size: 2
       jslint_happy: true
+  "atom-spotify2":
+    displayOnLeftSide: false
+    showPlayStatus: false
   "atom-terminal":
     app: "/Applications/iTerm.app"
     surpressDirectoryArgument: false
@@ -38,6 +41,8 @@
     tabType: "soft"
   "exception-reporting":
     userId: "55402b61-6e86-16de-5aef-c3ef9fe96cea"
+  "git-blame":
+    columnWidth: 411
   "git-plus": {}
   "go-debug":
     panelInitialVisible: false
