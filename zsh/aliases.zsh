@@ -27,3 +27,7 @@ alias c='clear'
 alias zz='z | ag --nocolor'
 alias vimf='vim +CtrlP'
 alias vimn='vim +NERDTreeToggle'
+
+mkcd () {
+    test -d "$1" || mkdir "$1" && cd "$1"
+}
