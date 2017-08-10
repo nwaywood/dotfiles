@@ -110,7 +110,8 @@
       brightYellow: "#b58901"
       foreground: "#9aabad"
       normalRed: "#dc322f"
-  "tree-view": {}
+  "tree-view":
+    hideIgnoredNames: true
   "vim-mode-plus":
     clearMultipleCursorsOnEscapeInsertMode: true
     highlightSearchExcludeScopes: [
