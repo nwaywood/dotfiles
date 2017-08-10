@@ -17,6 +17,9 @@
     'ctrl-i':     'cursor-history:next'
     'ctrl-o':     'cursor-history:prev'
 
+    # https://github.com/t9md/atom-vim-mode-plus/issues/526#issuecomment-262701696
+    'ctrl-g': 'core:cancel'
+
 'atom-text-editor':
     'ctrl-k': 'unset!'
 
