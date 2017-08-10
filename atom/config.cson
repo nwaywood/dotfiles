@@ -94,6 +94,7 @@
         "**/*.html"
       ]
     prettierOptions:
+      parser: "flow"
       semi: false
     useEslint: true
   "project-manager": {}
