@@ -1,27 +1,16 @@
 {
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     // hide stupid open editors section in file explorer
     "explorer.openEditors.visible": 0,
-    "editor.fontSize": 13,
+    "editor.fontSize": 14.5,
+    "editor.fontFamily": "'SF Mono', Menlo, Monaco, 'Courier New', monospace",
     // https://github.com/Microsoft/vscode/issues/14999
     "css.validate": false,
     "stylelint.enable": true,
-    "workbench.colorTheme": "One Monokai",
+    "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "file-icons",
+    "editor.minimap.enabled": false,
 
-    // workbench theming
-    // https://github.com/Binaryify/OneDark-Pro/blob/master/themes/OneDark-Pro.json
-    "workbench.colorCustomizations":{
-        "activityBar.background":"#282c34",
-        "editorGroup.background": "#181A1F",
-        "editorGroupHeader.tabsBackground": "#21252B",
-        "sideBar.background": "#21252b",
-        "titleBar.activeBackground": "#282c34",
-        "tab.inactiveBackground": "#21252B",
-        "tab.activeBackground": "#282c34",
-        "tab.border": "#181A1F",
-        "list.activeSelectionBackground": "#2c313a"
-    },
     // Flow
     // ----
     "flow.useNPMPackagedFlow": true,
@@ -37,7 +26,6 @@
     // ------------
 
     // In normal mode, block shouldn't blink
-    "vim.useSolidBlockCursor": true,
     "editor.cursorBlinking": "solid",
     "vim.leader": "<space>",
     "vim.incsearch": true,
@@ -66,15 +54,6 @@
                     "command": "workbench.action.quickOpen"
                 }
             ]
-        },
-        // rebind to use normal vim-commentary bindings
-        {
-            "before": ["g", "c"],
-            "after": ["g", "b"]
-        },
-        {
-            "before": ["g", "C"],
-            "after": ["g", "B"]
         },
         // fix j and k to work with line wraps
         {
@@ -127,5 +106,6 @@
                 }
             ]
         }
-    ]
+    ],
+    "vim.disableAnnoyingNeovimMessage": true
 }
