@@ -8,13 +8,19 @@
  * http://www.lesscss.org
  */
 
- .editor, syntax--atom-text-editor {
-     .invisible-character {
-         color: white;
-     }
- }
+.editor,
+syntax--atom-text-editor {
+  .invisible-character {
+    color: white;
+  }
+}
 
 // increase the default width of the tree-view
- .tree-view-resizer {
-     min-width: 300px;
- }
+.tree-view-resizer {
+  min-width: 300px;
+}
+
+// temp fix for https://github.com/steelbrain/linter-ui-default/issues/415
+atom-overlay.autocomplete-plus {
+  z-index: 5 !important;
+}
