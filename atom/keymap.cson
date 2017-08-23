@@ -197,10 +197,13 @@
 
     'v': 'tree-view:open-selected-entry-right'
     's': 'tree-view:open-selected-entry-down'
+    'r': 'tree-view:show-in-file-manager'
     'g g': 'core:move-to-top'
     'G': 'core:move-to-bottom'
     'o': 'tree-view:open-selected-entry'
-    'r': 'tree-view:show-in-file-manager'
+    'O': 'tree-view:recursive-expand-directory'
+    'x': 'tree-view:collapse-directory'
+    'X': 'tree-view:recursive-collapse-directory'
 
 # focus-pane-or-panel navigation for cmd-f panel
 '.platform-darwin .find-and-replace atom-text-editor':
