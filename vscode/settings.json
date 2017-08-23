@@ -4,7 +4,8 @@
     "explorer.openEditors.visible": 0,
     "editor.fontSize": 14.5,
     "editor.fontFamily": "'SF Mono', Menlo, Monaco, 'Courier New', monospace",
-    // https://github.com/Microsoft/vscode/issues/14999
+    "editor.lineNumbers": "relative",
+     // https://github.com/Microsoft/vscode/issues/14999
     "css.validate": false,
     "stylelint.enable": true,
     "workbench.colorTheme": "One Dark Pro",
