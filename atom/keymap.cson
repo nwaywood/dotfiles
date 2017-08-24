@@ -20,6 +20,11 @@
     # https://github.com/t9md/atom-vim-mode-plus/issues/526#issuecomment-262701696
     'ctrl-g': 'core:cancel'
 
+'atom-text-editor:not([mini])':
+  # platformio-ide-terminal navigation keybindings
+  'ctrl-alt-j': 'platformio-ide-terminal:focus'
+  'ctrl-alt-k': 'platformio-ide-terminal:focus'
+
 'atom-text-editor':
     'ctrl-k': 'unset!'
 

@@ -14,6 +14,8 @@
   "atom-terminal":
     app: "/Applications/iTerm.app"
     surpressDirectoryArgument: false
+  "atom-ternjs":
+    inlineFnCompletionDocumentation: true
   "autocomplete-plus":
     confirmCompletion: "enter"
     suppressActivationForEditorClasses: [
