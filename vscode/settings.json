@@ -12,6 +12,10 @@
     "workbench.iconTheme": "file-icons",
     "editor.minimap.enabled": false,
 
+    // Reason
+    // ------
+    "reason.formatOnSave": true,
+
     // Flow
     // ----
     "flow.useNPMPackagedFlow": true,
