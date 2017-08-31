@@ -7,7 +7,6 @@ alias d='docker'
 
 # neovim
 alias vim='nvim'
-alias mvim='nyaovim'
 
 # git
 alias gs='git status'
