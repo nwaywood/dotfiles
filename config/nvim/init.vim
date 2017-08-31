@@ -34,11 +34,11 @@ Plug 'kana/vim-textobj-function' " Adds the text objects 'if' and 'af'
 Plug 'thinca/vim-textobj-function-javascript' " Adds 'if' and 'af' for javascript
 Plug 'kana/vim-textobj-line' " Adds the text objects 'il' and 'al'
 Plug 'tpope/vim-fugitive' " Git support
-Plug 'ryanoasis/vim-devicons'
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
 Plug 'shougo/unite.vim' " generic fuzzy finder for lists (ie. amazing!)
 Plug 'shougo/unite-outline' " show unite list of headings for the current buffer (function names, structs, variables etc)
 Plug 'ujihisa/unite-colorscheme' " show unite list of available colorschemes
+Plug 'ryanoasis/vim-devicons'
 
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
@@ -233,7 +233,8 @@ let g:airline_powerline_fonts=1
 set timeoutlen=20 "gets rid of the pause when leaving insert mode
 " for the fonts to work in iTerm, install a patch font and set it in iTerm
 " prefs https://github.com/ryanoasis/nerd-fonts
-set guifont=Fura\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
+" The line below breaks vimr
+" set guifont=Fura\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
 let g:airline_theme='base16'
 " buffers to emulate tabs
 " let g:airline#extensions#tabline#enabled = 1 " enable the list of buffers at the top of the screen
@@ -270,6 +271,8 @@ let NERDTreeMapOpenSplit='s'
 let NERDTreeMapOpenVSplit='v'
 " don't override netrw (this interferes with vim-vinegar)
 let NERDTreeHijackNetrw=0
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
 
 " Ack
 " ---
@@ -510,6 +513,21 @@ if has('nvim')
 	tnoremap <C-l> <C-\><C-n><C-w>l
 endif
 
+" vimr settings
+" =============
+if has("gui_vimr")
+	" " e.g. base16-solarized-dark
+	 execute "set background=".$BACKGROUND
+	 " execute "colorscheme ".$THEME
+	 colorscheme onedark
+
+	" Fix the airline bar in vimr
+	let g:airline_theme='onedark'
+	let g:airline_powerline_fonts=0
+	let g:airline_left_sep=''
+	let g:airline_right_sep=''
+endif
+
 " Nyaovim settings
 " ================
 if exists('g:nyaovim_version')
@@ -524,19 +542,6 @@ if exists('g:nyaovim_version')
 	let g:airline_left_sep=''
 	let g:airline_right_sep=''
 endif
-
-" neovim-dot-app settings
-" ===============
-" if exists("neovim_dot_app")
-" 	" colorscheme=solarized
-" 	set background=dark
-" 	colorscheme base16-solarized-dark
-" 	" Fix the airline bar in gnvim
-" 	let g:airline_theme='solarized'
-" 	let g:airline_powerline_fonts=0
-" 	let g:airline_left_sep=''
-" 	let g:airline_right_sep=''
-" endif
 
 " }}}
 
