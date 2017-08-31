@@ -60,6 +60,15 @@
                 }
             ]
         },
+        // scroll the viewport faster
+        {
+            "before": ["<C-e>"],
+            "after": ["3", "<C-e>"]
+        },
+        {
+            "before": ["<C-y>"],
+            "after": ["3", "<C-y>"]
+        },
         // fix j and k to work with line wraps
         {
             "before": ["j"],
