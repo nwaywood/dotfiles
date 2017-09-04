@@ -53,10 +53,16 @@ bindkey -M viins 'jk' vi-cmd-mode
 
 # User configuration
 export DOTFILES=$HOME/.dotfiles
+
 # load .zsh files
 for config ($DOTFILES/zsh/**/*.zsh) source $config
 
 source $ZSH/oh-my-zsh.sh
+
+# load fzf 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # editor
 export EDITOR='nvim'
