@@ -24,7 +24,7 @@ alias dark='it2prof Default && export BACKGROUND=dark'
 # misc
 alias c='clear'
 alias zz='z | ag --nocolor'
-alias vimf='vim +CtrlP'
+alias vimf='vim "+Denite file_rec"'
 alias vimn='vim +NERDTreeToggle'
 
 mkcd () {
