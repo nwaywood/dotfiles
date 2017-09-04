@@ -12,7 +12,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-vinegar' " netrw replacement
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar' " display file scope in side bar
 Plug 'tpope/vim-dispatch'
 " Plug 'radenling/vim-dispatch-neovim' " add neovim strategy to dispatch
@@ -35,9 +35,7 @@ Plug 'thinca/vim-textobj-function-javascript' " Adds 'if' and 'af' for javascrip
 Plug 'kana/vim-textobj-line' " Adds the text objects 'il' and 'al'
 Plug 'tpope/vim-fugitive' " Git support
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
-Plug 'shougo/unite.vim' " generic fuzzy finder for lists (ie. amazing!)
-Plug 'shougo/unite-outline' " show unite list of headings for the current buffer (function names, structs, variables etc)
-Plug 'ujihisa/unite-colorscheme' " show unite list of available colorschemes
+Plug 'Shougo/denite.nvim' " Atom-narrow for vim
 Plug 'ryanoasis/vim-devicons'
 
 " Language specific
@@ -98,10 +96,10 @@ set incsearch " set incremental search, like modern browsers
 set showmatch
 set hlsearch " highlight search results
 set magic " make searching use normal regex (grep)
-" Change the backgroud for search terms to purple
+" Change the backgroud for search terms to orange
 " https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg
 " http://stackoverflow.com/questions/7103173/vim-how-to-change-the-highlight-color-for-search-hits-and-quickfix-selection
-hi Search ctermbg=55
+" hi Search ctermbg=55
 
 " Line number management
 " http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
@@ -282,13 +280,13 @@ cnoreabbrev Ag Ack!
 
 " CtrlP
 " -----
-nnoremap <silent> <leader>r :CtrlPMRU<cr>
-nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
-let g:ctrlp_map='<leader>f'
-let g:ctrlp_dotfiles=1
-let g:ctrlp_working_path_mode = 'ra'
-" use ag for searching instead of vims globpath()
-let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+" nnoremap <silent> <leader>r :CtrlPMRU<cr>
+" nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
+" let g:ctrlp_map='<leader>f'
+" let g:ctrlp_dotfiles=1
+" let g:ctrlp_working_path_mode = 'ra'
+" " use ag for searching instead of vims globpath()
+" let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 
 " vim-dispatch
 " ------------
@@ -426,45 +424,73 @@ let g:vimwiki_hl_headers = 1
 autocmd VimEnter * nunmap =p
 autocmd VimEnter * nunmap =P
 
-" Unite.vim
-" ---------
-" Like ctrlp.vim settings.
-call unite#custom#profile('default', 'context', {
-\   'start_insert': 1,
-\   'winheight': 10,
-\   'direction': 'botright',
-\ })
-" fuzzy searching by default
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" Denite.nvim
+" ===========
 
-" unite_source_rec_async_command to use ag, do this apply to /neovim aswell?
+nnoremap <leader>l :Denite line<cr>
+nnoremap <leader>s :Denite grep<cr>
+nnoremap <leader>f :Denite file_rec<cr>
 
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-	" Enable navigation with control-j and control-k in insert mode
-	imap <buffer> <C-j> <Plug>(unite_select_next_line)
-	imap <buffer> <C-k> <Plug>(unite_select_previous_line)
-	" Runs 'split' or 'vsplit' action
-	imap <silent><buffer><expr> <C-s> unite#do_action('split')
-	imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-	" close window with C-g (same as ctrp and emacs)
-endfunction
+" highlight groups for matches
+hi DeniteHighlightChar ctermfg=4 guifg=Cyan
+hi DeniteHighlightRange ctermfg=12 ctermbg=8
 
-" mappings for unite lists
-" nnoremap <leader>a :UniteWithProjectDir file_rec/neovim<cr>
-" projects list
-nnoremap <leader>l :Unite -default-action=lcd bookmark<cr>
-" heading in the current buffer (goto symbol)
-nnoremap <leader>gs :Unite outline<cr>
-" change colorscheme (atm only works in gui nvim for some reason...)
-nnoremap <leader>T :Unite colorscheme<cr>
-" help ex commands
-nnoremap <leader>hc :Unite command<cr>
-" help key mappings
-nnoremap <leader>hm :Unite mapping<cr>
-" help functions
-nnoremap <leader>hf :Unite function<cr>
+" change default options
+call denite#custom#option('default', {
+	      \ 'prompt': '>',
+	      \ 'highlight_matched_char': 'DeniteHighlightChar',
+	      \ 'highlight_matched_range': 'DeniteHighlightRange'
+	      \ })
+
+" set file_rec to use ag
+call denite#custom#var('file_rec', 'command',
+	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+
+" Change mappings.
+call denite#custom#map(
+		\ 'insert',
+		\ '<C-j>',
+		\ '<denite:move_to_next_line>',
+		\ 'noremap'
+		\)
+call denite#custom#map(
+		\ 'insert',
+		\ '<C-k>',
+		\ '<denite:move_to_previous_line>',
+		\ 'noremap'
+		\)
+call denite#custom#map(
+		\ 'insert',
+		\ '<C-g>',
+		\ '<denite:quit>',
+		\ 'noremap'
+		\)
+call denite#custom#map(
+		\ 'insert',
+		\ '<C-v>',
+		\ '<denite:do_action:vsplit>',
+		\ 'noremap'
+		\)
+call denite#custom#map(
+		\ 'insert',
+		\ '<C-s>',
+		\ '<denite:do_action:split>',
+		\ 'noremap'
+		\)
+call denite#custom#map(
+		\ 'insert',
+		\ '<C-p>',
+		\ '<denite:do_action:preview>',
+		\ 'noremap'
+		\)
+" Ag command on grep source
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'default_opts',
+		\ ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
 
 " }}}
 
