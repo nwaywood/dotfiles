@@ -12,7 +12,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-vinegar' " netrw replacement
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar' " display file scope in side bar
 Plug 'tpope/vim-dispatch'
 " Plug 'radenling/vim-dispatch-neovim' " add neovim strategy to dispatch
@@ -280,13 +280,13 @@ cnoreabbrev Ag Ack!
 
 " CtrlP
 " -----
-" nnoremap <silent> <leader>r :CtrlPMRU<cr>
-" nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
-" let g:ctrlp_map='<leader>f'
-" let g:ctrlp_dotfiles=1
-" let g:ctrlp_working_path_mode = 'ra'
-" " use ag for searching instead of vims globpath()
-" let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+nnoremap <silent> <leader>r :CtrlPMRU<cr>
+nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
+let g:ctrlp_map='<leader>f'
+let g:ctrlp_dotfiles=1
+let g:ctrlp_working_path_mode = 'ra'
+" use ag for searching instead of vims globpath()
+let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 
 " vim-dispatch
 " ------------
@@ -429,7 +429,7 @@ autocmd VimEnter * nunmap =P
 
 nnoremap <leader>l :Denite line<cr>
 nnoremap <leader>s :Denite grep<cr>
-nnoremap <leader>f :Denite file_rec<cr>
+" nnoremap <leader>f :Denite file_rec<cr>
 
 " highlight groups for matches
 hi DeniteHighlightChar ctermfg=4 guifg=Cyan
