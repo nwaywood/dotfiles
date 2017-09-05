@@ -52,6 +52,10 @@ bind -r J resize-pane -D 10
 bind -r K resize-pane -U 10
 bind -r L resize-pane -R 10
 
+# tile all windows
+unbind =
+bind = select-layout tiled
+
 # make next and previous window commands repeatable
 unbind n
 unbind p
@@ -75,6 +79,7 @@ bind-key -T copy-mode-vi C-\ select-pane -l
 
 # split window
 bind | split-window -h -c "#{pane_current_path}"
+bind \ split-window -h -c "#{pane_current_path}"
 bind - split-window -v -c "#{pane_current_path}"
 
 # disable close window/pane confirmations
