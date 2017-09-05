@@ -8,35 +8,39 @@ Plug 'joshdick/onedark.vim'
 
 " utilities
 " Plug 'wikitopian/hardmode' " learning vim like a boss
-Plug 'vimwiki/vimwiki'
-Plug 'scrooloose/nerdtree'
+Plug 'vimwiki/vimwiki' " Org-mode like thing for Vim
+Plug 'scrooloose/nerdtree' " file explorer
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-vinegar' " netrw replacement
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar' " display file scope in side bar
-Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-dispatch' " asynchronous build and test dispatcher
 " Plug 'radenling/vim-dispatch-neovim' " add neovim strategy to dispatch
-Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
-Plug 'tpope/vim-surround' " mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
 Plug 'benmills/vimux' " quickly run commands in a tmux pane
+Plug 'w0rp/ale' " Async linting engine
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " auto code completion
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' } " Atom-narrow for vim
 Plug 'mileszs/ack.vim' " grep replacement
 Plug 'christoomey/vim-tmux-navigator' " use ctrl-hjkl to navigate between tmux and vim panes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
+Plug 'tpope/vim-fugitive' " Git support
+Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
+Plug 'ryanoasis/vim-devicons'
+
+" Vim language enhancements
+Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
+Plug 'tpope/vim-surround' " mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
 Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
 Plug 'tpope/vim-repeat' " adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
 Plug 'kana/vim-textobj-user' " Allows custom text objects
 Plug 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae'
 Plug 'kana/vim-textobj-fold' " Adds the text objects 'iz' and 'az'
+Plug 'kana/vim-textobj-line' " Adds the text objects 'il' and 'al'
 Plug 'kana/vim-textobj-function' " Adds the text objects 'if' and 'af'
 Plug 'thinca/vim-textobj-function-javascript' " Adds 'if' and 'af' for javascript
-Plug 'kana/vim-textobj-line' " Adds the text objects 'il' and 'al'
-Plug 'tpope/vim-fugitive' " Git support
-Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
-Plug 'Shougo/denite.nvim' " Atom-narrow for vim
-Plug 'ryanoasis/vim-devicons'
+Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
+
 
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
@@ -429,7 +433,7 @@ autocmd VimEnter * nunmap =P
 
 nnoremap <leader>l :Denite line<cr>
 nnoremap <leader>s :Denite grep<cr>
-" nnoremap <leader>f :Denite file_rec<cr>
+" nnoremap <leader>c :Denite file_rec<cr>
 
 " highlight groups for matches
 hi DeniteHighlightChar ctermfg=4 guifg=Cyan
@@ -444,7 +448,7 @@ call denite#custom#option('default', {
 
 " set file_rec to use ag
 call denite#custom#var('file_rec', 'command',
-	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+	\ ['ag', '-l', '--nocolor', '-g', ''])
 
 " Change mappings.
 call denite#custom#map(
