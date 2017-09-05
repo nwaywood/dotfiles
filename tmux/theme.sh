@@ -1,10 +1,15 @@
 #### COLOUR
+# https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 
 tm_icon="♟"
-tm_color_active=colour213
-tm_color_inactive=colour241
-tm_color_feature=colour4
-tm_color_music=colour203
+# tm_icon=""
+# tm_color_active=colour213 # pink
+tm_color_active=colour198 # 198
+tm_color_inactive=colour241 # grey
+tm_color_feature=colour4 # blue
+tm_color_music=colour13 # red
+# tm_color_music=colour203 # red
+tm_active_border_color=colour198 # red/pink
 
 # separators
 tm_separator_left_bold="◀"
@@ -36,7 +41,7 @@ set-window-option -g  window-status-current-format "#[bold]#I #{?window_zoomed_f
 
 # pane border
 set-option -g pane-border-fg $tm_color_inactive
-set-option -g pane-active-border-fg $tm_color_active
+set-option -g pane-active-border-fg $tm_active_border_color
 
 # message text
 set-option -g message-bg default
@@ -49,9 +54,11 @@ set-option -g display-panes-colour $tm_color_inactive
 # clock
 set-window-option -g clock-mode-colour $tm_color_active
 
+tm_spotify="#[fg=$tm_color_music]#(osascript ~/.dotfiles/tmux/spotify.scpt)"
+
 tm_date="#[fg=$tm_color_inactive] %l:%M%p %d %b"
 tm_host="#[fg=$tm_color_feature,bold]#h"
 tm_session_name="#[fg=$tm_color_feature,bold]$tm_icon #S"
 
 set -g status-left $tm_session_name' '
-set -g status-right $tm_date' '$tm_host
+set -g status-right $tm_spotify' '$tm_date' '$tm_host
