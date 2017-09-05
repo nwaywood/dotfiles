@@ -25,6 +25,11 @@
   core:
     disabledPackages: [
       "spell-check"
+      "go-plus"
+      "go-signature-statusbar"
+      "linter-golinter"
+      "term3"
+      "language-elm"
     ]
     packagesWithKeymapsDisabled: [
       "goto-definition"
@@ -64,6 +69,7 @@
     subtleLinterErrors: [
       "golinter"
     ]
+  "linter-eslint": {}
   "linter-golinter":
     executablePath: "/Users/nick/code/bin/golint"
   "linter-hlint":
@@ -77,6 +83,7 @@
       directionToOpen: "down"
     Symbols:
       directionToOpen: "down"
+  "ocaml-merlin": {}
   "platformio-ide-terminal":
     ansiColors:
       zBright:
