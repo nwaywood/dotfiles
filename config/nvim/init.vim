@@ -13,6 +13,7 @@ Plug 'scrooloose/nerdtree' " file explorer
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-vinegar' " netrw replacement
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'sbdchd/neoformat'
 Plug 'majutsushi/tagbar' " display file scope in side bar
 Plug 'tpope/vim-dispatch' " asynchronous build and test dispatcher
 " Plug 'radenling/vim-dispatch-neovim' " add neovim strategy to dispatch
@@ -50,6 +51,13 @@ Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' } " better syntax highlight
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' } " haskell autocompletion integration with deoplete
 
 Plug 'elmcast/elm-vim', { 'for': 'elm' } " elm support
+
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript'] } " JSX support
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
+Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'javascript.jsx'] }
+
+Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'javascript', 'javascript.jsx'] } " CSS3 syntax support
 
 call plug#end()
 
@@ -297,6 +305,7 @@ let NERDTreeMapOpenSplit='s'
 let NERDTreeMapOpenVSplit='v'
 " don't override netrw (this interferes with vim-vinegar)
 let NERDTreeHijackNetrw=0
+" nice alignment of vim-devicons
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
 
@@ -425,6 +434,10 @@ let g:tagbar_type_go = {
 " -----------
 nnoremap <leader>mo :MarkedOpen<cr>
 nnoremap <leader>mq :MarkedQuit<cr>
+
+" vim-jsx
+" -------
+let g:jsx_ext_required = 0
 
 " elm-vim
 " -----------
