@@ -47,10 +47,10 @@ setw -g mouse on
 bind r source-file ~/.tmux.conf \; display "Config Reloaded!"
 
 # Resize pane shortcuts
-bind -r H resize-pane -L 10
-bind -r J resize-pane -D 10
-bind -r K resize-pane -U 10
-bind -r L resize-pane -R 10
+bind -r Left resize-pane -L 10
+bind -r Down resize-pane -D 10
+bind -r Up resize-pane -U 10
+bind -r Right resize-pane -R 10
 
 # tile all windows
 unbind =
