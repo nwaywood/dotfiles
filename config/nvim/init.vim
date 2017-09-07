@@ -249,6 +249,27 @@ let g:airline_powerline_fonts=0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
+" ALE
+" ---
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always=1
+let g:ale_sign_error='•'
+let g:ale_sign_warning='•'
+" NOTE: Overriding SignColumn instead of using ALESignColumnWithoutErrors
+" because it doesn't seem to work :/
+hi SignColumn ctermfg=10 ctermbg=0 guifg=Yellow
+" let g:ale_change_sign_column_color=1
+" hi ALESignColumnWithoutErrors ctermfg=10 ctermbg=0 guifg=Yellow
+
+let g:ale_lint_delay=10
+" let g:ale_open_list='on_save'
+
+" Fixers
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['eslint']
+" let g:ale_javascript_prettier_options = '--tab-width 4 --no-semi --parser flow'
+
 " NERDTree
 " --------
 " http://www.cheatography.com/stepk/cheat-sheets/vim-nerdtree/
