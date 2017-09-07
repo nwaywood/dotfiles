@@ -183,11 +183,6 @@ map <leader>0 :e ~/.config/nvim/init.vim<cr>
 " insert empty line between brackets (hacky, need a better way to do this)
 inoremap {<CR> {<CR>}<C-o>O
 
-" pretty print json on save
-" TODO: Need to find a better way to validate json. This overwrites the json
-" file with the errors if there are any
-" au FileType json autocmd BufWritePre * :%!jq --indent 4 '.'
-
 " toggle paste mode
 noremap <leader>p :set paste!<cr>
 
