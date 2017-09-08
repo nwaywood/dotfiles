@@ -227,35 +227,35 @@ nnoremap <leader>. :call NumberToggle()<cr>
 " Functions {{{
 
 function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-	set norelativenumber
-  else
-    set relativenumber
-	set number
-  endif
+	if(&relativenumber == 1)
+		set number
+		set norelativenumber
+	else
+		set relativenumber
+		set number
+	endif
 endfunc
 
 " close Vim if the only windows left are NERDTree, help, loclist, quickfix
 " https://yous.be/2014/11/30/automatically-quit-vim-if-actual-files-are-closed/
 function! CheckLeftBuffers()
-  if tabpagenr('$') == 1
-    let l:i = 1
-    while l:i <= winnr('$')
-      if getbufvar(winbufnr(l:i), '&buftype') ==# 'help' ||
-          \ getbufvar(winbufnr(l:i), '&buftype') ==# 'quickfix' ||
-          \ exists('t:NERDTreeBufName') &&
-          \   bufname(winbufnr(l:i)) == t:NERDTreeBufName
-        let l:i += 1
-      else
-        break
-      endif
-    endwhile
-    if l:i == winnr('$') + 1
-      qall
-    endif
-    unlet l:i
-  endif
+	if tabpagenr('$') == 1
+		let l:i = 1
+		while l:i <= winnr('$')
+			if getbufvar(winbufnr(l:i), '&buftype') ==# 'help' ||
+						\ getbufvar(winbufnr(l:i), '&buftype') ==# 'quickfix' ||
+						\ exists('t:NERDTreeBufName') &&
+						\   bufname(winbufnr(l:i)) == t:NERDTreeBufName
+				let l:i += 1
+			else
+				break
+			endif
+		endwhile
+		if l:i == winnr('$') + 1
+			qall
+		endif
+		unlet l:i
+	endif
 endfunction
 
 " }}}
@@ -430,32 +430,32 @@ let g:go_metalinter_command='gometalinter --disable-all --enable=vet
 nnoremap <silent> <leader>tt :TagbarToggle<cr>
 " Gotags config
 let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
+			\ 'ctagstype' : 'go',
+			\ 'kinds'     : [
+			\ 'p:package',
+			\ 'i:imports:1',
+			\ 'c:constants',
+			\ 'v:variables',
+			\ 't:types',
+			\ 'n:interfaces',
+			\ 'w:fields',
+			\ 'e:embedded',
+			\ 'm:methods',
+			\ 'r:constructor',
+			\ 'f:functions'
+			\ ],
+			\ 'sro' : '.',
+			\ 'kind2scope' : {
+			\ 't' : 'ctype',
+			\ 'n' : 'ntype'
+			\ },
+			\ 'scope2kind' : {
+			\ 'ctype' : 't',
+			\ 'ntype' : 'n'
+			\ },
+			\ 'ctagsbin'  : 'gotags',
+			\ 'ctagsargs' : '-sort -silent'
+			\ }
 
 " vim-marked
 " -----------
@@ -508,56 +508,56 @@ hi DeniteHighlightRange ctermfg=12 ctermbg=8
 
 " change default options
 call denite#custom#option('default', {
-	      \ 'prompt': '>',
-	      \ 'highlight_matched_char': 'DeniteHighlightChar',
-	      \ 'highlight_matched_range': 'DeniteHighlightRange'
-	      \ })
+			\ 'prompt': '>',
+			\ 'highlight_matched_char': 'DeniteHighlightChar',
+			\ 'highlight_matched_range': 'DeniteHighlightRange'
+			\ })
 
 " set file_rec to use ag
 call denite#custom#var('file_rec', 'command',
-	\ ['ag', '-l', '--nocolor', '-g', ''])
+			\ ['ag', '-l', '--nocolor', '-g', ''])
 
 " Change mappings.
 call denite#custom#map(
-		\ 'insert',
-		\ '<C-j>',
-		\ '<denite:move_to_next_line>',
-		\ 'noremap'
-		\)
+			\ 'insert',
+			\ '<C-j>',
+			\ '<denite:move_to_next_line>',
+			\ 'noremap'
+			\)
 call denite#custom#map(
-		\ 'insert',
-		\ '<C-k>',
-		\ '<denite:move_to_previous_line>',
-		\ 'noremap'
-		\)
+			\ 'insert',
+			\ '<C-k>',
+			\ '<denite:move_to_previous_line>',
+			\ 'noremap'
+			\)
 call denite#custom#map(
-		\ 'insert',
-		\ '<C-g>',
-		\ '<denite:quit>',
-		\ 'noremap'
-		\)
+			\ 'insert',
+			\ '<C-g>',
+			\ '<denite:quit>',
+			\ 'noremap'
+			\)
 call denite#custom#map(
-		\ 'insert',
-		\ '<C-v>',
-		\ '<denite:do_action:vsplit>',
-		\ 'noremap'
-		\)
+			\ 'insert',
+			\ '<C-v>',
+			\ '<denite:do_action:vsplit>',
+			\ 'noremap'
+			\)
 call denite#custom#map(
-		\ 'insert',
-		\ '<C-s>',
-		\ '<denite:do_action:split>',
-		\ 'noremap'
-		\)
+			\ 'insert',
+			\ '<C-s>',
+			\ '<denite:do_action:split>',
+			\ 'noremap'
+			\)
 call denite#custom#map(
-		\ 'insert',
-		\ '<C-p>',
-		\ '<denite:do_action:preview>',
-		\ 'noremap'
-		\)
+			\ 'insert',
+			\ '<C-p>',
+			\ '<denite:do_action:preview>',
+			\ 'noremap'
+			\)
 " Ag command on grep source
 call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('grep', 'default_opts',
-		\ ['-i', '--vimgrep'])
+			\ ['-i', '--vimgrep'])
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'separator', ['--'])
@@ -614,9 +614,9 @@ endif
 " =============
 if has('gui_vimr')
 	" " e.g. base16-solarized-dark
-	 execute 'set background='.$BACKGROUND
-	 " execute "colorscheme ".$THEME
-	 colorscheme onedark
+	execute 'set background='.$BACKGROUND
+	" execute "colorscheme ".$THEME
+	colorscheme onedark
 
 	" Fix the airline bar in vimr
 	let g:airline_theme='onedark'
@@ -629,9 +629,9 @@ endif
 " ================
 if exists('g:nyaovim_version')
 	" " e.g. base16-solarized-dark
-	 execute 'set background='.$BACKGROUND
-	 execute 'colorscheme '.$THEME
-	 "colorscheme onedark
+	execute 'set background='.$BACKGROUND
+	execute 'colorscheme '.$THEME
+	"colorscheme onedark
 
 	" Fix the airline bar in nyaovim
 	let g:airline_theme='solarized'
