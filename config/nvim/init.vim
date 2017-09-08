@@ -114,7 +114,7 @@ set magic " make searching use normal regex (grep)
 
 " Line number management
 " http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
-" NOTE: Focus events don't work in terminal neovim
+" NOTE: Focus events don't work in inside tmux with neovim
 " NOTE: Buf event don't seem to be working at all atm
 set number relativenumber
 autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
@@ -215,6 +215,9 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+" show current line number as orange with relativenumber set
+hi CursorLineNr ctermfg=3 ctermbg=0 guibg=DarkMagenta
 
 " toggle relative/absolute line numbers
 nnoremap <leader>. :call NumberToggle()<cr>
