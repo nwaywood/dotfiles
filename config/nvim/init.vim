@@ -143,6 +143,11 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " make read read *.raml files as yaml
 autocmd BufNewFile,BufRead *.raml set filetype=yaml
 
+augroup BufferCheck
+	autocmd!
+	autocmd  BufEnter * call CheckLeftBuffers()
+augroup END
+
 " }}}
 
 " Keymappings {{{
@@ -227,6 +232,28 @@ function! NumberToggle()
 	set number
   endif
 endfunc
+
+" close Vim if the only windows left are NERDTree, help, loclist, quickfix
+" https://yous.be/2014/11/30/automatically-quit-vim-if-actual-files-are-closed/
+function! CheckLeftBuffers()
+  if tabpagenr('$') == 1
+    let l:i = 1
+    while l:i <= winnr('$')
+      if getbufvar(winbufnr(l:i), '&buftype') ==# 'help' ||
+          \ getbufvar(winbufnr(l:i), '&buftype') ==# 'quickfix' ||
+          \ exists('t:NERDTreeBufName') &&
+          \   bufname(winbufnr(l:i)) == t:NERDTreeBufName
+        let l:i += 1
+      else
+        break
+      endif
+    endwhile
+    if l:i == winnr('$') + 1
+      qall
+    endif
+    unlet l:i
+  endif
+endfunction
 
 " }}}
 
