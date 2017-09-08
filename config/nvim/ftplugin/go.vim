@@ -9,3 +9,5 @@ nmap <Leader>mgv <Plug>(go-def-vertical)
 nmap <Leader>mgs <Plug>(go-def-split)
 nmap <Leader>mgt <Plug>(go-def-tab)
 nmap <Leader>md <Plug>(go-doc)
+
+let b:dispatch='make build' " run a Go makefile by default on :Dispatch

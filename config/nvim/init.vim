@@ -66,9 +66,8 @@ call plug#end()
 " General Setting {{{
 
 " mapleader
-let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
-set nocompatible " not compatible with vi
+
 " following 3 lines make the mapleader key work better
 set notimeout
 set ttimeout
@@ -81,11 +80,11 @@ syntax enable
 " " e.g. base16-solarized
 " execute "colorscheme ".$THEME
 " set background=dark
-execute "set background=".$BACKGROUND
+execute 'set background='.$BACKGROUND
 colorscheme solarized
 " Use vims old regex engine for faster syntax highlighting
 " http://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
-set re=1
+set regexpengine=1
 " mininum number of lines to correctly apply syntax highlighting to
 syntax sync minlines=256
 
@@ -115,12 +114,11 @@ set magic " make searching use normal regex (grep)
 
 " Line number management
 " http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
-set number    "show line numbers
-set relativenumber " set relative line numbers
-autocmd InsertEnter * :set number
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
-autocmd InsertLeave * :set number
+" NOTE: Focus events don't work in terminal neovim
+" NOTE: Buf event don't seem to be working at all atm
+set number relativenumber
+autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 
 " misc
 set mouse+=a " lets mouse resize vim windows
@@ -134,6 +132,7 @@ set autoindent " keep the indentation on <enter>
 set noswapfile   "don't use swapfile
 set nobackup     "dont create annoying backup files
 set encoding=utf-8 " set default encoding to UTF-8
+scriptencoding utf-8
 set clipboard=unnamed " for copy/paste with osx
 " make default splits split below/right instead of above/left
 set splitbelow
@@ -254,6 +253,7 @@ let g:airline_right_sep=''
 
 " ALE
 " ---
+"  cosmetics
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always=1
 let g:ale_sign_error='•'
@@ -264,8 +264,11 @@ hi SignColumn ctermfg=10 ctermbg=0 guifg=Yellow
 " let g:ale_change_sign_column_color=1
 " hi ALESignColumnWithoutErrors ctermfg=10 ctermbg=0 guifg=Yellow
 
-let g:ale_lint_delay=10
+let g:ale_lint_delay=0
 " let g:ale_open_list='on_save'
+
+" only run eslint linter for js files
+let g:ale_linters = {'javascript': ['eslint']}
 
 " Fixers
 let g:ale_fix_on_save = 1
@@ -280,26 +283,26 @@ let g:ale_fixers['javascript'] = ['eslint']
 " don't close NERDTree after a file is opened
 let g:NERDTreeQuitOnOpen=0
 " show hidden files in NERDTree
-let NERDTreeShowHidden=1
+let g:NERDTreeShowHidden=1
 " Toggle NERDTree
 nnoremap <silent> <leader>e :NERDTreeToggle<cr>
 " Find current file in NERDTree
 nnoremap <silent> <leader>n :NERDTreeFind<cr>
 " remove some files by extension
-let NERDTreeIgnore = ['\.js.map$', '\.pyc$']
+let g:NERDTreeIgnore = ['\.js.map$', '\.pyc$']
 " Change the NERDTree window width (default=31)
 let g:NERDTreeWinSize=40
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " remap C-j and C-k commands so it doesnt interfere with vim-tmux-navigator
 " plugin
-let NERDTreeMapJumpNextSibling='C-d'
-let NERDTreeMapJumpPrevSibling='C-u'
+let g:NERDTreeMapJumpNextSibling='C-d'
+let g:NERDTreeMapJumpPrevSibling='C-u'
 " change window split keys to match ctrlp mappings
-let NERDTreeMapOpenSplit='s'
-let NERDTreeMapOpenVSplit='v'
+let g:NERDTreeMapOpenSplit='s'
+let g:NERDTreeMapOpenVSplit='v'
 " don't override netrw (this interferes with vim-vinegar)
-let NERDTreeHijackNetrw=0
+let g:NERDTreeHijackNetrw=0
 " nice alignment of vim-devicons
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
@@ -322,7 +325,6 @@ let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 
 " vim-dispatch
 " ------------
-autocmd FileType go let b:dispatch='make build' " run a Go makefile by default on :Dispatch
 nnoremap <leader>d :Dispatch<cr>
 
 " Vimux
@@ -375,7 +377,7 @@ let g:go_highlight_extra_types = 1
 let g:go_auto_type_info=1
 "  executes :GoFmt everytime a go file is saved, using "goimport" makes saving
 "  files slow
-let g:go_fmt_command="gofmt"
+let g:go_fmt_command='gofmt'
 
 
 " au FileType go nnoremap <Leader>gi :GoImports<cr>
@@ -388,8 +390,8 @@ let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'vetshadow', 'ineffassign', 'goconst']
 " gometalinter command when executed via :GoMetaLinter
 " au FileType go autocmd BufWritePre * :GoMetaLinter
-let g:go_metalinter_command="gometalinter --disable-all --enable=vet
-			\ --enable=vetshadow --enable=golint --enable=ineffassign --enable=goconst --enable=gofmt"
+let g:go_metalinter_command='gometalinter --disable-all --enable=vet
+			\ --enable=vetshadow --enable=golint --enable=ineffassign --enable=goconst --enable=gofmt'
 " let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
 "		 \ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
 
@@ -457,8 +459,11 @@ let g:vimwiki_hl_headers = 1
 " unbind tpope/vim-unimpaired bindings that interfere with vimwiki '='
 " normal mode binding
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
-autocmd VimEnter * nunmap =p
-autocmd VimEnter * nunmap =P
+augroup unusedbindings
+	autocmd!
+	autocmd VimEnter * nunmap =p
+	autocmd VimEnter * nunmap =P
+augroup END
 
 " Denite.nvim
 " ===========
@@ -577,9 +582,9 @@ endif
 
 " vimr settings
 " =============
-if has("gui_vimr")
+if has('gui_vimr')
 	" " e.g. base16-solarized-dark
-	 execute "set background=".$BACKGROUND
+	 execute 'set background='.$BACKGROUND
 	 " execute "colorscheme ".$THEME
 	 colorscheme onedark
 
@@ -594,8 +599,8 @@ endif
 " ================
 if exists('g:nyaovim_version')
 	" " e.g. base16-solarized-dark
-	 execute "set background=".$BACKGROUND
-	 execute "colorscheme ".$THEME
+	 execute 'set background='.$BACKGROUND
+	 execute 'colorscheme '.$THEME
 	 "colorscheme onedark
 
 	" Fix the airline bar in nyaovim
