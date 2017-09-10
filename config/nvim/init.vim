@@ -236,7 +236,7 @@ function! NumberToggle()
 	endif
 endfunc
 
-" close Vim if the only buffers left in windows are NERDTree, help, loclist, 
+" close Vim if the only buffers left in windows are NERDTree, help, loclist,
 " quickfix or terminal
 " https://yous.be/2014/11/30/automatically-quit-vim-if-actual-files-are-closed/
 function! CheckLeftBuffers()
@@ -602,6 +602,7 @@ if has('nvim')
 
 	" escape from terminal mode to normal mode
 	tnoremap jk <C-\><C-n>
+
 	" window navigation
 	tnoremap <C-h> <C-\><C-n><C-w>h
 	tnoremap <C-j> <C-\><C-n><C-w>j
@@ -610,8 +611,22 @@ if has('nvim')
 
 	" neoterm
 	let g:neoterm_size='12'
-	" splits
-	nnoremap <silent> <leader>` :Ttoggle<cr>
+	nnoremap <silent> <C-t> :Ttoggle<cr>
+	" toggle terminal from within terminal mode
+	tnoremap <silent> <C-t> <C-\><C-n>:Ttoggle<cr>
+
+	" nnoremap <leader>tl :call neoterm#do('!!')<cr>
+	" https://github.com/kassio/neoterm/issues/81
+	" let g:my_last_t_command = ''
+	" function! MyT(args)
+	" 	let g:my_last_t_command = a:args
+
+	" 	silent call neoterm#do(g:my_last_t_command)
+	" endfunction
+
+	" command! -bar -complete=shellcmd -nargs=+ T silent call MyT(<q-args>)
+	" command! -bar Tlast silent call MyT(g:my_last_t_command)
+	" nnoremap <silent> <leader>tl :Tlast<cr>
 endif
 
 " vimr settings
