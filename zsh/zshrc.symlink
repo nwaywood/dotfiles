@@ -49,6 +49,7 @@ plugins=(git zsh-nvm vi-mode history-substring-search)
 # bindkey '^[[B' history-substring-search-down
 
 # map jk to enter normal mode in zsh
+# https://dougblack.io/words/zsh-vi-mode.html
 bindkey -M viins 'jk' vi-cmd-mode
 
 # User configuration
