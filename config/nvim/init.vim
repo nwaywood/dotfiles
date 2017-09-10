@@ -108,7 +108,7 @@ set showmatch
 set hlsearch " highlight search results
 set magic " make searching use normal regex (grep)
 " Change the backgroud for search terms to orange
-" https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg
+" https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 " http://stackoverflow.com/questions/7103173/vim-how-to-change-the-highlight-color-for-search-hits-and-quickfix-selection
 " hi Search ctermbg=55
 
@@ -288,6 +288,9 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always=1
 let g:ale_sign_error='•'
 let g:ale_sign_warning='•'
+" Change the color of warnings and errors in the gutter for term colors
+hi ALEWarningSign ctermfg=3 ctermbg=0
+hi ALEErrorSign ctermfg=1 ctermbg=0
 " NOTE: Overriding SignColumn instead of using ALESignColumnWithoutErrors
 " because it doesn't seem to work :/
 hi SignColumn ctermfg=10 ctermbg=0 guifg=Yellow
@@ -295,7 +298,8 @@ hi SignColumn ctermfg=10 ctermbg=0 guifg=Yellow
 " hi ALESignColumnWithoutErrors ctermfg=10 ctermbg=0 guifg=Yellow
 
 let g:ale_lint_delay=0
-" let g:ale_open_list='on_save'
+let g:ale_open_list='on_save'
+
 
 " only run eslint linter for js files
 let g:ale_linters = {'javascript': ['eslint']}
@@ -598,6 +602,9 @@ if has('gui_vimr')
 	execute 'set background='.$BACKGROUND
 	" execute "colorscheme ".$THEME
 	colorscheme onedark
+	" ALE colors for gui
+	hi ALEWarningSign gui=bold guifg=#D19A66
+	hi ALEErrorSign gui=bold guifg=#E06C75
 
 	" Fix the airline bar in vimr
 	let g:airline_theme='onedark'
