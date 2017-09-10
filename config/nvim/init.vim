@@ -567,25 +567,6 @@ call denite#custom#var('grep', 'final_opts', [])
 
 " GUI settings {{{
 
-" Macvim settings
-" ===============
-" if (has("gui_running"))
-" 	" http://vimdoc.sourceforge.net/htmldoc/options.html#'guioptions'
-" 	set guioptions=egmt
-" 	" don't use relative number because of a macvim bug
-" 	set number
-" 	set norelativenumber
-
-" 	" start NERDTree automatically when vim starts up
-" 	autocmd vimenter * NERDTree
-" 	" focus the main window instead of NERDTree when vim starts up
-" 	autocmd vimenter * wincmd p
-
-" 	" colorscheme solarized
-" 	" let g:airline_theme='solarized'
-" endif
-
-
 " neovim settings
 " ===============
 if has('nvim')
@@ -620,21 +601,6 @@ if has('gui_vimr')
 
 	" Fix the airline bar in vimr
 	let g:airline_theme='onedark'
-	let g:airline_powerline_fonts=0
-	let g:airline_left_sep=''
-	let g:airline_right_sep=''
-endif
-
-" Nyaovim settings
-" ================
-if exists('g:nyaovim_version')
-	" " e.g. base16-solarized-dark
-	execute 'set background='.$BACKGROUND
-	execute 'colorscheme '.$THEME
-	"colorscheme onedark
-
-	" Fix the airline bar in nyaovim
-	let g:airline_theme='solarized'
 	let g:airline_powerline_fonts=0
 	let g:airline_left_sep=''
 	let g:airline_right_sep=''
