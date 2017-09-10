@@ -9,6 +9,7 @@ Plug 'joshdick/onedark.vim'
 " utilities
 " Plug 'wikitopian/hardmode' " learning vim like a boss
 Plug 'vimwiki/vimwiki' " Org-mode like thing for Vim
+Plug 'kassio/neoterm' " Wrapper around :term
 Plug 'scrooloose/nerdtree' " file explorer
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-vinegar' " netrw replacement
@@ -235,7 +236,8 @@ function! NumberToggle()
 	endif
 endfunc
 
-" close Vim if the only windows left are NERDTree, help, loclist, quickfix
+" close Vim if the only buffers left in windows are NERDTree, help, loclist, 
+" quickfix or terminal
 " https://yous.be/2014/11/30/automatically-quit-vim-if-actual-files-are-closed/
 function! CheckLeftBuffers()
 	if tabpagenr('$') == 1
@@ -243,6 +245,7 @@ function! CheckLeftBuffers()
 		while l:i <= winnr('$')
 			if getbufvar(winbufnr(l:i), '&buftype') ==# 'help' ||
 						\ getbufvar(winbufnr(l:i), '&buftype') ==# 'quickfix' ||
+						\ getbufvar(winbufnr(l:i), '&buftype') ==# 'terminal' ||
 						\ exists('t:NERDTreeBufName') &&
 						\   bufname(winbufnr(l:i)) == t:NERDTreeBufName
 				let l:i += 1
@@ -579,12 +582,24 @@ if has('nvim')
 	" the terminal?
 	" set termguicolors
 
-	" splits
-	nnoremap <silent> <leader>ts :10sp term://$SHELL<cr>i
-	nnoremap <silent> <leader>tv :vsp term://$SHELL<cr>i
-
-	" terminal mode keybindings
+	" terminal mode
 	" -------------------------
+
+	" verical term split, just in case
+	nnoremap <silent> <leader>tv :vsp term://$SHELL<cr>
+	" nnoremap <silent> <leader>ts :10sp term://$SHELL<cr>
+
+	augroup Term
+		autocmd!
+		" never show line numbers in term buffers
+		autocmd TermOpen * setlocal nonumber norelativenumber
+		autocmd BufEnter term://* setlocal nonumber norelativenumber
+		" Always start in terminal mode in term buffers
+		autocmd TermOpen * startinsert
+		autocmd BufEnter term://* startinsert
+		autocmd BufLeave term://* stopinsert
+	augroup END
+
 	" escape from terminal mode to normal mode
 	tnoremap jk <C-\><C-n>
 	" window navigation
@@ -592,6 +607,11 @@ if has('nvim')
 	tnoremap <C-j> <C-\><C-n><C-w>j
 	tnoremap <C-k> <C-\><C-n><C-w>k
 	tnoremap <C-l> <C-\><C-n><C-w>l
+
+	" neoterm
+	let g:neoterm_size='12'
+	" splits
+	nnoremap <silent> <leader>` :Ttoggle<cr>
 endif
 
 " vimr settings
