@@ -117,8 +117,10 @@ set magic " make searching use normal regex (grep)
 " http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
 " NOTE: Focus events don't work in inside tmux with neovim
 set number relativenumber
-autocmd WinEnter,BufEnter,FocusGained,InsertLeave * set relativenumber
-autocmd WinLeave,BufLeave,FocusLost,InsertEnter   * set norelativenumber
+" TODO: WinEnter and WinLeave adds line numbers to Denite, need to exclude
+" Denite windows 
+autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 
 " misc
 set mouse+=a " lets mouse resize vim windows
