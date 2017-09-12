@@ -115,7 +115,8 @@ command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
 unalias z 2> /dev/null
 z() {
   [ $# -gt 0 ] && _z "$*" && return
-  cd "$(_z -l 2>&1 | fzf-tmux --height 40% --reverse --inline-info +s --tac --query "$*" | sed 's/^[0-9,.]* *//')"
+  # remove --inline-info fzf option so that number of results displays on newline
+  cd "$(_z -l 2>&1 | fzf-tmux --height 40% --reverse +s --tac --query "$*" | sed 's/^[0-9,.]* *//')"
 }
 
 # https://stackoverflow.com/questions/18241406/tmux-environment-variables-dont-show-up-in-session
