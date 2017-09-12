@@ -42,7 +42,10 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-nvm vi-mode history-substring-search)
+# https://github.com/robbyrussell/oh-my-zsh/issues/5327#issuecomment-248836398 seems zsh-nvm is slow af
+# https://bennycwong.github.io/post/speeding-up-oh-my-zsh/
+# plugins=(git zsh-nvm vi-mode history-substring-search)
+plugins=(git vi-mode history-substring-search)
 
 # fix for history searching with vi-mode https://github.com/robbyrussell/oh-my-zsh/issues/1479#issuecomment-42633554
 # bindkey '^[[A' history-substring-search-up
@@ -121,17 +124,18 @@ z() {
 
 # https://stackoverflow.com/questions/18241406/tmux-environment-variables-dont-show-up-in-session
 # https://stackoverflow.com/questions/9901657/how-to-change-an-environment-variable-and-apply-to-all-windows-in-a-tmux-session
-_update_background_var() {
-    local var
-    var=$(tmux show-environment |grep '^BACKGROUND=')
-    if [ "$?" -eq 0 ]; then
-        eval "$var"
-    fi
-}
+# TODO: for some reason, without the zsh-nvm plugin, this precmd hook fails to setup
+# _update_background_var() {
+#     local var
+#     var=$(tmux show-environment |grep '^BACKGROUND=')
+#     if [ "$?" -eq 0 ]; then
+#         eval "$var"
+#     fi
+# }
 
-if [[ -n "$TMUX" ]]; then
-    add-zsh-hook precmd _update_background_var
-fi
+# if [[ -n "$TMUX" ]]; then
+#     add-zsh-hook precmd _update_background_var
+# fi
 
 # commented out while I'm trying 'true' solarized instead of base16 version
 # BASE16_SHELL="$DOTFILES/.config/base16-shell/$THEME.$BACKGROUND.sh"
