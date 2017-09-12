@@ -4,3 +4,4 @@ npm install -g stylelint-config-standard
 npm install -g stylelint-processor-html
 
 npm install -g eslint
+npm install -g jsonlint
