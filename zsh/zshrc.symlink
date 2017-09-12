@@ -81,7 +81,7 @@ export PATH=$HOME/.local/bin:$PATH
 
 # add /usr/local/sbin
 if [[ -d /usr/local/sbin ]]; then
-    export PATH=/usr/local/sbin:$PATH
+	export PATH=/usr/local/sbin:$PATH
 fi
 
 # hub integration with git command
@@ -96,10 +96,10 @@ unsetopt share_history
 
 # Base16 shell
 if [ -z "$THEME" ]; then
-    export THEME="base16-solarized-dark"
+	export THEME="base16-solarized-dark"
 fi
 if [ -z "$BACKGROUND" ]; then
-    export BACKGROUND="dark"
+	export BACKGROUND="dark"
 fi
 
 # required to make z command work
@@ -107,7 +107,7 @@ if hash brew 2>/dev/null; then
 	source `brew --prefix`/etc/profile.d/z.sh
 fi
 
-# load fzf 
+# load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -117,9 +117,9 @@ command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
 # https://github.com/junegunn/fzf/wiki/examples#z
 unalias z 2> /dev/null
 z() {
-  [ $# -gt 0 ] && _z "$*" && return
-  # remove --inline-info fzf option so that number of results displays on newline
-  cd "$(_z -l 2>&1 | fzf-tmux --height 40% --reverse +s --tac --query "$*" | sed 's/^[0-9,.]* *//')"
+	[ $# -gt 0 ] && _z "$*" && return
+	# remove --inline-info fzf option so that number of results displays on newline
+	cd "$(_z -l 2>&1 | fzf-tmux --height 40% --reverse +s --tac --query "$*" | sed 's/^[0-9,.]* *//')"
 }
 
 # https://stackoverflow.com/questions/18241406/tmux-environment-variables-dont-show-up-in-session
