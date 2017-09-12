@@ -18,6 +18,7 @@ brew install reattach-to-user-namespace
 brew install tmux
 brew install zsh
 brew install z
+brew install fzf
 
 # languages and langauge tools
 brew install go --with-cc-all
@@ -30,6 +31,7 @@ brew install tree
 brew install jq
 brew install ag
 brew install ripgrep
+brew install --HEAD https://raw.githubusercontent.com/junegunn/blsd/master/blsd.rb
 
 # neovim and atom
 brew install neovim/neovim/neovim
