@@ -119,8 +119,11 @@ set magic " make searching use normal regex (grep)
 set number relativenumber
 " TODO: WinEnter and WinLeave adds line numbers to Denite, need to exclude
 " Denite windows 
-autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+" TODO: BufEnter and BufLeave adds line numbers to NERDTree
+" autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+" autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+autocmd FocusGained,InsertLeave * set relativenumber
+autocmd FocusLost,InsertEnter * set norelativenumber
 
 " misc
 set mouse+=a " lets mouse resize vim windows
@@ -509,6 +512,7 @@ augroup END
 nnoremap <leader>l :Denite line<cr>
 nnoremap <leader>s :Denite grep<cr>
 " nnoremap <leader>c :Denite file_rec<cr>
+" nnoremap <leader>c :Denite file_rec -reversed -winheight=10 -auto-resize<cr>
 
 " highlight groups for matches
 hi DeniteHighlightChar ctermfg=4 guifg=Cyan
