@@ -108,6 +108,7 @@ set incsearch " set incremental search, like modern browsers
 set showmatch
 set hlsearch " highlight search results
 set magic " make searching use normal regex (grep)
+
 " Change the backgroud for search terms to orange
 " https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 " http://stackoverflow.com/questions/7103173/vim-how-to-change-the-highlight-color-for-search-hits-and-quickfix-selection
@@ -143,6 +144,8 @@ set clipboard=unnamed " for copy/paste with osx
 set splitbelow
 set splitright
 set diffopt+=vertical " always use verical diffs
+" show current line number as orange with relativenumber set
+hi CursorLineNr ctermfg=3 ctermbg=0
 " force vim to read *.md files as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " make read read *.raml files as yaml
@@ -199,11 +202,11 @@ noremap <leader>p :set paste!<cr>
 noremap <silent> <leader>/ :set hlsearch! hlsearch?<cr>
 
 " buffer navigation
-nnoremap <leader>bh :bprevious<cr> " move to the previous buffer
-nnoremap <leader>bl :bnext<cr> " move to the next buffer
+nnoremap <leader>bp :bprevious<cr> " move to the previous buffer
+nnoremap <leader>bn :bnext<cr> " move to the next buffer
 nnoremap <leader>bc :enew<cr> " Open a new empty buffer
-nnoremap <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab')
-nnoremap <leader>b. <c-^> " toggle between current and previous buffer
+nnoremap <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
+nnoremap <leader>bl <c-^> " toggle between current and previous buffer
 " buffer list command/mapping is in CtrlP section
 
 " quick save
@@ -220,9 +223,6 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-
-" show current line number as orange with relativenumber set
-hi CursorLineNr ctermfg=3 ctermbg=0 guibg=DarkMagenta
 
 " toggle relative/absolute line numbers
 nnoremap <leader>. :call NumberToggle()<cr>
