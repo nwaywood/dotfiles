@@ -64,6 +64,10 @@
     'space /': 'vim-mode-plus:clear-highlight-search'
 
 # not insert mode bindings (normal and visual)
+'atom-text-editor.vim-mode-plus:not(.insert-mode)[data-grammar="source go"]':
+    'g d': 'golang:godef'
+
+# not insert mode bindings (normal and visual)
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
     # bindings duplicated in .tree-view and vim-mode-plus:not(.insert-mode)
     # so they are not active in `/` container, `file-finder` container etc
