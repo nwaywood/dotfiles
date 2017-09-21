@@ -25,6 +25,7 @@ alias dark='it2prof Default && export BACKGROUND=dark'
 alias c='clear'
 alias vimf='vim "+Denite file_rec"'
 alias vimn='vim +NERDTreeToggle'
+alias tree='tree -I "node_modules"'
 
 mkcd () {
     test -d "$1" || mkdir "$1" && cd "$1"
