@@ -25,6 +25,9 @@
   'ctrl-alt-j': 'platformio-ide-terminal:focus'
   'ctrl-alt-k': 'platformio-ide-terminal:focus'
 
+  # unset annoying binding that emmet added
+  'shift-space': 'custom:space'
+
 'atom-text-editor':
     'ctrl-k': 'unset!'
 

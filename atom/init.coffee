@@ -16,6 +16,10 @@ atom.commands.add 'atom-text-editor', 'custom:save-and-quit', ->
     atom.workspace.saveActivePaneItem()
     atom.workspace.closeActivePaneItemOrEmptyPaneOrWindow()
 
+# add command for pressing spacebar so I can add Shift - Space keybinding
+atom.commands.add 'atom-text-editor', 'custom:space', () ->
+    editor = atom.workspace.getActiveTextEditor()
+    editor.insertText(' ')
 
 # General service consumer function, used for extending VMP
 consumeService = (packageName, providerName, fn) ->
