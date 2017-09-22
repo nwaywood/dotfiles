@@ -183,6 +183,12 @@
     # ignore all leader key bindings in this mode
     'space': 'native!'
 
+# platformio-ide-terminal
+# =======================
+'.platformio-ide-terminal':
+    # ignore all leader key bindings in this mode
+    'space': 'native!'
+
 # autocomplete-plus
 # =================
 'atom-text-editor.autocomplete-active':
