@@ -20,6 +20,9 @@
     # https://github.com/t9md/atom-vim-mode-plus/issues/526#issuecomment-262701696
     'ctrl-g': 'core:cancel'
 
+    'space e': 'tree-view:toggle'
+    'space f': 'fuzzy-finder:toggle-file-finder'
+
 'atom-text-editor:not([mini])':
   # platformio-ide-terminal navigation keybindings
   'ctrl-alt-j': 'platformio-ide-terminal:focus'
@@ -38,7 +41,7 @@
 # insert mode bindings
 'atom-text-editor.vim-mode-plus.insert-mode':
     'j k': 'vim-mode-plus:activate-normal-mode'
-    # ignore all leader key bindings in insert-mode
+    # ignore all leader key bindings in this mode
     'space': 'native!'
 
 # normal mode bindings
@@ -69,11 +72,6 @@
 
 # not insert mode bindings (normal and visual)
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
-    # bindings duplicated in .tree-view and vim-mode-plus:not(.insert-mode)
-    # so they are not active in `/` container, `file-finder` container etc
-    'space e': 'tree-view:toggle'
-    'space f': 'fuzzy-finder:toggle-file-finder'
-
     # vim-like window navigation for pane and panels
     'ctrl-j': 'focus-pane-or-panel:focus-below'
     'ctrl-k': 'focus-pane-or-panel:focus-above'
@@ -161,6 +159,12 @@
      # Danger: apply change on narrow-editor to real file by `cmd-s`.
      'cmd-s': 'narrow-ui:update-real-file'
 
+# vim-mode-plus search container
+# ==============================
+'.vim-mode-plus-search-container':
+    # ignore all leader key bindings in this mode
+    'space': 'native!'
+
 # fuzzy-finder
 # ============
 '.fuzzy-finder':
@@ -169,6 +173,17 @@
     'ctrl-j': 'core:move-down'
     'ctrl-k': 'core:move-up'
     'ctrl-g': 'core:cancel'
+    # ignore all leader key bindings in this mode
+    'space': 'native!'
+
+# symbols-view
+# ============
+'.symbols-view':
+    'ctrl-j': 'core:move-down'
+    'ctrl-k': 'core:move-up'
+    'ctrl-g': 'core:cancel'
+    # ignore all leader key bindings in this mode
+    'space': 'native!'
 
 # project-manager
 # ===============
@@ -176,6 +191,8 @@
     'ctrl-j': 'core:move-down'
     'ctrl-k': 'core:move-up'
     'ctrl-g': 'core:cancel'
+    # ignore all leader key bindings in this mode
+    'space': 'native!'
 
 # autocomplete-plus
 # =================
@@ -190,6 +207,8 @@
     'ctrl-j': 'core:move-down'
     'ctrl-k': 'core:move-up'
     'ctrl-g': 'core:cancel'
+    # ignore all leader key bindings in this mode
+    'space': 'native!'
 
 # emmet
 # =====
@@ -204,10 +223,6 @@
     # focus-pane-or-panel navigation
     'ctrl-h': 'focus-pane-or-panel:focus-on-left'
     'ctrl-l': 'focus-pane-or-panel:focus-on-right'
-    # bindings duplicated in .tree-view and vim-mode-plus:not(.insert-mode)
-    # so they are not active in `/` container, `file-finder` container etc
-    'space e': 'tree-view:toggle'
-    'space f': 'fuzzy-finder:toggle-file-finder'
 
     'v': 'tree-view:open-selected-entry-right'
     's': 'tree-view:open-selected-entry-down'
@@ -223,8 +238,12 @@
 '.platform-darwin .find-and-replace atom-text-editor':
   'ctrl-j': 'focus-pane-or-panel:focus-below'
   'ctrl-k': 'focus-pane-or-panel:focus-above'
+  # ignore all leader key bindings in this mode
+  'space': 'native!'
 
 # focus-pane-or-panel navigation for cmd-shift-f panel
 '.platform-darwin .project-find atom-text-editor':
   'ctrl-j': 'focus-pane-or-panel:focus-below'
   'ctrl-k': 'focus-pane-or-panel:focus-above'
+  # ignore all leader key bindings in this mode
+  'space': 'native!'
