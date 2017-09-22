@@ -1,17 +1,6 @@
-# Your keymap
-#
-# Atom keymaps work similarly to stylesheets. Just as stylesheets use selectors
-# to apply styles to elements, Atom keymaps use selectors to associate
-# keystrokes with events in specific contexts.
-#
-# You can create a new keybinding in this file by typing "key" and then hitting
-# tab.
-#
-#
-# You can find more information about keymaps in this guide:
-# * http://flight-manual.atom.io/behind-atom/sections/keymaps-in-depth/
 
 # global key bindings
+# ===================
 'atom-workspace:not([mini])':
     # vim jumplist emulation (cursor-history plugin)
     'ctrl-i':     'cursor-history:next'
@@ -233,6 +222,9 @@
     'O': 'tree-view:recursive-expand-directory'
     'x': 'tree-view:collapse-directory'
     'X': 'tree-view:recursive-collapse-directory'
+
+# misc
+# ====
 
 # focus-pane-or-panel navigation for cmd-f panel
 '.platform-darwin .find-and-replace atom-text-editor':
