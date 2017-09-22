@@ -130,8 +130,7 @@
     ignoreCaseForSearch: true
     incrementalSearch: true
     keymapPToPutWithAutoIndent: true
-    smoothScrollOnFullScrollMotion: true
-    smoothScrollOnHalfScrollMotion: true
+    maxFoldableIndentLevel: 0
     smoothScrollOnHalfScrollMotionDuration: 250
     statusBarModeStringStyle: "long"
     useClipboardAsDefaultRegister: true
