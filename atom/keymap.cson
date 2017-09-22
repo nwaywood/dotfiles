@@ -25,7 +25,7 @@
   'ctrl-alt-j': 'platformio-ide-terminal:focus'
   'ctrl-alt-k': 'platformio-ide-terminal:focus'
 
-  # unset annoying binding that emmet added
+  # enable pressing space when writing in CAPS
   'shift-space': 'custom:space'
 
 'atom-text-editor':
