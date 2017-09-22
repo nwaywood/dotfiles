@@ -55,7 +55,14 @@
     panelInitialVisible: false
   "go-plus":
     goPath: "/Users/nick/code"
+    panel:
+      displayMode: "closed"
+      focusOnFailure: false
     panelDisplayMode: "closed"
+    test:
+      runTestsOnSave: false
+      runTestsWithCoverage: false
+      runTestsWithShortFlag: false
   gofmt:
     formatTool: "gofmt"
   "gometalinter-linter": {}
