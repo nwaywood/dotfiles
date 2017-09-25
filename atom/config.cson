@@ -87,6 +87,7 @@
   narrow:
     Scan:
       directionToOpen: "down"
+    SelectFiles: {}
     Symbols:
       directionToOpen: "down"
   "ocaml-merlin": {}

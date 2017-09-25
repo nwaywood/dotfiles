@@ -120,15 +120,16 @@
     # narrow
     # ======
     # search in project (ag)
-    'space s': 'narrow:search'
-    'space S': 'narrow:search-by-current-word'
+    'space a': 'narrow:search'
+    'space A': 'narrow:search-by-current-word'
     # search lines in buffer
     'space l': 'narrow:scan'
     'space L': 'narrow:scan-by-current-word'
     # goto symbol in current file
-    'g s': 'narrow:symbols'
+    'space s': 'narrow:symbols'
+    'space S': 'narrow:project-symbols'
     # Override symbols-view:toggle-file-symbols keybinding
-    'cmd-r': 'narrow:symbols'
+    # 'cmd-r': 'narrow:symbols'
 
 'atom-text-editor.vim-mode-plus.operator-pending-mode.toggle-line-comments-pending':
   'c': 'vim-mode-plus:toggle-line-comments'
