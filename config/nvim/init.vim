@@ -131,6 +131,7 @@ set mouse+=a " lets mouse resize vim windows
 if !has('nvim')
 	set ttymouse=xterm2 " lets mouse resize vim windows
 endif
+set linebreak " don't linebreak midword http://vimcasts.org/episodes/soft-wrapping-text/
 set noerrorbells "no beeps in vim
 set hidden " This allows buffers to be hidden if you've modified a buffer
 set showcmd   " show me what im typing
