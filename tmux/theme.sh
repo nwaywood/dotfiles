@@ -31,7 +31,7 @@ set-option -g status-attr default
 # default window title colors
 set-window-option -g window-status-fg $tm_color_inactive
 set-window-option -g window-status-bg default
-set -g window-status-format "#I #W"
+set -g window-status-format "#I #{?window_zoomed_flag,(,}#W#{?window_zoomed_flag,),}"
 
 # active window title colors
 set-window-option -g window-status-current-fg $tm_color_active
