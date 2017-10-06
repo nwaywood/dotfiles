@@ -52,8 +52,8 @@
     # make Y work like C and D
     'Y': 'vim-mode-plus:yank-to-last-character-of-line'
 
-    # clear highlighted search
-    'space /': 'vim-mode-plus:clear-highlight-search'
+    # toggle highlighted search
+    'space /': 'vim-mode-plus:toggle-highlight-search'
 
 # not insert mode bindings (normal and visual)
 'atom-text-editor.vim-mode-plus:not(.insert-mode)[data-grammar="source go"]':

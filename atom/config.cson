@@ -132,6 +132,7 @@
     hideIgnoredNames: true
   "vim-mode-plus":
     clearMultipleCursorsOnEscapeInsertMode: true
+    highlightSearch: false
     highlightSearchExcludeScopes: [
       "narrow"
     ]
