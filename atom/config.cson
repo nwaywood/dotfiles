@@ -43,6 +43,7 @@
     fontSize: 15
     invisibles: {}
     preferredLineLength: 120
+    softWrap: true
     tabLength: 4
     tabType: "soft"
   "exception-reporting":
