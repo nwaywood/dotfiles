@@ -22,28 +22,20 @@ atom.commands.add 'atom-text-editor', 'custom:space', () ->
     editor.insertText(' ')
 
 # General service consumer function, used for extending VMP
-consumeService = (packageName, providerName, fn) ->
+consumeService = (packageName, functionName, fn) ->
+  consume = (pack) -> fn(pack.mainModule[functionName]())
+
   if atom.packages.isPackageActive(packageName)
-    pack = atom.packages.getActivePackage(packageName)
-    fn(pack.mainModule[providerName]())
+    consume(atom.packages.getActivePackage(packageName))
   else
     disposable = atom.packages.onDidActivatePackage (pack) ->
       if pack.name is packageName
         disposable.dispose()
-        fn(pack.mainModule[providerName]())
+        consume(pack)
 
+# load vmp commands from js file
 consumeService 'vim-mode-plus', 'provideVimModePlus', (service) ->
-  {Base} = service
-
-  ScrollUp = Base.getClass('ScrollUp')
-  ScrollDown = Base.getClass('ScrollDown')
-
-  class ScrollThreeLinesUp extends ScrollUp
-    @commandPrefix: 'vim-mode-plus-user'
-    @registerCommand()
-    defaultCount: 3
-
-  class ScrollThreeLinesDown extends ScrollDown
-    @commandPrefix: 'vim-mode-plus-user'
-    @registerCommand()
-    defaultCount: 3
+  commands = require('./load-vmp-commands')(service)
+  for name, klass of commands
+    klass.commandPrefix = "vim-mode-plus-user"
+    klass.registerCommand()
