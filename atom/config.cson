@@ -58,6 +58,10 @@
   "go-debug":
     panelInitialVisible: false
   "go-plus":
+    disabledBundledPackages: [
+      "hyperclick"
+      "go-debug"
+    ]
     goPath: "/Users/nick/code"
     panel:
       displayMode: "closed"
