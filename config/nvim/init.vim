@@ -511,7 +511,8 @@ augroup END
 " ===========
 
 nnoremap <leader>l :Denite line<cr>
-nnoremap <leader>s :Denite grep<cr>
+nnoremap <leader>a :Denite grep<cr>
+nnoremap <leader>s :Denite outline<cr>
 " nnoremap <leader>c :Denite file_rec<cr>
 " nnoremap <leader>c :Denite file_rec -reversed -winheight=10 -auto-resize<cr>
 
