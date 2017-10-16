@@ -44,6 +44,8 @@ brew install ctags-exuberant
 brew install gotags
 
 # gif creation app
+# used by t9md - https://www.cockos.com/licecap/
+# https://giphy.com/apps/giphycapture
 # brew cask install licecap
 
 # show key presses for demos/talks
