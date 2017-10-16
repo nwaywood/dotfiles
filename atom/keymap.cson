@@ -33,6 +33,8 @@
     # ignore all leader key bindings in this mode
     'space': 'native!'
 
+    'ctrl-e': 'emmet:expand-abbreviation'
+
 # normal mode bindings
 'atom-text-editor.vim-mode-plus.normal-mode':
     'space w': 'core:save'

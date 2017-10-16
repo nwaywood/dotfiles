@@ -34,6 +34,7 @@
     packagesWithKeymapsDisabled: [
       "goto-definition"
       "term3"
+      "emmet"
     ]
     projectHome: "/Users/nick/code"
     telemetryConsent: "no"
@@ -44,7 +45,9 @@
     fontSize: 15
     invisibles: {}
     preferredLineLength: 120
+    scrollPastEnd: true
     softWrap: true
+    softWrapAtPreferredLineLength: true
     tabLength: 4
     tabType: "soft"
   "exception-reporting":
@@ -92,6 +95,7 @@
     SelectFiles: {}
     Symbols:
       directionToOpen: "down"
+    notifiedVimModePlusSpecificDefaultKeymap: true
   "ocaml-merlin": {}
   "platformio-ide-terminal":
     ansiColors:
