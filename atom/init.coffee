@@ -21,6 +21,15 @@ atom.commands.add 'atom-text-editor', 'custom:space', () ->
     editor = atom.workspace.getActiveTextEditor()
     editor.insertText(' ')
 
+# Merge panes (excluding docks/panels)
+# https://github.com/atom/atom/issues/380
+atom.commands.add 'atom-workspace', 'custom:merge-panes', ->
+  aPanes = atom.workspace.getCenter().getPanes()
+  oFirstPane = aPanes.shift()
+  for oPane in aPanes
+    for oItem in oPane.getItems()
+      oPane.moveItemToPane oItem, oFirstPane
+
 # General service consumer function, used for extending VMP
 consumeService = (packageName, functionName, fn) ->
   consume = (pack) -> fn(pack.mainModule[functionName]())

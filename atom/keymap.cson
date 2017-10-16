@@ -82,7 +82,7 @@
     'ctrl-w v': 'pane:split-right-moving-current-tab'
     'ctrl-w s': 'pane:split-down-moving-current-tab'
     # merge all panes together again
-    'ctrl-w m': 'pane:merge-all-panes'
+    'ctrl-w m': 'custom:merge-panes'
 
     # fix j and k to include soft wrapping
     'j': 'vim-mode-plus:move-down-screen'
@@ -118,6 +118,9 @@
 
     # Go to definition keybinding
     'g d': 'goto-definition:go'
+
+    # Replicate NERDTree bindings
+    'space n': 'tree-view:reveal-active-file'
 
     # narrow
     # ======
