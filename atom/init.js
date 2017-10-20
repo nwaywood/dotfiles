@@ -18,7 +18,7 @@ atom.commands.add("atom-text-editor", "custom:space", () => {
   editor.insertText(" ")
 })
 
-atom.commands.add("atom-workspace", "custom:merge-panes", async () => {
+atom.commands.add("atom-workspace", "custom:merge-panes", () => {
   const panes = atom.workspace.getCenter().getPanes()
   const firstPane = panes.shift()
 
@@ -26,17 +26,28 @@ atom.commands.add("atom-workspace", "custom:merge-panes", async () => {
   for (pane of panes) {
     for (item of pane.getItems()) {
       // if item is already in first pane, delete it, otherwise move it to first pane
-      for (firstPaneItem of firstPane.getItems()) {
+      if (firstPane.getItems().find(findItemInPane(item))) {
+        pane.destroyItem(item)
+      } else {
         pane.moveItemToPane(item, firstPane)
-        // if (firstPaneItem.getPath() === item.getPath()) {
-        //   await pane.destroyItem(item)
-        // } else {
-        //   pane.moveItemToPane(item, firstPane)
-        // }
       }
     }
   }
 })
+
+function findItemInPane(nonFirstPaneItem) {
+  return function(firstPaneItem) {
+    // check that both items are standard editor items (e.g. not SettingsView)
+    if (
+      Object.getPrototypeOf(firstPaneItem).constructor.name === "TextEditor" &&
+      Object.getPrototypeOf(nonFirstPaneItem).constructor.name === "TextEditor"
+    ) {
+      return firstPaneItem.getPath() === nonFirstPaneItem.getPath()
+    } else {
+      return firstPaneItem.uri === nonFirstPaneItem.uri
+    }
+  }
+}
 
 // vim-mode-plus commands
 // ======================
