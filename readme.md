@@ -57,7 +57,3 @@ Tmux plugins are managed with [tpm](https://github.com/tmux-plugins/tpm). To ins
 
 from within tmux. This installs the `tmux-resurrect` plugin which lets tmux sessions/windows/panes be persisted across OS reboots. `prefix - ^s` to save the tmux environment and `prefix - ^r` to restore the tmux environent.
 
-## TODO:
-
-- Add `/atom/*` files to `link.sh` script
-- Port from oh-my-zsh to zplug
