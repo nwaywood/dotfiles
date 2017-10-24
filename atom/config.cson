@@ -151,7 +151,6 @@
     maxFoldableIndentLevel: 0
     notifiedCoffeeScriptNoLongerSupportedToExtendVMP: true
     smoothScrollOnHalfScrollMotionDuration: 250
-    statusBarModeStringStyle: "long"
     useClipboardAsDefaultRegister: true
     useSmartcaseForSearch: true
   welcome:
