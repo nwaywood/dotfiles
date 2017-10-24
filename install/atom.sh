@@ -12,6 +12,7 @@ apm install focus-pane-or-panel
 apm install pain-split
 apm install import-sf-mono
 apm install atom-spotify2
+apm install autocomplete-paths
 
 # git
 apm install git-blame
@@ -24,7 +25,6 @@ apm install emmet
 # vim emulation
 apm install relative-numbers
 apm install vim-mode-plus
-# apm install vim-mode-plus-ex-mode
 apm install ex-mode
 apm install cursor-history
 # Commenting these out for now since they are hella buggy
@@ -32,6 +32,7 @@ apm install cursor-history
 # apm install atom-keyboard-macros-vim
 apm install atom-vim-like-tab
 apm install narrow
+apm install focus-pane-or-panel
 
 # language specific
 
@@ -39,6 +40,7 @@ apm install language-elm
 apm install language-haskell
 apm install language-viml
 apm install language-babel
+apm install language-docker
 apm install atom-ternjs
 apm install prettier-atom
 
