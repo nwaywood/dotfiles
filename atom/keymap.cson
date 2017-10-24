@@ -122,6 +122,19 @@
     # Replicate NERDTree bindings
     'space n': 'tree-view:reveal-active-file'
 
+    # move tabs around current pane
+    'g ]': 'pane:move-item-right'
+    'g [': 'pane:move-item-left'
+    'g 1': 'custom:move-active-item-to-index-1'
+    'g 2': 'custom:move-active-item-to-index-2'
+    'g 3': 'custom:move-active-item-to-index-3'
+    'g 4': 'custom:move-active-item-to-index-4'
+    'g 5': 'custom:move-active-item-to-index-5'
+    'g 6': 'custom:move-active-item-to-index-6'
+    'g 7': 'custom:move-active-item-to-index-7'
+    'g 8': 'custom:move-active-item-to-index-8'
+    'g 9': 'custom:move-active-item-to-index-9'
+
     # narrow
     # ======
     # search in project (ag)

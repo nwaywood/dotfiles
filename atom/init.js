@@ -49,6 +49,46 @@ function findItemInPane(nonFirstPaneItem) {
   }
 }
 
+// Custom commands to move active item to specified index
+atom.commands.add("atom-workspace", {
+  "custom:move-active-item-to-index-1": () => {
+    const activePane = atom.workspace.getActivePane()
+    activePane.moveItem(activePane.getActiveItem(), 0)
+  },
+  "custom:move-active-item-to-index-2": () => {
+    const activePane = atom.workspace.getActivePane()
+    activePane.moveItem(activePane.getActiveItem(), 1)
+  },
+  "custom:move-active-item-to-index-3": () => {
+    const activePane = atom.workspace.getActivePane()
+    activePane.moveItem(activePane.getActiveItem(), 2)
+  },
+  "custom:move-active-item-to-index-4": () => {
+    const activePane = atom.workspace.getActivePane()
+    activePane.moveItem(activePane.getActiveItem(), 3)
+  },
+  "custom:move-active-item-to-index-5": () => {
+    const activePane = atom.workspace.getActivePane()
+    activePane.moveItem(activePane.getActiveItem(), 4)
+  },
+  "custom:move-active-item-to-index-6": () => {
+    const activePane = atom.workspace.getActivePane()
+    activePane.moveItem(activePane.getActiveItem(), 5)
+  },
+  "custom:move-active-item-to-index-7": () => {
+    const activePane = atom.workspace.getActivePane()
+    activePane.moveItem(activePane.getActiveItem(), 6)
+  },
+  "custom:move-active-item-to-index-8": () => {
+    const activePane = atom.workspace.getActivePane()
+    activePane.moveItem(activePane.getActiveItem(), 7)
+  },
+  "custom:move-active-item-to-index-9": () => {
+    const activePane = atom.workspace.getActivePane()
+    activePane.moveItem(activePane.getActiveItem(), 8)
+  }
+})
+
 // vim-mode-plus commands
 // ======================
 
