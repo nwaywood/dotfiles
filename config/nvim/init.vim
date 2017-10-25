@@ -219,12 +219,6 @@ nnoremap <leader>q :q<cr>
 " quick force quit
 nnoremap <leader>1 :q!<cr>
 
-" disable arrow keys until I stopped being a noob
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
 " toggle relative/absolute line numbers
 nnoremap <leader>. :call NumberToggle()<cr>
 
