@@ -93,31 +93,31 @@ atom.commands.add("atom-workspace", {
 // ======================
 
 // General service consumer function, used for extending VMP
-function consumeService(packageName, functionName, fn) {
-  const consume = pack => fn(pack.mainModule[functionName]())
-
-  if (atom.packages.isPackageActive(packageName)) {
-    consume(atom.packages.getActivePackage(packageName))
-  } else {
-    const disposable = atom.packages.onDidActivatePackage(pack => {
-      if (pack.name === packageName) {
-        disposable.dispose()
-        consume(pack)
-      }
-    })
-  }
-}
-
-consumeService("vim-mode-plus", "provideVimModePlus", ({ Base }) => {
-  class ScrollThreeLinesUp extends Base.getClass("ScrollUp") {
-    static commandPrefix = "vim-mode-plus-user"
-    defaultCount = 3
-  }
-  ScrollThreeLinesUp.registerCommand()
-
-  class ScrollThreeLinesDown extends Base.getClass("ScrollDown") {
-    static commandPrefix = "vim-mode-plus-user"
-    defaultCount = 3
-  }
-  ScrollThreeLinesDown.registerCommand()
-})
+// function consumeService(packageName, functionName, fn) {
+//   const consume = pack => fn(pack.mainModule[functionName]())
+//
+//   if (atom.packages.isPackageActive(packageName)) {
+//     consume(atom.packages.getActivePackage(packageName))
+//   } else {
+//     const disposable = atom.packages.onDidActivatePackage(pack => {
+//       if (pack.name === packageName) {
+//         disposable.dispose()
+//         consume(pack)
+//       }
+//     })
+//   }
+// }
+//
+// consumeService("vim-mode-plus", "provideVimModePlus", ({ Base }) => {
+//   class ScrollThreeLinesUp extends Base.getClass("ScrollUp") {
+//     static commandPrefix = "vim-mode-plus-user"
+//     defaultCount = 3
+//   }
+//   ScrollThreeLinesUp.registerCommand()
+//
+//   class ScrollThreeLinesDown extends Base.getClass("ScrollDown") {
+//     static commandPrefix = "vim-mode-plus-user"
+//     defaultCount = 3
+//   }
+//   ScrollThreeLinesDown.registerCommand()
+// })

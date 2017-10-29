@@ -142,6 +142,7 @@
   "vim-mode-plus":
     clearMultipleCursorsOnEscapeInsertMode: true
     highlightSearch: false
+    defaultScrollRowsOnMiniScroll: 3
     highlightSearchExcludeScopes: [
       "narrow"
     ]

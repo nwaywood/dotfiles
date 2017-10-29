@@ -115,10 +115,6 @@
     # https://github.com/t9md/atom-vim-mode-plus/wiki/TIPS#delete-without-saving-to-register
     '\\': 'vim-mode-plus:set-register-name-to-_'
 
-    # faster vertical viewport scrolling
-    'ctrl-e': 'vim-mode-plus-user:scroll-three-lines-down'
-    'ctrl-y': 'vim-mode-plus-user:scroll-three-lines-up'
-
     # Go to definition keybinding
     'g d': 'goto-definition:go'
 
