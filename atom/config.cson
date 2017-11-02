@@ -50,6 +50,9 @@
     softWrapAtPreferredLineLength: true
     tabLength: 4
     tabType: "soft"
+  "ex-mode":
+    splitbelow: true
+    splitright: true
   "exception-reporting":
     userId: "55402b61-6e86-16de-5aef-c3ef9fe96cea"
   "git-blame":
