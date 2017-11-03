@@ -11,6 +11,8 @@
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "file-icons",
     "editor.minimap.enabled": false,
+    // hide the project section in the treeview
+    "projectManager.treeview.visible": false,
 
     // Reason
     // ------
