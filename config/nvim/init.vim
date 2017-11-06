@@ -53,6 +53,8 @@ Plug 'eagletmt/neco-ghc', { 'for': 'haskell' } " haskell autocompletion integrat
 
 Plug 'elmcast/elm-vim', { 'for': 'elm' } " elm support
 
+Plug 'reasonml-editor/vim-reason', { 'for': 'reason' } " reason support
+
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript'] } " JSX support
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
