@@ -16,6 +16,10 @@
     surpressDirectoryArgument: false
   "atom-ternjs":
     inlineFnCompletionDocumentation: true
+  "autocomplete-paths":
+    ignoredPatterns: [
+      "**/node_modules"
+    ]
   "autocomplete-plus":
     confirmCompletion: "enter"
     suppressActivationForEditorClasses: [
