@@ -1,88 +1,97 @@
-// Place your key bindings in this file to overwrite the defaults
 [
-    // toggle sidebar when editor is not focused
-    // (vim plugin handles editor focused case)
-    {
-        "key": "space e",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "!editorTextFocus"
-    },
-    // create vertical split
-    {
-        "key": "ctrl+v",
-        "command": "workbench.action.splitEditor"
-    },
-    // vim commands in quick open widget
-    {
-        "key": "ctrl+j",
-        "command": "workbench.action.quickOpenSelectNext",
-        "when": "inQuickOpen"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "workbench.action.quickOpenSelectPrevious",
-        "when": "inQuickOpen"
-    },
-    { 
-        "key": "ctrl+g",                
-        "command": "workbench.action.closeQuickOpen",
-        "when": "inQuickOpen" 
-    },
-    // vim navigation across tabs
-    {
-        "key": "ctrl+h",
-        "command": "workbench.action.focusPreviousGroup",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+l",
-        "command": "workbench.action.focusNextGroup",
-        "when": "editorTextFocus"
-    },
-    // project manager shortcuts
-    {
-        "key": "ctrl+cmd+p",
-        "command": "projectManager.listProjects"
-    },
-    {
-        "key": "alt+cmd+p",
-        "command": "-projectManager.listProjects"
-    },
-    // make tab navigation work properly
-    { 
-        "key": "cmd+1",
-        "command": "workbench.action.openEditorAtIndex1" 
-    },
-    { 
-        "key": "cmd+2",                  
-        "command": "workbench.action.openEditorAtIndex2" 
-    },
-    { 
-        "key": "cmd+3",                  
-        "command": "workbench.action.openEditorAtIndex3" 
-    },
-    { 
-        "key": "cmd+4",                  
-        "command": "workbench.action.openEditorAtIndex4" 
-    },
-    { 
-        "key": "cmd+5",                  
-        "command": "workbench.action.openEditorAtIndex5" 
-    },
-    { 
-        "key": "cmd+6",                  
-        "command": "workbench.action.openEditorAtIndex6" 
-    },
-    { 
-        "key": "cmd+7",                  
-        "command": "workbench.action.openEditorAtIndex7" 
-    },
-    { 
-        "key": "cmd+8",                  
-        "command": "workbench.action.openEditorAtIndex8" 
-    },
-    { 
-        "key": "cmd+9",                  
-        "command": "workbench.action.openEditorAtIndex9" 
-    }
+  // Place your key bindings in this file to overwrite the defaults
+  // toggle sidebar when editor is not focused
+  // (vim plugin handles editor focused case)
+  {
+    "key": "space e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "!editorTextFocus && !terminalFocus"
+  },
+  // focus terminal like my Atom binding, unfortunately doesn't defocus
+  {
+    "key": "ctrl+alt+j",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+alt+k",
+    "command": "workbench.action.terminal.focus"
+  },
+  // create vertical split
+  {
+    "key": "ctrl+v",
+    "command": "workbench.action.splitEditor"
+  },
+  // vim commands in quick open widget
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "workbench.action.closeQuickOpen",
+    "when": "inQuickOpen"
+  },
+  // vim navigation across tabs
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusPreviousGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusNextGroup",
+    "when": "editorTextFocus"
+  },
+  // project manager shortcuts
+  {
+    "key": "ctrl+cmd+p",
+    "command": "projectManager.listProjects"
+  },
+  {
+    "key": "alt+cmd+p",
+    "command": "-projectManager.listProjects"
+  },
+  // make tab navigation work properly
+  {
+    "key": "cmd+1",
+    "command": "workbench.action.openEditorAtIndex1"
+  },
+  {
+    "key": "cmd+2",
+    "command": "workbench.action.openEditorAtIndex2"
+  },
+  {
+    "key": "cmd+3",
+    "command": "workbench.action.openEditorAtIndex3"
+  },
+  {
+    "key": "cmd+4",
+    "command": "workbench.action.openEditorAtIndex4"
+  },
+  {
+    "key": "cmd+5",
+    "command": "workbench.action.openEditorAtIndex5"
+  },
+  {
+    "key": "cmd+6",
+    "command": "workbench.action.openEditorAtIndex6"
+  },
+  {
+    "key": "cmd+7",
+    "command": "workbench.action.openEditorAtIndex7"
+  },
+  {
+    "key": "cmd+8",
+    "command": "workbench.action.openEditorAtIndex8"
+  },
+  {
+    "key": "cmd+9",
+    "command": "workbench.action.openEditorAtIndex9"
+  }
 ]
