@@ -14,6 +14,10 @@
   "workbench.iconTheme": "file-icons",
   "editor.minimap.enabled": false,
   "editor.formatOnSave": true,
+  // Controls if file decorations should use badges.
+  "explorer.decorations.badges": false,
+  // Show Errors & Warnings on files and folder.
+  "problems.decorations.enabled": true,
 
   // Reason
   // ------
