@@ -23,6 +23,7 @@ alias dark='it2prof Default && export BACKGROUND=dark'
 
 # misc
 alias c='clear'
+alias ccat='pygmentize -g'
 alias vimf='vim "+Denite file_rec"'
 alias vimn='vim +NERDTreeToggle'
 alias tree='tree -I "node_modules"'
