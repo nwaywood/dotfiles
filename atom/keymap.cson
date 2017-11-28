@@ -231,8 +231,10 @@
 # =====
 # TODO: fix so that snippets and emmet work nicely together
 # emmet support for jsx
-# 'atom-text-editor[data-grammar="source js jsx"]:not([mini])':
-#     'tab': 'emmet:expand-abbreviation-with-tab'
+'atom-text-editor[data-grammar="source js jsx"]:not([mini])':
+    'tab': 'emmet:expand-abbreviation-with-tab'
+# 'atom-text-editor[data-grammar="text html basic"]:not([mini])':
+#   'tab': 'emmet:expand-abbreviation-with-tab'
 
 # tree-view
 # =========
