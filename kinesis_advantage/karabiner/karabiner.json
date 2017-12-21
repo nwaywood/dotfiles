@@ -2,15 +2,14 @@
   "title": "My custom karibiner rules for advantage 2",
   "rules": [
     {
-      "description": "Post escape if caps is pressed alone, left_ctrl otherwise",
+      "description":
+        "Post escape if caps is pressed alone, left_ctrl otherwise",
       "manipulators": [
         {
           "from": {
             "key_code": "caps_lock",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -28,29 +27,50 @@
       ]
     },
     {
-      "description": "Change end key to cmd + ctrl when held, and to escape when pressed",
+      "description":
+        "Change end key to cmd + ctrl when held, and to escape when pressed",
       "manipulators": [
         {
           "type": "basic",
           "from": {
             "key_code": "end",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
             {
               "key_code": "left_control",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "to_if_alone": [
             {
               "key_code": "escape"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Change the left arrow to command when held",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_command",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_command"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "left_arrow"
             }
           ]
         }

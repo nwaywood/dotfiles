@@ -1,0 +1,27 @@
+* MEDIA CONTROLS
+[F11]>[play]
+[F10]>[prev]
+[F12]>[next]
+[scroll]>[vol-]
+[pause]>[vol+]
+[prtscr]>[mute]
+* ARROW KEYS (including cmd key hack with karibiner)
+[obrack]>[up]
+[up]>[rwin]
+[cbrack]>[right]
+* REMAP BRACKETS
+[right]>[cbrack]
+[left]>[obrack]
+* THUMB CLUSTER
+[kp=]>[kp=mac]
+[lctrl]>[lwin]
+[kp-lctrl]>[kp-lwin]
+[delete]>[kpshift]
+[kp-delete]>[kpshift]
+[rctrl]>[lwin]
+[kp-rctrl]>[kp-rwin]
+[rwin]>[rctrl]
+[kp-rwin]>[kp-rctrl]
+* cmd + shift + [] macros
+{rwin}{right}>{-rwin}{-lshift}{cbrack}{+lshift}{+rwin}
+{rwin}{left}>{-rwin}{-lshift}{obrack}{+lshift}{+rwin}
