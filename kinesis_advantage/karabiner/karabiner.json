@@ -1,80 +1,119 @@
 {
-  "title": "My custom karibiner rules for advantage 2",
-  "rules": [
-    {
-      "description":
-        "Post escape if caps is pressed alone, left_ctrl otherwise",
-      "manipulators": [
+    "title": "My custom karibiner rules for advantage 2",
+    "rules": [
         {
-          "from": {
-            "key_code": "caps_lock",
-            "modifiers": {
-              "optional": ["any"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "left_control"
-            }
-          ],
-          "to_if_alone": [
-            {
-              "key_code": "escape"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description":
-        "Change end key to cmd + ctrl when held, and to escape when pressed",
-      "manipulators": [
+            "description":
+                "Post escape if caps is pressed alone, left_ctrl otherwise",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "caps_lock",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_control"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "escape"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "type": "basic",
-          "from": {
-            "key_code": "end",
-            "modifiers": {
-              "optional": ["any"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "left_control",
-              "modifiers": ["left_command"]
-            }
-          ],
-          "to_if_alone": [
-            {
-              "key_code": "escape"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "Change the left arrow to command when held",
-      "manipulators": [
+            "description":
+                "Change end key to cmd + ctrl when held, and to escape when pressed",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "end",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_control",
+                            "modifiers": ["left_command"]
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "escape"
+                        }
+                    ]
+                }
+            ]
+        },
         {
-          "type": "basic",
-          "from": {
-            "key_code": "right_command",
-            "modifiers": {
-              "optional": ["any"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "right_command"
-            }
-          ],
-          "to_if_alone": [
-            {
-              "key_code": "left_arrow"
-            }
-          ]
+            "description": "Change the left arrow to command when held",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "right_command",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_command"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "left_arrow"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "Better Shifting: Parentheses on shift keys",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "left_shift"
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_shift"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "9",
+                            "modifiers": ["left_shift"]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "right_shift"
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_shift"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "0",
+                            "modifiers": ["right_shift"]
+                        }
+                    ]
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
