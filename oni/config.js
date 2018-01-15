@@ -36,7 +36,7 @@ module.exports = {
     "editor.fontSize": "15px",
 
     // UI customizations
-    "ui.animations.enabled": true,
+    "ui.animations.enabled": false,
     "ui.fontSmoothing": "auto",
     // Use custom Oni init.vim file for settings that can't be set from this file
     "oni.loadInitVim": "~/.oni/init.vim"
