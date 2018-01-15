@@ -214,6 +214,14 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
 
 " GUI settings {{{
 
+" onivim settings
+" ===============
+
+" fuzzy finder for onivim
+nnoremap <leader>f :call OniCommand('quickOpen.show')<cr>
+" TODO: get this close command working
+noremap <C-g> :call OniCommand('menu.close')<cr>
+
 " neovim settings
 " ===============
 " if has('nvim')

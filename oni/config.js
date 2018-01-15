@@ -3,18 +3,21 @@
 // https://github.com/onivim/oni/wiki/Configuration
 // https://github.com/onivim/oni/blob/master/browser/src/Input/KeyBindings.ts
 // https://github.com/onivim/oni/wiki/API
-const activate = (oni) => {
+const activate = oni => {
     console.log("config activated")
 
-    oni.input.bind("<c-enter>", () => console.log("Control+Enter was pressed"))
-    //
-    // Or remove the default bindings here by uncommenting the below line:
-    //
-    // oni.input.unbind("<c-p>")
+    oni.input.bind(
+        "<c-enter>",
+        () => console.log("Control+Enter was pressed"),
+        () => isNotInsertMode(oni)
+    )
+    // binding for fuzzy finder (I think this doesn't work coz oni bug)
+    // oni.input.bind("<Space-f>", "quickOpen.show", () => isNotInsertMode(oni))
 }
 
-const isNormalMode = () => editors.activeEditor.mode === "normal"
-const isInsertMode = () => editors.activeEditor.mode === "insert"
+const isNormalMode = oni => oni.editors.activeEditor.mode === "normal"
+const isInsertMode = oni => oni.editors.activeEditor.mode === "insert"
+const isNotInsertMode = oni => oni.editors.activeEditor.mode !== "insert"
 
 const deactivate = () => {
     console.log("config deactivated")
@@ -38,4 +41,3 @@ module.exports = {
     // Use custom Oni init.vim file for settings that can't be set from this file
     "oni.loadInitVim": "~/.oni/init.vim"
 }
-
