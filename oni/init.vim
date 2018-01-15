@@ -1,3 +1,12 @@
+" Plugins {{{
+call plug#begin('~/.oni/plugged')
+
+Plug 'scrooloose/nerdtree' " file explorer
+
+call plug#end()
+
+" }}}
+
 " General Setting {{{
 
 " mapleader
@@ -32,7 +41,7 @@ set magic " make searching use normal regex (grep)
 " http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
 set number relativenumber
 " TODO: WinEnter and WinLeave adds line numbers to Denite, need to exclude
-" Denite windows 
+" Denite windows
 " TODO: BufEnter and BufLeave adds line numbers to NERDTree
 " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 " autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
@@ -93,14 +102,14 @@ nnoremap <silent> <Up> :resize +5<cr>
 nnoremap <silent> <Down> :resize -5<cr>
 
 " faster window splitting
-nnoremap <C-s> :split<cr>
-nnoremap <C-v> :vsplit<cr>
+nnoremap <silent> <C-s> :split<cr>
+nnoremap <silent> <C-v> :vsplit<cr>
 
 " buffer navigation
-nnoremap <C-h> :wincmd h<cr>
-nnoremap <C-j> :wincmd j<cr>
-nnoremap <C-k> :wincmd k<cr>
-nnoremap <C-l> :wincmd l<cr>
+nnoremap <silent> <C-h> :wincmd h<cr>
+nnoremap <silent> <C-j> :wincmd j<cr>
+nnoremap <silent> <C-k> :wincmd k<cr>
+nnoremap <silent> <C-l> :wincmd l<cr>
 
 " insert empty line between brackets (hacky, need a better way to do this)
 inoremap {<CR> {<CR>}<C-o>O

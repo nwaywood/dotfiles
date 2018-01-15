@@ -4,3 +4,4 @@ settings-local.zsh
 .netrwhist
 
 config/nvim/plugged
+oni/plugged
