@@ -13,6 +13,9 @@ const activate = oni => {
     )
     // binding for fuzzy finder (I think this doesn't work coz oni bug)
     // oni.input.bind("<Space-f>", "quickOpen.show", () => isNotInsertMode(oni))
+
+    // close popups with C-g
+    oni.input.bind("<c-g>", "menu.close")
 }
 
 const isNormalMode = oni => oni.editors.activeEditor.mode === "normal"

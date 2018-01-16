@@ -220,7 +220,7 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
 " fuzzy finder for onivim
 nnoremap <leader>f :call OniCommand('quickOpen.show')<cr>
 " TODO: get this close command working
-noremap <C-g> :call OniCommand('menu.close')<cr>
+" noremap <C-g> :call OniCommand('menu.close')<cr>
 
 " neovim settings
 " ===============
