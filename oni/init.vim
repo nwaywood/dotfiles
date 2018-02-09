@@ -2,6 +2,7 @@
 call plug#begin('~/.oni/plugged')
 
 Plug 'scrooloose/nerdtree' " file explorer
+Plug 'kassio/neoterm' " Wrapper around :term
 
 call plug#end()
 
@@ -224,46 +225,40 @@ nnoremap <leader>f :call OniCommand('quickOpen.show')<cr>
 
 " neovim settings
 " ===============
-" if has('nvim')
-" 	" fix the cursor shape in insert mode
-" 	:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-" 	" https://github.com/neovim/neovim/wiki/FAQ - How can I use true colors in
-" 	" the terminal?
-" 	" set termguicolors
+if has('nvim')
+	" terminal mode
+	" -------------------------
 
-" 	" terminal mode
-" 	" -------------------------
+	" verical term split, just in case
+	nnoremap <silent> <leader>tv :vsp term://$SHELL<cr>
+	" nnoremap <silent> <leader>ts :10sp term://$SHELL<cr>
 
-" 	" verical term split, just in case
-" 	nnoremap <silent> <leader>tv :vsp term://$SHELL<cr>
-" 	" nnoremap <silent> <leader>ts :10sp term://$SHELL<cr>
+	augroup Term
+		autocmd!
+		" never show line numbers in term buffers
+		autocmd TermOpen * setlocal nonumber norelativenumber
+		autocmd BufEnter term://* setlocal nonumber norelativenumber
+		" Always start in terminal mode in term buffers
+		autocmd TermOpen * startinsert
+		autocmd BufEnter term://* startinsert
+		autocmd BufLeave term://* stopinsert
+	augroup END
 
-" 	augroup Term
-" 		autocmd!
-" 		" never show line numbers in term buffers
-" 		autocmd TermOpen * setlocal nonumber norelativenumber
-" 		autocmd BufEnter term://* setlocal nonumber norelativenumber
-" 		" Always start in terminal mode in term buffers
-" 		autocmd TermOpen * startinsert
-" 		autocmd BufEnter term://* startinsert
-" 		autocmd BufLeave term://* stopinsert
-" 	augroup END
+	" escape from terminal mode to normal mode
+	tnoremap <esc> <C-\><C-n>
 
-" 	" escape from terminal mode to normal mode
-" 	tnoremap jk <C-\><C-n>
+	" window navigation
+	tnoremap <C-h> <C-\><C-n><C-w>h
+	tnoremap <C-j> <C-\><C-n><C-w>j
+	tnoremap <C-k> <C-\><C-n><C-w>k
+	tnoremap <C-l> <C-\><C-n><C-w>l
 
-" 	" window navigation
-" 	tnoremap <C-h> <C-\><C-n><C-w>h
-" 	tnoremap <C-j> <C-\><C-n><C-w>j
-" 	tnoremap <C-k> <C-\><C-n><C-w>k
-" 	tnoremap <C-l> <C-\><C-n><C-w>l
-
-" 	" neoterm
-" 	let g:neoterm_size='12'
-" 	nnoremap <silent> <C-t> :Ttoggle<cr>
-" 	" toggle terminal from within terminal mode
-" 	tnoremap <silent> <C-t> <C-\><C-n>:Ttoggle<cr>
-" endif
+	" neoterm
+	" let g:neoterm_size='12'
+	nnoremap <silent> <C-t> :Ttoggle<cr>
+	" toggle terminal from within terminal mode
+	tnoremap <silent> <C-t> <C-\><C-n>:Ttoggle<cr>
+endif
 
 " }}}
 
