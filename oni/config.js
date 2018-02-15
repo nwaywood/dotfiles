@@ -32,6 +32,7 @@ module.exports = {
     //add custom config here, such as
 
     "ui.colorscheme": "onedark",
+    // "sidebar.enabled": false,
 
     //"oni.useDefaultConfig": true,
     //"oni.bookmarks": ["~/Documents",]
@@ -41,6 +42,8 @@ module.exports = {
     // UI customizations
     "ui.animations.enabled": false,
     "ui.fontSmoothing": "auto",
+    // https://github.com/onivim/oni/issues/1539
+    "vim.setting.list": false,
     // Use custom Oni init.vim file for settings that can't be set from this file
     "oni.loadInitVim": "~/.oni/init.vim"
 }

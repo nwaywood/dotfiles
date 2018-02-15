@@ -53,8 +53,8 @@ autocmd FocusLost,InsertEnter * set norelativenumber
 set linebreak " don't linebreak midword http://vimcasts.org/episodes/soft-wrapping-text/
 set noerrorbells "no beeps in vim
 set hidden " This allows buffers to be hidden if you've modified a buffer
-set nolist " hide hidden characters
 set showcmd   " show me what im typing
+set nolist " hide invisible characters
 set autoindent " keep the indentation on <enter>
 set noswapfile   " don't use swapfile
 set nobackup     " dont create annoying backup files
