@@ -40,10 +40,10 @@
 *
 [kp1]>[obrack]
 [kp2]>[cbrack]
-{kp4}>{-lshift}{9}{+lshift}
-{kp5}>{-lshift}{0}{+lshift}
-{kp7}>{-lshift}{obrack}{+lshift}
-{kp8}>{-lshift}{cbrack}{+lshift}
+{kp7}>{-lshift}{9}{+lshift}
+{kp8}>{-lshift}{0}{+lshift}
+{kp4}>{-lshift}{obrack}{+lshift}
+{kp5}>{-lshift}{cbrack}{+lshift}
 *
 * MISC
 *
