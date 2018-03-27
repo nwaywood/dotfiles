@@ -31,6 +31,10 @@
   "autocomplete-python":
     useKite: false
   core:
+    customFileTypes:
+      "source.gotemplate": [
+        "tmpl"
+      ]
     disabledPackages: [
       "spell-check"
       "go-plus"
