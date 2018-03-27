@@ -37,11 +37,11 @@
       ]
     disabledPackages: [
       "spell-check"
-      "go-plus"
-      "go-signature-statusbar"
-      "linter-golinter"
-      "term3"
       "language-elm"
+      "linter-hlint"
+      "git-plus"
+      "atom-terminal"
+      "atom-ternjs"
     ]
     packagesWithKeymapsDisabled: [
       "goto-definition"
@@ -123,10 +123,12 @@
     showPanel: true
   narrow:
     Scan:
-      directionToOpen: "down"
+      split: "down"
+      useAdjacentPane: "use"
     SelectFiles: {}
     Symbols:
-      directionToOpen: "down"
+      split: "down"
+      useAdjacentPane: "use"
     notifiedVimModePlusSpecificDefaultKeymap: true
   "ocaml-merlin": {}
   "platformio-ide-terminal":
