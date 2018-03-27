@@ -113,6 +113,8 @@
       "E722"
       "E501"
     ]
+  "linter-refmt":
+    refmtPath: "/usr/local/bin/refmt"
   "linter-ui-default":
     hidePanelWhenEmpty: true
     panelHeight: 69
@@ -148,6 +150,8 @@
       semi: false
     useEslint: true
   "project-manager": {}
+  "reason-refmt":
+    refmtPath: "/usr/local/bin/refmt"
   "relative-numbers":
     softWrapsCount: false
   term3:
