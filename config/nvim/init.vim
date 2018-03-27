@@ -121,7 +121,7 @@ set magic " make searching use normal regex (grep)
 " NOTE: Focus events don't work in inside tmux with neovim
 set number relativenumber
 " TODO: WinEnter and WinLeave adds line numbers to Denite, need to exclude
-" Denite windows 
+" Denite windows
 " TODO: BufEnter and BufLeave adds line numbers to NERDTree
 " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 " autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
@@ -605,7 +605,7 @@ if has('nvim')
 	augroup END
 
 	" escape from terminal mode to normal mode
-	tnoremap jk <C-\><C-n>
+	tnoremap <esc> <C-\><C-n>
 
 	" window navigation
 	tnoremap <C-h> <C-\><C-n><C-w>h
