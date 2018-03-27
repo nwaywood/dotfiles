@@ -42,6 +42,10 @@
     ]
     projectHome: "/Users/nick/code"
     telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "one-dark-lite-syntax"
+    ]
     titleBar: "hidden"
     warnOnLargeFileLimit: 2
   editor:
