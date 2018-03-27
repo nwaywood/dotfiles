@@ -8,6 +8,8 @@
     json:
       indent_size: 2
       jslint_happy: true
+    python:
+      beautify_on_save: true
   "atom-spotify2":
     displayOnLeftSide: false
     showPlayStatus: false
@@ -26,6 +28,8 @@
       "narrow"
     ]
     useCoreMovementCommands: false
+  "autocomplete-python":
+    useKite: false
   core:
     disabledPackages: [
       "spell-check"
@@ -100,6 +104,11 @@
     executablePath: "/Users/nick/code/bin/golint"
   "linter-hlint":
     hlintExecutablePath: "/Users/nick/.cabal/bin/hlint"
+  "linter-pycodestyle":
+    ignoreErrorCodes: [
+      "E722"
+      "E501"
+    ]
   "linter-ui-default":
     hidePanelWhenEmpty: true
     panelHeight: 69
