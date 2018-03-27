@@ -103,7 +103,9 @@
     subtleLinterErrors: [
       "golinter"
     ]
-  "linter-eslint": {}
+  "linter-eslint":
+    fixOnSave: true
+    lintHtmlFiles: true
   "linter-golinter":
     executablePath: "/Users/nick/code/bin/golint"
   "linter-hlint":
@@ -141,13 +143,13 @@
       theme: "one-dark"
   "prettier-atom":
     formatOnSaveOptions:
-      enabled: true
       excludedGlobs: [
         "**/*.html"
       ]
     prettierOptions:
-      parser: "flow"
       semi: false
+      tabWidth: 4
+    useEditorConfig: false
     useEslint: true
   "project-manager": {}
   "reason-refmt":
@@ -169,8 +171,8 @@
     hideIgnoredNames: true
   "vim-mode-plus":
     clearMultipleCursorsOnEscapeInsertMode: true
-    highlightSearch: false
     defaultScrollRowsOnMiniScroll: 3
+    highlightSearch: false
     highlightSearchExcludeScopes: [
       "narrow"
     ]
@@ -178,7 +180,6 @@
     incrementalSearch: true
     keymapPToPutWithAutoIndent: true
     maxFoldableIndentLevel: 0
-    notifiedCoffeeScriptNoLongerSupportedToExtendVMP: true
     smoothScrollOnHalfScrollMotionDuration: 250
     useClipboardAsDefaultRegister: true
     useSmartcaseForSearch: true
