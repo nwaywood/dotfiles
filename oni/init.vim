@@ -1,7 +1,6 @@
 " Plugins {{{
-call plug#begin('~/.oni/plugged')
+call plug#begin('~/.config/oni/plugged')
 
-Plug 'scrooloose/nerdtree' " file explorer
 Plug 'kassio/neoterm' " Wrapper around :term
 
 call plug#end()
@@ -180,36 +179,6 @@ endfunction
 
 " Plugins settings {{{
 
-" NERDTree
-" --------
-" http://www.cheatography.com/stepk/cheat-sheets/vim-nerdtree/
-
-" don't close NERDTree after a file is opened
-let g:NERDTreeQuitOnOpen=0
-" show hidden files in NERDTree
-let g:NERDTreeShowHidden=1
-" Toggle NERDTree
-nnoremap <silent> <leader>e :NERDTreeToggle<cr>
-" Find current file in NERDTree
-nnoremap <silent> <leader>n :NERDTreeFind<cr>
-" remove some files by extension
-let g:NERDTreeIgnore = ['\.js.map$', '\.pyc$']
-" Change the NERDTree window width (default=31)
-let g:NERDTreeWinSize=40
-" close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" remap C-j and C-k commands so it doesnt interfere with vim-tmux-navigator
-" plugin
-let g:NERDTreeMapJumpNextSibling='C-d'
-let g:NERDTreeMapJumpPrevSibling='C-u'
-" change window split keys to match ctrlp mappings
-let g:NERDTreeMapOpenSplit='s'
-let g:NERDTreeMapOpenVSplit='v'
-" don't override netrw (this interferes with vim-vinegar)
-let g:NERDTreeHijackNetrw=0
-" nice alignment of vim-devicons
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
 
 " }}}
 
@@ -220,8 +189,8 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
 
 " fuzzy finder for onivim
 nnoremap <leader>f :call OniCommand('quickOpen.show')<cr>
-" TODO: get this close command working
-" noremap <C-g> :call OniCommand('menu.close')<cr>
+" toggle sidebar
+nnoremap <leader>e :call OniCommand('sidebar.toggle')<cr>
 
 " neovim settings
 " ===============
