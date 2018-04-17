@@ -123,12 +123,11 @@
     showPanel: true
   narrow:
     Scan:
-      split: "down"
       useAdjacentPane: "use"
     SelectFiles: {}
     Symbols:
-      split: "down"
       useAdjacentPane: "use"
+    locationToOpen: "center"
     notifiedVimModePlusSpecificDefaultKeymap: true
   "ocaml-merlin": {}
   "platformio-ide-terminal":
