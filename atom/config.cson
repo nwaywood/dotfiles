@@ -58,7 +58,6 @@
     warnOnLargeFileLimit: 2
   editor:
     fontFamily: "SF Mono"
-    fontSize: 15
     invisibles: {}
     preferredLineLength: 120
     scrollPastEnd: true
@@ -82,6 +81,7 @@
       "go-debug"
     ]
     goPath: "/Users/nick/code"
+    lint: {}
     panel:
       displayMode: "closed"
       focusOnFailure: false
