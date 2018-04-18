@@ -66,7 +66,8 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-	'hyperterm-solarized-dark',
+	'hyper-solarized-dark',
+    // 'hyperterm-material-theme',
 	'hyper-nobold',
 	// 'hyperterm-snazzy',
 	'hyperterm-subpixel-antialiased'
