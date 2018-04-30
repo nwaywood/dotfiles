@@ -199,7 +199,7 @@ map <leader>0 :e ~/.config/nvim/init.vim<cr>
 inoremap {<CR> {<CR>}<C-o>O
 
 " toggle paste mode
-noremap <leader>p :set paste!<cr>
+" noremap <leader>p :set paste!<cr>
 
 " clear search highlighting and clear any message already displayed
 noremap <silent> <leader>/ :set hlsearch! hlsearch?<cr>
@@ -322,10 +322,14 @@ let g:ale_fixers['javascript'] = ['eslint']
 let g:NERDTreeQuitOnOpen=0
 " show hidden files in NERDTree
 let g:NERDTreeShowHidden=1
+" change vims cwd when the NERDTree root changes (e.g. when changes bookmark)
+let g:NERDTreeChDirMode=2
 " Toggle NERDTree
 nnoremap <silent> <leader>e :NERDTreeToggle<cr>
 " Find current file in NERDTree
 nnoremap <silent> <leader>n :NERDTreeFind<cr>
+" Shortcut to bring up autocomplete of NERDTree bookmarks
+cnoreabbrev b NERDTreeFromBookmark
 " remove some files by extension
 let g:NERDTreeIgnore = ['\.js.map$', '\.pyc$']
 " Change the NERDTree window width (default=31)
@@ -509,12 +513,27 @@ augroup END
 nnoremap <leader>l :Denite line<cr>
 nnoremap <leader>a :Denite grep<cr>
 nnoremap <leader>s :Denite outline<cr>
+nnoremap <leader>p :Denite menu:projects -default-action=cd<cr>
 " nnoremap <leader>c :Denite file_rec<cr>
 " nnoremap <leader>c :Denite file_rec -reversed -winheight=10 -auto-resize<cr>
 
 " highlight groups for matches
 hi DeniteHighlightChar ctermfg=4 guifg=Cyan
 hi DeniteHighlightRange ctermfg=12 ctermbg=8
+
+" add custom menu for changing projects (cwd)
+let s:menus = {}
+let s:menus.projects = {
+	\ 'description': 'projects'
+	\ }
+let s:menus.projects.directory_candidates = [
+	\ ['dotfiles', '~/.dotfiles'],
+	\ ['weave-cc-go', '~/code/src/github.ibm.com/aur-blockchain/weave-cc-go'],
+	\ ['weave-cc-js', '~/code/src/github.ibm.com/aur-blockchain/weave-cc-js'],
+	\
+
+
+call denite#custom#var('menu', 'menus', s:menus)
 
 " change default options
 call denite#custom#option('default', {
