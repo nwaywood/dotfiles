@@ -530,7 +530,7 @@ let s:menus.projects.directory_candidates = [
 	\ ['dotfiles', '~/.dotfiles'],
 	\ ['weave-cc-go', '~/code/src/github.ibm.com/aur-blockchain/weave-cc-go'],
 	\ ['weave-cc-js', '~/code/src/github.ibm.com/aur-blockchain/weave-cc-js'],
-	\
+	\ ]
 
 
 call denite#custom#var('menu', 'menus', s:menus)
