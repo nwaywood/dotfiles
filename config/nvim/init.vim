@@ -510,8 +510,8 @@ augroup END
 " Denite.nvim
 " ===========
 
-nnoremap <leader>l :Denite line<cr>
-nnoremap <leader>a :Denite grep<cr>
+nnoremap <leader>l :Denite line -auto-preview<cr>
+nnoremap <leader>a :Denite grep -auto-preview<cr>
 nnoremap <leader>s :Denite outline<cr>
 nnoremap <leader>p :Denite menu:projects -default-action=cd<cr>
 " nnoremap <leader>c :Denite file_rec<cr>
