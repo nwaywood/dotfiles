@@ -4,4 +4,5 @@ settings-local.zsh
 .netrwhist
 
 config/nvim/plugged
+config/nvim/projects.vim
 oni/plugged

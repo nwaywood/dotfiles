@@ -534,12 +534,16 @@ let s:menus = {}
 let s:menus.projects = {
 	\ 'description': 'projects'
 	\ }
-let s:menus.projects.directory_candidates = [
-	\ ['dotfiles', '~/.dotfiles'],
-	\ ['weave-cc-go', '~/code/src/github.ibm.com/aur-blockchain/weave-cc-go'],
-	\ ['weave-cc-js', '~/code/src/github.ibm.com/aur-blockchain/weave-cc-js'],
-	\ ]
 
+" read in projects.vim file if it exists
+if filereadable("projects.vim")
+	source ./projects.vim
+endif
+
+" if the projects.vim file did exist, set the project list
+if exists("g:projects")
+	let s:menus.projects.directory_candidates = g:projects
+endif
 
 call denite#custom#var('menu', 'menus', s:menus)
 
