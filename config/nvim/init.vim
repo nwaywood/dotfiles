@@ -29,6 +29,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive' " Git support
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
 Plug 'ryanoasis/vim-devicons'
+Plug 'jsfaint/gen_tags.vim' " automatic ctag generation
 
 " Vim language enhancements
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
@@ -354,6 +355,13 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
 let g:ackprg='ag --vimgrep --smart-case'
 cnoreabbrev ag Ack!
 cnoreabbrev Ag Ack!
+
+" gen_tags.vim
+" ------------
+"  disable gtags support (I only need ctags)
+let g:loaded_gentags#gtags = 1
+" autogenerate ctags for scm repos to ~/.cache/tags_dir/<project-name>
+let g:gen_tags#ctags_auto_gen = 1
 
 " CtrlP
 " -----
