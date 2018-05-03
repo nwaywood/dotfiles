@@ -539,8 +539,10 @@ let s:menus.projects = {
 	\ }
 
 " read in projects.vim file if it exists
-if filereadable("projects.vim")
-	source ./projects.vim
+" https://stackoverflow.com/questions/19898542/how-to-concatenate-environmental-variables-in-a-vimrc-file
+let g:projects_path = $DOTFILES.'/config/nvim/projects.vim'
+if filereadable(g:projects_path)
+	exec 'source ' . g:projects_path
 endif
 
 " if the projects.vim file did exist, set the project list
@@ -649,6 +651,7 @@ if has('nvim')
 
 	" neoterm
 	let g:neoterm_size='12'
+	let g:neoterm_default_mod='belowright'
 	nnoremap <silent> <C-t> :Ttoggle<cr>
 	" toggle terminal from within terminal mode
 	tnoremap <silent> <C-t> <C-\><C-n>:Ttoggle<cr>
