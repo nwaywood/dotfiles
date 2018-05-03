@@ -32,6 +32,7 @@ Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open m
 Plug 'ryanoasis/vim-devicons'
 Plug 'jsfaint/gen_tags.vim' " automatic ctag generation
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
+Plug 'szw/vim-maximizer' " toggle windows fullscreen
 
 " Vim language enhancements
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
@@ -484,6 +485,10 @@ nnoremap <leader>mq :MarkedQuit<cr>
 " vim-jsx
 " -------
 let g:jsx_ext_required = 0
+
+" vim-maximizer
+" -------------
+nnoremap <C-w>z :MaximizerToggle<cr>
 
 " elm-vim
 " -----------
