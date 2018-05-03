@@ -349,6 +349,8 @@ let g:NERDTreeHijackNetrw=0
 " nice alignment of vim-devicons
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
+" Show gitignored status of files
+let g:NERDTreeShowIgnoredStatus = 1
 
 " Ack
 " ---
