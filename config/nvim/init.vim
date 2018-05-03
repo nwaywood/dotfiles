@@ -31,6 +31,7 @@ Plug 'tpope/vim-fugitive' " Git support
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
 Plug 'ryanoasis/vim-devicons'
 Plug 'jsfaint/gen_tags.vim' " automatic ctag generation
+Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
 
 " Vim language enhancements
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
@@ -122,13 +123,6 @@ set magic " make searching use normal regex (grep)
 " http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
 " NOTE: Focus events don't work in inside tmux with neovim
 set number relativenumber
-" TODO: WinEnter and WinLeave adds line numbers to Denite, need to exclude
-" Denite windows
-" TODO: BufEnter and BufLeave adds line numbers to NERDTree
-" autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-" autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-autocmd FocusGained,InsertLeave * set relativenumber
-autocmd FocusLost,InsertEnter * set norelativenumber
 
 " misc
 set mouse+=a " lets mouse resize vim windows
@@ -636,9 +630,6 @@ if has('nvim')
 
 	augroup Term
 		autocmd!
-		" never show line numbers in term buffers
-		autocmd TermOpen * setlocal nonumber norelativenumber
-		autocmd BufEnter term://* setlocal nonumber norelativenumber
 		" Always start in terminal mode in term buffers
 		autocmd TermOpen * startinsert
 		autocmd BufEnter term://* startinsert
