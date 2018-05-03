@@ -376,6 +376,8 @@ let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 " vim-dispatch
 " ------------
 nnoremap <leader>d :Dispatch<cr>
+" disable m mappings so it doesn't clash with NERDTree m to open menu
+let g:nremap = {"m": ""}
 
 " Vimux
 " -----
