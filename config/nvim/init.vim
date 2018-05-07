@@ -210,16 +210,16 @@ nnoremap <leader>bl <c-^> " toggle between current and previous buffer
 " buffer list command/mapping is in CtrlP section
 
 " quick save
-nnoremap <leader>w :w<cr>
+nnoremap <silent> <leader>w :w<cr>
 " quick save and quit
-nnoremap <leader>x :x<cr>
+nnoremap <silent> <leader>x :x<cr>
 " quick quit
-nnoremap <leader>q :q<cr>
+nnoremap <silent> <leader>q :q<cr>
 " quick force quit
-nnoremap <leader>1 :q!<cr>
+nnoremap <silent> <leader>1 :q!<cr>
 
 " toggle relative/absolute line numbers
-nnoremap <leader>. :call NumberToggle()<cr>
+nnoremap <silent> <leader>. :call NumberToggle()<cr>
 
 " }}}
 
