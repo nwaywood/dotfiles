@@ -650,6 +650,8 @@ if has('nvim')
 	tnoremap <C-k> <C-\><C-n><C-w>k
 	tnoremap <C-l> <C-\><C-n><C-w>l
 
+	tnoremap <C-w>z <C-\><C-n>:MaximizerToggle<cr>i
+
 	" neoterm
 	let g:neoterm_size='12'
 	let g:neoterm_default_mod='belowright'
