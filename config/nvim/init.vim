@@ -656,19 +656,6 @@ if has('nvim')
 	nnoremap <silent> <C-t> :Ttoggle<cr>
 	" toggle terminal from within terminal mode
 	tnoremap <silent> <C-t> <C-\><C-n>:Ttoggle<cr>
-
-	" nnoremap <leader>tl :call neoterm#do('!!')<cr>
-	" https://github.com/kassio/neoterm/issues/81
-	" let g:my_last_t_command = ''
-	" function! MyT(args)
-	" 	let g:my_last_t_command = a:args
-
-	" 	silent call neoterm#do(g:my_last_t_command)
-	" endfunction
-
-	" command! -bar -complete=shellcmd -nargs=+ T silent call MyT(<q-args>)
-	" command! -bar Tlast silent call MyT(g:my_last_t_command)
-	" nnoremap <silent> <leader>tl :Tlast<cr>
 endif
 
 " vimr settings
@@ -687,6 +674,10 @@ if has('gui_vimr')
 	let g:airline_powerline_fonts=0
 	let g:airline_left_sep=''
 	let g:airline_right_sep=''
+
+	" rerun the last run command https://github.com/kassio/neoterm/issues/81
+	nnoremap <silent> <leader>vl :<C-u>exec printf("%sTexec !! \<lt>CR>", v:count)<CR>
+	nnoremap <leader>vp :T<space>
 endif
 
 " }}}
