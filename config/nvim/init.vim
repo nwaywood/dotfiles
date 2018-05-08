@@ -259,6 +259,16 @@ function! CheckLeftBuffers()
 	endif
 endfunction
 
+" Trim trailing whitespace
+" https://vi.stackexchange.com/a/456
+function! TrimTrailingWhitespace()
+	let l:save = winsaveview()
+	%s/\s\+$//e
+	call winrestview(l:save)
+endfunc
+" Add command to call this function
+command! TrimTrailingWhitespace call TrimTrailingWhitespace()
+
 " }}}
 
 " Plugins settings {{{
