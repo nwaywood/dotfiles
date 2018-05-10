@@ -400,6 +400,11 @@ let g:loaded_gentags#gtags = 1
 " autogenerate ctags for scm repos to ~/.cache/tags_dir/<project-name>
 let g:gen_tags#ctags_auto_gen = 1
 
+" mappings to open def where ever I want
+nnoremap gd <C-]>
+nnoremap gv :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap gs :sp <CR>:exec("tag ".expand("<cword>"))<CR>
+
 " CtrlP
 " -----
 nnoremap <silent> <leader>r :CtrlPMRU<cr>
