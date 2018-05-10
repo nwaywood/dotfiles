@@ -47,7 +47,6 @@ Plug 'kana/vim-textobj-function' " Adds the text objects 'if' and 'af'
 Plug 'thinca/vim-textobj-function-javascript' " Adds 'if' and 'af' for javascript
 Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 
-
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
 Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion integration with deoplete
@@ -97,10 +96,11 @@ syntax sync minlines=256
 
 " tab control
 set smarttab " tab respects 'tabstop', 'shiftwidth and 'softtabstop
-set tabstop=4 "set the tab width to 4 spaces
+set tabstop=4 " set the tab width to 4 spaces
 set softtabstop=4 " edit as if the tabs are 4 characters wide
 set shiftwidth=4 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth
+set expandtab " when pressing tab, insert spaces instead
 
 " folds
 set foldmethod=indent " default folding based on indentation
@@ -269,6 +269,25 @@ endfunc
 " Add command to call this function
 command! TrimTrailingWhitespace call TrimTrailingWhitespace()
 
+" Toggle location list
+function! ToggleLocationList()
+	let buffer_count_before = s:BufferCount()
+	" Location list can't be closed if there's cursor in it, so we need
+	" to call lclose twice to move cursor to the main pane
+	silent! lclose
+	silent! lclose
+
+	if s:BufferCount() == buffer_count_before
+		execute "silent! lopen"
+	endif
+endfunc
+
+function! s:BufferCount()
+	return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+endfunc
+command! ToggleLocationList call ToggleLocationList()
+nnoremap <silent> <leader>d :ToggleLocationList<cr>
+
 " }}}
 
 " Plugins settings {{{
@@ -355,7 +374,7 @@ let g:NERDTreeHijackNetrw=0
 " nice alignment of vim-devicons
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
-" Show gitignored status of files
+" Show gitignored status of files (option from nerdtree-git-plugin)
 let g:NERDTreeShowIgnoredStatus = 1
 
 " Ack
@@ -383,7 +402,7 @@ let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 
 " vim-dispatch
 " ------------
-nnoremap <leader>d :Dispatch<cr>
+" nnoremap <leader>d :Dispatch<cr> " mapping used for 'diagnostics'
 " disable m mappings so it doesn't clash with NERDTree m to open menu
 let g:nremap = {"m": ""}
 
@@ -549,8 +568,8 @@ hi DeniteHighlightRange ctermfg=12 ctermbg=8
 " add custom menu for changing projects (cwd)
 let s:menus = {}
 let s:menus.projects = {
-	\ 'description': 'projects'
-	\ }
+			\ 'description': 'projects'
+			\ }
 
 " read in projects.vim file if it exists
 " https://stackoverflow.com/questions/19898542/how-to-concatenate-environmental-variables-in-a-vimrc-file
