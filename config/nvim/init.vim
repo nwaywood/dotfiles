@@ -472,7 +472,8 @@ let g:go_auto_type_info=1
 "  executes :GoFmt everytime a go file is saved, using "goimport" makes saving
 "  files slow
 let g:go_fmt_command='gofmt'
-
+" disable mappings related to Tags (clashes with <C-t> to open terminal)
+let g:go_def_mapping_enabled = 0
 
 " au FileType go nnoremap <Leader>gi :GoImports<cr>
 " au FileType go nnoremap <Leader>gm :GoMetaLinter<cr>
