@@ -106,6 +106,7 @@ set expandtab " when pressing tab, insert spaces instead
 " folds
 set foldmethod=indent " default folding based on indentation
 set nofoldenable " don't fold by default
+set foldlevel=99 " https://stackoverflow.com/a/5786588/2580566
 set foldnestmax=1 " deepest fold is 1 level
 
 " smarter searching
@@ -730,4 +731,4 @@ endif
 " }}}
 
 
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker
