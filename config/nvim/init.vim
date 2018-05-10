@@ -12,7 +12,8 @@ Plug 'mhartington/oceanic-next'
 Plug 'vimwiki/vimwiki' " Org-mode like thing for Vim
 Plug 'kassio/neoterm' " Wrapper around :term
 Plug 'scrooloose/nerdtree' " file explorer
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Aldlevine/nerdtree-git-plugin'
 Plug 'tpope/vim-vinegar' " netrw replacement
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sbdchd/neoformat'
@@ -339,6 +340,8 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['eslint']
 " let g:ale_javascript_prettier_options = '--tab-width 4 --no-semi --parser flow'
+" Don't show an error when no eslint config is found
+let g:ale_javascript_eslint_suppress_missing_config = 1
 
 " NERDTree
 " --------
@@ -376,6 +379,13 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
 " Show gitignored status of files (option from nerdtree-git-plugin)
 let g:NERDTreeShowIgnoredStatus = 1
+" enable showing git status through coloring the text (Aldlevine fork)
+let g:NERDTreeGitStatusNodeColorization=1
+let g:NERDTreeGitStatusWithFlags = 1
+" Change the default colors of git status highlighting to match Atom
+hi link NERDTreeGitStatusIgnored Comment
+hi link NERDTreeGitStatusModified Type
+hi link NERDTreeGitStatusUntracked Operator
 
 " Ack
 " ---
@@ -542,11 +552,11 @@ let g:vimwiki_hl_headers = 1
 " unbind tpope/vim-unimpaired bindings that interfere with vimwiki '='
 " normal mode binding
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
-augroup unusedbindings
-	autocmd!
-	autocmd VimEnter * nunmap =p
-	autocmd VimEnter * nunmap =P
-augroup END
+" augroup unusedbindings
+" 	autocmd!
+" 	autocmd VimEnter * nunmap =p
+" 	autocmd VimEnter * nunmap =P
+" augroup END
 
 " Denite.nvim
 " ===========
