@@ -386,6 +386,7 @@ let g:NERDTreeGitStatusWithFlags = 1
 " Change the default colors of git status highlighting to match Atom
 hi link NERDTreeGitStatusIgnored Comment
 hi link NERDTreeGitStatusModified Type
+hi link NERDTreeGitStatusDirDirty Type
 hi link NERDTreeGitStatusUntracked Operator
 
 " Ack
