@@ -72,14 +72,6 @@ call plug#end()
 
 " General Setting {{{
 
-" mapleader
-let g:mapleader = "\<Space>"
-
-" following 3 lines make the mapleader key work better
-set notimeout
-set ttimeout
-set ttimeoutlen=10
-
 " set color themes (from .vim/colors)
 syntax enable
 " let base16colorspace=256 " Access colors present in 256 colorspace
@@ -89,6 +81,22 @@ syntax enable
 " set background=dark
 execute 'set background='.$BACKGROUND
 colorscheme solarized
+
+if has('gui_vimr')
+    " " e.g. base16-solarized-dark
+    execute 'set background='.$BACKGROUND
+    " execute "colorscheme ".$THEME
+    colorscheme onedark
+endif
+
+" mapleader
+let g:mapleader = "\<Space>"
+
+" following 3 lines make the mapleader key work better
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
 " Use vims old regex engine for faster syntax highlighting
 " http://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
 set regexpengine=1
@@ -319,14 +327,6 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always=1
 let g:ale_sign_error='•'
 let g:ale_sign_warning='•'
-" Change the color of warnings and errors in the gutter for term colors
-hi ALEWarningSign ctermfg=3 ctermbg=0
-hi ALEErrorSign ctermfg=1 ctermbg=0
-" NOTE: Overriding SignColumn instead of using ALESignColumnWithoutErrors
-" because it doesn't seem to work :/
-hi SignColumn ctermfg=10 ctermbg=0 guifg=Yellow
-" let g:ale_change_sign_column_color=1
-" hi ALESignColumnWithoutErrors ctermfg=10 ctermbg=0 guifg=Yellow
 
 let g:ale_lint_delay=0
 let g:ale_open_list='on_save'
@@ -342,6 +342,18 @@ let g:ale_fixers['javascript'] = ['eslint']
 " let g:ale_javascript_prettier_options = '--tab-width 4 --no-semi --parser flow'
 " Don't show an error when no eslint config is found
 let g:ale_javascript_eslint_suppress_missing_config = 1
+
+" ALE colors for gui
+hi ALEWarningSign gui=bold guifg=#D19A66
+hi ALEErrorSign gui=bold guifg=#E06C75
+" Change the color of warnings and errors in the gutter for term colors
+hi ALEWarningSign ctermfg=3 ctermbg=0
+hi ALEErrorSign ctermfg=1 ctermbg=0
+" NOTE: Overriding SignColumn instead of using ALESignColumnWithoutErrors
+" because it doesn't seem to work :/
+hi SignColumn ctermfg=10 ctermbg=0 guifg=Yellow
+" let g:ale_change_sign_column_color=1
+" hi ALESignColumnWithoutErrors ctermfg=10 ctermbg=0 guifg=Yellow
 
 " NERDTree
 " --------
@@ -382,11 +394,17 @@ let g:NERDTreeShowIgnoredStatus = 1
 " enable showing git status through coloring the text (Aldlevine fork)
 let g:NERDTreeGitStatusNodeColorization=1
 let g:NERDTreeGitStatusWithFlags = 1
+
 " Change the default colors of git status highlighting to match Atom
 hi link NERDTreeGitStatusIgnored Comment
 hi link NERDTreeGitStatusModified Type
 hi link NERDTreeGitStatusDirDirty Type
-hi link NERDTreeGitStatusUntracked Operator
+hi NERDTreeGitStatusUntracked ctermfg=2 guifg=#98c379
+" hi link NERDTreeGitStatusUntracked Operator
+
+" Disable special highlighting of executable file
+" https://github.com/scrooloose/nerdtree/blob/8cd17c1a478d8302e4782a95963abe46fc22c538/syntax/nerdtree.vim#L50
+hi link NERDTreeExecFile Normal
 
 " Ack
 " ---
@@ -709,14 +727,6 @@ endif
 " vimr settings
 " =============
 if has('gui_vimr')
-	" " e.g. base16-solarized-dark
-	execute 'set background='.$BACKGROUND
-	" execute "colorscheme ".$THEME
-	colorscheme onedark
-	" ALE colors for gui
-	hi ALEWarningSign gui=bold guifg=#D19A66
-	hi ALEErrorSign gui=bold guifg=#E06C75
-
 	" Fix the airline bar in vimr
 	let g:airline_theme='onedark'
 	let g:airline_powerline_fonts=0
