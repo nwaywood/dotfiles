@@ -26,8 +26,8 @@ setw -g mode-keys vi
 bind Escape copy-mode
 # bind to P instead of p because p navigates to previous window
 bind P paste-buffer
-bind -t vi-copy 'v' begin-selection
-bind -t vi-copy 'y' copy-selection
+bind -Tcopy-mode-vi 'v' send -X begin-selection
+bind -Tcopy-mode-vi 'y' send -X copy-pipe-and-cancel "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 
 set-option -g status-keys vi
 
@@ -65,7 +65,7 @@ bind -r p previous-window
 # Smart pane switching with awareness of Vim and fzf splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
 # is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
-    # | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+# | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
 # https://github.com/junegunn/fzf/pull/582
 is_vim='`echo "#{pane_current_command}" | grep -iqE "(^|\/)g?(view|n?vim?x?)(diff)?$"` || `echo "#{pane_start_command}" | grep -iqE "fzf"` || `echo "#{pane_current_command}" | grep -iqE "fzf"`'
 bind-key -n C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
@@ -88,7 +88,7 @@ bind - split-window -v -c "#{pane_current_path}"
 bind-key & kill-window
 bind-key x kill-pane
 
-# Fix window names 
+# Fix window names
 # http://stackoverflow.com/questions/6041178/keep-the-windows-name-fixed-in-tmux
 set-option -g allow-rename off
 
@@ -96,14 +96,13 @@ set-option -g allow-rename off
 # http://kaushalmodi.github.io/2014/03/06/send-a-command-to-every-pane-slash-window-slash-session-in-tmux/
 # run 'source ~/.zshrc' to apply shell changes to all tmux sessions/windows/panes
 bind E command-prompt -p "Command:" \
-          "run \"tmux list-sessions                  -F '##{session_name}'        | xargs -I SESS \
-                 tmux list-windows  -t SESS          -F 'SESS:##{window_index}'   | xargs -I SESS_WIN \
-                 tmux list-panes    -t SESS_WIN      -F 'SESS_WIN.##{pane_index}' | xargs -I SESS_WIN_PANE \
-				 tmux send-keys     -t SESS_WIN_PANE '%1' Enter\""
+         "run \"tmux list-sessions                  -F '##{session_name}'        | xargs -I SESS \
+                tmux list-windows  -t SESS          -F 'SESS:##{window_index}'   | xargs -I SESS_WIN \
+                tmux list-panes    -t SESS_WIN      -F 'SESS_WIN.##{pane_index}' | xargs -I SESS_WIN_PANE \
+                tmux send-keys     -t SESS_WIN_PANE '%1' Enter\""
 
 ### Theme
 # =======
-
 source ~/.dotfiles/tmux/theme.sh
 
 # List of plugins
