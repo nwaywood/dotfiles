@@ -41,10 +41,10 @@ ZSH is configured in the `zshrc.symlink` file, which will be symlinked to the ho
 - Recursively search the $DOTFILES/zsh directory for files ending in .zsh and source them
 - Setup `oh-my-zsh` and install plugins
 - Add the ~/bin and $DOTFILES/bin directories to the path
-- And more... 
+- And more...
 
 `nick.zsh-theme` contains my custom terminal prompt. If you would like to use it, manually copy it into `~/.oh-my-zsh/custom/themes` or change `ZSH_THEME` in `zshrc.symlink` from `nick` to one of the built-in themes (e.g. `robbyrussell`)
- 
+
 ## Tmux Setup
 
 Tmux is a terminal multiplexor which lets you create windows and splits in the terminal that you can attach and detach from. I use it to keep multiple projects open in separate windows and sessions and to create an IDE-like environment to work in where I can have my code open in Neovim and a shell open to run tests/scripts. Tmux is configured in ~/.tmux.conf, and in tmux/theme.sh, which defines the colors used, the layout of the tmux bar, and what what will be displayed, including the time and date, open windows, tmux session name, computer name. If not running on macOS, this configuration should be removed.
