@@ -455,8 +455,8 @@ noremap <Leader>vz :call VimuxZoomRunner()<CR>
 
 " Fugitive
 " --------
-"  http://vi.stackexchange.com/questions/4673/open-gstatus-in-new-tab
-nnoremap <silent> <leader>gs :Gstatus<cr>
+" open git status in a new tab
+nnoremap <silent> <leader>gs :Gtabedit :<cr>
 " Revert current file back to last checked in version - HEAD (:Git checkout %)
 nnoremap <silent> <leader>gr :Gread<cr>
 " Stage the current file to the index (:Git add %)
