@@ -1,3 +1,5 @@
+https://www.kinesis-ergo.com/advantage2-resources/
+
 ## Power user mode
 
 `Progm + Shift + Esc`
