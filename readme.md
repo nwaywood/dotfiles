@@ -4,7 +4,7 @@ This repo is a collection of my Neovim, tmux, zsh and atom configurations. This 
 
 ## Install
 
-1. `git clone https://github.com/niwaywood/dotfiles.git ~/.dotfiles`
+1. `git clone https://github.com/nwaywood/dotfiles.git ~/.dotfiles`
 1. `cd ~/.dotfiles`
 1. `bash install.sh`
 
