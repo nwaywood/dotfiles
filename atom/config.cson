@@ -41,7 +41,8 @@
       "linter-hlint"
       "git-plus"
       "atom-terminal"
-      "atom-ternjs"
+      "atom-ide-ui"
+      "ide-typescript"
     ]
     packagesWithKeymapsDisabled: [
       "goto-definition"
@@ -58,6 +59,7 @@
     warnOnLargeFileLimit: 2
   editor:
     fontFamily: "SF Mono"
+    fontSize: 15
     invisibles: {}
     preferredLineLength: 120
     scrollPastEnd: true
@@ -81,7 +83,18 @@
       "go-debug"
     ]
     goPath: "/Users/nick/code"
-    lint: {}
+    lint:
+      args: [
+        "--vendor"
+        "--disable-all"
+        "--enable=vet"
+        "--enable=golint"
+        "--enable=ineffassign"
+        "--enable=goconst"
+        "--tests"
+        "--json"
+        "."
+      ]
     panel:
       displayMode: "closed"
       focusOnFailure: false

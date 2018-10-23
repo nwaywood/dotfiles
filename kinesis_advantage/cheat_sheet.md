@@ -55,3 +55,7 @@ e.g. Execute `shift-h` when `pup` is pressed: `{pup}>{-shift}{h}{+shift}`
 `-` indicates the depression of the key and `+` the release. This can be used for any key that needs
 to be held, control, alt, cmd and shift
 
+
+## NOTE:
+
+For the media keys to work in High Sierra, need to install BeardedSpice

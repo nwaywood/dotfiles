@@ -1,149 +1,146 @@
 {
-  "window.zoomLevel": 0,
-  // hide stupid open editors section in file explorer
-  "explorer.openEditors.visible": 0,
-  // hide the stupid project section in the file explorer
-  "projectManager.treeview.visible": false,
-  "editor.fontSize": 14.5,
-  "editor.fontFamily": "'SF Mono', Menlo, Monaco, 'Courier New', monospace",
-  "editor.lineNumbers": "relative",
-  // https://github.com/Microsoft/vscode/issues/14999
-  "css.validate": false,
-  "stylelint.enable": true,
-  "workbench.colorTheme": "One Dark Pro",
-  "workbench.iconTheme": "file-icons",
-  "editor.minimap.enabled": false,
-  "editor.formatOnSave": true,
-  // Controls if file decorations should use badges.
-  "explorer.decorations.badges": false,
-  // Show Errors & Warnings on files and folder.
-  "problems.decorations.enabled": true,
+    "window.zoomLevel": 0,
+    // hide stupid open editors section in file explorer
+    "explorer.openEditors.visible": 0,
+    // hide the stupid project section in the file explorer
+    "projectManager.treeview.visible": false,
+    "editor.fontSize": 14.5,
+    "editor.fontFamily": "'SF Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.lineNumbers": "relative",
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.iconTheme": "file-icons",
+    "editor.minimap.enabled": false,
+    "editor.formatOnSave": true,
+    // put search all files UI at the bottom
+    "search.location": "panel",
+    // multi select with alt so that cmd+click goes to def
+    "editor.multiCursorModifier": "alt",
+    // Controls if file decorations should use badges.
+    "explorer.decorations.badges": false,
+    // Show Errors & Warnings on files and folder.
+    "problems.decorations.enabled": true,
 
-  // Reason
-  // ------
-  "reason.formatOnSave": true,
+    // Reason
+    // ------
+    "reason.formatOnSave": true,
 
-  // Flow
-  // ----
-  "flow.useNPMPackagedFlow": true,
-  "javascript.validate.enable": false,
-  "flow.showStatus": false,
+    // Flow
+    // ----
+    "flow.useNPMPackagedFlow": true,
+    "javascript.validate.enable": false,
+    "flow.showStatus": false,
 
-  // eslint and prettier
-  "prettier.eslintIntegration": true,
+    // eslint and prettier
+    "prettier.eslintIntegration": true,
 
-  // terminal
-  "terminal.integrated.fontSize": 14.5,
+    // terminal
+    "terminal.integrated.fontSize": 14.5,
 
-  // vscode-icons
-  // ------------
-  "vsicons.presets.foldersAllDefaultIcon": true,
+    // vscode-icons
+    // ------------
+    "vsicons.presets.foldersAllDefaultIcon": true,
 
-  // ------------
-  // Vim settings
-  // ------------
+    // ------------
+    // Vim settings
+    // ------------
 
-  // In normal mode, block shouldn't blink
-  "editor.cursorBlinking": "solid",
-  "vim.leader": "<space>",
-  "vim.incsearch": true,
-  "vim.hlsearch": true,
-  "vim.useSystemClipboard": true,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": ["j", "k"],
-      "after": ["<Esc>"]
-    }
-  ],
-  "vim.otherModesKeyBindingsNonRecursive": [
-    // misc editor vim-style style bindings
-    {
-      "before": ["<leader>", "e"],
-      "commands": [
+    // In normal mode, block shouldn't blink
+    "editor.cursorBlinking": "solid",
+    "vim.leader": "<space>",
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.insertModeKeyBindings": [{
+        "before": ["j", "k"],
+        "after": ["<Esc>"]
+    }],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // misc editor vim-style style bindings
         {
-          "command": "workbench.action.toggleSidebarVisibility"
-        }
-      ]
-    },
-    {
-      "before": ["<leader>", "f"],
-      "commands": [
+            "before": ["<leader>", "e"],
+            "commands": [{
+                "command": "workbench.action.toggleSidebarVisibility"
+            }]
+        },
         {
-          "command": "workbench.action.quickOpen"
-        }
-      ]
-    },
-    // scroll the viewport faster
-    {
-      "before": ["<C-e>"],
-      "after": ["3", "<C-e>"]
-    },
-    {
-      "before": ["<C-y>"],
-      "after": ["3", "<C-y>"]
-    },
-    // fix j and k to work with line wraps
-    {
-      "before": ["j"],
-      "after": ["g", "j"]
-    },
-    {
-      "before": ["k"],
-      "after": ["g", "k"]
-    },
-    // clear search highlighting
-    {
-      "before": ["leader", "/"],
-      "after": [],
-      "commands": [
+            "before": ["<leader>", "f"],
+            "commands": [{
+                "command": "workbench.action.quickOpen"
+            }]
+        },
         {
-          "command": ":nohl",
-          "args": []
-        }
-      ]
-    },
-    // NERDTree Focus current file
-    {
-      "before": ["space", "n"],
-      "after": [],
-      "commands": [
+            "before": ["<leader>", "a"],
+            "commands": [{
+                "command": "workbench.view.search"
+            }]
+        },
         {
-          "command": "workbench.files.action.focusFilesExplorer",
-          "args": []
-        }
-      ]
-    },
-    // save and quit commands
-    {
-      "before": ["leader", "w"],
-      "after": [],
-      "commands": [
+            "before": ["<leader>", "s"],
+            "commands": [{
+                "command": "workbench.action.gotoSymbol"
+            }]
+        },
+        // scroll the viewport faster
         {
-          "command": "workbench.action.files.save",
-          "args": []
-        }
-      ]
-    },
-    {
-      "before": ["leader", "q"],
-      "after": [],
-      "commands": [
+            "before": ["<C-e>"],
+            "after": ["3", "<C-e>"]
+        },
         {
-          "command": "workbench.action.closeActiveEditor",
-          "args": []
-        }
-      ]
-    },
-    {
-      "before": ["leader", "x"],
-      "after": [],
-      "commands": [
+            "before": ["<C-y>"],
+            "after": ["3", "<C-y>"]
+        },
+        // fix j and k to work with line wraps
         {
-          "command": ":x",
-          "args": []
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
+        },
+        // clear search highlighting
+        {
+            "before": ["leader", "/"],
+            "after": [],
+            "commands": [{
+                "command": ":nohl",
+                "args": []
+            }]
+        },
+        // NERDTree Focus current file
+        {
+            "before": ["space", "n"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.files.action.focusFilesExplorer",
+                "args": []
+            }]
+        },
+        // save and quit commands
+        {
+            "before": ["leader", "w"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.files.save",
+                "args": []
+            }]
+        },
+        {
+            "before": ["leader", "q"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.closeActiveEditor",
+                "args": []
+            }]
+        },
+        {
+            "before": ["leader", "x"],
+            "after": [],
+            "commands": [{
+                "command": ":x",
+                "args": []
+            }]
         }
-      ]
-    }
-  ],
-  "vim.disableAnnoyingNeovimMessage": true
+    ],
+    "vim.disableAnnoyingNeovimMessage": true
 }

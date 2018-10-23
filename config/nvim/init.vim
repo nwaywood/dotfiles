@@ -66,6 +66,8 @@ Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'javascr
 
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'javascript', 'javascript.jsx'] } " CSS3 syntax support
 
+Plug 'mattn/emmet-vim'
+
 call plug#end()
 
 " }}}
@@ -137,7 +139,7 @@ set number relativenumber
 " misc
 set mouse+=a " lets mouse resize vim windows
 if !has('nvim')
-	set ttymouse=xterm2 " lets mouse resize vim windows
+    set ttymouse=xterm2 " lets mouse resize vim windows
 endif
 set linebreak " don't linebreak midword http://vimcasts.org/episodes/soft-wrapping-text/
 set noerrorbells "no beeps in vim
@@ -161,8 +163,8 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.raml set filetype=yaml
 
 augroup BufferCheck
-	autocmd!
-	autocmd  BufEnter * call CheckLeftBuffers()
+    autocmd!
+    autocmd  BufEnter * call CheckLeftBuffers()
 augroup END
 
 " }}}
@@ -235,64 +237,64 @@ nnoremap <silent> <leader>. :call NumberToggle()<cr>
 " Functions {{{
 
 function! NumberToggle()
-	if(&relativenumber == 1)
-		set number
-		set norelativenumber
-	else
-		set relativenumber
-		set number
-	endif
+    if(&relativenumber == 1)
+        set number
+        set norelativenumber
+    else
+        set relativenumber
+        set number
+    endif
 endfunc
 
 " close Vim if the only buffers left in windows are NERDTree, help, loclist,
 " quickfix or terminal
 " https://yous.be/2014/11/30/automatically-quit-vim-if-actual-files-are-closed/
 function! CheckLeftBuffers()
-	if tabpagenr('$') == 1
-		let l:i = 1
-		while l:i <= winnr('$')
-			if getbufvar(winbufnr(l:i), '&buftype') ==# 'help' ||
-						\ getbufvar(winbufnr(l:i), '&buftype') ==# 'quickfix' ||
-						\ getbufvar(winbufnr(l:i), '&buftype') ==# 'terminal' ||
-						\ exists('t:NERDTreeBufName') &&
-						\   bufname(winbufnr(l:i)) == t:NERDTreeBufName
-				let l:i += 1
-			else
-				break
-			endif
-		endwhile
-		if l:i == winnr('$') + 1
-			qall
-		endif
-		unlet l:i
-	endif
+    if tabpagenr('$') == 1
+        let l:i = 1
+        while l:i <= winnr('$')
+            if getbufvar(winbufnr(l:i), '&buftype') ==# 'help' ||
+                        \ getbufvar(winbufnr(l:i), '&buftype') ==# 'quickfix' ||
+                        \ getbufvar(winbufnr(l:i), '&buftype') ==# 'terminal' ||
+                        \ exists('t:NERDTreeBufName') &&
+                        \   bufname(winbufnr(l:i)) == t:NERDTreeBufName
+                let l:i += 1
+            else
+                break
+            endif
+        endwhile
+        if l:i == winnr('$') + 1
+            qall
+        endif
+        unlet l:i
+    endif
 endfunction
 
 " Trim trailing whitespace
 " https://vi.stackexchange.com/a/456
 function! TrimTrailingWhitespace()
-	let l:save = winsaveview()
-	%s/\s\+$//e
-	call winrestview(l:save)
+    let l:save = winsaveview()
+    %s/\s\+$//e
+    call winrestview(l:save)
 endfunc
 " Add command to call this function
 command! TrimTrailingWhitespace call TrimTrailingWhitespace()
 
 " Toggle location list
 function! ToggleLocationList()
-	let buffer_count_before = s:BufferCount()
-	" Location list can't be closed if there's cursor in it, so we need
-	" to call lclose twice to move cursor to the main pane
-	silent! lclose
-	silent! lclose
+    let buffer_count_before = s:BufferCount()
+    " Location list can't be closed if there's cursor in it, so we need
+    " to call lclose twice to move cursor to the main pane
+    silent! lclose
+    silent! lclose
 
-	if s:BufferCount() == buffer_count_before
-		execute "silent! lopen"
-	endif
+    if s:BufferCount() == buffer_count_before
+        execute "silent! lopen"
+    endif
 endfunc
 
 function! s:BufferCount()
-	return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
 endfunc
 command! ToggleLocationList call ToggleLocationList()
 nnoremap <silent> <leader>d :ToggleLocationList<cr>
@@ -412,9 +414,14 @@ let g:ackprg='ag --vimgrep --smart-case'
 cnoreabbrev ag Ack!
 cnoreabbrev Ag Ack!
 
+" emmet-vim
+" ---------
+" only enable insert mode so C-Y doesn't clash with scrolling the viewport
+let g:user_emmet_mode='i'
+
 " gen_tags.vim
 " ------------
-"  disable gtags support (I only need ctags)
+" disable gtags support (I only need ctags)
 let g:loaded_gentags#gtags = 1
 " autogenerate ctags for scm repos to ~/.cache/tags_dir/<project-name>
 let g:gen_tags#ctags_auto_gen = 1
@@ -505,7 +512,7 @@ let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'vetshadow', 'ineffassi
 " gometalinter command when executed via :GoMetaLinter
 " au FileType go autocmd BufWritePre * :GoMetaLinter
 let g:go_metalinter_command='gometalinter --disable-all --enable=vet
-			\ --enable=vetshadow --enable=golint --enable=ineffassign --enable=goconst --enable=gofmt'
+            \ --enable=vetshadow --enable=golint --enable=ineffassign --enable=goconst --enable=gofmt'
 " let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
 "		 \ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
 
@@ -514,32 +521,32 @@ let g:go_metalinter_command='gometalinter --disable-all --enable=vet
 nnoremap <silent> <leader>tt :TagbarToggle<cr>
 " Gotags config
 let g:tagbar_type_go = {
-			\ 'ctagstype' : 'go',
-			\ 'kinds'     : [
-			\ 'p:package',
-			\ 'i:imports:1',
-			\ 'c:constants',
-			\ 'v:variables',
-			\ 't:types',
-			\ 'n:interfaces',
-			\ 'w:fields',
-			\ 'e:embedded',
-			\ 'm:methods',
-			\ 'r:constructor',
-			\ 'f:functions'
-			\ ],
-			\ 'sro' : '.',
-			\ 'kind2scope' : {
-			\ 't' : 'ctype',
-			\ 'n' : 'ntype'
-			\ },
-			\ 'scope2kind' : {
-			\ 'ctype' : 't',
-			\ 'ntype' : 'n'
-			\ },
-			\ 'ctagsbin'  : 'gotags',
-			\ 'ctagsargs' : '-sort -silent'
-			\ }
+            \ 'ctagstype' : 'go',
+            \ 'kinds'     : [
+            \ 'p:package',
+            \ 'i:imports:1',
+            \ 'c:constants',
+            \ 'v:variables',
+            \ 't:types',
+            \ 'n:interfaces',
+            \ 'w:fields',
+            \ 'e:embedded',
+            \ 'm:methods',
+            \ 'r:constructor',
+            \ 'f:functions'
+            \ ],
+            \ 'sro' : '.',
+            \ 'kind2scope' : {
+            \ 't' : 'ctype',
+            \ 'n' : 'ntype'
+            \ },
+            \ 'scope2kind' : {
+            \ 'ctype' : 't',
+            \ 'ntype' : 'n'
+            \ },
+            \ 'ctagsbin'  : 'gotags',
+            \ 'ctagsargs' : '-sort -silent'
+            \ }
 
 " vim-marked
 " -----------
@@ -603,75 +610,75 @@ hi DeniteHighlightRange ctermfg=12 ctermbg=8
 " add custom menu for changing projects (cwd)
 let s:menus = {}
 let s:menus.projects = {
-			\ 'description': 'projects'
-			\ }
+            \ 'description': 'projects'
+            \ }
 
 " read in projects.vim file if it exists
 " https://stackoverflow.com/questions/19898542/how-to-concatenate-environmental-variables-in-a-vimrc-file
 let g:projects_path = $DOTFILES.'/config/nvim/projects.vim'
 if filereadable(g:projects_path)
-	exec 'source ' . g:projects_path
+    exec 'source ' . g:projects_path
 endif
 
 " if the projects.vim file did exist, set the project list
 if exists("g:projects")
-	let s:menus.projects.directory_candidates = g:projects
+    let s:menus.projects.directory_candidates = g:projects
 endif
 
 call denite#custom#var('menu', 'menus', s:menus)
 
 " change default options
 call denite#custom#option('default', {
-			\ 'prompt': '>',
-			\ 'highlight_matched_char': 'DeniteHighlightChar',
-			\ 'highlight_matched_range': 'DeniteHighlightRange'
-			\ })
+            \ 'prompt': '>',
+            \ 'highlight_matched_char': 'DeniteHighlightChar',
+            \ 'highlight_matched_range': 'DeniteHighlightRange'
+            \ })
 
 " set file_rec to use ag
 call denite#custom#var('file_rec', 'command',
-			\ ['ag', '-l', '--nocolor', '-g', ''])
+            \ ['ag', '-l', '--nocolor', '-g', ''])
 
 " Change mappings.
 call denite#custom#map(
-			\ 'insert',
-			\ '<C-j>',
-			\ '<denite:move_to_next_line>',
-			\ 'noremap'
-			\)
+            \ 'insert',
+            \ '<C-j>',
+            \ '<denite:move_to_next_line>',
+            \ 'noremap'
+            \)
 call denite#custom#map(
-			\ 'insert',
-			\ '<C-k>',
-			\ '<denite:move_to_previous_line>',
-			\ 'noremap'
-			\)
+            \ 'insert',
+            \ '<C-k>',
+            \ '<denite:move_to_previous_line>',
+            \ 'noremap'
+            \)
 call denite#custom#map(
-			\ 'insert',
-			\ '<C-g>',
-			\ '<denite:quit>',
-			\ 'noremap'
-			\)
+            \ 'insert',
+            \ '<C-g>',
+            \ '<denite:quit>',
+            \ 'noremap'
+            \)
 call denite#custom#map(
-			\ 'insert',
-			\ '<C-v>',
-			\ '<denite:do_action:vsplit>',
-			\ 'noremap'
-			\)
+            \ 'insert',
+            \ '<C-v>',
+            \ '<denite:do_action:vsplit>',
+            \ 'noremap'
+            \)
 call denite#custom#map(
-			\ 'insert',
-			\ '<C-s>',
-			\ '<denite:do_action:split>',
-			\ 'noremap'
-			\)
+            \ 'insert',
+            \ '<C-s>',
+            \ '<denite:do_action:split>',
+            \ 'noremap'
+            \)
 call denite#custom#map(
-			\ 'insert',
-			\ '<C-p>',
-			\ '<denite:do_action:preview>',
-			\ 'noremap'
-			\)
+            \ 'insert',
+            \ '<C-p>',
+            \ '<denite:do_action:preview>',
+            \ 'noremap'
+            \)
 " Ag command on grep source
 call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('grep', 'default_opts',
-			\ ['-i', '--vimgrep'])
+            \ ['-i', '--vimgrep'])
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'separator', ['--'])
@@ -684,58 +691,58 @@ call denite#custom#var('grep', 'final_opts', [])
 " neovim settings
 " ===============
 if has('nvim')
-	" fix the cursor shape in insert mode
-	:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-	" https://github.com/neovim/neovim/wiki/FAQ - How can I use true colors in
-	" the terminal?
-	" set termguicolors
+    " fix the cursor shape in insert mode
+    :let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+    " https://github.com/neovim/neovim/wiki/FAQ - How can I use true colors in
+    " the terminal?
+    " set termguicolors
 
-	" terminal mode
-	" -------------------------
+    " terminal mode
+    " -------------------------
 
-	" verical term split, just in case
-	nnoremap <silent> <leader>tv :vsp term://$SHELL<cr>
-	" nnoremap <silent> <leader>ts :10sp term://$SHELL<cr>
+    " verical term split, just in case
+    nnoremap <silent> <leader>tv :vsp term://$SHELL<cr>
+    " nnoremap <silent> <leader>ts :10sp term://$SHELL<cr>
 
-	augroup Term
-		autocmd!
-		" Always start in terminal mode in term buffers
-		autocmd TermOpen * startinsert
-		autocmd BufEnter term://* startinsert
-		autocmd BufLeave term://* stopinsert
-	augroup END
+    augroup Term
+        autocmd!
+        " Always start in terminal mode in term buffers
+        autocmd TermOpen * startinsert
+        autocmd BufEnter term://* startinsert
+        autocmd BufLeave term://* stopinsert
+    augroup END
 
-	" escape from terminal mode to normal mode
-	tnoremap <esc> <C-\><C-n>
+    " escape from terminal mode to normal mode
+    tnoremap <esc> <C-\><C-n>
 
-	" window navigation
-	tnoremap <C-h> <C-\><C-n><C-w>h
-	tnoremap <C-j> <C-\><C-n><C-w>j
-	tnoremap <C-k> <C-\><C-n><C-w>k
-	tnoremap <C-l> <C-\><C-n><C-w>l
+    " window navigation
+    tnoremap <C-h> <C-\><C-n><C-w>h
+    tnoremap <C-j> <C-\><C-n><C-w>j
+    tnoremap <C-k> <C-\><C-n><C-w>k
+    tnoremap <C-l> <C-\><C-n><C-w>l
 
-	tnoremap <C-w>z <C-\><C-n>:MaximizerToggle<cr>i
+    tnoremap <C-w>z <C-\><C-n>:MaximizerToggle<cr>i
 
-	" neoterm
-	let g:neoterm_size='12'
-	let g:neoterm_default_mod='belowright'
-	nnoremap <silent> <C-t> :Ttoggle<cr>
-	" toggle terminal from within terminal mode
-	tnoremap <silent> <C-t> <C-\><C-n>:Ttoggle<cr>
+    " neoterm
+    let g:neoterm_size='12'
+    let g:neoterm_default_mod='belowright'
+    nnoremap <silent> <C-t> :Ttoggle<cr>
+    " toggle terminal from within terminal mode
+    tnoremap <silent> <C-t> <C-\><C-n>:Ttoggle<cr>
 endif
 
 " vimr settings
 " =============
 if has('gui_vimr')
-	" Fix the airline bar in vimr
-	let g:airline_theme='onedark'
-	let g:airline_powerline_fonts=0
-	let g:airline_left_sep=''
-	let g:airline_right_sep=''
+    " Fix the airline bar in vimr
+    let g:airline_theme='onedark'
+    let g:airline_powerline_fonts=0
+    let g:airline_left_sep=''
+    let g:airline_right_sep=''
 
-	" rerun the last run command https://github.com/kassio/neoterm/issues/81
-	nnoremap <silent> <leader>vl :<C-u>exec printf("%sTexec !! \<lt>CR>", v:count)<CR>
-	nnoremap <leader>vp :T<space>
+    " rerun the last run command https://github.com/kassio/neoterm/issues/81
+    nnoremap <silent> <leader>vl :<C-u>exec printf("%sTexec !! \<lt>CR>", v:count)<CR>
+    nnoremap <leader>vp :T<space>
 endif
 
 " }}}
