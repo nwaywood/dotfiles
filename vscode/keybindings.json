@@ -42,6 +42,22 @@
         "command": "workbench.action.closeQuickOpen",
         "when": "inQuickOpen"
     },
+    // vim commands for panel
+    {
+        "key": "ctrl+g",
+        "command": "workbench.action.closePanel",
+        // NOTE: Dirty hack because I can't find a when 
+        // clause for panel
+        "when": "!inQuickOpen && !findWidgetVisible"
+    },
+    // vim commands for find widget
+    {
+        "key": "ctrl+g",
+        "command": "closeFindWidget",
+        // NOTE: Dirty hack because I can't find a when 
+        // clause for panel
+        "when": "findWidgetVisible"
+    },
     // vim navigation across tabs
     {
         "key": "ctrl+h",

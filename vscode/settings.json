@@ -11,6 +11,11 @@
     "workbench.iconTheme": "file-icons",
     "editor.minimap.enabled": false,
     "editor.formatOnSave": true,
+    // don't run beautify on js file so it doesn't clash with prettier
+    "beautify.ignore": [
+        "**/*.js",
+        "**/*.jsx"
+    ],
     // put search all files UI at the bottom
     "search.location": "panel",
     // multi select with alt so that cmd+click goes to def
@@ -22,7 +27,7 @@
 
     // Reason
     // ------
-    "reason.formatOnSave": true,
+    // "reason.formatOnSave": true,
 
     // Flow
     // ----
@@ -32,6 +37,8 @@
 
     // eslint and prettier
     "prettier.eslintIntegration": true,
+    "prettier.tabWidth": 4,
+    "prettier.semi": false,
 
     // terminal
     "terminal.integrated.fontSize": 14.5,
@@ -72,6 +79,12 @@
             "before": ["<leader>", "a"],
             "commands": [{
                 "command": "workbench.view.search"
+            }]
+        },
+        {
+            "before": ["<leader>", "d"],
+            "commands": [{
+                "command": "workbench.actions.view.problems"
             }]
         },
         {
@@ -142,5 +155,6 @@
             }]
         }
     ],
-    "vim.disableAnnoyingNeovimMessage": true
+    "workbench.activityBar.visible": false
+    // "vim.disableAnnoyingNeovimMessage": true
 }
