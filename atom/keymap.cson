@@ -143,8 +143,10 @@
     'space l': 'narrow:scan'
     'space L': 'narrow:scan-by-current-word'
     # goto symbol in current file
-    'space s': 'narrow:symbols'
-    'space S': 'narrow:project-symbols'
+    # 'space s': 'narrow:symbols'
+    # 'space S': 'narrow:project-symbols'
+    'space s': 'symbols-view:toggle-file-symbols'
+    'space S': 'symbols-view:toggle-project-symbols'
     # Override symbols-view:toggle-file-symbols keybinding
     # 'cmd-r': 'narrow:symbols'
 
