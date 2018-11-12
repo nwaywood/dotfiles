@@ -6,11 +6,18 @@
     "projectManager.treeview.visible": false,
     "editor.fontSize": 14.5,
     "editor.fontFamily": "'SF Mono', Menlo, Monaco, 'Courier New', monospace",
-    "editor.lineNumbers": "relative",
     "workbench.colorTheme": "One Dark Pro",
+    "editor.lineNumbers": "relative",
     "workbench.iconTheme": "file-icons",
     "editor.minimap.enabled": false,
     "editor.formatOnSave": true,
+    "editor.formatOnSaveTimeout": 1500,
+    // hide smiley face in status bar
+    "workbench.statusBar.feedback.visible": false,
+    // soft wrapping
+    "editor.wordWrap": "on",
+    // "workbench.activityBar.visible": false,
+    "workbench.editor.tabSizing": "shrink",
     // don't run beautify on js file so it doesn't clash with prettier
     "beautify.ignore": [
         "**/*.js",
@@ -24,6 +31,14 @@
     "explorer.decorations.badges": false,
     // Show Errors & Warnings on files and folder.
     "problems.decorations.enabled": true,
+    // hide spotify buttons
+    "spotify.showNextButton": false,
+    "spotify.showPreviousButton": false,
+    "spotify.showMuteUnmuteVolumeButton": false,
+    "spotify.showLyricsButton": false,
+    "spotify.showPlayPauseButton": false,
+    "spotify.showSignInButton": false,
+    "spotify.showSignOutButton": false,
 
     // Reason
     // ------
@@ -58,9 +73,16 @@
     "vim.hlsearch": true,
     "vim.useSystemClipboard": true,
     "vim.insertModeKeyBindings": [{
-        "before": ["j", "k"],
-        "after": ["<Esc>"]
-    }],
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        },
+        // TODO: get this working
+        {
+            "before": ["cmd-v"],
+            "after": [],
+            "commands": "editor.action.clipboardPasteAction"
+        }
+    ],
     "vim.normalModeKeyBindingsNonRecursive": [
         // misc editor vim-style style bindings
         {
@@ -153,8 +175,33 @@
                 "command": ":x",
                 "args": []
             }]
+        },
+        // vim-unimpaired binding
+        {
+            "before": ["]", "space"],
+            "after": [],
+            "commands": [{
+                "command": "editor.action.insertLineAfter",
+                "args": []
+            }]
+        },
+        {
+            "before": ["[", "space"],
+            "after": [],
+            "commands": [{
+                "command": "editor.action.insertLineBefore",
+                "args": []
+            }]
         }
     ],
-    "workbench.activityBar.visible": false
-    // "vim.disableAnnoyingNeovimMessage": true
+    // #0078cc - vscode blue
+    // #f0f7fc - vscode white
+    // TODO: add back again with nice colors
+    // "vim.statusBarColorControl": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#0078cc",
+        "statusBar.noFolderBackground": "#0078cc",
+        "statusBar.debuggingBackground": "#0078cc",
+        "statusBar.foreground": "#f0f7fc"
+    }
 }

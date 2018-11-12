@@ -24,7 +24,8 @@
     // create vertical split
     {
         "key": "ctrl+v",
-        "command": "workbench.action.splitEditor"
+        "command": "workbench.action.splitEditor",
+        "when": "editorFocus"
     },
     // vim commands in quick open widget
     {
@@ -42,11 +43,36 @@
         "command": "workbench.action.closeQuickOpen",
         "when": "inQuickOpen"
     },
+    // {
+    //     "key": "ctrl+enter",
+    //     "command": "search.action.openResultToSide",
+    //     "when": "inQuickOpen"
+    // },
+    // {
+    //     "key": "ctrl+enter",
+    //     "command": "openReferenceToSide",
+    //     "when": "referenceSearchTreeFocused && referenceSearchVisible"
+    // },
+    // {
+    //     "key": "cmd+ctrl+v",
+    //     "command": "problems.action.openToSide",
+    //     "when": "problemFocus"
+    // },
+    // {
+    //     "key": "cmd+ctrl+v",
+    //     "command": "search.action.openResultToSide",
+    //     "when": "fileMatchOrMatchFocus && searchViewletVisible"
+    // },
+    // {
+    //     "key": "cmd+ctrl+v",
+    //     "command": "explorer.openToSide",
+    //     "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
+    // },
     // vim commands for panel
     {
         "key": "ctrl+g",
         "command": "workbench.action.closePanel",
-        // NOTE: Dirty hack because I can't find a when 
+        // NOTE: Dirty hack because I can't find a when
         // clause for panel
         "when": "!inQuickOpen && !findWidgetVisible"
     },
@@ -54,7 +80,7 @@
     {
         "key": "ctrl+g",
         "command": "closeFindWidget",
-        // NOTE: Dirty hack because I can't find a when 
+        // NOTE: Dirty hack because I can't find a when
         // clause for panel
         "when": "findWidgetVisible"
     },
@@ -114,5 +140,17 @@
     {
         "key": "cmd+9",
         "command": "workbench.action.openEditorAtIndex9"
+    },
+    {
+        "key": "ctrl+w m",
+        "command": "workbench.action.joinAllGroups"
+    },
+    {
+        "key": "ctrl+w =",
+        "command": "workbench.action.evenEditorWidths"
+    },
+    {
+        "key": "cmd+enter",
+        "command": "workbench.action.maximizeEditor"
     }
 ]
