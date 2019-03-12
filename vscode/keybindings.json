@@ -27,6 +27,12 @@
         "command": "workbench.action.splitEditor",
         "when": "editorFocus"
     },
+    // Create horizontal split
+    {
+        "key": "ctrl+s",
+        "command": "workbench.action.splitEditorOrthogonal",
+        "when": "editorFocus"
+    },
     // vim commands in quick open widget
     {
         "key": "ctrl+j",
