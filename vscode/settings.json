@@ -75,14 +75,10 @@
     "vim.insertModeKeyBindings": [{
             "before": ["j", "k"],
             "after": ["<Esc>"]
-        },
-        // TODO: get this working
-        {
-            "before": ["cmd-v"],
-            "after": [],
-            "commands": "editor.action.clipboardPasteAction"
         }
     ],
+    // Uses OS clipboard instead of unamed register
+    "vim.useSystemClipboard": true,
     "vim.normalModeKeyBindingsNonRecursive": [
         // misc editor vim-style style bindings
         {
