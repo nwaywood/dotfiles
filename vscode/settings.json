@@ -12,6 +12,8 @@
     "editor.minimap.enabled": false,
     "editor.formatOnSave": true,
     "editor.formatOnSaveTimeout": 1500,
+    // don't let fullscreen create a macOS desktop
+    "window.nativeFullScreen": false,
     // hide smiley face in status bar
     "workbench.statusBar.feedback.visible": false,
     // soft wrapping
@@ -19,10 +21,7 @@
     // "workbench.activityBar.visible": false,
     "workbench.editor.tabSizing": "shrink",
     // don't run beautify on js file so it doesn't clash with prettier
-    "beautify.ignore": [
-        "**/*.js",
-        "**/*.jsx"
-    ],
+    "beautify.ignore": ["**/*.js", "**/*.jsx", "**/*.tsx", "**/*.ts"],
     // put search all files UI at the bottom
     "search.location": "panel",
     // multi select with alt so that cmd+click goes to def
@@ -40,6 +39,7 @@
     "spotify.showSignInButton": false,
     "spotify.showSignOutButton": false,
 
+    "gitlens.currentLine.enabled": false,
     // Reason
     // ------
     // "reason.formatOnSave": true,
@@ -54,6 +54,7 @@
     "prettier.eslintIntegration": true,
     "prettier.tabWidth": 4,
     "prettier.semi": false,
+    // "prettier.tslintIntegration": true,
 
     // terminal
     "terminal.integrated.fontSize": 14.5,
@@ -203,5 +204,7 @@
         "statusBar.noFolderBackground": "#0078cc",
         "statusBar.debuggingBackground": "#0078cc",
         "statusBar.foreground": "#f0f7fc"
-    }
+    },
+    "gitlens.codeLens.enabled": false,
+    "gitlens.codeLens.authors.enabled": false
 }
