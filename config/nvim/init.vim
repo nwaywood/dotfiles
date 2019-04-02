@@ -17,7 +17,7 @@ Plug 'Aldlevine/nerdtree-git-plugin'
 Plug 'tpope/vim-vinegar' " netrw replacement
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sbdchd/neoformat'
-Plug 'majutsushi/tagbar' " display file scope in side bar
+" Plug 'majutsushi/tagbar' " display file scope in side bar
 Plug 'tpope/vim-dispatch' " asynchronous build and test dispatcher
 " Plug 'radenling/vim-dispatch-neovim' " add neovim strategy to dispatch
 Plug 'benmills/vimux' " quickly run commands in a tmux pane
@@ -226,11 +226,12 @@ nnoremap <silent> <leader>w :w<cr>
 nnoremap <silent> <leader>x :x<cr>
 " quick quit
 nnoremap <silent> <leader>q :q<cr>
-" quick force quit
-nnoremap <silent> <leader>1 :q!<cr>
 
 " toggle relative/absolute line numbers
 nnoremap <silent> <leader>. :call NumberToggle()<cr>
+
+" highlight word on double click
+nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
 
 " }}}
 
@@ -245,6 +246,21 @@ function! NumberToggle()
         set number
     endif
 endfunc
+
+" https://stackoverflow.com/questions/3431184/highlight-all-occurrence-of-a-selected-word
+fun! CountWordFunction()
+    try
+        let l:win_view = winsaveview()
+        let l:old_query = getreg('/')
+        let var = expand("<cword>")
+        exec "%s/" . var . "//gn"
+    finally
+        call winrestview(l:win_view)
+        call setreg('/', l:old_query)
+    endtry
+endfun
+" Set a command "CountWord" and a mapping to count word
+command! -nargs=0 CountWord :call CountWordFunction()
 
 " close Vim if the only buffers left in windows are NERDTree, help, loclist,
 " quickfix or terminal
@@ -307,20 +323,37 @@ nnoremap <silent> <leader>d :ToggleLocationList<cr>
 " -----------
 set laststatus=2 " plugin won't work without this line
 set noshowmode " hide the default insert/command mode indicator
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=1 " enable vim-devicons icons in airline
+
 set timeoutlen=20 "gets rid of the pause when leaving insert mode
 " for the fonts to work in iTerm, install a patch font and set it in iTerm
 " prefs https://github.com/ryanoasis/nerd-fonts
 " The line below breaks vimr
 " set guifont=Fura\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
 let g:airline_theme='base16'
-" buffers to emulate tabs
-" let g:airline#extensions#tabline#enabled = 1 " enable the list of buffers at the top of the screen
-" let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename in the buffer list
 " remove the patched arrows
 let g:airline_powerline_fonts=0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+
+" tabline stuff
+let g:webdevicons_enable_airline_tabline = 0 " disable vim-devicons in the tabline
+let g:airline#extensions#tabline#show_close_button=1
+let g:airline#extensions#tabline#close_symbol = 'X'
+" buffers to emulate tabs
+let g:airline#extensions#tabline#enabled = 1 " enable the list of buffers at the top of the screen
+" let g:airline#extensions#tabline#formatter = 'unique_tail' " show just the filename in the buffer list
+let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename in the buffer list
+" leader-num to jump to corresponding buffer
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 
 " ALE
 " ---
@@ -494,7 +527,7 @@ let g:go_highlight_interfaces = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 " show type info for go code
-let g:go_auto_type_info=1
+" let g:go_auto_type_info=1
 "  executes :GoFmt everytime a go file is saved, using "goimport" makes saving
 "  files slow
 let g:go_fmt_command='gofmt'
@@ -518,35 +551,35 @@ let g:go_metalinter_command='gometalinter --disable-all --enable=vet
 
 " tagbar
 " ------
-nnoremap <silent> <leader>tt :TagbarToggle<cr>
+" nnoremap <silent> <leader>tt :TagbarToggle<cr>
 " Gotags config
-let g:tagbar_type_go = {
-            \ 'ctagstype' : 'go',
-            \ 'kinds'     : [
-            \ 'p:package',
-            \ 'i:imports:1',
-            \ 'c:constants',
-            \ 'v:variables',
-            \ 't:types',
-            \ 'n:interfaces',
-            \ 'w:fields',
-            \ 'e:embedded',
-            \ 'm:methods',
-            \ 'r:constructor',
-            \ 'f:functions'
-            \ ],
-            \ 'sro' : '.',
-            \ 'kind2scope' : {
-            \ 't' : 'ctype',
-            \ 'n' : 'ntype'
-            \ },
-            \ 'scope2kind' : {
-            \ 'ctype' : 't',
-            \ 'ntype' : 'n'
-            \ },
-            \ 'ctagsbin'  : 'gotags',
-            \ 'ctagsargs' : '-sort -silent'
-            \ }
+" let g:tagbar_type_go = {
+"             \ 'ctagstype' : 'go',
+"             \ 'kinds'     : [
+"             \ 'p:package',
+"             \ 'i:imports:1',
+"             \ 'c:constants',
+"             \ 'v:variables',
+"             \ 't:types',
+"             \ 'n:interfaces',
+"             \ 'w:fields',
+"             \ 'e:embedded',
+"             \ 'm:methods',
+"             \ 'r:constructor',
+"             \ 'f:functions'
+"             \ ],
+"             \ 'sro' : '.',
+"             \ 'kind2scope' : {
+"             \ 't' : 'ctype',
+"             \ 'n' : 'ntype'
+"             \ },
+"             \ 'scope2kind' : {
+"             \ 'ctype' : 't',
+"             \ 'ntype' : 'n'
+"             \ },
+"             \ 'ctagsbin'  : 'gotags',
+"             \ 'ctagsargs' : '-sort -silent'
+"             \ }
 
 " vim-marked
 " -----------
