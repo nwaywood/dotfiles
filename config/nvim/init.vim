@@ -13,15 +13,16 @@ Plug 'vimwiki/vimwiki' " Org-mode like thing for Vim
 Plug 'kassio/neoterm' " Wrapper around :term
 Plug 'scrooloose/nerdtree' " file explorer
 " Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'Aldlevine/nerdtree-git-plugin'
+Plug 'Aldlevine/nerdtree-git-plugin' " this fork is required to grey out gitignored files
 Plug 'tpope/vim-vinegar' " netrw replacement
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'sbdchd/neoformat'
+Plug 'sbdchd/neoformat' " general formatter like beautify
 " Plug 'majutsushi/tagbar' " display file scope in side bar
 Plug 'tpope/vim-dispatch' " asynchronous build and test dispatcher
 " Plug 'radenling/vim-dispatch-neovim' " add neovim strategy to dispatch
 Plug 'benmills/vimux' " quickly run commands in a tmux pane
 Plug 'w0rp/ale' " Async linting engine
+" Plug 'neomake/neomake' " Alternative async linting engine
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " auto code completion
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' } " Atom-narrow for vim
 Plug 'mileszs/ack.vim' " grep replacement
@@ -361,6 +362,8 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 " ALE
 " ---
 "  cosmetics
+" let g:airline#extensions#neomake#enabled=1
+" call neomake#configure#automake('w')
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always=1
 let g:ale_sign_error='•'
