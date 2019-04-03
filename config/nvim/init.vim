@@ -34,6 +34,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'jsfaint/gen_tags.vim' " automatic ctag generation
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
 Plug 'szw/vim-maximizer' " toggle windows fullscreen
+Plug 'google/vim-searchindex' " shows number of matches for search commands
 
 " Vim language enhancements
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
