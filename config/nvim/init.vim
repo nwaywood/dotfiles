@@ -339,13 +339,14 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 
 " tabline stuff
-let g:webdevicons_enable_airline_tabline = 0 " disable vim-devicons in the tabline
-let g:airline#extensions#tabline#show_close_button=1
-let g:airline#extensions#tabline#close_symbol = 'X'
-" buffers to emulate tabs
 let g:airline#extensions#tabline#enabled = 1 " enable the list of buffers at the top of the screen
+let g:webdevicons_enable_airline_tabline = 0 " disable vim-devicons in the tabline
+let g:airline#extensions#tabline#show_close_button=1 " this doesn't work :(
+
+" buffers to emulate tabs
 " let g:airline#extensions#tabline#formatter = 'unique_tail' " show just the filename in the buffer list
-let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename in the buffer list
+" let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename in the buffer list
+let g:airline#extensions#tabline#buffer_idx_mode = 1 " show index on buffer tabs
 " leader-num to jump to corresponding buffer
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
