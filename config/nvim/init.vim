@@ -213,11 +213,12 @@ inoremap {<CR> {<CR>}<C-o>O
 noremap <silent> <leader>/ :set hlsearch! hlsearch?<cr>
 
 " buffer navigation
-nnoremap <leader>bp :bprevious<cr> " move to the previous buffer
-nnoremap <leader>bn :bnext<cr> " move to the next buffer
-nnoremap <leader>bc :enew<cr> " Open a new empty buffer
-nnoremap <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
-nnoremap <leader>bl <c-^> " toggle between current and previous buffer
+nnoremap <silent> <leader>bp :bprevious<cr> " move to the previous buffer
+nnoremap <silent> <leader>bn :bnext<cr> " move to the next buffer
+nnoremap <silent> <leader>bc :enew<cr> " Open a new empty buffer
+nnoremap <silent> <M-w> :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
+nnoremap <silent> <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
+nnoremap <silent> <leader>bl <c-^> " toggle between current and previous buffer
 " buffer list command/mapping is in CtrlP section
 
 " quick save
