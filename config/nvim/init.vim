@@ -731,7 +731,11 @@ call denite#custom#var('grep', 'final_opts', [])
 " ===============
 if has('nvim')
     " fix the cursor shape in insert mode
-    :let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+    " :let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+    " set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+    "   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+    "   \,sm:block-blinkwait175-blinkoff150-blinkon175
     " https://github.com/neovim/neovim/wiki/FAQ - How can I use true colors in
     " the terminal?
     " set termguicolors
