@@ -36,6 +36,8 @@ Plug 'jsfaint/gen_tags.vim' " automatic ctag generation
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
 Plug 'szw/vim-maximizer' " toggle windows fullscreen
 Plug 'google/vim-searchindex' " shows number of matches for search commands
+Plug 'moll/vim-bbye' " make buffer deleting preserve window layout
+Plug 'plytophogy/vim-diffchanges' " view the unsaved changes in the current buffer
 
 " Vim language enhancements
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
@@ -218,8 +220,9 @@ noremap <silent> <leader>/ :set hlsearch! hlsearch?<cr>
 nnoremap <silent> <leader>bp :bprevious<cr> " move to the previous buffer
 nnoremap <silent> <leader>bn :bnext<cr> " move to the next buffer
 nnoremap <silent> <leader>bc :enew<cr> " Open a new empty buffer
-nnoremap <silent> <M-w> :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
-nnoremap <silent> <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
+nnoremap <silent> <M-w> :Bdelete<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
+nnoremap <silent> <leader>bq :Bdelete<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
+" nnoremap <silent> <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
 nnoremap <silent> <leader>bl <c-^> " toggle between current and previous buffer
 " buffer list command/mapping is in CtrlP section
 
@@ -452,6 +455,10 @@ hi link NERDTreeExecFile Normal
 let g:ackprg='ag --vimgrep --smart-case'
 cnoreabbrev ag Ack!
 cnoreabbrev Ag Ack!
+
+" diffchanges
+" -----------
+command DiffSaved DiffChangesDiffToggle " alias command to view unsaved changes in current buffer
 
 " emmet-vim
 " ---------
