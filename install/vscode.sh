@@ -19,3 +19,4 @@ code --install-extension jpoissonnier.vscode-styled-components
 code --install-extension vscodevim.vim
 code --install-extension anseki.vscode-color
 code --install-extension prettier-vscode
+# spotify plugin
