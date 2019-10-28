@@ -28,6 +28,7 @@ alias vimf='vim "+Denite file_rec"'
 alias vimn='vim +NERDTreeToggle'
 alias tree='tree -I "node_modules"'
 alias find='find . -name'
+alias vimg='open -a emacs'
 
 mkcd () {
     test -d "$1" || mkdir "$1" && cd "$1"

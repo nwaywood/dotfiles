@@ -78,6 +78,11 @@ export PATH=$DOTFILES/bin:$PATH
 
 # add .local to PATH (haskell binaries go here)
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.cabal/bin:$PATH
+export PATH=$HOME/.ghcup/bin:$PATH
+
+# doom bins
+export PATH=$HOME/.emacs.d/bin:$PATH
 
 # add /usr/local/sbin
 if [[ -d /usr/local/sbin ]]; then
