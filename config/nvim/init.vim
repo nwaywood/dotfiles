@@ -67,6 +67,7 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'
 Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript'] } " JSX support
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'javascript', 'javascript.jsx'] } " CSS3 syntax support
 
@@ -94,6 +95,8 @@ if has('gui_vimr')
     " execute "colorscheme ".$THEME
     colorscheme onedark
 endif
+
+set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 " mapleader
 let g:mapleader = "\<Space>"
@@ -324,6 +327,14 @@ nnoremap <silent> <leader>d :ToggleLocationList<cr>
 " }}}
 
 " Plugins settings {{{
+
+" ocaml
+" -----
+let g:opamshare = substitute(system('opam config var share'), '\n$', '', '''')
+" merlin setup
+execute "set rtp+=" . g:opamshare . "/merlin/vim" 
+" ocp-indent setup 
+execute "set rtp^=" . g:opamshare . "/ocp-indent/vim"
 
 " vim-airline
 " -----------
