@@ -40,6 +40,7 @@
     'space w': 'core:save'
     'space q': 'core:close'
     'space x': 'custom:save-and-quit'
+    'space d': 'linter-ui-default:toggle-panel'
     # ':': 'vim-mode-plus-ex-mode:open'
 
     # vim-surround

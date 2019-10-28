@@ -10,6 +10,13 @@
       jslint_happy: true
     python:
       beautify_on_save: true
+  "atom-ctags": {}
+  "atom-ide-ui":
+    "atom-ide-diagnostics-ui": {}
+  "atom-package-deps":
+    ignored: [
+      "atom-ternjs"
+    ]
   "atom-spotify2":
     displayOnLeftSide: false
     showPlayStatus: false
@@ -41,8 +48,9 @@
       "linter-hlint"
       "git-plus"
       "atom-terminal"
-      "atom-ide-ui"
       "ide-typescript"
+      "atom-ctags"
+      "atom-ide-ui"
     ]
     packagesWithKeymapsDisabled: [
       "goto-definition"
