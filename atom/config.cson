@@ -110,14 +110,17 @@
     contextMenuDisplayAtFirst: false
     performanceMode: true
   "haskell-ghc-mod":
-    ghcModPath: "/Users/nick/.cabal/packages/hackage.haskell.org/ghc-mod"
+    ghcModPath: "/Users/nick/.local/bin/ghc-mod"
+  "ide-haskell":
+    messageDisplayFrontend: "linter"
   "language-elm": {}
   linter:
     subtleLinterErrors: [
       "golinter"
     ]
   "linter-eslint":
-    fixOnSave: true
+    autofix:
+      fixOnSave: true
     lintHtmlFiles: true
     scopes: [
       "source.js"
