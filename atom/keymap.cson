@@ -84,6 +84,9 @@
     'ctrl-w s': 'pane:split-down-moving-current-tab'
     # merge all panes together again
     'ctrl-w m': 'custom:merge-panes'
+    # navigate between tabs like in vimium
+    'J': 'vim-mode-plus:previous-tab'
+    'K': 'vim-mode-plus:next-tab'
 
     # fix j and k to include soft wrapping
     'j': 'vim-mode-plus:move-down-screen'
