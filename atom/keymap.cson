@@ -102,7 +102,7 @@
     'g c': 'vim-mode-plus:toggle-line-comments'
 
     # copy, comment, paste selection
-    'g D': 'vim-mode-plus:duplicate-with-comment-out-original'
+    'g C': 'vim-mode-plus:duplicate-with-comment-out-original'
 
     # vim tabs https://atom.io/packages/atom-vim-like-tab
     'space t e': 'atom-vim-like-tab:new' # mean 'tab create'
@@ -158,8 +158,7 @@
   'c': 'vim-mode-plus:toggle-line-comments'
 
 'atom-text-editor.vim-mode-plus.operator-pending-mode.duplicate-with-comment-out-original-pending':
-  'D': 'vim-mode-plus:duplicate-with-comment-out-original'
-  'd': 'vim-mode-plus:duplicate-with-comment-out-original'
+  'C': 'vim-mode-plus:duplicate-with-comment-out-original'
 
 # visual mode bindings
 'atom-text-editor.vim-mode-plus.visual-mode':
