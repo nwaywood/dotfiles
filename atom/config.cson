@@ -155,13 +155,13 @@
     panelHeight: 69
     showPanel: true
   narrow:
-    Scan:
-      useAdjacentPane: "use"
+    Scan: {}
     SelectFiles: {}
-    Symbols:
-      useAdjacentPane: "use"
+    Symbols: {}
     locationToOpen: "center"
     notifiedVimModePlusSpecificDefaultKeymap: true
+    split: "down"
+    useAdjacentPane: "never"
   "ocaml-merlin": {}
   "platformio-ide-terminal":
     ansiColors:
