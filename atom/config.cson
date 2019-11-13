@@ -214,6 +214,7 @@
     incrementalSearch: true
     keymapPToPutWithAutoIndent: true
     maxFoldableIndentLevel: 0
+    showHoverSearchCounter: true
     smoothScrollOnHalfScrollMotionDuration: 250
     useClipboardAsDefaultRegister: true
     useSmartcaseForSearch: true
