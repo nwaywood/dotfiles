@@ -20,19 +20,28 @@ atom.commands.add("atom-text-editor", "custom:space", () => {
 
 atom.commands.add("atom-workspace", "custom:merge-panes", () => {
   const panes = atom.workspace.getCenter().getPanes()
-  const firstPane = panes.shift()
+  // find the first visible pane (not in a non-active "vim tab" and remove it from `panes`)
+  const firstPane = getFirstVisiblePane(panes)
 
-  // loop through all panes except for the first pane
+  // loop through all panes except for the first visible pane
+  // (all other panes will get merged into `firstPane`)
   for (pane of panes) {
-    for (item of pane.getItems()) {
-      // if item is already in first pane, delete it, otherwise move it to first pane
-      if (firstPane.getItems().find(findItemInPane(item))) {
-        pane.destroyItem(item)
-      } else {
-        pane.moveItemToPane(item, firstPane)
-      }
+    // only loop through panes that are currently visible
+    // atom-vim-like-tab hides panes in diffenent "vim tabs"
+    // by setting their css `display: none`
+    if (pane.element.style.display !== "none") {
+        for (item of pane.getItems()) {
+          // if item is already in first pane, delete it, otherwise move it to first pane
+          if (firstPane.getItems().find(findItemInPane(item))) {
+            pane.destroyItem(item)
+          } else {
+            pane.moveItemToPane(item, firstPane)
+          }
+        }
     }
   }
+  // make sure the pane that all the items were merged into is active
+  firstPane.activate()
 })
 
 function findItemInPane(nonFirstPaneItem) {
@@ -47,6 +56,14 @@ function findItemInPane(nonFirstPaneItem) {
       return firstPaneItem.uri === nonFirstPaneItem.uri
     }
   }
+}
+
+function getFirstVisiblePane(panes) {
+    for (let i = 0; i < panes.length; ++i) {
+        if (panes[i].element.style.display !== "none") {
+            return panes.splice(i, 1)[0]
+        }
+    }
 }
 
 // Custom commands to move active item to specified index
