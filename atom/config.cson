@@ -121,6 +121,8 @@
     ghcModPath: "/Users/nick/.local/bin/ghc-mod"
   "ide-haskell":
     messageDisplayFrontend: "linter"
+    startupMessageIdeBackend: false
+    switchTabOnCheck: false
   "language-elm": {}
   linter:
     subtleLinterErrors: [
