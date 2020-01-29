@@ -330,11 +330,11 @@ nnoremap <silent> <leader>d :ToggleLocationList<cr>
 
 " ocaml
 " -----
-let g:opamshare = substitute(system('opam config var share'), '\n$', '', '''')
+" let g:opamshare = substitute(system('opam config var share'), '\n$', '', '''')
 " merlin setup
-execute "set rtp+=" . g:opamshare . "/merlin/vim" 
-" ocp-indent setup 
-execute "set rtp^=" . g:opamshare . "/ocp-indent/vim"
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" ocp-indent setup
+" execute "set rtp^=" . g:opamshare . "/ocp-indent/vim"
 
 " vim-airline
 " -----------
