@@ -21,6 +21,9 @@ alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 alias light='it2prof Light && export BACKGROUND=light'
 alias dark='it2prof Default && export BACKGROUND=dark'
 
+# yabai
+alias twm='brew services start skhd && brew services start yabai && killall Dock'
+
 # misc
 alias c='clear'
 alias ccat='pygmentize -g'

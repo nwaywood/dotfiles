@@ -2,6 +2,52 @@
     "title": "My custom karibiner rules for advantage 2",
     "rules": [
         {
+            "description": "Open Brave Window",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "return_or_enter",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_shift",
+                                "left_control",
+                                "left_alt"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -na 'Brave Browser.app'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "Open iTerm Window",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "spacebar",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_shift",
+                                "left_control",
+                                "left_alt"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -na 'iTerm.app'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "description":
                 "Post escape if caps is pressed alone, left_ctrl otherwise",
             "manipulators": [
@@ -28,7 +74,33 @@
         },
         {
             "description":
-                "Change end key to cmd + ctrl when held, and to escape when pressed",
+                "Change home key to cmd + ctrl when held, and to escape when pressed",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "home",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_control",
+                            "modifiers": ["left_command"]
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "escape"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description":
+                "Change end key to ctrl + alt + shift when held, and to escape when pressed",
             "manipulators": [
                 {
                     "type": "basic",
@@ -41,7 +113,33 @@
                     "to": [
                         {
                             "key_code": "left_control",
-                            "modifiers": ["left_command"]
+                            "modifiers": ["left_alt", "left_shift"]
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "escape"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description":
+                "Change page_down key to alt + shift when held, and to escape when pressed",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "page_down",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_alt",
+                            "modifiers": ["left_shift"]
                         }
                     ],
                     "to_if_alone": [

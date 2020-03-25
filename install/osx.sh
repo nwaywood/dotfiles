@@ -15,3 +15,7 @@ echo "Make the dock autoshow after half a second"
 # https://apple.stackexchange.com/questions/59556/is-there-a-way-to-completely-disable-dock
 # float value is in seconds
 defaults write com.apple.dock autohide-delay -float 0.5
+
+echo "Disable swoosh animation when changing workspaces"
+# https://osxdaily.com/2011/03/09/disable-the-spaces-animation-in-mac-os-x/
+defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
