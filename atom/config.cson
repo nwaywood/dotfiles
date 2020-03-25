@@ -1,15 +1,19 @@
 "*":
   "atom-beautify":
+    elm:
+      beautify_on_save: true
     general:
       _analyticsUserId: "d8ae87d4-2a3c-4a4b-9baf-8439c37289e3"
     go:
       disabled: true
+    haskell:
+      beautify_on_save: true
+      default_beautifier: "brittany"
     js: {}
     json:
       indent_size: 2
       jslint_happy: true
-    python:
-      beautify_on_save: true
+    python: {}
   "atom-ctags": {}
   "atom-ide-ui":
     "atom-ide-diagnostics-ui": {}
@@ -44,13 +48,13 @@
       ]
     disabledPackages: [
       "spell-check"
-      "language-elm"
       "linter-hlint"
       "git-plus"
       "atom-terminal"
       "ide-typescript"
       "atom-ctags"
       "atom-ide-ui"
+      "linter-pycodestyle"
     ]
     packagesWithKeymapsDisabled: [
       "goto-definition"
