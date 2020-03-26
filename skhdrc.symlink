@@ -32,7 +32,7 @@ shift + alt - p : yabai -m space --focus prev || yabai -m space --focus last
 shift + alt - w : yabai -m display --focus 1
 shift + alt - e : yabai -m display --focus 2
 shift + alt - r : yabai -m display --focus 3
-shift + alt - t : yabai -m display --focus recent
+# shift + alt - t : yabai -m display --focus recent
 
 # send window to monitor and follow focus
 # ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next
@@ -42,6 +42,7 @@ shift + ctrl + alt - r : yabai -m window --display 3; yabai -m display --focus 3
 
 # toggle window zoom
 shift + alt - z : yabai -m window --toggle zoom-fullscreen
+shift + ctrl + alt - z : yabai -m window --toggle native-fullscreen
 
 # spaces
 # https://github.com/koekeishiya/yabai/issues/377
@@ -52,16 +53,12 @@ shift + alt - x : yabai -m space --destroy
 # create desktop, move window and follow focus
 # https://github.com/koekeishiya/yabai/issues/377
 # https://github.com/koekeishiya/yabai/issues/160
-# shift + alt + ctrl - m : yabai -m space --create && yabai -m window --space last && yabai -m space --focus last
-# shift + alt + ctrl - m : yabai -m space --create && \
-#                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-#                   yabai -m window --space "${index}" && \
-#                   yabai -m space --focus "${index}"
 shift + alt + ctrl - m : yabai -m space --create \
 	&& wid="$(yabai -m query --windows --window | jq -r '.id')" \
 	&& sidx="$(yabai -m query --spaces --display | jq -r 'map(select(."native-fullscreen" == 0))[-1].index')" \
 	&& yabai -m window "${wid}" --space "${sidx}" \
 	&& yabai -m window --focus "${wid}"
+
 # sticky window to all spaces
 # https://github.com/koekeishiya/yabai/issues/255
 shift + alt + ctrl - s : yabai -m window --toggle sticky;\
@@ -87,8 +84,14 @@ shift + ctrl + alt - return : open -na 'iTerm.app'
 shift + ctrl + alt - n : yabai -m window --space next; yabai -m space --focus next
 shift + ctrl + alt - p : yabai -m window --space prev; yabai -m space --focus prev
 
+# change window size
+shift + ctrl + alt - right : yabai -m window --resize right:20:0 
+shift + ctrl + alt - left : yabai -m window --resize left:-20:0
+shift + ctrl + alt - up : yabai -m window --resize top:0:-20
+shift + ctrl + alt - down : yabai -m window --resize bottom:0:20
+
 # balance size of windows
-# shift + alt - 0 : yabai -m space --balance
+shift + ctrl + alt - 0 : yabai -m space --balance
 
 # make floating window fill screen
 # shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
@@ -96,18 +99,9 @@ shift + ctrl + alt - p : yabai -m window --space prev; yabai -m space --focus pr
 # make floating window fill left-half of screen
 # shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
 
-
 # move floating window
 # shift + ctrl - a : yabai -m window --move rel:-20:0
 # shift + ctrl - s : yabai -m window --move rel:0:20
-
-# increase window size
-# shift + alt - a : yabai -m window --resize left:-20:0
-# shift + alt - w : yabai -m window --resize top:0:-20
-
-# decrease window size
-# shift + cmd - s : yabai -m window --resize bottom:0:-20
-# shift + cmd - w : yabai -m window --resize top:0:20
 
 # set insertion point in focused container
 # ctrl + alt - h : yabai -m window --insert west
