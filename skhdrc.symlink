@@ -44,12 +44,24 @@ shift + ctrl + alt - r : yabai -m window --display 3; yabai -m display --focus 3
 shift + alt - z : yabai -m window --toggle zoom-fullscreen
 
 # spaces
-shift + alt - c : yabai -m space --create; yabai -m space --focus last
+# https://github.com/koekeishiya/yabai/issues/377
+shift + alt - c : yabai -m space --create \
+	&& sidx="$(yabai -m query --spaces --display | jq -r 'map(select(."native-fullscreen" == 0))[-1].index')" \
+	&& yabai -m space --focus "${sidx}"
 shift + alt - x : yabai -m space --destroy
 # create desktop, move window and follow focus
 # https://github.com/koekeishiya/yabai/issues/377
 # https://github.com/koekeishiya/yabai/issues/160
-shift + alt + ctrl - m : yabai -m space --create && yabai -m window --space last && yabai -m space --focus last
+# shift + alt + ctrl - m : yabai -m space --create && yabai -m window --space last && yabai -m space --focus last
+# shift + alt + ctrl - m : yabai -m space --create && \
+#                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+#                   yabai -m window --space "${index}" && \
+#                   yabai -m space --focus "${index}"
+shift + alt + ctrl - m : yabai -m space --create \
+	&& wid="$(yabai -m query --windows --window | jq -r '.id')" \
+	&& sidx="$(yabai -m query --spaces --display | jq -r 'map(select(."native-fullscreen" == 0))[-1].index')" \
+	&& yabai -m window "${wid}" --space "${sidx}" \
+	&& yabai -m window --focus "${wid}"
 # sticky window to all spaces
 # https://github.com/koekeishiya/yabai/issues/255
 shift + alt + ctrl - s : yabai -m window --toggle sticky;\
@@ -60,9 +72,9 @@ shift + alt + ctrl - s : yabai -m window --toggle sticky;\
 shift + ctrl + alt - f : yabai -m space --layout float
 shift + ctrl + alt - b : yabai -m space --layout bsp
 # float / unfloat window and center on screen
-alt - f : yabai -m window --toggle float;\
+shift + alt - f : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
-shift + alt - f : yabai -m window --toggle float
+alt - f : yabai -m window --toggle float
 
 # applications
 shift + alt - b : open -a 'Brave Browser.app'
