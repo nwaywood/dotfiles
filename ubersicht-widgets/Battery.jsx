@@ -6,7 +6,7 @@ export const refreshFrequency = 300000 // ms
 
 export const className = ` 
   -webkit-font-smoothing: antialiased;
-  color: #a6a6a6;
+  color: #FAFDFF;
   font: 12px 'Helvetica Neue';
   font-weight: bold;
   top: 3px;
@@ -17,7 +17,7 @@ export const className = `
 const battery = css`
     text-align: right;
     padding: 3px 8px;
-    border-bottom: 1px solid #3E7274;
+    border-bottom: 2px solid #3E7274;
 `
 
 export const render = ({ output }) => {
