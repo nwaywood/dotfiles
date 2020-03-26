@@ -54,6 +54,7 @@ yabai -m config window_gap                   5
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^SourceTree$" manage=off
+yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" manage=off
 
 # refresh my Übersicht bar when the space changes
 yabai -m signal --add event=space_changed \
