@@ -28,10 +28,11 @@ yabai -m config window_shadow                off
 # window border
 yabai -m config window_border                on
 yabai -m config window_border_placement      inset
-yabai -m config window_border_width          3
+yabai -m config window_border_width          2
 yabai -m config window_border_radius         0 # square
 yabai -m config active_window_border_topmost on
-yabai -m config active_window_border_color   0xff775759
+# yabai -m config active_window_border_color   0xff775759 # yabai brown
+yabai -m config active_window_border_color   0xff039FD9 # webex blue
 yabai -m config normal_window_border_color   0xff505050
 # yabai -m config insert_window_border_color   0xffd75f5f
 
@@ -50,10 +51,11 @@ yabai -m config left_padding                 10
 yabai -m config right_padding                10
 yabai -m config window_gap                   5
 
-# float specific apps
+# Always float specific apps
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^SourceTree$" manage=off
+yabai -m rule --add app="^Activity Monitor$" manage=off
 yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" manage=off
 
 # refresh my Übersicht bar when the space changes
