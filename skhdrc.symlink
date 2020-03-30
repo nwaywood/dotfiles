@@ -23,6 +23,9 @@ shift + alt - 3 : yabai -m space --focus 3
 shift + alt - 4 : yabai -m space --focus 4
 shift + alt - 5 : yabai -m space --focus 5
 shift + alt - 6 : yabai -m space --focus 6
+shift + alt - 7 : yabai -m space --focus 7
+shift + alt - 8 : yabai -m space --focus 8
+shift + alt - 9 : yabai -m space --focus 9
 # shift + alt - t : yabai -m space --focus recent
 # https://github.com/koekeishiya/yabai/issues/295
 shift + alt - n : yabai -m space --focus next || yabai -m space --focus first
@@ -75,10 +78,15 @@ alt - f : yabai -m window --toggle float
 
 # applications
 shift + alt - b : open -a 'Brave Browser.app'
-shift + alt - t : open -a 'iTerm.app'
+shift + alt - t : open -a 'Alacritty.app'
 shift + alt - s : open -a 'Slack.app'
-shift + ctrl + alt - space : open -na 'Finder.app'
-shift + ctrl + alt - return : open -na 'iTerm.app'
+# hack till https://github.com/alacritty/alacritty/issues/607 is resolved
+shift + ctrl + alt - space : open -na 'Alacritty.app' --args --command nnn
+# shift + ctrl + alt - space : open -na 'Finder.app'
+shift + ctrl + alt - return : open -na 'Alacritty.app'
+# shift + ctrl + alt - return : osascript -e 'tell application "iTerm2"
+  # create window with default profile
+# end tell'
 
 # send window to desktop and follow focus
 shift + ctrl + alt - n : yabai -m window --space next; yabai -m space --focus next
@@ -93,7 +101,7 @@ shift + ctrl + alt - down : yabai -m window --resize bottom:0:20
 # balance size of windows
 shift + ctrl + alt - 0 : yabai -m space --balance
 
-# toggle window split type
+# toggle window split type (0x1B = -)
 # https://github.com/koekeishiya/skhd/issues/1
 shift + ctrl + alt - 0x1B : yabai -m window --toggle split
 
