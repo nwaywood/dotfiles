@@ -1,24 +1,16 @@
 #!bin/sh
 
-if test ! $(which brew); then
-    echo "Installing homebrew"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
 echo "Installing homebrew packages..."
 
 # brew stuff
 brew tap caskroom/cask
 
 # core development tools
-brew install mercurial
 brew install git
 # brew install macvim --with-override-system-vim
 brew install reattach-to-user-namespace
 brew install tmux
 brew install zsh
-brew install z
-brew install fzf
 
 # languages and langauge tools
 brew install go --with-cc-all
@@ -27,10 +19,13 @@ brew install haskell-stack
 brew cask install elm-platform
 
 # CLI tools
+brew install z
+brew install fzf
 brew install tree
 brew install jq
-brew install ag
-brew install ripgrep
+brew install fd # good find
+brew install the_silver_searcher # good grep
+brew install ripgrep # good grep
 brew install --HEAD https://raw.githubusercontent.com/junegunn/blsd/master/blsd.rb
 
 # neovim and atom
