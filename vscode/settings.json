@@ -29,8 +29,6 @@
         "**/*.tsx",
         "**/*.ts"
     ],
-    // put search all files UI at the bottom
-    "search.location": "panel",
     // multi select with alt so that cmd+click goes to def
     "editor.multiCursorModifier": "alt",
     // Controls if file decorations should use badges.
@@ -277,7 +275,9 @@
             ]
         }
     ],
-    "editor.occurrencesHighlight": false
+    "editor.occurrencesHighlight": false,
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true
     // #0078cc - vscode blue
     // #f0f7fc - vscode white
     // TODO: add back again with nice colors
