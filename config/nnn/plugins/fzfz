@@ -7,15 +7,19 @@
 
 . "$(dirname "$0")"/.nnn-plugin-helper
 
-if [ "$(cmd_exists fzf)" -eq "0" ]; then
-    if [ -f "$HOME/.z" ]; then
-        # I read the data from z's file instead of calling the z command so that the data doesn't need to be processed twice
-        sel=$(awk -F "|" '{print $1}' "$HOME/.z" | fzf | awk '{$1=$1};1')
-        # NOTE: Uncomment this line and comment out the line above if you want to see the weightings of the dir's in the fzf pane
-        # sel=$(awk -F "|" '{printf "%s %s\n", $2, $1}' "$HOME/.z" | fzf | sed 's/^[0-9,.]* *//' | awk '{$1=$1};1')
-    else
-        exit 1
-    fi
+if which fzf >/dev/null 2>&1; then
+    fuzzy=fzf
+elif which fzy >/dev/null 2>&1; then
+    fuzzy=fzy
+else
+    exit 1
+fi
+
+if [ -f "$HOME/.z" ]; then
+    # I read the data from z's file instead of calling the z command so that the data doesn't need to be processed twice
+    sel=$(awk -F "|" '{print $1}' "$HOME/.z" | "$fuzzy" | awk '{$1=$1};1')
+    # NOTE: Uncomment this line and comment out the line above if you want to see the weightings of the dir's in the fzf/fzy pane
+    # sel=$(awk -F "|" '{printf "%s %s\n", $2, $1}' "$HOME/.z" | "$fuzzy" | sed 's/^[0-9,.]* *//' | awk '{$1=$1};1')
 else
     exit 1
 fi
