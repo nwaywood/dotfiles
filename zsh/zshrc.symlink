@@ -33,7 +33,7 @@ ZSH_THEME="nick"
 export UPDATE_ZSH_DAYS=20
 
 # Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
+# DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -54,7 +54,6 @@ plugins=(git vi-mode history-substring-search)
 # map jk to enter normal mode in zsh
 # https://dougblack.io/words/zsh-vi-mode.html
 bindkey -M viins 'jk' vi-cmd-mode
-
 # User configuration
 export DOTFILES=$HOME/.dotfiles
 
@@ -62,9 +61,14 @@ export DOTFILES=$HOME/.dotfiles
 for config ($DOTFILES/zsh/**/*.zsh) source $config
 
 source $ZSH/oh-my-zsh.sh
-
+# nix
+source /Users/nick/.nix-profile/etc/profile.d/nix.sh
 # editor
 export EDITOR='nvim'
+
+# nnn
+export NNN_PLUG='f:fzcd;o:fzopen;z:fzfz'
+export NNN_BMS='d:~/Downloads'
 
 # GOPATH
 export GOPATH=$HOME/code

@@ -81,12 +81,12 @@ shift + alt - b : open -a 'Brave Browser.app'
 shift + alt - t : open -a 'Alacritty.app'
 shift + alt - s : open -a 'Slack.app'
 # hack till https://github.com/alacritty/alacritty/issues/607 is resolved
-shift + ctrl + alt - space : open -na 'Alacritty.app' --args --command nnn
-# shift + ctrl + alt - space : open -na 'Finder.app'
+# shift + ctrl + alt - space : open -na 'Alacritty.app' --args --command nnn
+shift + ctrl + alt - space : open -na 'Finder.app'
 shift + ctrl + alt - return : open -na 'Alacritty.app'
 # shift + ctrl + alt - return : osascript -e 'tell application "iTerm2"
-  # create window with default profile
-# end tell'
+#         create window with default profile
+#      end tell'
 
 # send window to desktop and follow focus
 shift + ctrl + alt - n : yabai -m window --space next; yabai -m space --focus next

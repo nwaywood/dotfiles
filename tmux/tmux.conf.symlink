@@ -6,6 +6,9 @@ set -g default-command "reattach-to-user-namespace -l zsh"
 
 # tmux display things in 256 colors
 set -g default-terminal "screen-256color"
+# make vim cursor display properly in insert mode
+# https://github.com/neovim/neovim/wiki/FAQ#cursor-shape-doesnt-change-in-tmux
+set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
 
 # automatically renumber tmux windows
 set -g renumber-windows on
@@ -19,6 +22,9 @@ bind C-a send-prefix
 # connected to the *session*, constrain window size to the maximum size of any
 # client connected to *that window*. Much more reasonable.
 setw -g aggressive-resize on
+
+# nvim wants to option set
+set-option -sg escape-time 10
 
 # use vim shortcuts for copy mode
 setw -g mode-keys vi
