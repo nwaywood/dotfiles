@@ -3,29 +3,41 @@ call plug#begin('~/.config/nvim/plugged')
 
 " color/theme stuff
 Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
 Plug 'joshdick/onedark.vim'
+Plug 'mhartington/oceanic-next'
 
 " utilities
+" Plug 'wikitopian/hardmode' " learning vim like a boss
+Plug 'vimwiki/vimwiki' " Org-mode like thing for Vim
+Plug 'kassio/neoterm' " Wrapper around :term
 Plug 'scrooloose/nerdtree' " file explorer
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Aldlevine/nerdtree-git-plugin' " this fork is required to grey out gitignored files
-Plug 'ryanoasis/vim-devicons' " Add file icons to nerdtree, airline, ctrlp etc
+Plug 'tpope/vim-vinegar' " netrw replacement
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'sbdchd/neoformat' " general formatter like beautify
+" Plug 'majutsushi/tagbar' " display file scope in side bar
+Plug 'tpope/vim-dispatch' " asynchronous build and test dispatcher
+" Plug 'radenling/vim-dispatch-neovim' " add neovim strategy to dispatch
+Plug 'benmills/vimux' " quickly run commands in a tmux pane
+Plug 'w0rp/ale' " Async linting engine
+" Plug 'neomake/neomake' " Alternative async linting engine
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " auto code completion
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' } " Atom-narrow for vim
+Plug 'mileszs/ack.vim' " grep replacement
 Plug 'christoomey/vim-tmux-navigator' " use ctrl-hjkl to navigate between tmux and vim panes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive' " Git support
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
-Plug 'ap/vim-css-color' " show colors of hex codes etc in editor
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}} " language server protocol support
-Plug 'neoclide/coc-denite' " show coc lists in denite interface
-
-" Core utils
+Plug 'ryanoasis/vim-devicons'
+Plug 'jsfaint/gen_tags.vim' " automatic ctag generation
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
 Plug 'szw/vim-maximizer' " toggle windows fullscreen
 Plug 'google/vim-searchindex' " shows number of matches for search commands
 Plug 'moll/vim-bbye' " make buffer deleting preserve window layout
-Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
-Plug 'tpope/vim-fugitive' " Git support
+Plug 'plytophogy/vim-diffchanges' " view the unsaved changes in the current buffer
 
 " Vim language enhancements
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
@@ -38,17 +50,28 @@ Plug 'kana/vim-textobj-fold' " Adds the text objects 'iz' and 'az'
 Plug 'kana/vim-textobj-line' " Adds the text objects 'il' and 'al'
 Plug 'kana/vim-textobj-function' " Adds the text objects 'if' and 'af'
 Plug 'thinca/vim-textobj-function-javascript' " Adds 'if' and 'af' for javascript
+Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
+Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion integration with deoplete
+
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' } " better syntax highlighting and indenting for haskell
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' } " haskell autocompletion integration with deoplete
+
 Plug 'elmcast/elm-vim', { 'for': 'elm' } " elm support
+
 Plug 'reasonml-editor/vim-reason', { 'for': 'reason' } " reason support
+
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript'] } " JSX support
-" Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
+Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
+
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'javascript', 'javascript.jsx'] } " CSS3 syntax support
+
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -58,11 +81,18 @@ call plug#end()
 
 " set color themes (from .vim/colors)
 syntax enable
+" let base16colorspace=256 " Access colors present in 256 colorspace
+" set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+" " e.g. base16-solarized
+" execute "colorscheme ".$THEME
+" set background=dark
 execute 'set background='.$BACKGROUND
 colorscheme solarized
 
 if has('gui_vimr')
+    " " e.g. base16-solarized-dark
     execute 'set background='.$BACKGROUND
+    " execute "colorscheme ".$THEME
     colorscheme onedark
 endif
 
@@ -78,7 +108,9 @@ set ttimeoutlen=10
 
 " Use vims old regex engine for faster syntax highlighting
 " http://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
-" set regexpengine=1
+set regexpengine=1
+" mininum number of lines to correctly apply syntax highlighting to
+syntax sync minlines=256
 
 " tab control
 set smarttab " tab respects 'tabstop', 'shiftwidth and 'softtabstop
@@ -101,9 +133,14 @@ set showmatch
 set hlsearch " highlight search results
 set magic " make searching use normal regex (grep)
 
+" Change the backgroud for search terms to orange
+" https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+" http://stackoverflow.com/questions/7103173/vim-how-to-change-the-highlight-color-for-search-hits-and-quickfix-selection
+" hi Search ctermbg=55
+
 " Line number management
 " http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
-" NOTE: Focus events don't work inside tmux with neovim
+" NOTE: Focus events don't work in inside tmux with neovim
 set number relativenumber
 
 " misc
@@ -118,7 +155,6 @@ set noshowcmd   " hide annoying flashing of commands below status bar
 set autoindent " keep the indentation on <enter>
 set noswapfile   "don't use swapfile
 set nobackup     "dont create annoying backup files
-set nowritebackup
 set encoding=utf-8 " set default encoding to UTF-8
 scriptencoding utf-8
 set clipboard=unnamed " for copy/paste with osx
@@ -130,6 +166,8 @@ set diffopt+=vertical " always use verical diffs
 hi CursorLineNr ctermfg=3 ctermbg=0
 " force vim to read *.md files as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" make read read *.raml files as yaml
+autocmd BufNewFile,BufRead *.raml set filetype=yaml
 
 augroup BufferCheck
     autocmd!
@@ -175,13 +213,11 @@ map <leader>0 :e ~/.config/nvim/init.vim<cr>
 " insert empty line between brackets (hacky, need a better way to do this)
 inoremap {<CR> {<CR>}<C-o>O
 
+" toggle paste mode
+" noremap <leader>p :set paste!<cr>
+
 " clear search highlighting and clear any message already displayed
 noremap <silent> <leader>/ :set hlsearch! hlsearch?<cr>
-
-" open tags whereever I want
-" nnoremap gd <C-]>
-" nnoremap gv :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-" nnoremap gs :sp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " buffer navigation
 nnoremap <silent> <leader>bp :bprevious<cr> " move to the previous buffer
@@ -269,7 +305,7 @@ endfunc
 " Add command to call this function
 command! TrimTrailingWhitespace call TrimTrailingWhitespace()
 
-" Toggle location list (diagnostics)
+" Toggle location list
 function! ToggleLocationList()
     let buffer_count_before = s:BufferCount()
     " Location list can't be closed if there's cursor in it, so we need
@@ -292,11 +328,19 @@ nnoremap <silent> <leader>d :ToggleLocationList<cr>
 
 " Plugins settings {{{
 
+" ocaml
+" -----
+" let g:opamshare = substitute(system('opam config var share'), '\n$', '', '''')
+" merlin setup
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" ocp-indent setup
+" execute "set rtp^=" . g:opamshare . "/ocp-indent/vim"
+
 " vim-airline
 " -----------
 set laststatus=2 " plugin won't work without this line
 set noshowmode " hide the default insert/command mode indicator
-" let g:airline_powerline_fonts=1 " enable vim-devicons icons in airline
+let g:airline_powerline_fonts=1 " enable vim-devicons icons in airline
 
 set timeoutlen=20 "gets rid of the pause when leaving insert mode
 " for the fonts to work in iTerm, install a patch font and set it in iTerm
@@ -328,6 +372,43 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
+
+" ALE
+" ---
+"  cosmetics
+" let g:airline#extensions#neomake#enabled=1
+" call neomake#configure#automake('w')
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always=1
+let g:ale_sign_error='•'
+let g:ale_sign_warning='•'
+
+let g:ale_lint_delay=0
+let g:ale_open_list='on_save'
+
+
+" only run eslint linter for js files
+let g:ale_linters = {'javascript': ['eslint']}
+
+" Fixers
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['eslint']
+" let g:ale_javascript_prettier_options = '--tab-width 4 --no-semi --parser flow'
+" Don't show an error when no eslint config is found
+let g:ale_javascript_eslint_suppress_missing_config = 1
+
+" ALE colors for gui
+hi ALEWarningSign gui=bold guifg=#D19A66
+hi ALEErrorSign gui=bold guifg=#E06C75
+" Change the color of warnings and errors in the gutter for term colors
+hi ALEWarningSign ctermfg=3 ctermbg=0
+hi ALEErrorSign ctermfg=1 ctermbg=0
+" NOTE: Overriding SignColumn instead of using ALESignColumnWithoutErrors
+" because it doesn't seem to work :/
+hi SignColumn ctermfg=10 ctermbg=0 guifg=Yellow
+" let g:ale_change_sign_column_color=1
+" hi ALESignColumnWithoutErrors ctermfg=10 ctermbg=0 guifg=Yellow
 
 " NERDTree
 " --------
@@ -380,6 +461,33 @@ hi NERDTreeGitStatusUntracked ctermfg=2 guifg=#98c379
 " https://github.com/scrooloose/nerdtree/blob/8cd17c1a478d8302e4782a95963abe46fc22c538/syntax/nerdtree.vim#L50
 hi link NERDTreeExecFile Normal
 
+" Ack
+" ---
+let g:ackprg='ag --vimgrep --smart-case'
+cnoreabbrev ag Ack!
+cnoreabbrev Ag Ack!
+
+" diffchanges
+" -----------
+command DiffSaved DiffChangesDiffToggle " alias command to view unsaved changes in current buffer
+
+" emmet-vim
+" ---------
+" only enable insert mode so C-Y doesn't clash with scrolling the viewport
+let g:user_emmet_mode='i'
+
+" gen_tags.vim
+" ------------
+" disable gtags support (I only need ctags)
+let g:loaded_gentags#gtags = 1
+" autogenerate ctags for scm repos to ~/.cache/tags_dir/<project-name>
+let g:gen_tags#ctags_auto_gen = 1
+
+" mappings to open def where ever I want
+nnoremap gd <C-]>
+nnoremap gv :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap gs :sp <CR>:exec("tag ".expand("<cword>"))<CR>
+
 " CtrlP
 " -----
 nnoremap <silent> <leader>r :CtrlPMRU<cr>
@@ -389,6 +497,25 @@ let g:ctrlp_dotfiles=1
 let g:ctrlp_working_path_mode = 'ra'
 " use ag for searching instead of vims globpath()
 let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+
+" vim-dispatch
+" ------------
+" nnoremap <leader>d :Dispatch<cr> " mapping used for 'diagnostics'
+" disable m mappings so it doesn't clash with NERDTree m to open menu
+let g:nremap = {"m": ""}
+
+" Vimux
+" -----
+" Prompt for a command to run
+noremap <Leader>vp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+noremap <Leader>vl :VimuxRunLastCommand<CR>
+" Inspect runner pane
+noremap <Leader>vi :VimuxInspectRunner<CR>
+" Close vim tmux runner opened by VimuxRunCommand
+noremap <Leader>vq :VimuxCloseRunner<CR>
+" Zoom the runner pane (use <bind-key> z to restore runner pane)
+noremap <Leader>vz :call VimuxZoomRunner()<CR>
 
 " Fugitive
 " --------
@@ -404,9 +531,16 @@ nnoremap <silent> <leader>gb :Gblame<cr>
 nnoremap <silent> <leader>gd :Gdiff<cr>
 nnoremap <silent> <leader>gl :Glog<cr>
 
+" deoplete
+" --------
+let g:deoplete#enable_at_startup = 1
+set completeopt+=noinsert
+set completeopt+=noselect
+set completeopt-=preview " disable preview window at the bottom of the screen
+inoremap <silent><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " vim-go
 " ------
-let g:go_gopls_enabled = 0
 " more syntax highlighting for go code
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -423,6 +557,7 @@ let g:go_highlight_extra_types = 1
 let g:go_fmt_command='gofmt'
 " disable mappings related to Tags (clashes with <C-t> to open terminal)
 let g:go_def_mapping_enabled = 0
+
 " au FileType go nnoremap <Leader>gi :GoImports<cr>
 " au FileType go nnoremap <Leader>gm :GoMetaLinter<cr>
 " remove red highlighting
@@ -437,6 +572,38 @@ let g:go_metalinter_command='gometalinter --disable-all --enable=vet
             \ --enable=vetshadow --enable=golint --enable=ineffassign --enable=goconst --enable=gofmt'
 " let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
 "		 \ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
+
+" tagbar
+" ------
+" nnoremap <silent> <leader>tt :TagbarToggle<cr>
+" Gotags config
+" let g:tagbar_type_go = {
+"             \ 'ctagstype' : 'go',
+"             \ 'kinds'     : [
+"             \ 'p:package',
+"             \ 'i:imports:1',
+"             \ 'c:constants',
+"             \ 'v:variables',
+"             \ 't:types',
+"             \ 'n:interfaces',
+"             \ 'w:fields',
+"             \ 'e:embedded',
+"             \ 'm:methods',
+"             \ 'r:constructor',
+"             \ 'f:functions'
+"             \ ],
+"             \ 'sro' : '.',
+"             \ 'kind2scope' : {
+"             \ 't' : 'ctype',
+"             \ 'n' : 'ntype'
+"             \ },
+"             \ 'scope2kind' : {
+"             \ 'ctype' : 't',
+"             \ 'ntype' : 'n'
+"             \ },
+"             \ 'ctagsbin'  : 'gotags',
+"             \ 'ctagsargs' : '-sort -silent'
+"             \ }
 
 " vim-marked
 " -----------
@@ -460,115 +627,34 @@ let g:elm_detailed_complete = 1 " show types in autocompletion
 let g:deoplete#omni_patterns = {}
 let g:deoplete#omni_patterns.elm = '\.'
 
-" coc.nvim
-" ========
-set signcolumn=yes
-hi SignColumn ctermfg=10 ctermbg=0 guifg=Yellow
+" vimwiki
+" -------
+" change the default global prefix to o for 'organiser'
+let g:vimwiki_map_prefix = '<Leader>o'
 
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
+" change wiki path
+let g:vimwiki_list = [{'path': '/Users/nick/Google Drive/vimwiki'}]
 
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
+" heading highlighting
+let g:vimwiki_hl_headers = 1
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-if has('patch8.1.1068')
-  " Use `complete_info` if your (Neo)Vim version supports it.
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gs :call CocAction('jumpDefinition', 'split')<cr>
-nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<cr>
-nmap <silent> gt :call CocAction('jumpDefinition', 'tabe')<cr>
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Mappings using Denite: https://github.com/neoclide/coc-denite/blob/master/doc/coc-denite.txt
-" Show all diagnostics.
-nnoremap <silent> <leader>d  :Denite coc-diagnostic<cr>
-" Find symbol of current document.
-nnoremap <silent> <leader>s  :Denite coc-symbols<cr>
-" Search workspace symbols.
-command WorkspaceSymbols :Denite coc-workspace
-
-" Golang https://github.com/golang/tools/blob/master/gopls/doc/settings.md for
-" settings.json
-" format go files on save
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
-
-" vim-surround
-" ============
-" disable insert mode mappings <c-g>s and <c-g>S
-let g:surround_no_insert_mappings=1
+" unbind tpope/vim-unimpaired bindings that interfere with vimwiki '='
+" normal mode binding
+" http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
+" augroup unusedbindings
+" 	autocmd!
+" 	autocmd VimEnter * nunmap =p
+" 	autocmd VimEnter * nunmap =P
+" augroup END
 
 " Denite.nvim
 " ===========
-" https://github.com/Shougo/denite.nvim/issues/652#issuecomment-501747102
-" Define mappings
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> <c-g>
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-endfunction
 
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-    imap <silent><buffer> <esc> <Plug>(denite_filter_quit)
-    inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-    inoremap <silent><buffer><expr> <c-t>
-                \ denite#do_map('do_action', 'tabopen')
-    inoremap <silent><buffer><expr> <c-v>
-                \ denite#do_map('do_action', 'vsplit')
-    inoremap <silent><buffer><expr> <c-s>
-                \ denite#do_map('do_action', 'split')
-    inoremap <silent><buffer><expr> <C-g>
-                \ denite#do_map('quit')
-    nnoremap <silent><buffer><expr> <C-g>
-                \ denite#do_map('quit')
-    inoremap <silent><buffer> <C-j>
-                \ <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-    inoremap <silent><buffer> <C-k>
-                \ <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
-endfunction
-
-" TODO: get preview working
-" nnoremap <leader>l :Denite line -auto-action=preview<cr>
-" nnoremap <leader>a :Denite grep -auto-action=preview<cr>
-nnoremap <leader>l :Denite line<cr>
-nnoremap <leader>a :Denite grep<cr>
-" nnoremap <leader>s :Denite outline<cr>
-" nnoremap <leader>p :Denite menu:projects -default-action=cd<cr>
-nnoremap <leader>p :Denite command -default-action=execute<cr>
+nnoremap <leader>l :Denite line -auto-preview<cr>
+nnoremap <leader>a :Denite grep -auto-preview<cr>
+nnoremap <leader>s :Denite outline<cr>
+nnoremap <leader>p :Denite menu:projects -default-action=cd<cr>
+nnoremap <D-S-p> :Denite command -default-action=execute<cr>
 " hack fix for terminal vim https://stackoverflow.com/questions/33060569/mapping-command-s-to-w-in-vim
 nnoremap <F6> :Denite command -default-action=execute<cr>
 " nnoremap <leader>c :Denite file_rec<cr>
@@ -601,34 +687,59 @@ call denite#custom#var('menu', 'menus', s:menus)
 " change default options
 call denite#custom#option('default', {
             \ 'prompt': '>',
-            \ 'start_filter': 1,
             \ 'highlight_matched_char': 'DeniteHighlightChar',
             \ 'highlight_matched_range': 'DeniteHighlightRange'
             \ })
 
+" set file_rec to use ag
+call denite#custom#var('file_rec', 'command',
+            \ ['ag', '-l', '--nocolor', '-g', ''])
 
 " Change mappings.
-" call denite#custom#map(
-"             \ 'insert',
-"             \ '<C-p>',
-"             \ '<denite:do_action:preview>',
-"             \ 'noremap'
-"             \)
+call denite#custom#map(
+            \ 'insert',
+            \ '<C-j>',
+            \ '<denite:move_to_next_line>',
+            \ 'noremap'
+            \)
+call denite#custom#map(
+            \ 'insert',
+            \ '<C-k>',
+            \ '<denite:move_to_previous_line>',
+            \ 'noremap'
+            \)
+call denite#custom#map(
+            \ 'insert',
+            \ '<C-g>',
+            \ '<denite:quit>',
+            \ 'noremap'
+            \)
+call denite#custom#map(
+            \ 'insert',
+            \ '<C-v>',
+            \ '<denite:do_action:vsplit>',
+            \ 'noremap'
+            \)
+call denite#custom#map(
+            \ 'insert',
+            \ '<C-s>',
+            \ '<denite:do_action:split>',
+            \ 'noremap'
+            \)
+call denite#custom#map(
+            \ 'insert',
+            \ '<C-p>',
+            \ '<denite:do_action:preview>',
+            \ 'noremap'
+            \)
 " Ag command on grep source
-if executable('ag')
-    call denite#custom#var('grep', 'command', ['ag'])
-    call denite#custom#var('grep', 'default_opts',
-                \ ['-i', '--vimgrep'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', [])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
-    " set file_rec to use ag
-    call denite#custom#var('file/rec', 'command',
-                    \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-    " call denite#custom#var('file_rec', 'command',
-    "             \ ['ag', '-l', '--nocolor', '-g', ''])
-endif
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'default_opts',
+            \ ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
 
 " }}}
 
@@ -637,8 +748,16 @@ endif
 " neovim settings
 " ===============
 if has('nvim')
+    " fix the cursor blinking in insert mode (doesn't work :( ) :help guicursor
+    " set guicursor=i:ver25-blinkon10
+
+    " https://github.com/neovim/neovim/wiki/FAQ - How can I use true colors in
+    " the terminal?
+    " set termguicolors
+
     " terminal mode
     " -------------------------
+
     " verical term split, just in case
     nnoremap <silent> <leader>tv :vsp term://$SHELL<cr>
     " nnoremap <silent> <leader>ts :10sp term://$SHELL<cr>
@@ -661,6 +780,13 @@ if has('nvim')
     tnoremap <C-l> <C-\><C-n><C-w>l
 
     tnoremap <C-w>z <C-\><C-n>:MaximizerToggle<cr>i
+
+    " neoterm
+    let g:neoterm_size='12'
+    let g:neoterm_default_mod='belowright'
+    nnoremap <silent> <C-t> :Ttoggle<cr>
+    " toggle terminal from within terminal mode
+    tnoremap <silent> <C-t> <C-\><C-n>:Ttoggle<cr>
 endif
 
 " vimr settings
