@@ -31,6 +31,19 @@ shift + alt - 9 : yabai -m space --focus 9
 shift + alt - n : yabai -m space --focus next || yabai -m space --focus first
 shift + alt - p : yabai -m space --focus prev || yabai -m space --focus last
 
+# send window to desktop and follow focus
+shift + ctrl + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
+shift + ctrl + alt - 2 : yabai -m window --space 2; yabai -m space --focus 2
+shift + ctrl + alt - 3 : yabai -m window --space 3; yabai -m space --focus 3
+shift + ctrl + alt - 4 : yabai -m window --space 4; yabai -m space --focus 4
+shift + ctrl + alt - 5 : yabai -m window --space 5; yabai -m space --focus 5
+shift + ctrl + alt - 6 : yabai -m window --space 6; yabai -m space --focus 6
+shift + ctrl + alt - 7 : yabai -m window --space 7; yabai -m space --focus 7
+shift + ctrl + alt - 8 : yabai -m window --space 8; yabai -m space --focus 8
+shift + ctrl + alt - 9 : yabai -m window --space 9; yabai -m space --focus 9
+shift + ctrl + alt - n : yabai -m window --space next; yabai -m space --focus next
+shift + ctrl + alt - p : yabai -m window --space prev; yabai -m space --focus prev
+
 # fast focus monitor
 shift + alt - w : yabai -m display --focus 1
 shift + alt - e : yabai -m display --focus 2
@@ -81,16 +94,12 @@ shift + alt - b : open -a 'Brave Browser.app'
 shift + alt - t : open -a 'Alacritty.app'
 shift + alt - s : open -a 'Slack.app'
 # hack till https://github.com/alacritty/alacritty/issues/607 is resolved
-# shift + ctrl + alt - space : open -na 'Alacritty.app' --args --command nnn
-shift + ctrl + alt - space : open -na 'Finder.app'
+shift + ctrl + alt - space : open -na Alacritty.app --args -e zsh -ic nnn
+# shift + ctrl + alt - space : open -na 'Finder.app'
 shift + ctrl + alt - return : open -na 'Alacritty.app'
 # shift + ctrl + alt - return : osascript -e 'tell application "iTerm2"
 #         create window with default profile
 #      end tell'
-
-# send window to desktop and follow focus
-shift + ctrl + alt - n : yabai -m window --space next; yabai -m space --focus next
-shift + ctrl + alt - p : yabai -m window --space prev; yabai -m space --focus prev
 
 # change window size
 shift + ctrl + alt - right : yabai -m window --resize right:20:0
