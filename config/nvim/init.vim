@@ -12,8 +12,8 @@ Plug 'ryanoasis/vim-devicons' " Add file icons to nerdtree, airline, ctrlp etc
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' } " Atom-narrow for vim
 Plug 'christoomey/vim-tmux-navigator' " use ctrl-hjkl to navigate between tmux and vim panes
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
 Plug 'ap/vim-css-color' " show colors of hex codes etc in editor
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}} " language server protocol support
@@ -292,42 +292,81 @@ nnoremap <silent> <leader>d :ToggleLocationList<cr>
 
 " Plugins settings {{{
 
-" vim-airline
-" -----------
+" lightline
+" =========
 set laststatus=2 " plugin won't work without this line
 set noshowmode " hide the default insert/command mode indicator
-" let g:airline_powerline_fonts=1 " enable vim-devicons icons in airline
+set showtabline=2
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['rtabs'] ]
+      \ },
+      \ 'tabline_subseparator' : {'left': '', 'right': '' }, 
+      \ 'tab': {
+      \   'active': [ 'tabnum' ],
+      \   'inactive': [ 'tabnum' ]
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers',
+      \   'rtabs': 'LightlineTabRight'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel',
+      \   'rtabs': 'tabsel'
+      \ },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly' ],
+      \             ['filename' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead',
+      \   'filename': 'LightlineFilename'
+      \ },
+      \ 'component_raw': {
+      \   'buffers': 1
+      \ }
+      \ }
 
-set timeoutlen=20 "gets rid of the pause when leaving insert mode
-" for the fonts to work in iTerm, install a patch font and set it in iTerm
-" prefs https://github.com/ryanoasis/nerd-fonts
-" The line below breaks vimr
-" set guifont=Fura\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
-let g:airline_theme='base16'
-" remove the patched arrows
-let g:airline_powerline_fonts=0
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+function! LightlineFilename()
+  let filename = expand('%:f') !=# '' ? expand('%:f') : '[No Name]'
+  let modified = &modified ? ' +' : ''
+  return filename . modified
+endfunction
 
-" tabline stuff
-let g:airline#extensions#tabline#enabled = 1 " enable the list of buffers at the top of the screen
-let g:webdevicons_enable_airline_tabline = 0 " disable vim-devicons in the tabline
-let g:airline#extensions#tabline#show_close_button=1 " this doesn't work :(
+" hack to show tabs in the right order
+" https://github.com/itchyny/lightline.vim/issues/440
+function! LightlineTabRight()
+  return reverse(lightline#tabs())
+endfunction
 
-" buffers to emulate tabs
-" let g:airline#extensions#tabline#formatter = 'unique_tail' " show just the filename in the buffer list
-" let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename in the buffer list
-let g:airline#extensions#tabline#buffer_idx_mode = 1 " show index on buffer tabs
-" leader-num to jump to corresponding buffer
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
+let g:lightline#bufferline#number_map = {
+\ 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
+\ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
+let g:lightline#bufferline#unnamed='[NO NAME]'
+let g:lightline#bufferline#clickable=1
+
+" show ordinal numbers in buffers
+let g:lightline#bufferline#show_number=2
+" only show the tabline when there is at least two buffers
+" Note: It will probably never happen, but a consequence of this is that the tabline
+" won't show if you have multiple tabs but only one buffer
+let g:lightline#bufferline#min_buffer_count=2
+
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 
 " NERDTree
 " --------
@@ -499,7 +538,8 @@ endif
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gs :call CocAction('jumpDefinition', 'split')<cr>
 nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<cr>
-nmap <silent> gt :call CocAction('jumpDefinition', 'tabe')<cr>
+" NOTE: Need to map this to something else, gt goes to next tab
+" nmap <silent> gt :call CocAction('jumpDefinition', 'tabe')<cr>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
