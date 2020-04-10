@@ -185,7 +185,9 @@ noremap <silent> <leader>/ :set hlsearch! hlsearch?<cr>
 
 " buffer navigation
 nnoremap <silent> <leader>bp :bprevious<cr> " move to the previous buffer
+nnoremap <silent> J :bprevious<cr> " move to the previous buffer
 nnoremap <silent> <leader>bn :bnext<cr> " move to the next buffer
+nnoremap <silent> K :bnext<cr> " move to the next buffer
 nnoremap <silent> <leader>bc :enew<cr> " Open a new empty buffer
 nnoremap <silent> <M-w> :Bdelete<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
 nnoremap <silent> <leader>bq :Bdelete<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
@@ -303,7 +305,7 @@ let g:lightline = {
       \   'left': [ ['buffers'] ],
       \   'right': [ ['rtabs'] ]
       \ },
-      \ 'tabline_subseparator' : {'left': '', 'right': '' }, 
+      \ 'tabline_subseparator' : {'left': '|', 'right': '' }, 
       \ 'tab': {
       \   'active': [ 'tabnum' ],
       \   'inactive': [ 'tabnum' ]
