@@ -1,3 +1,5 @@
+// This workspace is functionally a combination of https://github.com/kkga/nibar
+// and https://github.com/noperator/dotfiles/blob/master/widgets/spaces.coffee
 import { css } from "uebersicht"
 
 // https://www.cyberciti.biz/faq/linux-unix-formatting-dates-for-display/
