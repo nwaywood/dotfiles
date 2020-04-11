@@ -3,6 +3,23 @@ settings-local.zsh
 .config
 .netrwhist
 
+config/karabiner/automatic_backups
+config/karabiner/karabiner.json
 config/nvim/plugged
 config/nvim/projects.vim
-oni/plugged
+config/oni/plugged
+config/oni/config.js
+config/brittany
+config/configstore
+config/gcloud
+config/gocode
+config/hub
+config/filezilla
+config/gtk-2.0
+config/inkscape
+config/yarn
+config/nnn
+config/coc
+config/git
+!config/nnn/plugins/fzfz
+
