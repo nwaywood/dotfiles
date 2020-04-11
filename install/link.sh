@@ -32,36 +32,3 @@ for config in $DOTFILES/config/*; do
 	fi
 done
 
-echo -e "\n\ninstalling to ~/.doom.d"
-echo "=============================="
-if [ ! -d $HOME/.doom.d ]; then
-	echo "Creating ~/.doom.d"
-	mkdir -p $HOME/.doom.d
-fi
-# configs=$( find -path "$DOTFILES/config.symlink" -maxdepth 1 )
-for config in $DOTFILES/doom.d/*; do
-	target=$HOME/.doom.d/$( basename $config )
-	if [ -e $target ]; then
-		echo "~${target#$HOME} already exists... Skipping."
-	else
-		echo "Creating symlink for $config"
-		ln -s $config $target
-	fi
-done
-
-echo -e "\n\ninstalling to ~/.oni"
-echo "=============================="
-if [ ! -d $HOME/.oni ]; then
-	echo "Creating ~/.oni"
-	mkdir -p $HOME/.oni
-fi
-# configs=$( find -path "$DOTFILES/config.symlink" -maxdepth 1 )
-for config in $DOTFILES/oni/*; do
-	target=$HOME/.oni/$( basename $config )
-	if [ -e $target ]; then
-		echo "~${target#$HOME} already exists... Skipping."
-	else
-		echo "Creating symlink for $config"
-		ln -s $config $target
-	fi
-done
