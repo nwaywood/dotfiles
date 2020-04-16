@@ -358,7 +358,7 @@ let g:lightline#bufferline#show_number=2
 " only show the tabline when there is at least two buffers
 " Note: It will probably never happen, but a consequence of this is that the tabline
 " won't show if you have multiple tabs but only one buffer
-let g:lightline#bufferline#min_buffer_count=2
+" let g:lightline#bufferline#min_buffer_count=2
 
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
 nmap <Leader>2 <Plug>lightline#bufferline#go(2)

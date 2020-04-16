@@ -45,11 +45,16 @@ yabai -m config window_opacity               off
 
 # general space settings
 yabai -m config layout                       bsp # spaces default to BSP
-yabai -m config top_padding                  36
-yabai -m config bottom_padding               10
-yabai -m config left_padding                 10
-yabai -m config right_padding                10
-yabai -m config window_gap                   5
+yabai -m config top_padding                  30
+yabai -m config bottom_padding               0
+yabai -m config left_padding                 0
+yabai -m config right_padding                0
+yabai -m config window_gap                   0
+# yabai -m config top_padding                  36
+# yabai -m config bottom_padding               10
+# yabai -m config left_padding                 10
+# yabai -m config right_padding                10
+# yabai -m config window_gap                   5
 
 # Always float specific apps
 yabai -m rule --add app="^System Preferences$" manage=off
