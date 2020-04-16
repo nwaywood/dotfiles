@@ -13,6 +13,7 @@ config/brittany
 config/configstore
 config/gcloud
 config/gocode
+config/htop
 config/hub
 config/filezilla
 config/gtk-2.0

@@ -2,8 +2,28 @@
 // and https://github.com/noperator/dotfiles/blob/master/widgets/spaces.coffee
 import { css } from "uebersicht"
 
-// https://www.cyberciti.biz/faq/linux-unix-formatting-dates-for-display/
-export const command = "/usr/local/bin/yabai -m query --spaces"
+// export const command = "/usr/local/bin/yabai -m query --spaces"
+// export const command = "/Users/nick/.dotfiles/ubersicht-widgets/scripts/spaces-json.sh"
+export const command = "/usr/local/bin/node --no-warnings /Users/nick/.dotfiles/ubersicht-widgets/scripts/spaces-json.mjs"
+// export const command = dispatch => {
+//     // run("/usr/local/bin/yabai -m query --spaces")
+//     run("/Users/nick/.dotfiles/ubersicht-widgets/scripts/spaces-json.sh")
+//         .then(out => {
+//             dispatch({type: "UPDATED", output: out} )
+//         })
+// }
+
+// export const initialState = { output: 'fetching data...' }
+
+// export const updateState = (event, previousState) => {
+//   switch(event.type) {
+//     case 'UPDATED': return {output: event.output }
+//     // case "UPDATE_FAILED": return {error: event.error }
+//     default: {
+//       return previousState
+//     }
+//   }
+// }
 
 export const refreshFrequency = false
 
@@ -30,12 +50,16 @@ const cell = css`
 `
 
 const visibleStyle = css`
-    color: #fafdff;
     border-bottom: 2px solid #fafdff
 `
 
-export const render = ({ output }) => {
+const hasWindowsStyle = css`
+    color: #fafdff;
+`
+
+export const render = ( { output } ) => {
     const spaces = JSON.parse(output)
+    // const spacesWithZoomFullscreen = await mergeZoomFullscreen(spaces)
     return (
         <div className={container}>
             {renderSpaces(spaces)}
@@ -60,10 +84,15 @@ const renderSpaces = (spaces) => {
 
 const generateSpacesForDisplay = (spaces, displayNum) => {
     return spaces.filter(space => space.display == displayNum)
-        .map(({index, visible, windows}) => {
+        .map(space => {
             // what text to render for this space
-            const value = windows.length > 0 ? ("" + index + "°") : index
-            if (visible == 1) {
+            const value = space["zoom-fullscreen"] === 1 ? ("" + space.index + "°") : space.index
+            const hasWindows = space.windows.length > 0
+            if (space.visible == 1 && hasWindows) {
+                return (<div className={`${cell} ${visibleStyle} ${hasWindowsStyle}`}>{value}</div>)
+            } else if (hasWindows) {
+                return (<div className={`${cell} ${hasWindowsStyle}`}>{value}</div>)
+            } else if (space.visible == 1) {
                 return (<div className={`${cell} ${visibleStyle}`}>{value}</div>)
             }
             // default display
