@@ -89,11 +89,7 @@ font:
   # Normal (roman) font face
   normal:
     # Font family
-    #
-    # Default:
-    #   - (macOS) Menlo
-    family: Fira Mono
-
+    family: SF Mono
     # The `style` can be specified to pick a specific face.
     #style: Regular
 
@@ -103,7 +99,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Fira Mono
+    family: SF Mono
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -240,42 +236,72 @@ draw_bold_text_with_bright_colors: false
   #   `- { index: 16, color: '#ff00ff' }`
   #
   #indexed_colors: []
-# Colors (Solarized Dark)
-colors:
-  # Default colors
-  primary:
-    background: '#002b36' # base03
-    foreground: '#839496' # base0
+schemes:
+    one_dark: &one
+        # Default colors
+        primary:
+            background: '#282c34'
+            foreground: '#abb2bf'
 
-  # Cursor colors
-  cursor:
-    text:   '#002b36' # base03
-    cursor: '#839496' # base0
+        # Normal colors
+        normal:
+            # NOTE: Use '#131613' for the `black` color if you'd like to see
+            # black text on the background.
+            black:   '#282c34'
+            red:     '#e06c75'
+            green:   '#98c379'
+            yellow:  '#d19a66'
+            blue:    '#61afef'
+            magenta: '#c678dd'
+            cyan:    '#56b6c2'
+            white:   '#abb2bf'
 
-  # Normal colors
-  normal:
-    black:   '#073642' # base02
-    red:     '#dc322f' # red
-    green:   '#859900' # green
-    yellow:  '#b58900' # yellow
-    blue:    '#268bd2' # blue
-    magenta: '#d33682' # magenta
-    cyan:    '#2aa198' # cyan
-    white:   '#eee8d5' # base2
+        # Bright colors
+        bright:
+            black:   '#5c6370'
+            red:     '#e06c75'
+            green:   '#98c379'
+            yellow:  '#d19a66'
+            blue:    '#61afef'
+            magenta: '#c678dd'
+            cyan:    '#56b6c2'
+            white:   '#ffffff'
+    solarized_dark: &solarized
+        # Default colors
+        primary:
+            background: '#002b36' # base03
+            foreground: '#839496' # base0
 
-  # Bright colors
-  bright:
-    # black:   '#586e75' # base01
-    # This change required for vim to look right
-    black:   '#002b36' # base01
-    red:     '#cb4b16' # orange
-    green:   '#586e75' # base01
-    yellow:  '#657b83' # base00
-    blue:    '#839496' # base0
-    magenta: '#6c71c4' # violet
-    cyan:    '#93a1a1' # base1
-    white:   '#fdf6e3' # base3
+        # Cursor colors
+        cursor:
+            text:   '#002b36' # base03
+            cursor: '#839496' # base0
 
+        # Normal colors
+        normal:
+            black:   '#073642' # base02
+            red:     '#dc322f' # red
+            green:   '#859900' # green
+            yellow:  '#b58900' # yellow
+            blue:    '#268bd2' # blue
+            magenta: '#d33682' # magenta
+            cyan:    '#2aa198' # cyan
+            white:   '#eee8d5' # base2
+
+        # Bright colors
+        bright:
+            # black:   '#586e75' # base01
+            # This change required for vim to look right
+            black:   '#002b36' # base01
+            red:     '#cb4b16' # orange
+            green:   '#586e75' # base01
+            yellow:  '#657b83' # base00
+            blue:    '#839496' # base0
+            magenta: '#6c71c4' # violet
+            cyan:    '#93a1a1' # base1
+            white:   '#fdf6e3' # base3
+
+colors: *one
 # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once

@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
 " color/theme stuff
 Plug 'altercation/vim-colors-solarized'
 Plug 'joshdick/onedark.vim'
+Plug 'rakr/vim-one'
 
 " utilities
 Plug 'scrooloose/nerdtree' " file explorer
@@ -59,13 +60,20 @@ call plug#end()
 " set color themes (from .vim/colors)
 syntax enable
 execute 'set background='.$BACKGROUND
-colorscheme solarized
+colorscheme one
+
+" From onedark readme
+" For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+" Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+if (has("termguicolors"))
+    set termguicolors
+endif
 
 if has('gui_vimr')
     execute 'set background='.$BACKGROUND
     colorscheme onedark
 endif
-
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 " mapleader
@@ -300,7 +308,7 @@ set laststatus=2 " plugin won't work without this line
 set noshowmode " hide the default insert/command mode indicator
 set showtabline=2
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'one',
       \ 'tabline': {
       \   'left': [ ['buffers'] ],
       \   'right': [ ['rtabs'] ]
@@ -335,6 +343,10 @@ let g:lightline = {
       \ }
       \ }
 
+let s:pallete = g:lightline#colorscheme#one#palette
+" https://github.com/joshdick/onedark.vim/blob/master/autoload/lightline/colorscheme/onedark.vim#L51
+" https://github.com/itchyny/lightline.vim/issues/355#issuecomment-470885228
+let s:pallete.tabline.tabsel = [['#282C34', '#ABB2BF', 235, 145]]
 function! LightlineFilename()
   let filename = expand('%:f') !=# '' ? expand('%:f') : '[No Name]'
   let modified = &modified ? ' +' : ''

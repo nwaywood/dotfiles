@@ -1,13 +1,14 @@
 #### COLOUR
 # https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 
-# tm_color_active=colour213 # pink
-tm_color_active=colour198 # 198
+tm_color_active='#d19a66' # onedark 'yellow'
+# tm_color_active=colour198 # nisi magenta
 tm_color_inactive=colour241 # grey
-tm_color_feature=colour4 # blue
-tm_color_music=colour13 # red
+tm_color_feature='#61afef' # onedark 'blue'
+tm_color_music='#e06c75' # onedark 'red'
 # tm_color_music=colour203 # red
-tm_active_border_color=colour198 # red/pink
+# tm_active_border_color=colour198 # nisi magenta
+tm_active_border_color='#d19a66' # onedark 'yellow'
 
 # separators
 tm_separator_left_bold="◀"
