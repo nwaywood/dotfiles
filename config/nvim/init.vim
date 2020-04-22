@@ -230,6 +230,15 @@ function! NumberToggle()
     endif
 endfunc
 
+" Search for line in file that include the two search terms, in any order
+function! SearchTwo(search1, search2)
+    let query = '.*' . a:search1 . '\&.*' . a:search2
+    :call search(query)
+    " hack https://vi.stackexchange.com/questions/3655/how-can-i-make-a-search-in-vimscript-let-n-and-n-look-for-more
+    let @/ = query
+endfunc
+command! -nargs=+ SearchTwo set hlsearch | call SearchTwo(<f-args>)
+
 " https://stackoverflow.com/questions/3431184/highlight-all-occurrence-of-a-selected-word
 fun! CountWordFunction()
     try
@@ -320,15 +329,21 @@ let g:lightline = {
       \ },
       \ 'component_expand': {
       \   'buffers': 'lightline#bufferline#buffers',
-      \   'rtabs': 'LightlineTabRight'
+      \   'rtabs': 'LightlineTabRight',
+      \   'cocerror': 'LightlineCocError',
+      \   'cocwarn': 'LightlineCocWarn',
+      \   'cocinfo': 'LightlineCocInfo'
       \ },
       \ 'component_type': {
       \   'buffers': 'tabsel',
-      \   'rtabs': 'tabsel'
+      \   'rtabs': 'tabsel',
+      \   'cocerror': 'error',
+      \   'cocwarn': 'warning',
+      \   'cocinfo': 'tabsel'
       \ },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly' ],
+      \             [ 'gitbranch', 'readonly', 'cocerror', 'cocwarn', 'cocinfo' ],
       \             ['filename' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
@@ -347,6 +362,37 @@ let s:pallete = g:lightline#colorscheme#one#palette
 " https://github.com/joshdick/onedark.vim/blob/master/autoload/lightline/colorscheme/onedark.vim#L51
 " https://github.com/itchyny/lightline.vim/issues/355#issuecomment-470885228
 let s:pallete.tabline.tabsel = [['#282C34', '#ABB2BF', 235, 145]]
+
+function! s:lightline_coc_diagnostic(kind, sign) abort
+  let info = get(b:, 'coc_diagnostic_info', 0)
+  if empty(info) || get(info, a:kind, 0) == 0
+    return ''
+  endif
+  try
+    let s = g:coc_user_config['diagnostic'][a:sign . 'Sign']
+  catch
+    let s = ''
+  endtry
+  " TODO: use this when signs are set in coc
+  " https://github.com/neoclide/coc.nvim/issues/401#issuecomment-469051524
+  " return printf('%s %d', s, info[a:kind])
+  return printf('%d', info[a:kind])
+endfunction
+
+function! LightlineCocError() abort
+  return s:lightline_coc_diagnostic('error', 'error')
+endfunction
+
+function! LightlineCocWarn() abort
+  return s:lightline_coc_diagnostic('warning', 'warning')
+endfunction
+
+function! LightlineCocInfo() abort
+  return s:lightline_coc_diagnostic('information', 'info')
+endfunction
+
+autocmd User CocDiagnosticChange call lightline#update()
+
 function! LightlineFilename()
   let filename = expand('%:f') !=# '' ? expand('%:f') : '[No Name]'
   let modified = &modified ? ' +' : ''
