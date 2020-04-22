@@ -10,12 +10,6 @@ tm_color_music='#e06c75' # onedark 'red'
 # tm_active_border_color=colour198 # nisi magenta
 tm_active_border_color='#d19a66' # onedark 'yellow'
 
-# separators
-tm_separator_left_bold="◀"
-tm_separator_left_thin="❮"
-tm_separator_right_bold="▶"
-tm_separator_right_thin="❯"
-
 set -g status-left-length 32
 set -g status-right-length 150
 set -g status-interval 5
