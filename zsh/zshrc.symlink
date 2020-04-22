@@ -32,15 +32,9 @@ ZSH_THEME="mytheme"
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=20
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # https://github.com/robbyrussell/oh-my-zsh/issues/5327#issuecomment-248836398 seems zsh-nvm is slow af
 # https://bennycwong.github.io/post/speeding-up-oh-my-zsh/
@@ -70,38 +64,44 @@ export EDITOR='nvim'
 export NNN_PLUG='f:fzcd;o:fzopen;z:fzfz'
 export NNN_BMS='d:~/Downloads'
 
+# PATH
+# ====
+
 # GOPATH
 export GOPATH=$HOME/code
 export PATH=$PATH:$GOPATH/bin
-
 # add brew path to the start of PATH env var
 export PATH=/usr/local/bin:$PATH
-
 # adding path directory for custom scripts
 export PATH=$DOTFILES/bin:$PATH
-
 # add .local to PATH (haskell binaries go here)
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$HOME/.ghcup/bin:$PATH
-
 # doom bins
 export PATH=$HOME/.emacs.d/bin:$PATH
-
 # add /usr/local/sbin
 if [[ -d /usr/local/sbin ]]; then
 	export PATH=/usr/local/sbin:$PATH
 fi
+# setup up java stuff
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home
+export PATH=/opt/apache-maven-3.5.0/bin:$PATH
 
-# hub integration with git command
-# eval "$(hub alias -s)"
-
-[ -z "$TMUX" ] && export TERM=xterm-256color
+# [ -z "$TMUX" ] && export TERM=xterm-256color
+# for iTerm/tmux/vim use xterm-256color
+# export TERM=alacritty
 
 # http://apple.stackexchange.com/questions/75571/the-history-is-shared-between-my-iterm2-terminal-tabs-how-can-i-switch-that-off
 # Disable cross tab history in iTerm/zsh
 unsetopt inc_append_history
 unsetopt share_history
+
+# opam configuration
+test -r /Users/nick/.opam/opam-init/init.zsh && . /Users/nick/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# fnm
+eval "$(fnm env --multi)"
 
 # Base16 shell
 if [ -z "$THEME" ]; then
@@ -110,6 +110,10 @@ fi
 if [ -z "$BACKGROUND" ]; then
 	export BACKGROUND="dark"
 fi
+
+# commented out while I'm trying 'true' solarized instead of base16 version
+# BASE16_SHELL="$DOTFILES/.config/base16-shell/$THEME.$BACKGROUND.sh"
+# source $BASE16_SHELL
 
 # required to make z command work
 if hash brew 2>/dev/null; then
@@ -132,30 +136,6 @@ z() {
 	# remove --inline-info fzf option so that number of results displays on newline
 	cd "$(_z -l 2>&1 | fzf-tmux --height 40% --reverse +s --tac --query "$*" | sed 's/^[0-9,.]* *//')"
 }
-
-# https://stackoverflow.com/questions/18241406/tmux-environment-variables-dont-show-up-in-session
-# https://stackoverflow.com/questions/9901657/how-to-change-an-environment-variable-and-apply-to-all-windows-in-a-tmux-session
-# TODO: for some reason, without the zsh-nvm plugin, this precmd hook fails to setup
-# _update_background_var() {
-#     local var
-#     var=$(tmux show-environment |grep '^BACKGROUND=')
-#     if [ "$?" -eq 0 ]; then
-#         eval "$var"
-#     fi
-# }
-
-# if [[ -n "$TMUX" ]]; then
-#     add-zsh-hook precmd _update_background_var
-# fi
-
-# commented out while I'm trying 'true' solarized instead of base16 version
-# BASE16_SHELL="$DOTFILES/.config/base16-shell/$THEME.$BACKGROUND.sh"
-# source $BASE16_SHELL
-
-# http://superuser.com/questions/414560/is-there-a-keyboard-shortcut-to-alternate-between-color-schemes-in-iterm2
-# Change iterm2 profile. Usage it2prof ProfileName (case sensitive)
-# NOTE: Does not work in tmux
-it2prof() { echo -e "\033]50;SetProfile=$1\a" }
 
 # http://superuser.com/questions/565178/how-do-i-get-the-numpad-to-work-in-vim-using-iterm2-on-osx-with-term-xterm
 # OR
