@@ -546,7 +546,9 @@ mouse:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
-#key_bindings:
+key_bindings:
+    # fix alt+c for fzf command https://github.com/alacritty/alacritty/issues/93
+    - { key: C,        mods: Alt,     chars: "\x1bc"                       }
   # (Windows, Linux, and BSD only)
   #- { key: V,        mods: Control|Shift, action: Paste            }
   #- { key: C,        mods: Control|Shift, action: Copy             }
