@@ -16,22 +16,17 @@ alias g='git'
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder'
 
-# iterm theme
-# http://superuser.com/questions/414560/is-there-a-keyboard-shortcut-to-alternate-between-color-schemes-in-iterm2
-alias light='it2prof Light && export BACKGROUND=light'
-alias dark='it2prof Default && export BACKGROUND=dark'
-
-# yabai
-alias twm='brew services start skhd && brew services start yabai && killall Dock'
-
 # misc
 alias c='clear'
 alias ccat='pygmentize -g'
-alias vimf='vim "+Denite file_rec"'
-alias vimn='vim +NERDTreeToggle'
+alias vimf='nvim "+Denite file_rec"'
+alias vimn='nvim +NERDTreeToggle'
 alias tree='tree -I "node_modules"'
 alias find='find . -name'
-alias vimg='open -a emacs'
+alias ls="exa"
+alias la="exa -a"
+alias ll="exa -la"
+# alias vimg='open -a emacs'
 
 mkcd () {
     test -d "$1" || mkdir "$1" && cd "$1"
