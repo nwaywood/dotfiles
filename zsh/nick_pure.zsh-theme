@@ -3,11 +3,16 @@
 # Available theme color names: red, green, yellow, blue, magenta, cyan, white, black
 # Useful symbols ➜ ✗ ❮ ❯
 
+# Prompt codes
+# %F => color dict
+# %f => reset color
+# %~ => current path
+# %* => time
+# %n => username
+# %m => shortname host
+
 local ret_status="%(?:%{$fg_bold[green]%}❯:%{$fg_bold[red]%}❯)"
 
-# %n prints the username (e.g. nick) and %m prints the machine (e.g. nicks-macbook)
-# PROMPT=$'$fg_bold[cyan]%n: %{$fg_bold[yellow]%}%~%{$reset_color%} $(git_prompt_info)
-# ${ret_status}%{$reset_color%} '
 PROMPT=$'%{$fg_bold[cyan]%}%~%{$reset_color%} $(git_prompt_info) $(git_remote_status)
 ${ret_status}%{$reset_color%} '
 
