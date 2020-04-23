@@ -1,29 +1,29 @@
 // This workspace is functionally a combination of https://github.com/kkga/nibar
 // and https://github.com/noperator/dotfiles/blob/master/widgets/spaces.coffee
-import { css } from "uebersicht"
+import { css, run } from "uebersicht"
 
 // export const command = "/usr/local/bin/yabai -m query --spaces"
 // export const command = "/Users/nick/.dotfiles/ubersicht-widgets/scripts/spaces-json.sh"
-export const command = "/usr/local/bin/node --no-warnings /Users/nick/.dotfiles/ubersicht-widgets/scripts/spaces-json.mjs"
-// export const command = dispatch => {
-//     // run("/usr/local/bin/yabai -m query --spaces")
-//     run("/Users/nick/.dotfiles/ubersicht-widgets/scripts/spaces-json.sh")
-//         .then(out => {
-//             dispatch({type: "UPDATED", output: out} )
-//         })
-// }
+// export const command = "/usr/local/bin/node --no-warnings /Users/nick/.dotfiles/ubersicht-widgets/scripts/spaces-json.mjs"
+export const command = dispatch => {
+    run("/usr/local/bin/node --no-warnings /Users/nick/.dotfiles/ubersicht-widgets/scripts/spaces-json.mjs")
+        .then(out => dispatch({type: "UPDATED", output: out} ))
+        // NOTE: This error is being deliberately swallowed
+        .catch(err => dispatch({type: "UPDATE_FAILED", error: "erroring" }))
+}
 
-// export const initialState = { output: 'fetching data...' }
+export const initialState = { output: 'fetching data...' }
 
-// export const updateState = (event, previousState) => {
-//   switch(event.type) {
-//     case 'UPDATED': return {output: event.output }
-//     // case "UPDATE_FAILED": return {error: event.error }
-//     default: {
-//       return previousState
-//     }
-//   }
-// }
+export const updateState = (event, previousState) => {
+  switch(event.type) {
+    case 'UPDATED': return {output: event.output }
+    // NOTE: Uncomment this for debugging
+    case "UPDATE_FAILED": return {error: event.error }
+    default: {
+      return previousState
+    }
+  }
+}
 
 export const refreshFrequency = false
 
@@ -57,9 +57,11 @@ const hasWindowsStyle = css`
     color: #fafdff;
 `
 
-export const render = ( { output } ) => {
+export const render = ( { output, error } ) => {
+    if (error) {
+        return <div>{error}</div>
+    }
     const spaces = JSON.parse(output)
-    // const spacesWithZoomFullscreen = await mergeZoomFullscreen(spaces)
     return (
         <div className={container}>
             {renderSpaces(spaces)}
@@ -87,7 +89,7 @@ const generateSpacesForDisplay = (spaces, displayNum) => {
         .map(space => {
             // what text to render for this space
             const value = space["zoom-fullscreen"] === 1 ? ("" + space.index + "°") : space.index
-            const hasWindows = space.windows.length > 0
+            const hasWindows = space.windows && space.windows.length > 0
             if (space.visible == 1 && hasWindows) {
                 return (<div className={`${cell} ${visibleStyle} ${hasWindowsStyle}`}>{value}</div>)
             } else if (hasWindows) {

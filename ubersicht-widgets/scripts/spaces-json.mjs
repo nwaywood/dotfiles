@@ -10,14 +10,27 @@ const windowsCommand = promiseExec("/usr/local/bin/yabai -m query --windows")
 
 Promise.all([spacesCommand, windowsCommand])
     .then(([spacesOutput, windowsOutput]) => {
-        const spaces = JSON.parse(spacesOutput.stdout)
-        const windows = JSON.parse(windowsOutput.stdout)
-        // Add "zoom-fullscreen" to each space object
-        const defaultZoomFullscreen = spaces.map(space => ({...space, "zoom-fullscreen": 0}))
-        windows.forEach(window => {
-            if (window["zoom-fullscreen"] == 1) {
-                defaultZoomFullscreen[window.space -1]["zoom-fullscreen"] = 1
+        if (spacesOutput.stderr) {
+            process.stderr.write(spacesOutput.stderr)
+            process.exit(5)
+        } else if (windowsOutput.stderr) {
+            process.stderr.write(windowsOutput.stderr)
+            process.exit(5)
+        } else {
+            // check if either stdout is empty, yabai service failing to respond?
+            if (!spacesOutput.stdout || !windowsOutput.stdout) {
+                process.exit(5)
             }
-        })
-        process.stdout.write(JSON.stringify(defaultZoomFullscreen))
+            const spaces = JSON.parse(spacesOutput.stdout)
+            const windows = JSON.parse(windowsOutput.stdout)
+            // Add "zoom-fullscreen" to each space object
+            const defaultZoomFullscreen = spaces.map(space => ({...space, "zoom-fullscreen": 0}))
+            windows.forEach(window => {
+                if (window["zoom-fullscreen"] == 1) {
+                    defaultZoomFullscreen[window.space -1]["zoom-fullscreen"] = 1
+                }
+            })
+            process.stdout.write(JSON.stringify(defaultZoomFullscreen))
+        }
     })
+    .catch(() => process.exit(5))

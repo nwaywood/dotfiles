@@ -57,7 +57,7 @@ shift + ctrl + alt - e : yabai -m window --display 2; yabai -m display --focus 2
 shift + ctrl + alt - r : yabai -m window --display 3; yabai -m display --focus 3
 
 # toggle window zoom
-shift + alt - z : yabai -m window --toggle zoom-fullscreen
+shift + alt - z : yabai -m window --toggle zoom-fullscreen && osascript -e 'tell application id "tracesOf.Uebersicht" to refresh widget id "ubersicht-widgets-Workspace-jsx"'
 shift + ctrl + alt - z : yabai -m window --toggle native-fullscreen
 
 # spaces
