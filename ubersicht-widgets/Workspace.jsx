@@ -6,7 +6,8 @@ import { css, run } from "uebersicht"
 // export const command = "/Users/nick/.dotfiles/ubersicht-widgets/scripts/spaces-json.sh"
 // export const command = "/usr/local/bin/node --no-warnings /Users/nick/.dotfiles/ubersicht-widgets/scripts/spaces-json.mjs"
 export const command = dispatch => {
-    run("/usr/local/bin/node --no-warnings /Users/nick/.dotfiles/ubersicht-widgets/scripts/spaces-json.mjs")
+    run("/usr/local/bin/yabai -m query --spaces")
+    // run("/usr/local/bin/node --no-warnings /Users/nick/.dotfiles/ubersicht-widgets/scripts/spaces-json.mjs")
         .then(out => dispatch({type: "UPDATED", output: out} ))
         // NOTE: This error is being deliberately swallowed
         .catch(err => dispatch({type: "UPDATE_FAILED", error: "erroring" }))

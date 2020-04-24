@@ -6,17 +6,19 @@ plugins=(vi-mode history-substring-search zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # NOTE: Uncomment these lines to enable zplug and powerlevel10k prompt
-# Current issues: Up and down keys don't do history-substring-search 
-# and git info sometimes disappears from prompt? (git fetch)
-# load zplug
+# # Current issues: Up and down keys don't do history-substring-search 
+# # and git info sometimes disappears from prompt? (git fetch)
+# # load zplug
 # export ZPLUG_HOME=$HOME/.zplug
 # source $ZPLUG_HOME/init.zsh
 
 # zplug "zsh-users/zsh-syntax-highlighting", defer:2
 # zplug "zsh-users/zsh-history-substring-search"
-# zplug "romkatv/powerlevel10k", as:theme, depth:1
+# # zplug "romkatv/powerlevel10k", as:theme, depth:1
+# zplug mafredri/zsh-async, from:github
+# zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
-# Install plugins if there are plugins that have not been installed
+# # Install plugins if there are plugins that have not been installed
 # if ! zplug check --verbose; then
 #     printf "Install? [y/N]: "
 #     if read -q; then
@@ -24,17 +26,18 @@ source $ZSH/oh-my-zsh.sh
 #     fi
 # fi
 
-# Then, source plugins and add commands to $PATH
+# # Then, source plugins and add commands to $PATH
 # zplug load
 
-# END zplug
+# # END zplug
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# enable vi mode
+# customize vi mode
 # ==============
-bindkey -v
+# enable vi mode (when using oh-my-zsh, vi-mode plugin enabling it)
+# bindkey -v
 # map jk to enter normal mode in zsh
 # https://dougblack.io/words/zsh-vi-mode.html
 bindkey -M viins 'jk' vi-cmd-mode
