@@ -91,15 +91,12 @@ alt - f : yabai -m window --toggle float
 
 # applications
 shift + alt - b : open -a 'Brave Browser.app'
-shift + alt - t : open -a 'Alacritty.app'
+shift + alt - t : open -a 'kitty.app'
 shift + alt - s : open -a 'Slack.app'
 # hack till https://github.com/alacritty/alacritty/issues/607 is resolved
 shift + ctrl + alt - space : open -na Alacritty.app --args -e zsh -ic nnn
 # shift + ctrl + alt - space : open -na 'Finder.app'
-shift + ctrl + alt - return : open -na 'Alacritty.app'
-# shift + ctrl + alt - return : osascript -e 'tell application "iTerm2"
-#         create window with default profile
-#      end tell'
+shift + ctrl + alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
 
 # change window size
 shift + ctrl + alt - right : yabai -m window --resize right:20:0
