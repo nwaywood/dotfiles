@@ -10,14 +10,16 @@
 # %* => time
 # %n => username
 # %m => shortname host
+# %(?..) => prompt conditional - %(condition.true.false)
 
-local ret_status="%(?:%{$fg_bold[green]%}❯:%{$fg_bold[red]%}❯)"
+# variables used by my custom vim plugin which uses them in vim_mode_prompt_info
+# They show their respective prompt symbol in green by default, and in red
+# when there is an error code
+INSERT_MODE="%(?:%{$fg_bold[green]%}❯:%{$fg_bold[red]%}❯)"
+NORMAL_MODE="%(?:%{$fg_bold[green]%}❮:%{$fg_bold[red]%}❮)"
 
 PROMPT=$'%{$fg_bold[cyan]%}%~%{$reset_color%} $(git_prompt_info) $(git_remote_status)
-${ret_status}%{$reset_color%} '
-
-# RPROMPT info for vi-mode
-MODE_INDICATOR="%{$fg[red]%}❮❮❮%{$reset_color%}"
+$(vim_mode_prompt_info)%{$reset_color%} '
 
 # local git status
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}on %{$reset_color%}%{$fg[magenta]%}"
