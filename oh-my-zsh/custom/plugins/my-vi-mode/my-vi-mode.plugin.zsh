@@ -48,7 +48,15 @@ bindkey '^e' end-of-line
 # NOTE: Function to be called from a theme to insert a prompt symbol based on the vi mode
 # It is expected that the theme will set the NORMAL_MODE and INSERT_MODE variables
 function vim_mode_prompt_info() {
-  echo "${${VI_KEYMAP/vicmd/$NORMAL_MODE}/(main|viins)/$INSERT_MODE}"
+  local vi_mode="${${VI_KEYMAP/vicmd/$NORMAL_MODE}/(main|viins)/$INSERT_MODE}" 
+
+  # When a new terminal instance is launched, it doesn't seem to be in any vi_mode
+  # therefore set the INSERT_MODE prompt as the default
+  if [[ "${vi_mode}" == "" ]]; then
+    echo "$INSERT_MODE"
+  else
+    echo "${vi_mode}"
+  fi
 }
 
 # if INSERT_MODE wasn't setup by theme, define default
