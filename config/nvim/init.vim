@@ -369,14 +369,12 @@ function! s:lightline_coc_diagnostic(kind, sign) abort
     return ''
   endif
   try
-    let s = g:coc_user_config['diagnostic'][a:sign . 'Sign']
+    " https://github.com/neoclide/coc.nvim/issues/401#issuecomment-469051524
+    let s = coc#util#get_config('diagnostic')[a:sign . 'Sign']
   catch
     let s = ''
   endtry
-  " TODO: use this when signs are set in coc
-  " https://github.com/neoclide/coc.nvim/issues/401#issuecomment-469051524
-  " return printf('%s %d', s, info[a:kind])
-  return printf('%d', info[a:kind])
+  return printf('%s %d', s, info[a:kind])
 endfunction
 
 function! LightlineCocError() abort
@@ -391,7 +389,7 @@ function! LightlineCocInfo() abort
   return s:lightline_coc_diagnostic('information', 'info')
 endfunction
 
-autocmd User CocDiagnosticChange call lightline#update()
+autocmd User CocDiagnosticChange,CocStatusChange call lightline#update()
 
 function! LightlineFilename()
   let filename = expand('%:f') !=# '' ? expand('%:f') : '[No Name]'
