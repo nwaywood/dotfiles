@@ -74,7 +74,7 @@
         },
         {
             "description":
-                "Change home key to cmd + ctrl when held, and to escape when pressed",
+                "Change home key to cmd + ctrl when held",
             "manipulators": [
                 {
                     "type": "basic",
@@ -89,18 +89,13 @@
                             "key_code": "left_control",
                             "modifiers": ["left_command"]
                         }
-                    ],
-                    "to_if_alone": [
-                        {
-                            "key_code": "escape"
-                        }
                     ]
                 }
             ]
         },
         {
             "description":
-                "Change end key to ctrl + alt + shift when held, and to escape when pressed",
+                "Change end key to ctrl + alt + cmd when held",
             "manipulators": [
                 {
                     "type": "basic",
@@ -113,12 +108,7 @@
                     "to": [
                         {
                             "key_code": "left_control",
-                            "modifiers": ["left_alt", "left_shift"]
-                        }
-                    ],
-                    "to_if_alone": [
-                        {
-                            "key_code": "escape"
+                            "modifiers": ["left_alt", "left_command"]
                         }
                     ]
                 }
@@ -126,7 +116,28 @@
         },
         {
             "description":
-                "Change page_down key to alt + shift when held, and to escape when pressed",
+                "Change page_up key to ctrl + alt + cmd when held",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "page_up",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_control",
+                            "modifiers": ["left_alt", "left_command"]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description":
+                "Change page_down key to ctrl + cmd when held",
             "manipulators": [
                 {
                     "type": "basic",
@@ -138,13 +149,8 @@
                     },
                     "to": [
                         {
-                            "key_code": "left_alt",
-                            "modifiers": ["left_shift"]
-                        }
-                    ],
-                    "to_if_alone": [
-                        {
-                            "key_code": "escape"
+                            "key_code": "left_control",
+                            "modifiers": ["left_command"]
                         }
                     ]
                 }
