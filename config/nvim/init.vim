@@ -28,6 +28,7 @@ Plug 'google/vim-searchindex' " shows number of matches for search commands
 Plug 'mhinz/vim-sayonara' " Alternative to :quit which works like modern editors
 Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 Plug 'tpope/vim-fugitive' " Git support
+Plug 'tpope/vim-dispatch' " Async job runner, used by vim-fugitive
 
 " Vim language enhancements
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
