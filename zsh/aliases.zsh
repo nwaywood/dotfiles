@@ -9,7 +9,9 @@ alias d='docker'
 alias vim='nvim'
 
 # git
-alias gs='git status'
+# https://stackoverflow.com/questions/4545275/vim-close-all-buffers-but-this-one#comment84748132_42071865
+alias gs='vim -c "G | %bd | e# | bd#"'
+# alias gs='git status'
 alias g='git'
 
 # finder
