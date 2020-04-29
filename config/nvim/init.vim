@@ -25,6 +25,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number managem
 Plug 'szw/vim-maximizer' " toggle windows fullscreen
 Plug 'google/vim-searchindex' " shows number of matches for search commands
 Plug 'moll/vim-bbye' " make buffer deleting preserve window layout
+Plug 'mhinz/vim-sayonara' " Alternative to :quit which works like modern editors
 Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 Plug 'tpope/vim-fugitive' " Git support
 
@@ -208,7 +209,14 @@ nnoremap <silent> <leader>w :w<cr>
 " quick save and quit
 nnoremap <silent> <leader>x :x<cr>
 " quick quit
-nnoremap <silent> <leader>q :q<cr>
+nnoremap <silent> <leader>q :Sayonara<cr>
+nnoremap <silent> <leader>Q :qa<cr>
+" nnoremap <silent> <leader>q :q<cr>
+
+" toggle relative/absolute line numbers
+nnoremap <silent> <leader>. :call NumberToggle()<cr>
+
+" highlight word on double click
 
 " toggle relative/absolute line numbers
 nnoremap <silent> <leader>. :call NumberToggle()<cr>
@@ -385,6 +393,7 @@ function! LightlineCocWarn() abort
   return s:lightline_coc_diagnostic('warning', 'warning')
 endfunction
 
+" NOTE: Check out this if info doesn't look right https://github.com/josa42/vim-lightline-coc
 function! LightlineCocInfo() abort
   return s:lightline_coc_diagnostic('information', 'info')
 endfunction
@@ -490,16 +499,15 @@ let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 " Fugitive
 " --------
 " open git status in a new tab
-nnoremap <silent> <leader>gs :Gtabedit :<cr>
+" https://github.com/tpope/vim-fugitive/issues/727
+nnoremap <silent> <leader>gs :tab G<cr>
 " Revert current file back to last checked in version - HEAD (:Git checkout %)
 nnoremap <silent> <leader>gr :Gread<cr>
 " Stage the current file to the index (:Git add %)
 nnoremap <silent> <leader>gw :Gwrite<cr>
-nnoremap <silent> <leader>ge :Gedit<cr>
-nnoremap <silent> <leader>gc :Gcommit<cr>
-nnoremap <silent> <leader>gb :Gblame<cr>
-nnoremap <silent> <leader>gd :Gdiff<cr>
-nnoremap <silent> <leader>gl :Glog<cr>
+nnoremap <silent> <leader>gb :Git_blame<cr>
+nnoremap <silent> <leader>gd :Gdiffsplit<cr>
+nnoremap <silent> <leader>gl :Gclog<cr>
 
 " vim-go
 " ------
@@ -659,7 +667,7 @@ function! s:denite_filter_my_settings() abort
                 \ <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
 endfunction
 
-" TODO: get preview working
+" TODO: get preview working, denite 2.0 broke it
 " nnoremap <leader>l :Denite line -auto-action=preview<cr>
 " nnoremap <leader>a :Denite grep -auto-action=preview<cr>
 nnoremap <leader>l :Denite line<cr>
