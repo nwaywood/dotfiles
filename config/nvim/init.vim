@@ -505,8 +505,8 @@ nnoremap <silent> <leader>gs :G<cr>
 nnoremap <silent> <leader>gr :Gread<cr>
 " Stage the current file to the index (:Git add %)
 nnoremap <silent> <leader>gw :Gwrite<cr>
-nnoremap <silent> <leader>gp :Git_push<cr>
-nnoremap <silent> <leader>gb :Git_blame<cr>
+nnoremap <silent> <leader>gp :Git push<cr>
+nnoremap <silent> <leader>gb :Git blame<cr>
 nnoremap <silent> <leader>gd :Gdiffsplit<cr>
 nnoremap <silent> <leader>gl :Gclog<cr>
 
