@@ -24,7 +24,7 @@ Plug 'neoclide/coc-denite' " show coc lists in denite interface
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
 Plug 'szw/vim-maximizer' " toggle windows fullscreen
 Plug 'google/vim-searchindex' " shows number of matches for search commands
-Plug 'moll/vim-bbye' " make buffer deleting preserve window layout
+" Plug 'moll/vim-bbye' " make buffer deleting preserve window layout
 Plug 'mhinz/vim-sayonara' " Alternative to :quit which works like modern editors
 Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 Plug 'tpope/vim-fugitive' " Git support
@@ -198,8 +198,8 @@ nnoremap <silent> J :bprevious<cr> " move to the previous buffer
 nnoremap <silent> <leader>bn :bnext<cr> " move to the next buffer
 nnoremap <silent> K :bnext<cr> " move to the next buffer
 nnoremap <silent> <leader>bc :enew<cr> " Open a new empty buffer
-nnoremap <silent> <M-w> :Bdelete<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
-nnoremap <silent> <leader>bq :Bdelete<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
+nnoremap <silent> <M-w> :Sayonara!<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
+nnoremap <silent> <leader>bq :Sayonara!<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
 " nnoremap <silent> <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
 nnoremap <silent> <leader>bl <c-^> " toggle between current and previous buffer
 " buffer list command/mapping is in CtrlP section
@@ -500,14 +500,20 @@ let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 " --------
 " open git status in a new tab
 " https://github.com/tpope/vim-fugitive/issues/727
-nnoremap <silent> <leader>gs :tab G<cr>
+nnoremap <silent> <leader>gs :G<cr>
 " Revert current file back to last checked in version - HEAD (:Git checkout %)
 nnoremap <silent> <leader>gr :Gread<cr>
 " Stage the current file to the index (:Git add %)
 nnoremap <silent> <leader>gw :Gwrite<cr>
+nnoremap <silent> <leader>gp :Git_push<cr>
 nnoremap <silent> <leader>gb :Git_blame<cr>
 nnoremap <silent> <leader>gd :Gdiffsplit<cr>
 nnoremap <silent> <leader>gl :Gclog<cr>
+
+augroup turbo_commit
+  autocmd!
+  autocmd BufEnter COMMIT_EDITMSG startinsert
+augroup END
 
 " vim-go
 " ------
