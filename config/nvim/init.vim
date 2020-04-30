@@ -24,7 +24,6 @@ Plug 'neoclide/coc-denite' " show coc lists in denite interface
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
 Plug 'szw/vim-maximizer' " toggle windows fullscreen
 Plug 'google/vim-searchindex' " shows number of matches for search commands
-" Plug 'moll/vim-bbye' " make buffer deleting preserve window layout
 Plug 'mhinz/vim-sayonara' " Alternative to :quit which works like modern editors
 Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 Plug 'tpope/vim-fugitive' " Git support
@@ -43,6 +42,7 @@ Plug 'kana/vim-textobj-function' " Adds the text objects 'if' and 'af'
 Plug 'thinca/vim-textobj-function-javascript' " Adds 'if' and 'af' for javascript
 
 " Language specific
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' } " markdown support, folds, :Toc, better syntax highlighting
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' } " better syntax highlighting and indenting for haskell
 Plug 'elmcast/elm-vim', { 'for': 'elm' } " elm support
@@ -62,7 +62,7 @@ call plug#end()
 " set color themes (from .vim/colors)
 syntax enable
 execute 'set background='.$BACKGROUND
-colorscheme one
+colorscheme onedark
 
 " From onedark readme
 " For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
@@ -183,7 +183,7 @@ nnoremap <C-v> :vsplit<cr>
 map <leader>0 :e ~/.config/nvim/init.vim<cr>
 
 " insert empty line between brackets (hacky, need a better way to do this)
-inoremap {<CR> {<CR>}<C-o>O
+" inoremap {<CR> {<CR>}<C-o>O
 
 " clear search highlighting and clear any message already displayed
 noremap <silent> <leader>/ :set hlsearch! hlsearch?<cr>
@@ -616,6 +616,16 @@ nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<cr>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Use gh to show documentation in preview window.
+nnoremap <silent> gh :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
