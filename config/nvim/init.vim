@@ -2,9 +2,9 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " color/theme stuff
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
-Plug 'rakr/vim-one'
 
 " utilities
 Plug 'scrooloose/nerdtree' " file explorer
