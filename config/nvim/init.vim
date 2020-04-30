@@ -600,11 +600,11 @@ endfunction
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
-if has('patch8.1.1068')
-  " Use `complete_info` if your (Neo)Vim version supports it.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 " GoTo code navigation.
@@ -627,6 +627,19 @@ function! s:show_documentation()
   endif
 endfunction
 
+augroup mygroup
+  autocmd!
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
@@ -636,7 +649,7 @@ nnoremap <silent> <leader>d  :Denite coc-diagnostic<cr>
 " Find symbol of current document.
 nnoremap <silent> <leader>s  :Denite coc-symbols<cr>
 " Search workspace symbols.
-command WorkspaceSymbols :Denite coc-workspace
+command! WorkspaceSymbols :Denite coc-workspace
 
 " Golang https://github.com/golang/tools/blob/master/gopls/doc/settings.md for
 " settings.json
