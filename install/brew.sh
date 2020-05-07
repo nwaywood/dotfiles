@@ -24,7 +24,8 @@ brew install fzf
 brew install tree
 brew install jq
 brew install fd # good find
-brew install exa
+brew install exa # good ls
+brew install bat # good cat
 brew install the_silver_searcher # good grep
 brew install ripgrep # good grep
 brew install --HEAD https://raw.githubusercontent.com/junegunn/blsd/master/blsd.rb

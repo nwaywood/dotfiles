@@ -10,15 +10,15 @@ Plug 'joshdick/onedark.vim'
 Plug 'scrooloose/nerdtree' " file explorer
 Plug 'Aldlevine/nerdtree-git-plugin' " this fork is required to grey out gitignored files
 Plug 'ryanoasis/vim-devicons' " Add file icons to nerdtree, airline, ctrlp etc
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' } " Atom-narrow for vim
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}} " language server protocol support
+Plug 'antoinemadec/coc-fzf' " show coc lists in fzf.vim interface
 Plug 'christoomey/vim-tmux-navigator' " use ctrl-hjkl to navigate between tmux and vim panes
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
-Plug 'ap/vim-css-color' " show colors of hex codes etc in editor
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}} " language server protocol support
-Plug 'neoclide/coc-denite' " show coc lists in denite interface
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " show colors of hex codes etc in editor
 
 " Core utils
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
@@ -137,7 +137,10 @@ set splitbelow
 set splitright
 set diffopt+=vertical " always use verical diffs
 " show current line number as orange with relativenumber set
-hi CursorLineNr ctermfg=3 ctermbg=0
+" hi CursorLineNr ctermfg=3 ctermbg=0
+" Change highlighting for search terms (onedark theme colors)
+hi Search guibg=#C683D6 guifg=#343642 ctermbg=5
+hi IncSearch guibg=#C683D6 guifg=#343642 ctermbg=5
 " force vim to read *.md files as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
@@ -183,7 +186,7 @@ nnoremap <C-v> :vsplit<cr>
 map <leader>0 :e ~/.config/nvim/init.vim<cr>
 
 " insert empty line between brackets (hacky, need a better way to do this)
-" inoremap {<CR> {<CR>}<C-o>O
+inoremap {<CR> {<CR>}<C-o>O
 
 " clear search highlighting and clear any message already displayed
 noremap <silent> <leader>/ :set hlsearch! hlsearch?<cr>
@@ -203,7 +206,6 @@ nnoremap <silent> <M-w> :Sayonara!<CR> " close current buffer and move to the pr
 nnoremap <silent> <leader>bq :Sayonara!<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
 " nnoremap <silent> <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to the previous one (i.e. close 'tab' in other editor terminology)
 nnoremap <silent> <leader>bl <c-^> " toggle between current and previous buffer
-" buffer list command/mapping is in CtrlP section
 
 " quick save
 nnoremap <silent> <leader>w :w<cr>
@@ -319,6 +321,11 @@ nnoremap <silent> <leader>d :ToggleLocationList<cr>
 " }}}
 
 " Plugins settings {{{
+
+" vim-hexokinase
+" ==============
+let g:Hexokinase_highlighters = [ 'backgroundfull' ]
+let g:Hexokinase_optInPatterns = 'full_hex,triple_hex,rgb,rgba,hsl,hsla'
 
 " lightline
 " =========
@@ -462,7 +469,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " plugin
 let g:NERDTreeMapJumpNextSibling='C-d'
 let g:NERDTreeMapJumpPrevSibling='C-u'
-" change window split keys to match ctrlp mappings
+" change window split keys to match how I open splits everywhere else
 let g:NERDTreeMapOpenSplit='s'
 let g:NERDTreeMapOpenVSplit='v'
 " don't override netrw (this interferes with vim-vinegar)
@@ -486,16 +493,6 @@ hi NERDTreeGitStatusUntracked ctermfg=2 guifg=#98c379
 " Disable special highlighting of executable file
 " https://github.com/scrooloose/nerdtree/blob/8cd17c1a478d8302e4782a95963abe46fc22c538/syntax/nerdtree.vim#L50
 hi link NERDTreeExecFile Normal
-
-" CtrlP
-" -----
-nnoremap <silent> <leader>r :CtrlPMRU<cr>
-nnoremap <silent> <leader>bb :CtrlPBuffer<cr>
-let g:ctrlp_map='<leader>f'
-let g:ctrlp_dotfiles=1
-let g:ctrlp_working_path_mode = 'ra'
-" use ag for searching instead of vims globpath()
-let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 
 " Fugitive
 " --------
@@ -643,13 +640,13 @@ omap af <Plug>(coc-funcobj-a)
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
-" Mappings using Denite: https://github.com/neoclide/coc-denite/blob/master/doc/coc-denite.txt
+" Coc mappings for fzf lists https://github.com/antoinemadec/coc-fzf
 " Show all diagnostics.
-nnoremap <silent> <leader>d  :Denite coc-diagnostic<cr>
+nnoremap <silent> <leader>d :CocFzfList diagnostics<cr>
 " Find symbol of current document.
-nnoremap <silent> <leader>s  :Denite coc-symbols<cr>
+nnoremap <silent> <leader>s  :CocFzfList outline<cr>
 " Search workspace symbols.
-command! WorkspaceSymbols :Denite coc-workspace
+command! WorkspaceSymbols :CocFzfList symbols
 
 " Golang https://github.com/golang/tools/blob/master/gopls/doc/settings.md for
 " settings.json
@@ -661,110 +658,77 @@ autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeIm
 " disable insert mode mappings <c-g>s and <c-g>S
 let g:surround_no_insert_mappings=1
 
-" Denite.nvim
-" ===========
-" https://github.com/Shougo/denite.nvim/issues/652#issuecomment-501747102
-" Define mappings
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> <c-g>
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
+" fzf.vim
+" =======
+let g:fzf_command_prefix = 'Fzf'
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" map <c-j> and <c-k> to navigate through results in fzf filetype
+autocmd FileType fzf tnoremap <buffer> <C-j> <Down>
+autocmd FileType fzf tnoremap <buffer> <C-k> <Up>
+
+" Interactive Rg
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-    imap <silent><buffer> <esc> <Plug>(denite_filter_quit)
-    inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-    inoremap <silent><buffer><expr> <c-t>
-                \ denite#do_map('do_action', 'tabopen')
-    inoremap <silent><buffer><expr> <c-v>
-                \ denite#do_map('do_action', 'vsplit')
-    inoremap <silent><buffer><expr> <c-s>
-                \ denite#do_map('do_action', 'split')
-    inoremap <silent><buffer><expr> <C-g>
-                \ denite#do_map('quit')
-    nnoremap <silent><buffer><expr> <C-g>
-                \ denite#do_map('quit')
-    inoremap <silent><buffer> <C-j>
-                \ <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-    inoremap <silent><buffer> <C-k>
-                \ <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
-endfunction
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-" TODO: get preview working, denite 2.0 broke it
-" nnoremap <leader>l :Denite line -auto-action=preview<cr>
-" nnoremap <leader>a :Denite grep -auto-action=preview<cr>
-nnoremap <leader>l :Denite line<cr>
-nnoremap <leader>a :Denite grep<cr>
-" nnoremap <leader>s :Denite outline<cr>
-" nnoremap <leader>p :Denite menu:projects -default-action=cd<cr>
-nnoremap <leader>p :Denite command -default-action=execute<cr>
-" hack fix for terminal vim https://stackoverflow.com/questions/33060569/mapping-command-s-to-w-in-vim
-nnoremap <F6> :Denite command -default-action=execute<cr>
-" nnoremap <leader>c :Denite file_rec<cr>
-" nnoremap <leader>c :Denite file_rec -reversed -winheight=10 -auto-resize<cr>
+" Customize fzf colors to match your color scheme
+" - fzf#wrap translates this to a set of `--color` options
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Statement'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
-" highlight groups for matches
-hi DeniteHighlightChar ctermfg=4 guifg=Cyan
-hi DeniteHighlightRange ctermfg=12 ctermbg=8
-
-" add custom menu for changing projects (cwd)
-let s:menus = {}
-let s:menus.projects = {
-            \ 'description': 'projects'
-            \ }
-
-" read in projects.vim file if it exists
-" https://stackoverflow.com/questions/19898542/how-to-concatenate-environmental-variables-in-a-vimrc-file
-let g:projects_path = $DOTFILES.'/config/nvim/projects.vim'
-if filereadable(g:projects_path)
-    exec 'source ' . g:projects_path
-endif
-
-" if the projects.vim file did exist, set the project list
-if exists("g:projects")
-    let s:menus.projects.directory_candidates = g:projects
-endif
-
-call denite#custom#var('menu', 'menus', s:menus)
-
-" change default options
-call denite#custom#option('default', {
-            \ 'prompt': '>',
-            \ 'start_filter': 1,
-            \ 'highlight_matched_char': 'DeniteHighlightChar',
-            \ 'highlight_matched_range': 'DeniteHighlightRange'
-            \ })
+nnoremap <silent> <leader>f  :FzfFiles<cr>
+nnoremap <silent> <leader>a  :RG<cr>
+nnoremap <silent> <leader>l  :FzfBLines<cr>
+nnoremap <silent> <leader>p  :FzfCommands<cr>
+nnoremap <silent> <leader>h  :FzfHelptags<cr>
 
 
-" Change mappings.
-" call denite#custom#map(
-"             \ 'insert',
-"             \ '<C-p>',
-"             \ '<denite:do_action:preview>',
-"             \ 'noremap'
-"             \)
-" Ag command on grep source
-if executable('ag')
-    call denite#custom#var('grep', 'command', ['ag'])
-    call denite#custom#var('grep', 'default_opts',
-                \ ['-i', '--vimgrep'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', [])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
-    " set file_rec to use ag
-    call denite#custom#var('file/rec', 'command',
-                    \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-    " call denite#custom#var('file_rec', 'command',
-    "             \ ['ag', '-l', '--nocolor', '-g', ''])
-endif
+" Denite
+" ======
+
+" NOTE: Old denite code for custom source to change projects, port to fzf.vim?
+" " add custom menu for changing projects (cwd)
+" let s:menus = {}
+" let s:menus.projects = {
+"             \ 'description': 'projects'
+"             \ }
+
+" " read in projects.vim file if it exists
+" " https://stackoverflow.com/questions/19898542/how-to-concatenate-environmental-variables-in-a-vimrc-file
+" let g:projects_path = $DOTFILES.'/config/nvim/projects.vim'
+" if filereadable(g:projects_path)
+"     exec 'source ' . g:projects_path
+" endif
+
+" " if the projects.vim file did exist, set the project list
+" if exists("g:projects")
+"     let s:menus.projects.directory_candidates = g:projects
+" endif
+
+" call denite#custom#var('menu', 'menus', s:menus)
 
 " }}}
 
