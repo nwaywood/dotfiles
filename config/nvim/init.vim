@@ -316,7 +316,7 @@ function! s:BufferCount()
     return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
 endfunc
 command! ToggleLocationList call ToggleLocationList()
-nnoremap <silent> <leader>d :ToggleLocationList<cr>
+" nnoremap <silent> <leader>d :ToggleLocationList<cr>
 
 " }}}
 
@@ -379,31 +379,26 @@ let s:pallete = g:lightline#colorscheme#one#palette
 " https://github.com/itchyny/lightline.vim/issues/355#issuecomment-470885228
 let s:pallete.tabline.tabsel = [['#282C34', '#ABB2BF', 235, 145]]
 
+" https://github.com/neoclide/coc.nvim/issues/401#issuecomment-622463326
 function! s:lightline_coc_diagnostic(kind, sign) abort
-  let info = get(b:, 'coc_diagnostic_info', 0)
-  if empty(info) || get(info, a:kind, 0) == 0
-    return ''
-  endif
-  try
-    " https://github.com/neoclide/coc.nvim/issues/401#issuecomment-469051524
-    let s = coc#util#get_config('diagnostic')[a:sign . 'Sign']
-  catch
-    let s = ''
-  endtry
-  return printf('%s %d', s, info[a:kind])
+    let info = get(b:, 'coc_diagnostic_info', 0)
+    if empty(info) || get(info, a:kind, 0) == 0
+      return ''
+    endif
+    return printf('%s %d', a:sign, info[a:kind])
 endfunction
-
 function! LightlineCocError() abort
-  return s:lightline_coc_diagnostic('error', 'error')
+    return s:lightline_coc_diagnostic('error', '•')
 endfunction
-
 function! LightlineCocWarn() abort
-  return s:lightline_coc_diagnostic('warning', 'warning')
+    return s:lightline_coc_diagnostic('warning', '•')
 endfunction
-
 " NOTE: Check out this if info doesn't look right https://github.com/josa42/vim-lightline-coc
 function! LightlineCocInfo() abort
-  return s:lightline_coc_diagnostic('information', 'info')
+    return s:lightline_coc_diagnostic('information', '•')
+endfunction
+function! LightlineCocHint() abort
+    return s:lightline_coc_diagnostic('hints', '•')
 endfunction
 
 autocmd User CocDiagnosticChange,CocStatusChange call lightline#update()
@@ -641,6 +636,8 @@ omap af <Plug>(coc-funcobj-a)
 command! -nargs=0 Format :call CocAction('format')
 
 " Coc mappings for fzf lists https://github.com/antoinemadec/coc-fzf
+let g:coc_fzf_preview='up:50%:hidden'
+let g:coc_fzf_opts=['--layout=reverse-list', '--info=inline']
 " Show all diagnostics.
 nnoremap <silent> <leader>d :CocFzfList diagnostics<cr>
 " Find symbol of current document.
