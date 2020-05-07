@@ -667,20 +667,13 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
+" Hide ugly fzf default statusline https://github.com/junegunn/fzf.vim#hide-statusline
+autocmd! FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
 " map <c-j> and <c-k> to navigate through results in fzf filetype
 autocmd FileType fzf tnoremap <buffer> <C-j> <Down>
 autocmd FileType fzf tnoremap <buffer> <C-k> <Up>
-
-" Interactive Rg
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
-
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 " Customize fzf colors to match your color scheme
 " - fzf#wrap translates this to a set of `--color` options
@@ -698,6 +691,27 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+
+" === FZF Commands and keybindings ===
+" Available spec options here: https://github.com/junegunn/fzf/blob/master/README-VIM.md#fzfrun
+" For what can go in the 'options' field of the spec: `man fzf`
+" Note: --preview-window is the size of the preview within the fzf window, to
+" change the size of the fzf window, use up,down,left,right e.g. 'down': '60%'
+
+" Interactive Rg
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--preview-window', 'up:40%', '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>1)
+
+" Override default FzfFile command to be sexier https://github.com/junegunn/fzf.vim#example-customizing-files-command
+command! -bang -nargs=? -complete=dir FzfFiles
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline'], 'window': {'width': 0.9, 'height': 0.6, 'yoffset':0.5,'xoffset': 0.5, 'highlight': 'TODO', 'border': 'sharp'}}), <bang>0)
 
 nnoremap <silent> <leader>f  :FzfFiles<cr>
 nnoremap <silent> <leader>a  :RG<cr>
