@@ -706,9 +706,14 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>1)
 
+" Dynamically show preview based on column width https://github.com/junegunn/fzf.vim/issues/1015
+function! PreviewIfWide(spec)
+  return &columns > 120 ? fzf#vim#with_preview(a:spec) : a:spec
+endfunction
+
 " Override default FzfFile command to be sexier https://github.com/junegunn/fzf.vim#example-customizing-files-command
 command! -bang -nargs=? -complete=dir FzfFiles
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline'], 'window': {'width': 0.9, 'height': 0.6, 'yoffset':0.5,'xoffset': 0.5, 'highlight': 'TODO', 'border': 'sharp'}}), <bang>0)
+    \ call fzf#vim#files(<q-args>, PreviewIfWide({'options': ['--layout=reverse', '--info=inline'], 'window': {'width': 0.9, 'height': 0.6, 'yoffset':0.5,'xoffset': 0.5, 'highlight': 'TODO', 'border': 'sharp'}})), <bang>0)
 
 nnoremap <silent> <leader>f  :FzfFiles<cr>
 nnoremap <silent> <leader>a  :RG<cr>
