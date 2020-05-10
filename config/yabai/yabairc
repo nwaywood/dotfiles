@@ -32,7 +32,9 @@ yabai -m config window_border_width          2
 yabai -m config window_border_radius         0 # square
 yabai -m config active_window_border_topmost on
 # yabai -m config active_window_border_color   0xff775759 # yabai brown
-yabai -m config active_window_border_color   0xff039FD9 # webex blue
+# yabai -m config active_window_border_color   0xff039FD9 # webex blue
+yabai -m config active_window_border_color   0xff61afef # onedark blue
+# yabai -m config active_window_border_color   0xffd19a66 # onedark orange
 yabai -m config normal_window_border_color   0xff505050
 # yabai -m config insert_window_border_color   0xffd75f5f
 
