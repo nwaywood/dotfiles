@@ -6,7 +6,7 @@ settings-local.zsh
 config/karabiner/automatic_backups
 config/karabiner/karabiner.json
 config/nvim/plugged
-config/nvim/projects.vim
+config/nvim/projects.txt
 config/oni/plugged
 config/oni/config.js
 config/brittany

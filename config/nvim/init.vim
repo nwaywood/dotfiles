@@ -713,6 +713,16 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>1)
 
+" read in projects.txt file if it exists
+" https://stackoverflow.com/questions/19898542/how-to-concatenate-environmental-variables-in-a-vimrc-file
+let g:projects_path = $DOTFILES.'/config/nvim/projects.txt'
+if filereadable(g:projects_path)
+    " Change vim dir to project dir
+    command! -nargs=* -complete=dir Projects call fzf#run(fzf#wrap(
+      \ {'source': 'cat ~/.dotfiles/config/nvim/projects.txt',
+      \  'sink': 'cd'}))
+endif
+
 " Dynamically show preview based on column width https://github.com/junegunn/fzf.vim/issues/1015
 function! PreviewIfWide(spec)
   return &columns > 120 ? fzf#vim#with_preview(a:spec) : a:spec
@@ -727,31 +737,6 @@ nnoremap <silent> <leader>a  :RG<cr>
 nnoremap <silent> <leader>l  :FzfBLines<cr>
 nnoremap <silent> <leader>p  :FzfCommands<cr>
 nnoremap <silent> <leader>h  :FzfHelptags<cr>
-
-
-" Denite
-" ======
-
-" NOTE: Old denite code for custom source to change projects, port to fzf.vim?
-" " add custom menu for changing projects (cwd)
-" let s:menus = {}
-" let s:menus.projects = {
-"             \ 'description': 'projects'
-"             \ }
-
-" " read in projects.vim file if it exists
-" " https://stackoverflow.com/questions/19898542/how-to-concatenate-environmental-variables-in-a-vimrc-file
-" let g:projects_path = $DOTFILES.'/config/nvim/projects.vim'
-" if filereadable(g:projects_path)
-"     exec 'source ' . g:projects_path
-" endif
-
-" " if the projects.vim file did exist, set the project list
-" if exists("g:projects")
-"     let s:menus.projects.directory_candidates = g:projects
-" endif
-
-" call denite#custom#var('menu', 'menus', s:menus)
 
 " }}}
 
