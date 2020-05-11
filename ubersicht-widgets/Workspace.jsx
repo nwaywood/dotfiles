@@ -10,7 +10,7 @@ export const command = dispatch => {
     // run("/usr/local/bin/node --no-warnings /Users/nick/.dotfiles/ubersicht-widgets/scripts/spaces-json.mjs")
         .then(out => dispatch({type: "UPDATED", output: out} ))
         // NOTE: This error is being deliberately swallowed
-        .catch(err => dispatch({type: "UPDATE_FAILED", error: "erroring" }))
+        .catch(() => dispatch({type: "UPDATE_FAILED", error: "erroring" }))
 }
 
 export const initialState = { output: 'fetching data...' }
@@ -72,43 +72,40 @@ export const render = ( { output, error } ) => {
 
 const renderSpaces = (spaces) => {
     let out = []
-    const numDisplays = calcNumDisplays(spaces)
+    let currentDisplay = 1
+    let numWindowsOnCurrentDisplay = 0
 
-    for (let i = 1; i <= numDisplays; ++i) {
-        let displaySpaces = generateSpacesForDisplay(spaces, i)
-        out.push(displaySpaces)
-        // add a "-" to separate spaces on different displays
-        if (i < numDisplays) {
+    for (let i = 0; i < spaces.length; ++i) {
+        let currentSpace = spaces[i]
+        // add seperator if changing display
+        if (currentDisplay !== currentSpace.display) {
             out.push(<div className={cell}>—</div>)
+            // update currentDisplay variable
+            currentDisplay = currentSpace.display
+        }
+        // what text to render for this space
+        const value = currentSpace["zoom-fullscreen"] === 1 ? ("" + currentSpace.index + "°") : currentSpace.index
+        const hasWindows = currentSpace.windows && currentSpace.windows.length > 0
+        if (currentSpace.visible == 1 && hasWindows) {
+            out.push(<div className={`${cell} ${visibleStyle} ${hasWindowsStyle}`}>{value}</div>)
+        } else if (hasWindows) {
+            out.push(<div className={`${cell} ${hasWindowsStyle}`}>{value}</div>)
+        } else if (currentSpace.visible == 1) {
+            out.push(<div className={`${cell} ${visibleStyle}`}>{value}</div>)
+        } else {
+            // default display
+            out.push(<div className={cell}>{value}</div>)
+        }
+
+        // set numWindowsOnCurrentDisplay if currentSpace is focussed
+        if (currentSpace.focused === 1) {
+            numWindowsOnCurrentDisplay = currentSpace.windows.length
         }
     }
+    // nerd font char
+    const windowsChar = '\ufa6f' // 﩯
+    // output number of windows on current focussed space 
+    out.push(<div><span style={{ margin: "0px 6px"}}>{windowsChar}</span>{numWindowsOnCurrentDisplay}</div>)
     return out.flat()
-}
-
-const generateSpacesForDisplay = (spaces, displayNum) => {
-    return spaces.filter(space => space.display == displayNum)
-        .map(space => {
-            // what text to render for this space
-            const value = space["zoom-fullscreen"] === 1 ? ("" + space.index + "°") : space.index
-            const hasWindows = space.windows && space.windows.length > 0
-            if (space.visible == 1 && hasWindows) {
-                return (<div className={`${cell} ${visibleStyle} ${hasWindowsStyle}`}>{value}</div>)
-            } else if (hasWindows) {
-                return (<div className={`${cell} ${hasWindowsStyle}`}>{value}</div>)
-            } else if (space.visible == 1) {
-                return (<div className={`${cell} ${visibleStyle}`}>{value}</div>)
-            }
-            // default display
-            return (<div className={cell}>{value}</div>)
-        })
-}
-
-// each space contains a `"display": num` field, use it to cal num displays
-const calcNumDisplays = (spaces) => {
-    const set = new Set()
-    spaces.forEach(space => {
-        set.add(space.display)
-    })
-    return set.size
 }
 
