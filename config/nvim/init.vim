@@ -73,10 +73,6 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-if has('gui_vimr')
-    execute 'set background='.$BACKGROUND
-    colorscheme onedark
-endif
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 " mapleader
@@ -721,6 +717,7 @@ if filereadable(g:projects_path)
     command! -nargs=* -complete=dir Projects call fzf#run(fzf#wrap(
       \ {'source': 'cat ~/.dotfiles/config/nvim/projects.txt',
       \  'sink': 'cd'}))
+    nnoremap <silent> <leader>p :Projects<cr>
 endif
 
 " Dynamically show preview based on column width https://github.com/junegunn/fzf.vim/issues/1015
@@ -735,7 +732,7 @@ command! -bang -nargs=? -complete=dir FzfFiles
 nnoremap <silent> <leader>f  :FzfFiles<cr>
 nnoremap <silent> <leader>a  :RG<cr>
 nnoremap <silent> <leader>l  :FzfBLines<cr>
-nnoremap <silent> <leader>p  :FzfCommands<cr>
+nnoremap <silent> <leader>P  :FzfCommands<cr>
 nnoremap <silent> <leader>h  :FzfHelptags<cr>
 
 " }}}
@@ -774,18 +771,11 @@ endif
 " vimr settings
 " =============
 if has('gui_vimr')
-    " Fix the airline bar in vimr
-    let g:airline_theme='onedark'
-    let g:airline_powerline_fonts=0
-    let g:airline_left_sep=''
-    let g:airline_right_sep=''
-
     " rerun the last run command https://github.com/kassio/neoterm/issues/81
-    nnoremap <silent> <leader>vl :<C-u>exec printf("%sTexec !! \<lt>CR>", v:count)<CR>
-    nnoremap <leader>vp :T<space>
+    " nnoremap <silent> <leader>vl :<C-u>exec printf("%sTexec !! \<lt>CR>", v:count)<CR>
+    " nnoremap <leader>vp :T<space>
 endif
 
 " }}}
-
 
 " vim:foldmethod=marker
