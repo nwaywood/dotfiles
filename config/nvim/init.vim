@@ -7,6 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'joshdick/onedark.vim'
 
 " utilities
+Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 Plug 'scrooloose/nerdtree' " file explorer
 Plug 'Aldlevine/nerdtree-git-plugin' " this fork is required to grey out gitignored files
 Plug 'ryanoasis/vim-devicons' " Add file icons to nerdtree, airline, ctrlp etc
@@ -319,6 +320,11 @@ command! ToggleLocationList call ToggleLocationList()
 
 " Plugins settings {{{
 
+" vim-markdown
+" ============
+" Don't conceal backticks around code blocks in markdown
+let g:vim_markdown_conceal_code_blocks = 0
+
 " quick-scope
 " ===========
 
@@ -329,6 +335,27 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " ==============
 let g:Hexokinase_highlighters = [ 'backgroundfull' ]
 let g:Hexokinase_optInPatterns = 'full_hex,triple_hex,rgb,rgba,hsl,hsla'
+
+" vimwiki
+" =======
+" NOTE: If vimwiki keybindings start to be annoying https://github.com/vimwiki/vimwiki/issues/852
+
+" This line sets vimwiki files to be recognised as a markdown filetype
+" as well as the vimwiki filetype
+" This therefore enables my markdown plugin for vimwiki files
+" NOTE: Need to be on the dev branch of vimwiki to support multi ft's
+" https://github.com/vimwiki/vimwiki/issues/830#issuecomment-609326364
+au FileType vimwiki set filetype=vimwiki.markdown
+
+" change the default global prefix to o for 'organiser'
+let g:vimwiki_map_prefix = '<Leader>o'
+
+" change wiki path and set to markdown
+" https://vimwiki.github.io/vimwikiwiki/Tips%20and%20Snips.html#Tips%20and%20Snips-FAQ-Markdown
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+" Only activate vimwiki bindings etc for markdown files within vimwiki dir
+let g:vimwiki_global_ext = 0
 
 " lightline
 " =========
@@ -677,6 +704,7 @@ autocmd FileType fzf tnoremap <buffer> <C-k> <Up>
 
 " Customize fzf colors to match your color scheme
 " - fzf#wrap translates this to a set of `--color` options
+" https://github.com/junegunn/fzf/blob/master/README-VIM.md#explanation-of-gfzf_colors
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -685,6 +713,7 @@ let g:fzf_colors =
   \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
   \ 'hl+':     ['fg', 'Statement'],
   \ 'info':    ['fg', 'PreProc'],
+  \ 'gutter':  ['bg', 'Normal'],
   \ 'border':  ['fg', 'Ignore'],
   \ 'prompt':  ['fg', 'Conditional'],
   \ 'pointer': ['fg', 'Exception'],
@@ -727,9 +756,24 @@ endfunction
 
 " Override default FzfFile command to be sexier https://github.com/junegunn/fzf.vim#example-customizing-files-command
 command! -bang -nargs=? -complete=dir FzfFiles
-    \ call fzf#vim#files(<q-args>, PreviewIfWide({'options': ['--layout=reverse', '--info=inline'], 'window': {'width': 0.9, 'height': 0.6, 'yoffset':0.5,'xoffset': 0.5, 'highlight': 'TODO', 'border': 'sharp'}})), <bang>0)
+    \ call fzf#vim#files(<q-args>, PreviewIfWide({'options': ['--layout=reverse', '--info=inline'], 'window': {'width': 0.9, 'height': 0.6, 'yoffset':0.5,'xoffset': 0.5, 'highlight': 'TODO', 'border': 'sharp'}}), <bang>0)
 
-nnoremap <silent> <leader>f  :FzfFiles<cr>
+command! -bang -nargs=? -complete=dir FzfGFiles
+    \ call fzf#vim#gitfiles(<q-args>, PreviewIfWide({'options': ['--layout=reverse', '--info=inline'], 'window': {'width': 0.9, 'height': 0.6, 'yoffset':0.5,'xoffset': 0.5, 'highlight': 'TODO', 'border': 'sharp'}}), <bang>0)
+
+" If git repo, call GFiles, else call Files
+function! FzfOmniFiles()
+    " https://stackoverflow.com/questions/2180270/check-if-current-directory-is-a-git-repository
+    silent! !git rev-parse --is-inside-work-tree
+    if v:shell_error == 0
+        " For options https://git-scm.com/docs/git-ls-files
+        :FzfGFiles
+    else
+        :FzfFiles
+    endif
+endfunction
+
+nnoremap <silent> <leader>f  :call FzfOmniFiles()<cr>
 nnoremap <silent> <leader>a  :RG<cr>
 nnoremap <silent> <leader>l  :FzfBLines<cr>
 nnoremap <silent> <leader>P  :FzfCommands<cr>
