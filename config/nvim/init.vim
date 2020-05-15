@@ -318,12 +318,13 @@ command! ToggleLocationList call ToggleLocationList()
 
 " }}}
 
-" Plugins settings {{{
+" Plugin settings {{{
 
-" vim-markdown
-" ============
+" vim-markdown {{{
+
 " Don't conceal backticks around code blocks in markdown
 let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_folding_style_pythonic = 1
 
 " Create fzf source for markdown symbols
 " https://github.com/SidOfc/mkdx#open-toc-using-fzf-instead-of-quickfix-window
@@ -372,20 +373,21 @@ function LoadMdSymbolsQuicklist()
     lclose
 endfunction
 autocmd FileType markdown nnoremap <silent> <Leader>s :call <SID>MdFzfHeaders()<Cr>
+" }}}
 
-" quick-scope
-" ===========
+" quick-scope {{{
 
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" }}}
 
-" vim-hexokinase
-" ==============
+" vim-hexokinase {{{
 let g:Hexokinase_highlighters = [ 'backgroundfull' ]
 let g:Hexokinase_optInPatterns = 'full_hex,triple_hex,rgb,rgba,hsl,hsla'
+" }}}
 
-" vimwiki
-" =======
+" vimwiki {{{
+
 " Disable table_mappings so autocompletion works https://github.com/vimwiki/vimwiki/issues/852
   let g:vimwiki_key_mappings =
     \ {
@@ -408,9 +410,13 @@ let g:Hexokinase_optInPatterns = 'full_hex,triple_hex,rgb,rgba,hsl,hsla'
 " https://github.com/vimwiki/vimwiki/issues/830#issuecomment-609326364
 au FileType vimwiki set filetype=vimwiki.markdown
 
+" Let vim-markdown plugin do the folding
+let g:vimwiki_folding = 'custom'
+
 " change the default global prefix to o for 'organiser'
 let g:vimwiki_map_prefix = '<Leader>o'
-
+" :lcd to vimwiki dir when wiki file is opened
+let g:vimwiki_auto_chdir = 1
 " change wiki path and set to markdown
 " https://vimwiki.github.io/vimwikiwiki/Tips%20and%20Snips.html#Tips%20and%20Snips-FAQ-Markdown
 let g:vimwiki_list = [{'path': '~/vimwiki/',
@@ -418,8 +424,10 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 " Only activate vimwiki bindings etc for markdown files within vimwiki dir
 let g:vimwiki_global_ext = 0
 
-" lightline
-" =========
+" }}}
+
+" lightline {{{
+
 set laststatus=2 " plugin won't work without this line
 set noshowmode " hide the default insert/command mode indicator
 set showtabline=2
@@ -529,8 +537,10 @@ nmap <Leader>7 <Plug>lightline#bufferline#go(7)
 nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 
-" NERDTree
-" --------
+" }}}
+
+" NERDTree {{{
+
 " http://www.cheatography.com/stepk/cheat-sheets/vim-nerdtree/
 
 " don't close NERDTree after a file is opened
@@ -580,8 +590,10 @@ hi NERDTreeGitStatusUntracked ctermfg=2 guifg=#98c379
 " https://github.com/scrooloose/nerdtree/blob/8cd17c1a478d8302e4782a95963abe46fc22c538/syntax/nerdtree.vim#L50
 hi link NERDTreeExecFile Normal
 
-" Fugitive
-" --------
+" }}}
+
+" Fugitive {{{
+
 " open git status in a new tab
 " https://github.com/tpope/vim-fugitive/issues/727
 nnoremap <silent> <leader>gs :G<cr>
@@ -598,9 +610,10 @@ augroup turbo_commit
   autocmd!
   autocmd BufEnter COMMIT_EDITMSG startinsert
 augroup END
+" }}}
 
-" vim-go
-" ------
+" vim-go {{{
+
 let g:go_gopls_enabled = 0
 " more syntax highlighting for go code
 let g:go_highlight_functions = 1
@@ -632,31 +645,36 @@ let g:go_metalinter_command='gometalinter --disable-all --enable=vet
             \ --enable=vetshadow --enable=golint --enable=ineffassign --enable=goconst --enable=gofmt'
 " let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
 "		 \ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
+" }}}
 
-" vim-marked
-" -----------
+" vim-marked {{{
+
 nnoremap <leader>mo :MarkedOpen<cr>
 nnoremap <leader>mq :MarkedQuit<cr>
+" }}}
 
-" vim-jsx
-" -------
+" vim-jsx {{{
+
 let g:jsx_ext_required = 0
+" }}}
 
-" vim-maximizer
-" -------------
+" vim-maximizer {{{
+
 nnoremap <C-w>z :MaximizerToggle<cr>
+" }}}
 
-" elm-vim
-" -----------
+" elm-vim {{{
+
 let g:elm_format_autosave = 1
 let g:elm_setup_keybindings = 0 " disable built-in keybindings
 let g:elm_detailed_complete = 1 " show types in autocompletion
 " autocomplete only on attributes; doesn't seem to complete local vars
 let g:deoplete#omni_patterns = {}
 let g:deoplete#omni_patterns.elm = '\.'
+" }}}
 
-" coc.nvim
-" ========
+" coc.nvim {{{
+
 set signcolumn=yes
 hi SignColumn ctermfg=10 ctermbg=0 guifg=Yellow
 
@@ -741,13 +759,16 @@ command! WorkspaceSymbols :CocFzfList symbols
 " format go files on save
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
-" vim-surround
-" ============
+" }}}
+
+" vim-surround {{{
+
 " disable insert mode mappings <c-g>s and <c-g>S
 let g:surround_no_insert_mappings=1
+" }}}
 
-" fzf.vim
-" =======
+" fzf.vim {{{
+
 let g:fzf_command_prefix = 'Fzf'
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -839,6 +860,7 @@ nnoremap <silent> <leader>a  :RG<cr>
 nnoremap <silent> <leader>l  :FzfBLines<cr>
 nnoremap <silent> <leader>P  :FzfCommands<cr>
 nnoremap <silent> <leader>h  :FzfHelptags<cr>
+" }}}
 
 " }}}
 
@@ -883,4 +905,4 @@ endif
 
 " }}}
 
-" vim:foldmethod=marker
+" vim:foldmethod=marker:foldlevel=0:foldenable
