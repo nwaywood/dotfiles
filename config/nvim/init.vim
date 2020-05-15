@@ -1,7 +1,7 @@
 " Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
-" color/theme stuff
+" colortheme
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
@@ -20,6 +20,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " show colors of hex codes etc in editor
+Plug 'tpope/vim-dispatch' " Async job runner, used by vim-fugitive
 
 " Core utils
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
@@ -29,7 +30,7 @@ Plug 'mhinz/vim-sayonara' " Alternative to :quit which works like modern editors
 Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 Plug 'unblevable/quick-scope' " Improve usability of f,F,t,T
 Plug 'tpope/vim-fugitive' " Git support
-Plug 'tpope/vim-dispatch' " Async job runner, used by vim-fugitive
+Plug 'maxbrunsfeld/vim-yankstack' " Turn default register into a stack, alt-p and alt-shift-p, :Yanks
 
 " Vim language enhancements
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
@@ -51,7 +52,6 @@ Plug 'elmcast/elm-vim', { 'for': 'elm' } " elm support
 Plug 'reasonml-editor/vim-reason', { 'for': 'reason' } " reason support
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript'] } " JSX support
-" Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'javascript', 'javascript.jsx'] } " CSS3 syntax support
 
@@ -325,6 +325,54 @@ command! ToggleLocationList call ToggleLocationList()
 " Don't conceal backticks around code blocks in markdown
 let g:vim_markdown_conceal_code_blocks = 0
 
+" Create fzf source for markdown symbols
+" https://github.com/SidOfc/mkdx#open-toc-using-fzf-instead-of-quickfix-window
+fun! s:MdGoToHeader(header)
+    " given a line: '  84: # Header'
+    " this will match the number 84 and move the cursor to the start of that line
+    call cursor(str2nr(get(matchlist(a:header, ' *\([0-9]\+\)'), 1, '')), 1)
+endfun
+
+fun! s:MdFormatHeader(key, val)
+    let text = get(a:val, 'text', '')
+    let lnum = get(a:val, 'lnum', '')
+
+    " if the text is empty or no lnum is present, return the empty string
+    if (empty(text) || empty(lnum)) | return text | endif
+
+    " We can't jump to it if we dont know the line number so that must be present in the outpt line.
+    " We also add extra padding up to 4 digits, so I hope your markdown files don't grow beyond 99.9k lines ;)
+    return repeat(' ', 4 - strlen(lnum)) . lnum . ': ' . text
+endfun
+
+fun! s:MdFzfHeaders()
+    " passing 0 to getloclist(0) causes it to return the list instead of opening the quickfix list
+    " this allows you to create a 'source' for fzf.
+    " first we map each item (formatted for quickfix use) using the function MdFormatHeader()
+    " then, we strip out any remaining empty headers.
+    let headers = filter(map(getloclist(0), function('<SID>MdFormatHeader')), 'v:val != ""')
+
+    " run the fzf function with the formatted data and as a 'sink' (action to execute on selected entry)
+    " supply the MdGoToHeader() function which will parse the line, extract the line number and move the cursor to it.
+    call fzf#run(fzf#wrap(
+            \ {'source': headers, 'sink': function('<SID>MdGoToHeader') }
+          \ ))
+endfun
+
+" This needs to be done for MdFzfHeaders to work since the location list of
+" headers is only populated after :Toc is called
+" https://github.com/plasticboy/vim-markdown/issues/270
+augroup MdToc
+    autocmd FileType markdown
+        \ autocmd! BufWinEnter <buffer> call LoadMdSymbolsQuicklist()
+augroup END
+" https://stackoverflow.com/questions/1413285/multiple-autocommands-in-vim
+function LoadMdSymbolsQuicklist()
+    Toc
+    lclose
+endfunction
+autocmd FileType markdown nnoremap <silent> <Leader>s :call <SID>MdFzfHeaders()<Cr>
+
 " quick-scope
 " ===========
 
@@ -338,7 +386,20 @@ let g:Hexokinase_optInPatterns = 'full_hex,triple_hex,rgb,rgba,hsl,hsla'
 
 " vimwiki
 " =======
-" NOTE: If vimwiki keybindings start to be annoying https://github.com/vimwiki/vimwiki/issues/852
+" Disable table_mappings so autocompletion works https://github.com/vimwiki/vimwiki/issues/852
+  let g:vimwiki_key_mappings =
+    \ {
+    \   'all_maps': 1,
+    \   'global': 1,
+    \   'headers': 1,
+    \   'text_objs': 1,
+    \   'table_format': 1,
+    \   'table_mappings': 0,
+    \   'lists': 1,
+    \   'links': 1,
+    \   'html': 1,
+    \   'mouse': 1,
+    \ }
 
 " This line sets vimwiki files to be recognised as a markdown filetype
 " as well as the vimwiki filetype
