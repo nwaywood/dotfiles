@@ -13,6 +13,7 @@ alias vim='nvim'
 alias gs='nvim -c "G | %bd | e# | bd#"'
 # alias gs='git status'
 alias g='git'
+alias lg='lazygit'
 
 # finder
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'

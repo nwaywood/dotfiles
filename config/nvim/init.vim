@@ -985,7 +985,9 @@ if has('nvim')
     augroup END
 
     " escape from terminal mode to normal mode
-    tnoremap <esc> <C-\><C-n>
+    " https://github.com/junegunn/fzf.vim/issues/544#issuecomment-457456166
+    au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
+    au FileType fzf tunmap <buffer> <Esc>
 
     " window navigation
     tnoremap <C-h> <C-\><C-n><C-w>h
