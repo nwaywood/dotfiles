@@ -21,6 +21,7 @@ Plug 'mengelbrecht/lightline-bufferline'
 Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open markdown files in Marked.app - mapped to <leader>m
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " show colors of hex codes etc in editor
 Plug 'tpope/vim-dispatch' " Async job runner, used by vim-fugitive
+Plug 'liuchengxu/vim-which-key'
 
 " Core utils
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
@@ -80,7 +81,7 @@ set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 let g:mapleader = "\<Space>"
 
 " following 3 lines make the mapleader key work better
-set notimeout
+" set notimeout " can't have notimeout for vim-which-key to work
 set ttimeout
 set ttimeoutlen=10
 
@@ -216,8 +217,6 @@ nnoremap <silent> <leader>Q :qa<cr>
 
 " toggle relative/absolute line numbers
 nnoremap <silent> <leader>. :call NumberToggle()<cr>
-
-" highlight word on double click
 
 " toggle relative/absolute line numbers
 nnoremap <silent> <leader>. :call NumberToggle()<cr>
@@ -859,7 +858,109 @@ nnoremap <silent> <leader>f  :call FzfOmniFiles()<cr>
 nnoremap <silent> <leader>a  :RG<cr>
 nnoremap <silent> <leader>l  :FzfBLines<cr>
 nnoremap <silent> <leader>P  :FzfCommands<cr>
-nnoremap <silent> <leader>h  :FzfHelptags<cr>
+nnoremap <silent> <leader>ht  :FzfHelptags<cr>
+nnoremap <silent> <leader>hm  :FzfMaps<cr>
+" }}}
+
+" vim-which-key {{{
+set timeout
+set timeoutlen=500
+nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+
+" colors
+highlight default link WhichKey          Operator
+highlight default link WhichKeySeperator DiffAdded
+highlight default link WhichKeyGroup     Constant
+highlight default link WhichKeyDesc      Function
+
+let g:which_key_use_floating_win = 0
+" Hide status line
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+
+" Define prefix dictionary
+let g:which_key_map =  {}
+call which_key#register('<Space>', "g:which_key_map")
+
+" Second level dictionaries:
+" 'name' is a special field. It will define the name of the group, e.g., leader-f is the "+file" group.
+" Unnamed groups will show a default empty string.
+let g:which_key_map['f'] = 'search files'
+let g:which_key_map['s'] = 'symbols'
+let g:which_key_map['e'] = 'explorer'
+let g:which_key_map['n'] = 'find in explorer'
+let g:which_key_map['a'] = 'grep project'
+let g:which_key_map['d'] = 'diagnostics'
+let g:which_key_map['l'] = 'search lines'
+
+let g:which_key_map['w'] = 'save file'
+let g:which_key_map['q'] = 'quit buffer'
+let g:which_key_map['Q'] = 'quit all'
+let g:which_key_map['x'] = 'save and quit'
+
+let g:which_key_map['p'] = 'projects'
+let g:which_key_map['P'] = 'commands'
+let g:which_key_map['/'] = 'toggle highlight'
+let g:which_key_map['0'] = 'edit init.vim'
+let g:which_key_map['.'] = 'toggle numbers'
+
+" Don't show buffer switching in menu
+let g:which_key_map['1'] = 'which_key_ignore'
+let g:which_key_map['2'] = 'which_key_ignore'
+let g:which_key_map['3'] = 'which_key_ignore'
+let g:which_key_map['4'] = 'which_key_ignore'
+let g:which_key_map['5'] = 'which_key_ignore'
+let g:which_key_map['6'] = 'which_key_ignore'
+let g:which_key_map['7'] = 'which_key_ignore'
+let g:which_key_map['8'] = 'which_key_ignore'
+let g:which_key_map['9'] = 'which_key_ignore'
+
+let g:which_key_map.g = {
+      \ 'name' : '+git',
+      \ 's' : 'status',
+      \ 'b' : 'blame',
+      \ 'l' : 'log',
+      \ 'd' : 'diff',
+      \ 'w' : 'write',
+      \ 'r' : 'read',
+      \ 'p' : 'push'
+      \ }
+
+let g:which_key_map.b = {
+      \ 'name' : '+buffers',
+      \ 'c' : 'Create',
+      \ 'l' : 'Last',
+      \ 'n' : 'Next',
+      \ 'p' : 'Previous',
+      \ 'q' : 'Quit Buffer'
+      \ }
+
+let g:which_key_map.t = {
+      \ 'name' : '+terminal',
+      \ 'v' : 'vsplit',
+      \ }
+
+let g:which_key_map.h = {
+      \ 'name' : '+help',
+      \ 't' : 'tags',
+      \ 'm' : 'mappings',
+      \ }
+
+let g:which_key_map['m'] = { 'name' : '+marked' }
+let g:which_key_map['m']['o'] = 'open'
+let g:which_key_map['m']['o'] = 'quit'
+
+let g:which_key_map['o'] = {
+      \ 'name' : '+vimwiki',
+      \ 'w' : 'Index file',
+      \ 't' : 'Index file in tab',
+      \ }
+
+let g:which_key_map['o']['i'] = 'which_key_ignore'
+let g:which_key_map['o']['s'] = 'which_key_ignore'
+
 " }}}
 
 " }}}
@@ -905,4 +1006,4 @@ endif
 
 " }}}
 
-" vim:foldmethod=marker:foldlevel=0:foldenable
+" vim:foldmethod=marker
