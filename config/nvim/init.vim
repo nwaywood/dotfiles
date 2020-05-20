@@ -22,6 +22,7 @@ Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open m
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " show colors of hex codes etc in editor
 Plug 'tpope/vim-dispatch' " Async job runner, used by vim-fugitive
 Plug 'liuchengxu/vim-which-key'
+Plug 'voldikss/vim-floaterm' " Open terminal in a floating window
 
 " Core utils
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
@@ -154,6 +155,7 @@ augroup END
 
 " remap esc
 inoremap jk <esc>
+inoremap kj <esc>
 
 " make Y have the same behavior as C and D
 nnoremap Y y$
@@ -318,6 +320,17 @@ command! ToggleLocationList call ToggleLocationList()
 " }}}
 
 " Plugin settings {{{
+
+" vim-floaterm {{{
+nnoremap <silent> <leader>tg :FloatermNew lazygit<cr>
+let g:floaterm_width=0.9
+let g:floaterm_height=0.9
+let g:floaterm_wintitle=0
+" autoclose the terminal window when the terminal process terminates
+let g:floaterm_autoclose=1
+" make the border of floaterm windows purple
+hi link FloatermBorder Operator
+" }}}
 
 " vim-markdown {{{
 
@@ -939,6 +952,7 @@ let g:which_key_map.b = {
 let g:which_key_map.t = {
       \ 'name' : '+terminal',
       \ 'v' : 'vsplit',
+      \ 'g' : 'git',
       \ }
 
 let g:which_key_map.h = {
@@ -990,9 +1004,9 @@ if has('nvim')
 
     " window navigation
     tnoremap <C-h> <C-\><C-n><C-w>h
+    tnoremap <C-l> <C-\><C-n><C-w>l
     tnoremap <C-j> <C-\><C-n><C-w>j
     tnoremap <C-k> <C-\><C-n><C-w>k
-    tnoremap <C-l> <C-\><C-n><C-w>l
 
     tnoremap <C-w>z <C-\><C-n>:MaximizerToggle<cr>i
 endif
