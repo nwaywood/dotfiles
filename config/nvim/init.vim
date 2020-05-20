@@ -346,6 +346,17 @@ fun! s:MdFormatHeader(key, val)
 endfun
 
 fun! s:MdFzfHeaders()
+    " Run :Toc whenever <leader>s is activated in markdown to
+    " generate/regenerate the Toc location list contents
+    " https://github.com/junegunn/fzf.vim/issues/94#issuecomment-197104238
+    try
+        :Toc
+    catch /^Vim\%((\a\+)\)\=:E492/
+        " No :Toc command
+        return
+    endtry
+    " Close the Toc location list
+    :lclose
     " passing 0 to getloclist(0) causes it to return the list instead of opening the quickfix list
     " this allows you to create a 'source' for fzf.
     " first we map each item (formatted for quickfix use) using the function MdFormatHeader()
@@ -359,18 +370,6 @@ fun! s:MdFzfHeaders()
           \ ))
 endfun
 
-" This needs to be done for MdFzfHeaders to work since the location list of
-" headers is only populated after :Toc is called
-" https://github.com/plasticboy/vim-markdown/issues/270
-augroup MdToc
-    autocmd FileType markdown
-        \ autocmd! BufWinEnter <buffer> call LoadMdSymbolsQuicklist()
-augroup END
-" https://stackoverflow.com/questions/1413285/multiple-autocommands-in-vim
-function LoadMdSymbolsQuicklist()
-    Toc
-    lclose
-endfunction
 autocmd FileType markdown nnoremap <silent> <Leader>s :call <SID>MdFzfHeaders()<Cr>
 " }}}
 
