@@ -22,7 +22,7 @@ PROMPT=$'%{$fg_bold[cyan]%}%~%{$reset_color%} $(git_prompt_info) $(git_remote_st
 $(vim_mode_prompt_info)%{$reset_color%} '
 
 # local git status
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}on %{$reset_color%}%{$fg[magenta]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}on %{$reset_color%}%{$fg[magenta]%}\uf418 "
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[magenta]%}*"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
