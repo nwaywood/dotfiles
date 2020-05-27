@@ -848,8 +848,11 @@ function! PreviewIfWide(spec)
 endfunction
 
 " Override default FzfFile command to be sexier https://github.com/junegunn/fzf.vim#example-customizing-files-command
+" fnamemodify help: https://stackoverflow.com/questions/16485748/how-to-get-the-parent-directory-of-a-path-string
+" NOTE: If I decide I want to show shorted full path from ~ instead of just
+" the tail dir, use this https://github.com/junegunn/fzf.vim/blob/master/autoload/fzf/vim.vim#L310-L338
 command! -bang -nargs=? -complete=dir FzfFiles
-    \ call fzf#vim#files(<q-args>, PreviewIfWide({'options': ['--layout=reverse', '--info=inline', '--prompt=PFiles> '], 'window': {'width': 0.9, 'height': 0.6, 'yoffset':0.5,'xoffset': 0.5, 'highlight': 'TODO', 'border': 'sharp'}}), <bang>0)
+    \ call fzf#vim#files(<q-args>, PreviewIfWide({'options': ['--layout=reverse', '--info=inline', '--prompt=' . fnamemodify(<q-args>, ':t') . '/'], 'window': {'width': 0.9, 'height': 0.6, 'yoffset':0.5,'xoffset': 0.5, 'highlight': 'TODO', 'border': 'sharp'}}), <bang>0)
 
 command! -bang -nargs=? -complete=dir FzfGFiles
     \ call fzf#vim#gitfiles(<q-args>, PreviewIfWide({'options': ['--layout=reverse', '--info=inline'], 'window': {'width': 0.9, 'height': 0.6, 'yoffset':0.5,'xoffset': 0.5, 'highlight': 'TODO', 'border': 'sharp'}}), <bang>0)
