@@ -849,7 +849,7 @@ endfunction
 
 " Override default FzfFile command to be sexier https://github.com/junegunn/fzf.vim#example-customizing-files-command
 command! -bang -nargs=? -complete=dir FzfFiles
-    \ call fzf#vim#files(<q-args>, PreviewIfWide({'options': ['--layout=reverse', '--info=inline'], 'window': {'width': 0.9, 'height': 0.6, 'yoffset':0.5,'xoffset': 0.5, 'highlight': 'TODO', 'border': 'sharp'}}), <bang>0)
+    \ call fzf#vim#files(<q-args>, PreviewIfWide({'options': ['--layout=reverse', '--info=inline', '--prompt=PFiles> '], 'window': {'width': 0.9, 'height': 0.6, 'yoffset':0.5,'xoffset': 0.5, 'highlight': 'TODO', 'border': 'sharp'}}), <bang>0)
 
 command! -bang -nargs=? -complete=dir FzfGFiles
     \ call fzf#vim#gitfiles(<q-args>, PreviewIfWide({'options': ['--layout=reverse', '--info=inline'], 'window': {'width': 0.9, 'height': 0.6, 'yoffset':0.5,'xoffset': 0.5, 'highlight': 'TODO', 'border': 'sharp'}}), <bang>0)
@@ -860,13 +860,20 @@ function! FzfOmniFiles()
     silent! !git rev-parse --is-inside-work-tree
     if v:shell_error == 0
         " For options https://git-scm.com/docs/git-ls-files
-        :FzfGFiles
+        :FzfGFiles ?
     else
         :FzfFiles
     endif
 endfunction
 
-nnoremap <silent> <leader>f  :call FzfOmniFiles()<cr>
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+" https://github.com/junegunn/fzf.vim/issues/47
+command! ProjectFiles execute 'FzfFiles' s:find_git_root()
+
+nnoremap <silent> <leader>f :ProjectFiles<cr>
+" nnoremap <silent> <leader>f  :call FzfOmniFiles()<cr>
 nnoremap <silent> <leader>a  :RG<cr>
 nnoremap <silent> <leader>l  :FzfBLines<cr>
 nnoremap <silent> <leader>P  :FzfCommands<cr>
