@@ -23,6 +23,7 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " show colors of hex c
 Plug 'tpope/vim-dispatch' " Async job runner, used by vim-fugitive
 Plug 'liuchengxu/vim-which-key'
 Plug 'voldikss/vim-floaterm' " Open terminal in a floating window
+Plug 'junegunn/goyo.vim' " zen mode
 
 " Core utils
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
@@ -64,6 +65,14 @@ call plug#end()
 " General Setting {{{
 
 " set color themes (from .vim/colors)
+" Change highlighting for search terms (onedark theme colors)
+" https://github.com/junegunn/goyo.vim/issues/84#issuecomment-156299446
+augroup onedark_color_mods
+    autocmd!
+    autocmd ColorScheme * hi Search guibg=#C683D6 guifg=#343642 ctermbg=5
+    autocmd ColorScheme * hi IncSearch guibg=#C683D6 guifg=#343642 ctermbg=5
+augroup END
+
 syntax enable
 execute 'set background='.$BACKGROUND
 colorscheme onedark
@@ -136,11 +145,9 @@ set clipboard=unnamed " for copy/paste with osx
 set splitbelow
 set splitright
 set diffopt+=vertical " always use verical diffs
-" show current line number as orange with relativenumber set
+" solarized color: show current line number as orange with relativenumber set
 " hi CursorLineNr ctermfg=3 ctermbg=0
-" Change highlighting for search terms (onedark theme colors)
-hi Search guibg=#C683D6 guifg=#343642 ctermbg=5
-hi IncSearch guibg=#C683D6 guifg=#343642 ctermbg=5
+
 " force vim to read *.md files as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
@@ -158,6 +165,7 @@ inoremap jk <esc>
 inoremap kj <esc>
 
 " make Y have the same behavior as C and D
+call yankstack#setup() " https://github.com/maxbrunsfeld/vim-yankstack#compatibility
 nnoremap Y y$
 
 " blackhole register shortcut
@@ -184,7 +192,8 @@ nnoremap <C-s> :split<cr>
 nnoremap <C-v> :vsplit<cr>
 
 " edit ~/.config/nvim/init.vim
-map <leader>0 :e ~/.config/nvim/init.vim<cr>
+nnoremap <silent> <leader>0e :e ~/.config/nvim/init.vim<cr>
+nnoremap <silent> <leader>0r :source ~/.config/nvim/init.vim<cr>
 
 " insert empty line between brackets (hacky, need a better way to do this)
 inoremap {<CR> {<CR>}<C-o>O
@@ -321,6 +330,9 @@ command! ToggleLocationList call ToggleLocationList()
 
 " Plugin settings {{{
 
+" {{{ goyo
+nnoremap <silent> <leader>z :Goyo<cr>
+" }}}
 " vim-floaterm {{{
 nnoremap <silent> <leader>tg :FloatermNew lazygit<cr>
 let g:floaterm_width=0.9
@@ -925,8 +937,9 @@ let g:which_key_map['x'] = 'save and quit'
 let g:which_key_map['p'] = 'projects'
 let g:which_key_map['P'] = 'commands'
 let g:which_key_map['/'] = 'toggle highlight'
-let g:which_key_map['0'] = 'edit init.vim'
+" let g:which_key_map['0'] = 'edit init.vim'
 let g:which_key_map['.'] = 'toggle numbers'
+let g:which_key_map['z'] = 'zen mode'
 
 " Don't show buffer switching in menu
 let g:which_key_map['1'] = 'which_key_ignore'
@@ -939,6 +952,11 @@ let g:which_key_map['7'] = 'which_key_ignore'
 let g:which_key_map['8'] = 'which_key_ignore'
 let g:which_key_map['9'] = 'which_key_ignore'
 
+let g:which_key_map['0'] = {
+      \ 'name': '+config',
+      \ 'e': 'edit init.vim',
+      \ 'r': 'reload init.vim'
+      \ }
 let g:which_key_map.g = {
       \ 'name' : '+git',
       \ 's' : 'status',
