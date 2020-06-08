@@ -1,162 +1,173 @@
 [
-    // Place your key bindings in this file to overwrite the defaults
-    // toggle sidebar when editor is not focused
-    // (vim plugin handles editor focused case)
-    {
-        "key": "space e",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "!editorTextFocus && !terminalFocus"
-    },
-    {
-        "key": "space f",
-        "command": "workbench.action.quickOpen",
-        "when": "!editorTextFocus && !terminalFocus"
-    },
-    // focus terminal like my Atom binding, unfortunately doesn't defocus
-    {
-        "key": "ctrl+alt+j",
-        "command": "workbench.action.terminal.focus"
-    },
-    {
-        "key": "ctrl+alt+k",
-        "command": "workbench.action.terminal.focus"
-    },
-    // create vertical split
-    {
-        "key": "ctrl+v",
-        "command": "workbench.action.splitEditor",
-        "when": "editorFocus"
-    },
-    // Create horizontal split
-    {
-        "key": "ctrl+s",
-        "command": "workbench.action.splitEditorOrthogonal",
-        "when": "editorFocus"
-    },
-    // vim commands in quick open widget
-    {
-        "key": "ctrl+j",
-        "command": "workbench.action.quickOpenSelectNext",
-        "when": "inQuickOpen"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "workbench.action.quickOpenSelectPrevious",
-        "when": "inQuickOpen"
-    },
-    {
-        "key": "ctrl+g",
-        "command": "workbench.action.closeQuickOpen",
-        "when": "inQuickOpen"
-    },
-    // {
-    //     "key": "ctrl+enter",
-    //     "command": "search.action.openResultToSide",
-    //     "when": "inQuickOpen"
-    // },
-    // {
-    //     "key": "ctrl+enter",
-    //     "command": "openReferenceToSide",
-    //     "when": "referenceSearchTreeFocused && referenceSearchVisible"
-    // },
-    // {
-    //     "key": "cmd+ctrl+v",
-    //     "command": "problems.action.openToSide",
-    //     "when": "problemFocus"
-    // },
-    // {
-    //     "key": "cmd+ctrl+v",
-    //     "command": "search.action.openResultToSide",
-    //     "when": "fileMatchOrMatchFocus && searchViewletVisible"
-    // },
-    // {
-    //     "key": "cmd+ctrl+v",
-    //     "command": "explorer.openToSide",
-    //     "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
-    // },
-    // vim commands for panel
-    {
-        "key": "ctrl+g",
-        "command": "workbench.action.closePanel",
-        // NOTE: Dirty hack because I can't find a when
-        // clause for panel
-        "when": "!inQuickOpen && !findWidgetVisible"
-    },
-    // vim commands for find widget
-    {
-        "key": "ctrl+g",
-        "command": "closeFindWidget",
-        // NOTE: Dirty hack because I can't find a when
-        // clause for panel
-        "when": "findWidgetVisible"
-    },
-    // vim navigation across tabs
-    {
-        "key": "ctrl+h",
-        "command": "workbench.action.focusPreviousGroup",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+l",
-        "command": "workbench.action.focusNextGroup",
-        "when": "editorTextFocus"
-    },
-    // project manager shortcuts
-    {
-        "key": "ctrl+cmd+p",
-        "command": "projectManager.listProjects"
-    },
-    {
-        "key": "alt+cmd+p",
-        "command": "-projectManager.listProjects"
-    },
-    // make tab navigation work properly
-    {
-        "key": "cmd+1",
-        "command": "workbench.action.openEditorAtIndex1"
-    },
-    {
-        "key": "cmd+2",
-        "command": "workbench.action.openEditorAtIndex2"
-    },
-    {
-        "key": "cmd+3",
-        "command": "workbench.action.openEditorAtIndex3"
-    },
-    {
-        "key": "cmd+4",
-        "command": "workbench.action.openEditorAtIndex4"
-    },
-    {
-        "key": "cmd+5",
-        "command": "workbench.action.openEditorAtIndex5"
-    },
-    {
-        "key": "cmd+6",
-        "command": "workbench.action.openEditorAtIndex6"
-    },
-    {
-        "key": "cmd+7",
-        "command": "workbench.action.openEditorAtIndex7"
-    },
-    {
-        "key": "cmd+8",
-        "command": "workbench.action.openEditorAtIndex8"
-    },
-    {
-        "key": "cmd+9",
-        "command": "workbench.action.openEditorAtIndex9"
-    },
-    {
-        "key": "ctrl+w m",
-        "command": "workbench.action.joinAllGroups"
-    },
-    {
-        "key": "ctrl+w =",
-        "command": "workbench.action.evenEditorWidths"
-    },
-    {
-        "key": "cmd+enter",
-        "command": "workbench.action.maximizeEditor"
-    }
+  // Place your key bindings in this file to overwrite the defaults
+  // toggle sidebar when editor is not focused
+  // (vim plugin handles editor focused case)
+  // TODO: get these working
+  //   {
+  //     "key": "space e",
+  //     "command": "workbench.action.toggleSidebarVisibility",
+  //     "when": "!editorTextFocus && !terminalFocus && !inQuickOpen"
+  //   },
+  // {
+  //     "key": "space f",
+  //     "command": "workbench.action.quickOpen",
+  //     "when": "!editorTextFocus && !terminalFocus"
+  // },
+  // focus terminal like my Atom binding, unfortunately doesn't defocus
+  {
+    "key": "ctrl+alt+j",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+alt+k",
+    "command": "workbench.action.terminal.focus"
+  },
+  // create vertical split
+  {
+    "key": "ctrl+v",
+    "command": "workbench.action.splitEditor",
+    "when": "editorFocus"
+  },
+  // Create horizontal split
+  {
+    "key": "ctrl+s",
+    "command": "workbench.action.splitEditorOrthogonal",
+    "when": "editorFocus"
+  },
+  // vim commands in quick open widget
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "workbench.action.closeQuickOpen",
+    "when": "inQuickOpen"
+  },
+  // {
+  //     "key": "ctrl+enter",
+  //     "command": "search.action.openResultToSide",
+  //     "when": "inQuickOpen"
+  // },
+  // {
+  //     "key": "ctrl+enter",
+  //     "command": "openReferenceToSide",
+  //     "when": "referenceSearchTreeFocused && referenceSearchVisible"
+  // },
+  // {
+  //     "key": "cmd+ctrl+v",
+  //     "command": "problems.action.openToSide",
+  //     "when": "problemFocus"
+  // },
+  // {
+  //     "key": "cmd+ctrl+v",
+  //     "command": "search.action.openResultToSide",
+  //     "when": "fileMatchOrMatchFocus && searchViewletVisible"
+  // },
+  // {
+  //     "key": "cmd+ctrl+v",
+  //     "command": "explorer.openToSide",
+  //     "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
+  // },
+  // vim commands for panel
+  {
+    "key": "ctrl+g",
+    "command": "workbench.action.closePanel",
+    // NOTE: Dirty hack because I can't find a when
+    // clause for panel
+    "when": "!inQuickOpen && !findWidgetVisible"
+  },
+  // vim commands for find widget
+  {
+    "key": "ctrl+g",
+    "command": "closeFindWidget",
+    // NOTE: Dirty hack because I can't find a when
+    // clause for panel
+    "when": "findWidgetVisible"
+  },
+  // vim navigation across tabs
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusPreviousGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusNextGroup",
+    "when": "editorTextFocus"
+  },
+  // project manager shortcuts
+  {
+    "key": "ctrl+cmd+p",
+    "command": "projectManager.listProjects"
+  },
+  {
+    "key": "alt+cmd+p",
+    "command": "-projectManager.listProjects"
+  },
+  // make tab navigation work properly
+  {
+    "key": "cmd+1",
+    "command": "workbench.action.openEditorAtIndex1"
+  },
+  {
+    "key": "cmd+2",
+    "command": "workbench.action.openEditorAtIndex2"
+  },
+  {
+    "key": "cmd+3",
+    "command": "workbench.action.openEditorAtIndex3"
+  },
+  {
+    "key": "cmd+4",
+    "command": "workbench.action.openEditorAtIndex4"
+  },
+  {
+    "key": "cmd+5",
+    "command": "workbench.action.openEditorAtIndex5"
+  },
+  {
+    "key": "cmd+6",
+    "command": "workbench.action.openEditorAtIndex6"
+  },
+  {
+    "key": "cmd+7",
+    "command": "workbench.action.openEditorAtIndex7"
+  },
+  {
+    "key": "cmd+8",
+    "command": "workbench.action.openEditorAtIndex8"
+  },
+  {
+    "key": "cmd+9",
+    "command": "workbench.action.openEditorAtIndex9"
+  },
+  {
+    "key": "ctrl+w m",
+    "command": "workbench.action.joinAllGroups"
+  },
+  {
+    "key": "ctrl+w =",
+    "command": "workbench.action.evenEditorWidths"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "workbench.action.maximizeEditor"
+  },
+  {
+    "key": "ctrl+v",
+    "command": "breadcrumbs.revealFocusedFromTreeAside",
+    "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "-breadcrumbs.revealFocusedFromTreeAside",
+    "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
+  }
 ]
