@@ -74,7 +74,7 @@
         },
         {
             "description":
-                "Change home key to cmd + ctrl when held",
+                "Change home key to alt + shift when held",
             "manipulators": [
                 {
                     "type": "basic",
@@ -86,8 +86,8 @@
                     },
                     "to": [
                         {
-                            "key_code": "left_control",
-                            "modifiers": ["left_command"]
+                            "key_code": "left_alt",
+                            "modifiers": ["left_shift"]
                         }
                     ]
                 }
@@ -137,7 +137,7 @@
         },
         {
             "description":
-                "Change page_down key to ctrl + cmd when held",
+                "Change page_down key to alt + shift when held",
             "manipulators": [
                 {
                     "type": "basic",
@@ -149,8 +149,8 @@
                     },
                     "to": [
                         {
-                            "key_code": "left_control",
-                            "modifiers": ["left_command"]
+                            "key_code": "left_alt",
+                            "modifiers": ["left_shift"]
                         }
                     ]
                 }

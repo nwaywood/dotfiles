@@ -15,19 +15,19 @@ ctrl + alt + cmd - k : yabai -m window --grid 1:1:0:0:1:1
 ctrl + alt + cmd - j : yabai -m window --grid 10:10:2:2:6:6
 
 # fast focus space
-ctrl + cmd - 1 : yabai -m space --focus 1
-ctrl + cmd - 2 : yabai -m space --focus 2
-ctrl + cmd - 3 : yabai -m space --focus 3
-ctrl + cmd - 4 : yabai -m space --focus 4
-ctrl + cmd - 5 : yabai -m space --focus 5
-ctrl + cmd - 6 : yabai -m space --focus 6
-ctrl + cmd - 7 : yabai -m space --focus 7
-ctrl + cmd - 8 : yabai -m space --focus 8
-ctrl + cmd - 9 : yabai -m space --focus 9
+alt + shift - 1 : yabai -m space --focus 1
+alt + shift - 2 : yabai -m space --focus 2
+alt + shift - 3 : yabai -m space --focus 3
+alt + shift - 4 : yabai -m space --focus 4
+alt + shift - 5 : yabai -m space --focus 5
+alt + shift - 6 : yabai -m space --focus 6
+alt + shift - 7 : yabai -m space --focus 7
+alt + shift - 8 : yabai -m space --focus 8
+alt + shift - 9 : yabai -m space --focus 9
 # ctrl + cmd - t : yabai -m space --focus recent
 # https://github.com/koekeishiya/yabai/issues/295
-ctrl + cmd - n : yabai -m space --focus next || yabai -m space --focus first
-ctrl + cmd - p : yabai -m space --focus prev || yabai -m space --focus last
+alt + shift - n : yabai -m space --focus next || yabai -m space --focus first
+alt + shift - p : yabai -m space --focus prev || yabai -m space --focus last
 
 # send window to desktop and follow focus and make fullscreen
 ctrl + alt + cmd - 1 : yabai -m window --space 1; yabai -m space --focus 1; yabai -m window --grid 1:1:0:0:1:1
@@ -43,9 +43,9 @@ ctrl + alt + cmd - n : yabai -m window --space next; yabai -m space --focus next
 ctrl + alt + cmd - p : yabai -m window --space prev; yabai -m space --focus prev; yabai -m window --grid 1:1:0:0:1:1
 
 # fast focus monitor
-ctrl + cmd - w : yabai -m display --focus 1
-ctrl + cmd - e : yabai -m display --focus 2
-ctrl + cmd - r : yabai -m display --focus 3
+alt + shift - w : yabai -m display --focus 1
+alt + shift - e : yabai -m display --focus 2
+alt + shift - r : yabai -m display --focus 3
 # ctrl + cmd - t : yabai -m display --focus recent
 
 # send window to monitor and follow focus and make fullscreen
@@ -54,14 +54,14 @@ ctrl + alt + cmd - e : yabai -m window --display 2; yabai -m display --focus 2; 
 ctrl + alt + cmd - r : yabai -m window --display 3; yabai -m display --focus 3; yabai -m window --grid 1:1:0:0:1:1
 
 # toggle window zoom
-ctrl + cmd - z : yabai -m window --toggle native-fullscreen
+alt + shift - z : yabai -m window --toggle native-fullscreen
 
 # spaces
 # https://github.com/koekeishiya/yabai/issues/377
-ctrl + cmd - c : yabai -m space --create \
+alt + shift - c : yabai -m space --create \
 	&& sidx="$(yabai -m query --spaces --display | jq -r 'map(select(."native-fullscreen" == 0))[-1].index')" \
 	&& yabai -m space --focus "${sidx}"
-ctrl + cmd - x : yabai -m space --destroy
+alt + shift - x : yabai -m space --destroy
 # create desktop, move window and follow focus
 # https://github.com/koekeishiya/yabai/issues/377
 # https://github.com/koekeishiya/yabai/issues/160
@@ -76,9 +76,9 @@ ctrl + alt + cmd - f : yabai -m space --layout float
 ctrl + alt + cmd - b : yabai -m space --layout bsp
 
 # applications
-ctrl + cmd - b : open -a 'Brave Browser.app'
-ctrl + cmd - t : open -a 'kitty.app'
-ctrl + cmd - s : open -a 'Slack.app'
+alt + shift - b : open -a 'Brave Browser.app'
+alt + shift - t : open -a 'kitty.app'
+alt + shift - s : open -a 'Slack.app'
 # hack till https://github.com/alacritty/alacritty/issues/607 is resolved
 ctrl + alt + cmd - space : open -na Alacritty.app --args -e zsh -ic nnn
 # ctrl + alt + cmd - space : open -na 'Finder.app'
