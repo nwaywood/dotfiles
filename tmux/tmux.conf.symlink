@@ -22,6 +22,9 @@ unbind C-b
 set -g prefix C-a
 bind C-a send-prefix
 
+# https://github.com/tmux-plugins/vim-tmux-focus-events
+set -g focus-events on
+
 # Rather than constraining window size to the maximum size of any client
 # connected to the *session*, constrain window size to the maximum size of any
 # client connected to *that window*. Much more reasonable.

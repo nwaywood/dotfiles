@@ -24,6 +24,9 @@ Plug 'tpope/vim-dispatch' " Async job runner, used by vim-fugitive
 Plug 'liuchengxu/vim-which-key'
 Plug 'voldikss/vim-floaterm' " Open terminal in a floating window
 Plug 'junegunn/goyo.vim' " zen mode
+" https://vi.stackexchange.com/a/13092
+Plug 'djoshea/vim-autoread' " auto refresh buffers on file change
+Plug 'tmux-plugins/vim-tmux-focus-events' " make Focus autocmds work in tmux
 
 " Core utils
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
