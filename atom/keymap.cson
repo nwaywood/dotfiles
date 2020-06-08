@@ -59,8 +59,9 @@
     'space /': 'vim-mode-plus:toggle-highlight-search'
 
 # not insert mode bindings (normal and visual)
-'atom-text-editor.vim-mode-plus:not(.insert-mode)[data-grammar="source go"]':
-    'g d': 'golang:godef'
+# when gopls and atom-ide setup will not need this anymore
+# 'atom-text-editor.vim-mode-plus:not(.insert-mode)[data-grammar="source go"]':
+#     'g d': 'golang:godef'
 
 # not insert mode bindings (normal and visual)
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
@@ -120,7 +121,8 @@
     '\\': 'vim-mode-plus:set-register-name-to-_'
 
     # Go to definition keybinding
-    'g d': 'goto-definition:go'
+    'g d': 'hyperclick:confirm-cursor'
+    'g h': 'datatip:toggle'
 
     # Replicate NERDTree bindings
     'space n': 'tree-view:reveal-active-file'

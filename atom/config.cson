@@ -51,10 +51,9 @@
       "linter-hlint"
       "git-plus"
       "atom-terminal"
-      "ide-typescript"
       "atom-ctags"
-      "atom-ide-ui"
       "linter-pycodestyle"
+      "linter"
     ]
     packagesWithKeymapsDisabled: [
       "goto-definition"

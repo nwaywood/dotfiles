@@ -74,7 +74,8 @@ augroup onedark_color_mods
 augroup END
 
 syntax enable
-execute 'set background='.$BACKGROUND
+" execute 'set background='.$BACKGROUND
+set background=dark
 colorscheme onedark
 
 " From onedark readme
