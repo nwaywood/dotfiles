@@ -37,6 +37,7 @@ Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 Plug 'unblevable/quick-scope' " Improve usability of f,F,t,T
 Plug 'tpope/vim-fugitive' " Git support
 Plug 'maxbrunsfeld/vim-yankstack' " Turn default register into a stack, alt-p and alt-shift-p, :Yanks
+Plug 'machakann/vim-highlightedyank' " Visually shows yank area
 
 " Vim language enhancements
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
@@ -332,9 +333,14 @@ command! ToggleLocationList call ToggleLocationList()
 
 " Plugin settings {{{
 
+" {{{ vim-highlightedyank
+let g:highlightedyank_highlight_duration = 200
+" }}}
+
 " {{{ goyo
 nnoremap <silent> <leader>z :Goyo<cr>
 " }}}
+
 " vim-floaterm {{{
 nnoremap <silent> <leader>tg :FloatermNew lazygit<cr>
 let g:floaterm_width=0.9
