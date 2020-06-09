@@ -45,12 +45,10 @@ Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to commen
 Plug 'tpope/vim-repeat' " adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
 Plug 'kana/vim-textobj-user' " Allows custom text objects
 Plug 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae'
-Plug 'kana/vim-textobj-fold' " Adds the text objects 'iz' and 'az'
 Plug 'kana/vim-textobj-line' " Adds the text objects 'il' and 'al'
-Plug 'kana/vim-textobj-function' " Adds the text objects 'if' and 'af'
-Plug 'thinca/vim-textobj-function-javascript' " Adds 'if' and 'af' for javascript
+Plug 'kana/vim-textobj-fold' " Adds the text objects 'iz' and 'az'
 
-" Language specific
+" " Language specific
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' } " markdown support, folds, :Toc, better syntax highlighting
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' } " better syntax highlighting and indenting for haskell
@@ -600,6 +598,7 @@ let g:NERDTreeHijackNetrw=0
 " nice alignment of vim-devicons
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
+" let g:WebDevIconsUnicodeDecorateFolderNodes = 0  "enables decorating folder nodes
 " Show gitignored status of files (option from nerdtree-git-plugin)
 let g:NERDTreeShowIgnoredStatus = 1
 " enable showing git status through coloring the text (Aldlevine fork)
