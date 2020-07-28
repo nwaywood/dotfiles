@@ -20,7 +20,7 @@ yabai -m config window_opacity               off
 
 # window borders
 yabai -m config window_border on
-yabai -m config window_border_width 2
+yabai -m config window_border_width 3
 yabai -m config active_window_border_color 0xff5CABEE # onedark blue
 yabai -m config normal_window_border_color 0xff555555
 
@@ -56,8 +56,5 @@ yabai -m signal --add event=window_moved \
     action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"ubersicht-widgets-Workspace-jsx\"'"
 yabai -m signal --add event=application_activated \
     action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"ubersicht-widgets-Workspace-jsx\"'"
-
-# tell limelight to refresh when the focused application changes (see issue #3)
-yabai -m signal --add event=application_activated action="pkill -SIGUSR1 limelight &> /dev/null"
 
 echo "yabai configuration loaded.."
