@@ -8,7 +8,8 @@ Plug 'joshdick/onedark.vim'
 
 " utilities
 Plug 'vimwiki/vimwiki', {'branch': 'dev'}
-Plug 'scrooloose/nerdtree' " file explorer
+" NOTE: A newer version of nerdtree breaks teh nerdtree-git-plugin fork
+Plug 'scrooloose/nerdtree', { 'tag': '6.8.0' } " file explorer
 Plug 'Aldlevine/nerdtree-git-plugin' " this fork is required to grey out gitignored files
 Plug 'ryanoasis/vim-devicons' " Add file icons to nerdtree, airline, ctrlp etc
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -27,6 +28,7 @@ Plug 'junegunn/goyo.vim' " zen mode
 " https://vi.stackexchange.com/a/13092
 Plug 'djoshea/vim-autoread' " auto refresh buffers on file change
 Plug 'tmux-plugins/vim-tmux-focus-events' " make Focus autocmds work in tmux
+Plug 'kassio/neoterm' " Make :terminal nicer to use
 
 " Core utils
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
@@ -332,6 +334,12 @@ command! ToggleLocationList call ToggleLocationList()
 " }}}
 
 " Plugin settings {{{
+
+" {{{ neoterm
+" let g:neoterm_size = 10
+" :vert :Ttoggle resize=80
+" :botright :Ttoggle resize=80
+" }}}
 
 " {{{ vim-highlightedyank
 let g:highlightedyank_highlight_duration = 200
