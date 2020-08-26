@@ -31,6 +31,7 @@ alias find='find . -name'
 alias ls="exa"
 alias la="exa -a"
 alias ll="exa -la"
+alias cat="bat -pp --theme=TwoDark"
 # alias vimg='open -a emacs'
 
 mkcd () {
