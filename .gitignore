@@ -12,6 +12,7 @@ config/oni/config.js
 config/brittany
 config/configstore
 config/gcloud
+config/gh
 config/gocode
 config/htop
 config/hub
