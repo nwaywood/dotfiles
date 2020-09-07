@@ -16,6 +16,7 @@ config/gh
 config/gocode
 config/htop
 config/hub
+config/oni2/store
 config/filezilla
 config/gtk-2.0
 config/inkscape

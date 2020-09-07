@@ -114,6 +114,14 @@
         }
       ]
     },
+    {
+      "before": ["<leader>", "t"],
+      "commands": [
+        {
+          "command": "workbench.action.toggleActivityBarVisibility"
+        }
+      ]
+    },
     // scroll the viewport faster
     {
       "before": ["<C-e>"],
@@ -131,6 +139,23 @@
     {
       "before": ["k"],
       "after": ["g", "k"]
+    },
+    // navigate between panes
+    {
+      "before": ["K"],
+      "commands": [
+        {
+          "command": "workbench.action.nextEditorInGroup"
+        }
+      ]
+    },
+    {
+      "before": ["J"],
+      "commands": [
+        {
+          "command": "workbench.action.previousEditorInGroup"
+        }
+      ]
     },
     // clear search highlighting
     {
@@ -210,5 +235,11 @@
   "editor.occurrencesHighlight": false,
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
-  "terminal.integrated.shell.osx": "/bin/zsh"
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "haskell.formattingProvider": "floskell",
+  "[haskell]": {
+    "editor.defaultFormatter": "haskell.haskell"
+  },
+  "haskell.languageServerVariant": "haskell-ide-engine",
+  "workbench.activityBar.visible": false
 }

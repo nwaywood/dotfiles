@@ -1,5 +1,4 @@
 [
-  // Place your key bindings in this file to overwrite the defaults
   // toggle sidebar when editor is not focused
   // (vim plugin handles editor focused case)
   // TODO: get these working
@@ -13,22 +12,12 @@
   //     "command": "workbench.action.quickOpen",
   //     "when": "!editorTextFocus && !terminalFocus"
   // },
-  // focus terminal like my Atom binding, unfortunately doesn't defocus
-  {
-    "key": "ctrl+alt+j",
-    "command": "workbench.action.terminal.focus"
-  },
-  {
-    "key": "ctrl+alt+k",
-    "command": "workbench.action.terminal.focus"
-  },
-  // create vertical split
+  // splits
   {
     "key": "ctrl+v",
     "command": "workbench.action.splitEditor",
     "when": "editorFocus"
   },
-  // Create horizontal split
   {
     "key": "ctrl+s",
     "command": "workbench.action.splitEditorOrthogonal",
@@ -50,57 +39,59 @@
     "command": "workbench.action.closeQuickOpen",
     "when": "inQuickOpen"
   },
-  // {
-  //     "key": "ctrl+enter",
-  //     "command": "search.action.openResultToSide",
-  //     "when": "inQuickOpen"
-  // },
-  // {
-  //     "key": "ctrl+enter",
-  //     "command": "openReferenceToSide",
-  //     "when": "referenceSearchTreeFocused && referenceSearchVisible"
-  // },
-  // {
-  //     "key": "cmd+ctrl+v",
-  //     "command": "problems.action.openToSide",
-  //     "when": "problemFocus"
-  // },
-  // {
-  //     "key": "cmd+ctrl+v",
-  //     "command": "search.action.openResultToSide",
-  //     "when": "fileMatchOrMatchFocus && searchViewletVisible"
-  // },
-  // {
-  //     "key": "cmd+ctrl+v",
-  //     "command": "explorer.openToSide",
-  //     "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
-  // },
+  // explorer commands
+  {
+    "key": "enter",
+    "command": "list.select",
+    "when": "explorerViewletVisible && filesExplorerFocus"
+  },
+  {
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+a",
+    "command": "explorer.newFolder",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
   // vim commands for panel
   {
     "key": "ctrl+g",
     "command": "workbench.action.closePanel",
-    // NOTE: Dirty hack because I can't find a when
-    // clause for panel
-    "when": "!inQuickOpen && !findWidgetVisible"
+    "when": "panelFocus"
   },
   // vim commands for find widget
   {
     "key": "ctrl+g",
     "command": "closeFindWidget",
-    // NOTE: Dirty hack because I can't find a when
-    // clause for panel
     "when": "findWidgetVisible"
   },
   // vim navigation across tabs
   {
     "key": "ctrl+h",
-    "command": "workbench.action.focusPreviousGroup",
-    "when": "editorTextFocus"
+    "command": "workbench.action.navigateLeft"
+    // "when": "editorTextFocus"
   },
   {
     "key": "ctrl+l",
-    "command": "workbench.action.focusNextGroup",
-    "when": "editorTextFocus"
+    "command": "workbench.action.navigateRight"
+    // "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.navigateDown"
+    // "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.navigateUp"
+    // "when": "editorTextFocus"
   },
   // project manager shortcuts
   {
@@ -110,6 +101,27 @@
   {
     "key": "alt+cmd+p",
     "command": "-projectManager.listProjects"
+  },
+  // tab to cycle through options
+  {
+    "key": "tab",
+    "command": "workbench.action.quickOpenNavigateNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "shift+tab",
+    "command": "workbench.action.quickOpenNavigatePrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "tab",
+    "command": "selectNextSuggestion",
+    "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+  },
+  {
+    "key": "shift+tab",
+    "command": "selectPrevSuggestion",
+    "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
   },
   // make tab navigation work properly
   {
@@ -148,6 +160,7 @@
     "key": "cmd+9",
     "command": "workbench.action.openEditorAtIndex9"
   },
+  // vim window commands
   {
     "key": "ctrl+w m",
     "command": "workbench.action.joinAllGroups"
@@ -156,10 +169,7 @@
     "key": "ctrl+w =",
     "command": "workbench.action.evenEditorWidths"
   },
-  {
-    "key": "cmd+enter",
-    "command": "workbench.action.maximizeEditor"
-  },
+  // misc commands
   {
     "key": "ctrl+v",
     "command": "breadcrumbs.revealFocusedFromTreeAside",
@@ -167,7 +177,38 @@
   },
   {
     "key": "cmd+enter",
+    "command": "workbench.action.maximizeEditor"
+  },
+  // disable clashing default bindings
+  {
+    "key": "shift+tab",
+    "command": "-acceptAlternativeSelectedSuggestion",
+    "when": "suggestWidgetVisible && textInputFocus && textInputFocus"
+  },
+  {
+    "key": "cmd+enter",
     "command": "-breadcrumbs.revealFocusedFromTreeAside",
     "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
+  },
+  // pane resizing
+  {
+    "key": "left",
+    "command": "workbench.action.decreaseViewSize",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "right",
+    "command": "workbench.action.increaseViewSize",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "down",
+    "command": "workbench.action.decreaseViewSize",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "up",
+    "command": "workbench.action.increaseViewSize",
+    "when": "textInputFocus"
   }
 ]
