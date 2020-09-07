@@ -131,6 +131,11 @@
       "before": ["<C-y>"],
       "after": ["3", "<C-y>"]
     },
+    // blackhole register
+    {
+      "before": ["\\"],
+      "after": ["\"", "_"]
+    },
     // fix j and k to work with line wraps
     {
       "before": ["j"],
