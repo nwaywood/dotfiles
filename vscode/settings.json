@@ -145,6 +145,15 @@
       "before": ["k"],
       "after": ["g", "k"]
     },
+    // open definition in vertical split
+    {
+      "before": ["g", "v"],
+      "commands": [
+        {
+          "command": "editor.action.revealDefinitionAside"
+        }
+      ]
+    },
     // navigate between panes
     {
       "before": ["K"],

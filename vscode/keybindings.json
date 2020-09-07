@@ -194,21 +194,21 @@
   {
     "key": "left",
     "command": "workbench.action.decreaseViewSize",
-    "when": "textInputFocus"
+    "when": "textInputFocus && vim.mode !='Insert'"
   },
   {
     "key": "right",
     "command": "workbench.action.increaseViewSize",
-    "when": "textInputFocus"
+    "when": "textInputFocus && vim.mode !='Insert'"
   },
   {
     "key": "down",
     "command": "workbench.action.decreaseViewSize",
-    "when": "textInputFocus"
+    "when": "textInputFocus && vim.mode !='Insert'"
   },
   {
     "key": "up",
     "command": "workbench.action.increaseViewSize",
-    "when": "textInputFocus"
+    "when": "textInputFocus && vim.mode !='Insert'"
   }
 ]
