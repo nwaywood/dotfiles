@@ -54,7 +54,7 @@
   "workbench.settings.openDefaultSettings": true,
   // still show line numbers in zen mode
   "zenMode.hideLineNumbers": false,
-  "window.title": "${rootName}${separator}${activeEditorShort}",
+  "window.title": "${rootName}${separator}${activeEditorMedium}",
   "explorer.decorations.badges": false,
   "terminal.integrated.fontSize": 14.5,
   "telemetry.enableTelemetry": false,
@@ -282,5 +282,6 @@
         }
       ]
     }
-  ]
+  ],
+  "breadcrumbs.enabled": false
 }
