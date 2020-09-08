@@ -16,12 +16,48 @@
   "editor.wordWrap": "on",
   // "workbench.activityBar.visible": false,
   "workbench.editor.tabSizing": "shrink",
-  // don't run beautify on js file so it doesn't clash with prettier
-  "beautify.ignore": ["**/*.js", "**/*.jsx", "**/*.tsx", "**/*.ts"],
   // multi select with alt so that cmd+click goes to def
   "editor.multiCursorModifier": "alt",
-  // Controls if file decorations should use badges.
+  // don't auto highlight occurences on hover
+  "editor.occurrencesHighlight": false,
+  "go.formatTool": "goimports",
+  "go.useLanguageServer": true,
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "haskell.formattingProvider": "floskell",
+  "[haskell]": {
+    "editor.defaultFormatter": "haskell.haskell"
+  },
+  "haskell.languageServerVariant": "haskell-ide-engine",
+  // hide activity bar by default (icon by thingy on the left)
+  "workbench.activityBar.visible": false,
+  // don't show git blame info for current line in the status bar
+  "gitlens.statusBar.enabled": false,
+  "explorer.confirmDragAndDrop": false,
+  // disable being able to drap and drop selected text within the editor
+  "editor.dragAndDrop": false,
+  // disable command-c copying the current line when no text is selected
+  "editor.emptySelectionClipboard": false,
+  // hide the margin to the left of the line numbers where the debugging dots would go
+  "editor.glyphMargin": false,
+  // don't show indent guides in the editor
+  "editor.renderIndentGuides": false,
+  "editor.renderLineHighlight": "gutter",
+  "editor.renderLineHighlightOnlyWhenFocus": true,
+  // smooth scrolling for ctrl-{f,b,d,u}
+  "editor.smoothScrolling": true,
+  "editor.formatOnPaste": true,
+  "editor.snippetSuggestions": "bottom",
+  // indent nested folder in explorer by 12 pixels (default 8)
+  "workbench.tree.indent": 12,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  // when opening json version of setting, also open default settings
+  "workbench.settings.openDefaultSettings": true,
+  // still show line numbers in zen mode
+  "zenMode.hideLineNumbers": false,
+  "window.title": "${rootName}${separator}${activeEditorShort}",
   "explorer.decorations.badges": false,
+  "terminal.integrated.fontSize": 14.5,
+  "telemetry.enableTelemetry": false,
   // hide spotify buttons
   "spotify.showNextButton": false,
   "spotify.showPreviousButton": false,
@@ -38,17 +74,10 @@
   // Reason
   // ------
   // "reason.formatOnSave": true,
-  // Flow
-  // ----
-  "flow.useNPMPackagedFlow": true,
-  "javascript.validate.enable": false,
-  "flow.showStatus": false,
   // eslint and prettier
   "prettier.tabWidth": 4,
   "prettier.semi": false,
   // "prettier.tslintIntegration": true,
-  // terminal
-  "terminal.integrated.fontSize": 14.5,
   // vscode-icons
   // ------------
   "vsicons.presets.foldersAllDefaultIcon": true,
@@ -111,6 +140,14 @@
       "commands": [
         {
           "command": "workbench.action.gotoSymbol"
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "S"],
+      "commands": [
+        {
+          "command": "workbench.action.showAllSymbols"
         }
       ]
     },
@@ -245,17 +282,5 @@
         }
       ]
     }
-  ],
-  "editor.occurrencesHighlight": false,
-  "go.formatTool": "goimports",
-  "go.useLanguageServer": true,
-  "terminal.integrated.shell.osx": "/bin/zsh",
-  "haskell.formattingProvider": "floskell",
-  "[haskell]": {
-    "editor.defaultFormatter": "haskell.haskell"
-  },
-  "haskell.languageServerVariant": "haskell-ide-engine",
-  "workbench.activityBar.visible": false,
-  // don't show git blame info for current line in the status bar
-  "gitlens.statusBar.enabled": false
+  ]
 }
