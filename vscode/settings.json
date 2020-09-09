@@ -33,15 +33,18 @@
   // don't show git blame info for current line in the status bar
   "gitlens.statusBar.enabled": false,
   "explorer.confirmDragAndDrop": false,
+  // only show colors for git changes and errors, not the numbers and letters
+  "explorer.decorations.badges": false,
   // disable being able to drap and drop selected text within the editor
   "editor.dragAndDrop": false,
   // disable command-c copying the current line when no text is selected
   "editor.emptySelectionClipboard": false,
-  // hide the margin to the left of the line numbers where the debugging dots would go
-  "editor.glyphMargin": false,
   // don't show indent guides in the editor
   "editor.renderIndentGuides": false,
   "editor.renderLineHighlight": "gutter",
+  // don't show file breadcrumb at the top of the editor
+  // (I have put the information I need in the title instead "window.title")
+  "breadcrumbs.enabled": false,
   "editor.renderLineHighlightOnlyWhenFocus": true,
   // smooth scrolling for ctrl-{f,b,d,u}
   "editor.smoothScrolling": true,
@@ -55,7 +58,6 @@
   // still show line numbers in zen mode
   "zenMode.hideLineNumbers": false,
   "window.title": "${rootName}${separator}${activeEditorMedium}",
-  "explorer.decorations.badges": false,
   "terminal.integrated.fontSize": 14.5,
   "telemetry.enableTelemetry": false,
   // hide spotify buttons
@@ -282,6 +284,5 @@
         }
       ]
     }
-  ],
-  "breadcrumbs.enabled": false
+  ]
 }
