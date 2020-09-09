@@ -30,8 +30,6 @@
   "haskell.languageServerVariant": "haskell-ide-engine",
   // hide activity bar by default (icon by thingy on the left)
   "workbench.activityBar.visible": false,
-  // don't show git blame info for current line in the status bar
-  "gitlens.statusBar.enabled": false,
   "explorer.confirmDragAndDrop": false,
   // only show colors for git changes and errors, not the numbers and letters
   "explorer.decorations.badges": false,
@@ -73,6 +71,8 @@
   "gitlens.currentLine.enabled": false,
   "gitlens.codeLens.enabled": false,
   "gitlens.codeLens.authors.enabled": false,
+  // don't show git blame info for current line in the status bar
+  "gitlens.statusBar.enabled": false,
   // Reason
   // ------
   // "reason.formatOnSave": true,
@@ -161,6 +161,22 @@
         }
       ]
     },
+    {
+      "before": ["<leader>", "g", "b"],
+      "commands": [
+        {
+          "command": "gitlens.toggleFileBlame"
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "g", "s"],
+      "commands": [
+        {
+          "command": "gitlens.showQuickRepoStatus"
+        }
+      ]
+    },
     // scroll the viewport faster
     {
       "before": ["<C-e>"],
@@ -223,7 +239,7 @@
     },
     // NERDTree Focus current file
     {
-      "before": ["space", "n"],
+      "before": ["leader", "n"],
       "after": [],
       "commands": [
         {
