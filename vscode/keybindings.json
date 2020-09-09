@@ -76,22 +76,22 @@
   {
     "key": "ctrl+h",
     "command": "workbench.action.navigateLeft"
-    // "when": "editorTextFocus"
   },
   {
     "key": "ctrl+l",
     "command": "workbench.action.navigateRight"
-    // "when": "editorTextFocus"
   },
   {
     "key": "ctrl+j",
-    "command": "workbench.action.navigateDown"
-    // "when": "editorTextFocus"
+    "command": "workbench.action.navigateDown",
+    // this is needed so that C-j still works to nav through quickopen
+    "when": "!inQuickOpen"
   },
   {
     "key": "ctrl+k",
-    "command": "workbench.action.navigateUp"
-    // "when": "editorTextFocus"
+    "command": "workbench.action.navigateUp",
+    // this is needed so that C-k still works to nav through quickopen
+    "when": "!inQuickOpen"
   },
   // project manager shortcuts
   {
@@ -101,17 +101,6 @@
   {
     "key": "alt+cmd+p",
     "command": "-projectManager.listProjects"
-  },
-  // tab to cycle through options
-  {
-    "key": "tab",
-    "command": "workbench.action.quickOpenNavigateNext",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "shift+tab",
-    "command": "workbench.action.quickOpenNavigatePrevious",
-    "when": "inQuickOpen"
   },
   {
     "key": "tab",
@@ -168,6 +157,26 @@
   {
     "key": "ctrl+w =",
     "command": "workbench.action.evenEditorWidths"
+  },
+  {
+    "key": "ctrl+w o",
+    "command": "workbench.action.closeOtherEditors"
+  },
+  {
+    "key": "ctrl+w l",
+    "command": "workbench.action.moveEditorToRightGroup"
+  },
+  {
+    "key": "ctrl+w h",
+    "command": "workbench.action.moveEditorToLeftGroup"
+  },
+  {
+    "key": "ctrl+w k",
+    "command": "workbench.action.moveEditorToAboveGroup"
+  },
+  {
+    "key": "ctrl+w j",
+    "command": "workbench.action.moveEditorToBelowGroup"
   },
   // misc commands
   {
