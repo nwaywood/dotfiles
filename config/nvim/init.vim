@@ -14,7 +14,7 @@ Plug 'Aldlevine/nerdtree-git-plugin' " this fork is required to grey out gitigno
 Plug 'ryanoasis/vim-devicons' " Add file icons to nerdtree, airline, ctrlp etc
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}} " language server protocol support
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " language server protocol support
 Plug 'antoinemadec/coc-fzf' " show coc lists in fzf.vim interface
 Plug 'christoomey/vim-tmux-navigator' " use ctrl-hjkl to navigate between tmux and vim panes
 Plug 'itchyny/lightline.vim'
@@ -44,7 +44,8 @@ Plug 'machakann/vim-highlightedyank' " Visually shows yank area
 " Vim language enhancements
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
 Plug 'tpope/vim-surround' " mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
-Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
+" Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
+Plug 'nwaywood/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code, my fork adds duplicate and comment commands
 Plug 'tpope/vim-repeat' " adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
 Plug 'kana/vim-textobj-user' " Allows custom text objects
 Plug 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae'
