@@ -191,6 +191,11 @@
       "before": ["\\"],
       "after": ["\"", "_"]
     },
+    // fix Y to be sane
+    {
+      "before": ["Y"],
+      "after": ["y", "$"]
+    },
     // fix j and k to work with line wraps
     {
       "before": ["j"],
