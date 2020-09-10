@@ -301,5 +301,6 @@
       ]
     }
   ],
-  "kotlin.compiler.jvm.target": "1.8"
+  "kotlin.compiler.jvm.target": "1.8",
+  "workbench.startupEditor": "readme"
 }
