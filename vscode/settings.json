@@ -3,6 +3,7 @@
   // hide stupid open editors section in file explorer
   "explorer.openEditors.visible": 0,
   "editor.fontSize": 14.5,
+  "editor.cursorBlinking": "solid",
   "editor.fontFamily": "'FiraMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
   "workbench.colorTheme": "Atom One Dark",
   "editor.lineNumbers": "relative",
@@ -43,6 +44,7 @@
   // don't show file breadcrumb at the top of the editor
   // (I have put the information I need in the title instead "window.title")
   "breadcrumbs.enabled": false,
+  "vsicons.presets.foldersAllDefaultIcon": true,
   "editor.renderLineHighlightOnlyWhenFocus": true,
   // smooth scrolling for ctrl-{f,b,d,u}
   "editor.smoothScrolling": true,
@@ -53,6 +55,8 @@
   "workbench.editor.enablePreviewFromQuickOpen": false,
   // when opening json version of setting, also open default settings
   "workbench.settings.openDefaultSettings": true,
+  // when opening a project, open readme by default if it exists
+  "workbench.startupEditor": "readme",
   // still show line numbers in zen mode
   "zenMode.hideLineNumbers": false,
   "window.title": "${rootName}${separator}${activeEditorMedium}",
@@ -79,233 +83,9 @@
   // eslint and prettier
   "prettier.tabWidth": 4,
   "prettier.semi": false,
-  // "prettier.tslintIntegration": true,
-  // vscode-icons
-  // ------------
-  "vsicons.presets.foldersAllDefaultIcon": true,
-  // ------------
-  // Vim settings
-  // ------------
-  // In normal mode, block shouldn't blink
-  "editor.cursorBlinking": "solid",
-  "vim.leader": "<space>",
-  "vim.incsearch": true,
-  "vim.hlsearch": true,
-  "vim.highlightedyank.enable": true,
-  "vim.sneakReplacesF": true,
-  "vim.sneak": true,
-  "vim.visualstar": true,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": ["j", "k"],
-      "after": ["<Esc>"]
-    }
-  ],
-  // Uses OS clipboard instead of unamed register
-  "vim.useSystemClipboard": true,
-  "vim.normalModeKeyBindingsNonRecursive": [
-    // misc editor vim-style style bindings
-    {
-      "before": ["<leader>", "e"],
-      "commands": [
-        {
-          "command": "workbench.action.toggleSidebarVisibility"
-        }
-      ]
-    },
-    {
-      "before": ["<leader>", "f"],
-      "commands": [
-        {
-          "command": "workbench.action.quickOpen"
-        }
-      ]
-    },
-    {
-      "before": ["<leader>", "a"],
-      "commands": [
-        {
-          "command": "workbench.view.search"
-        }
-      ]
-    },
-    {
-      "before": ["<leader>", "d"],
-      "commands": [
-        {
-          "command": "workbench.actions.view.problems"
-        }
-      ]
-    },
-    {
-      "before": ["<leader>", "s"],
-      "commands": [
-        {
-          "command": "workbench.action.gotoSymbol"
-        }
-      ]
-    },
-    {
-      "before": ["<leader>", "S"],
-      "commands": [
-        {
-          "command": "workbench.action.showAllSymbols"
-        }
-      ]
-    },
-    {
-      "before": ["<leader>", "t"],
-      "commands": [
-        {
-          "command": "workbench.action.toggleActivityBarVisibility"
-        }
-      ]
-    },
-    {
-      "before": ["<leader>", "g", "b"],
-      "commands": [
-        {
-          "command": "gitlens.toggleFileBlame"
-        }
-      ]
-    },
-    {
-      "before": ["<leader>", "g", "s"],
-      "commands": [
-        {
-          "command": "gitlens.showQuickRepoStatus"
-        }
-      ]
-    },
-    // scroll the viewport faster
-    {
-      "before": ["<C-e>"],
-      "after": ["3", "<C-e>"]
-    },
-    {
-      "before": ["<C-y>"],
-      "after": ["3", "<C-y>"]
-    },
-    // blackhole register
-    {
-      "before": ["\\"],
-      "after": ["\"", "_"]
-    },
-    // fix Y to be sane
-    {
-      "before": ["Y"],
-      "after": ["y", "$"]
-    },
-    // fix j and k to work with line wraps
-    {
-      "before": ["j"],
-      "after": ["g", "j"]
-    },
-    {
-      "before": ["k"],
-      "after": ["g", "k"]
-    },
-    // open definition in vertical split
-    {
-      "before": ["g", "v"],
-      "commands": [
-        {
-          "command": "editor.action.revealDefinitionAside"
-        }
-      ]
-    },
-    // navigate between panes
-    {
-      "before": ["K"],
-      "commands": [
-        {
-          "command": "workbench.action.nextEditorInGroup"
-        }
-      ]
-    },
-    {
-      "before": ["J"],
-      "commands": [
-        {
-          "command": "workbench.action.previousEditorInGroup"
-        }
-      ]
-    },
-    // clear search highlighting
-    {
-      "before": ["leader", "/"],
-      "after": [],
-      "commands": [
-        {
-          "command": ":nohl",
-          "args": []
-        }
-      ]
-    },
-    // NERDTree Focus current file
-    {
-      "before": ["leader", "n"],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.files.action.focusFilesExplorer",
-          "args": []
-        }
-      ]
-    },
-    // save and quit commands
-    {
-      "before": ["leader", "w"],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.files.save",
-          "args": []
-        }
-      ]
-    },
-    {
-      "before": ["leader", "q"],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.closeActiveEditor",
-          "args": []
-        }
-      ]
-    },
-    {
-      "before": ["leader", "x"],
-      "after": [],
-      "commands": [
-        {
-          "command": ":x",
-          "args": []
-        }
-      ]
-    },
-    // vim-unimpaired binding
-    {
-      "before": ["]", "space"],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.action.insertLineAfter",
-          "args": []
-        }
-      ]
-    },
-    {
-      "before": ["[", "space"],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.action.insertLineBefore",
-          "args": []
-        }
-      ]
-    }
-  ],
   "kotlin.compiler.jvm.target": "1.8",
-  "workbench.startupEditor": "readme"
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/nick/.dotfiles/vscode/vscode.vim",
+  // This must be false for keys to work in file explorer with neovim plugin
+  "workbench.list.automaticKeyboardNavigation": false
 }

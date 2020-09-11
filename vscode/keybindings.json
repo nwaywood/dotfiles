@@ -12,6 +12,18 @@
   //     "command": "workbench.action.quickOpen",
   //     "when": "!editorTextFocus && !terminalFocus"
   // },
+  {
+    "command": "vscode-neovim.compositeEscape1",
+    "key": "j",
+    "when": "neovim.mode == insert && editorTextFocus",
+    "args": "j"
+  },
+  {
+    "command": "vscode-neovim.compositeEscape2",
+    "key": "k",
+    "when": "neovim.mode == insert && editorTextFocus",
+    "args": "k"
+  },
   // splits
   {
     "key": "ctrl+v",
@@ -41,6 +53,16 @@
   },
   // explorer commands
   {
+    "key": "j",
+    "command": "list.focusDown",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "k",
+    "command": "list.focusUp",
+    "when": "listFocus && !inputFocus"
+  },
+  {
     "key": "enter",
     "command": "list.select",
     "when": "explorerViewletVisible && filesExplorerFocus"
@@ -59,6 +81,46 @@
     "key": "r",
     "command": "renameFile",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "l",
+    "command": "list.select",
+    "when": "!inputFocus"
+  },
+  {
+    "key": "o",
+    "command": "list.toggleExpand",
+    "when": "!inputFocus"
+  },
+  {
+    "key": "h",
+    "command": "list.collapse",
+    "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "y",
+    "command": "filesExplorer.copy",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+  },
+  {
+    "key": "x",
+    "command": "filesExplorer.cut",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+  },
+  {
+    "key": "p",
+    "command": "filesExplorer.paste",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "v",
+    "command": "explorer.openToSide",
+    "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
   },
   // vim commands for panel
   {
@@ -96,11 +158,7 @@
   // project manager shortcuts
   {
     "key": "ctrl+cmd+p",
-    "command": "projectManager.listProjects"
-  },
-  {
-    "key": "alt+cmd+p",
-    "command": "-projectManager.listProjects"
+    "command": "projectManager.listProjectsNewWindow"
   },
   {
     "key": "tab",
@@ -149,6 +207,19 @@
     "key": "cmd+9",
     "command": "workbench.action.openEditorAtIndex9"
   },
+  // send scrolling vim keybindings to neovim
+  // {
+  //   "key": "ctrl+e",
+  //   "command": "vscode-neovim.send",
+  //   "when": "editorTextFocus && neovim.mode != insert",
+  //   "args": "<C-e>"
+  // },
+  // {
+  //   "key": "ctrl+y",
+  //   "command": "vscode-neovim.send",
+  //   "when": "editorTextFocus && neovim.mode != insert",
+  //   "args": "<C-y>"
+  // },
   // vim window commands
   {
     "key": "ctrl+w m",
@@ -160,7 +231,9 @@
   },
   {
     "key": "ctrl+w o",
-    "command": "workbench.action.closeOtherEditors"
+    "command": "vscode-neovim.send",
+    "when": "editorTextFocus && neovim.mode != insert",
+    "args": "<C-w>o"
   },
   {
     "key": "ctrl+w l",
@@ -203,21 +276,21 @@
   {
     "key": "left",
     "command": "workbench.action.decreaseViewSize",
-    "when": "textInputFocus && vim.mode !='Insert'"
+    "when": "textInputFocus && neovim.mode != insert"
   },
   {
     "key": "right",
     "command": "workbench.action.increaseViewSize",
-    "when": "textInputFocus && vim.mode !='Insert'"
+    "when": "textInputFocus && neovim.mode != insert"
   },
   {
     "key": "down",
     "command": "workbench.action.decreaseViewSize",
-    "when": "textInputFocus && vim.mode !='Insert'"
+    "when": "textInputFocus && neovim.mode != insert"
   },
   {
     "key": "up",
     "command": "workbench.action.increaseViewSize",
-    "when": "textInputFocus && vim.mode !='Insert'"
+    "when": "textInputFocus && neovim.mode != insert"
   }
 ]
