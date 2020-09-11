@@ -44,8 +44,8 @@ Plug 'machakann/vim-highlightedyank' " Visually shows yank area
 " Vim language enhancements
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
 Plug 'tpope/vim-surround' " mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
-" Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
-Plug 'nwaywood/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code, my fork adds duplicate and comment commands
+Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
+" Plug 'nwaywood/vim-commentary', { 'branch': 'original' } " Adds the operators 'gc' and '[count]gcc' to comment code, my fork adds duplicate and comment commands
 Plug 'tpope/vim-repeat' " adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
 Plug 'kana/vim-textobj-user' " Allows custom text objects
 Plug 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae'
@@ -168,7 +168,6 @@ augroup END
 
 " remap esc
 inoremap jk <esc>
-inoremap kj <esc>
 
 " make Y have the same behavior as C and D
 call yankstack#setup() " https://github.com/maxbrunsfeld/vim-yankstack#compatibility
