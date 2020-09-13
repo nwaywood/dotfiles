@@ -38,13 +38,15 @@ nmap <silent> gv :<C-u>call VSCodeNotify('editor.action.revealDefinitionAside')<
 " clear search highlighting and clear any message already displayed
 noremap <silent> <leader>/ :set hlsearch! hlsearch?<cr>
 
-nnoremap <silent> <leader>w :w<cr>
-nnoremap <silent> <leader>x :x<cr>
-nnoremap <silent> <leader>q :q<cr>
+nnoremap <silent> <leader>w :<C-u>call VSCodeNotify('workbench.action.files.save')<CR>
+nnoremap <silent> <leader>q :<C-u>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 
 " navigate between tabs
 nnoremap <silent> K :<C-u>call VSCodeNotify('workbench.action.nextEditorInGroup')<CR>
 nnoremap <silent> J :<C-u>call VSCodeNotify('workbench.action.previousEditorInGroup')<CR>
+
+" Map J to gJ instead since I use J to navigate tabs
+nnoremap <silent> gJ :<C-u>call VSCodeNotify('editor.action.joinLines')<CR>
 
 " make Y have the same behavior as C and D
 nnoremap Y y$
