@@ -30,7 +30,7 @@ nnoremap <silent> <leader>S :<C-u>call VSCodeNotify('workbench.action.showAllSym
 nnoremap <silent> <leader>t :<C-u>call VSCodeNotify('workbench.action.toggleActivityBarVisibility')<CR>
 nnoremap <silent> <leader>gs :<C-u>call VSCodeNotify('gitlens.showQuickRepoStatus')<CR>
 nnoremap <silent> <leader>gb :<C-u>call VSCodeNotify('gitlens.toggleFileBlame')<CR>
-nnoremap <silent> <leader>n :<C-u>call VSCodeNotify('workbench.files.action.focusFileExplorer')<CR>
+nnoremap <silent> <leader>n :<C-u>call VSCodeNotify('workbench.files.action.focusFilesExplorer')<CR>
 
 
 nmap <silent> gv :<C-u>call VSCodeNotify('editor.action.revealDefinitionAside')<CR>

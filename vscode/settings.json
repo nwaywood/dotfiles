@@ -1,4 +1,8 @@
 {
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/nick/.dotfiles/vscode/vscode.vim",
+  // This must be false for keys to work in file explorer with neovim plugin
+  "workbench.list.automaticKeyboardNavigation": false,
   "window.zoomLevel": 0,
   // hide stupid open editors section in file explorer
   "explorer.openEditors.visible": 0,
@@ -21,14 +25,7 @@
   "editor.multiCursorModifier": "alt",
   // don't auto highlight occurences on hover
   "editor.occurrencesHighlight": false,
-  "go.formatTool": "goimports",
-  "go.useLanguageServer": true,
   "terminal.integrated.shell.osx": "/bin/zsh",
-  "haskell.formattingProvider": "floskell",
-  "[haskell]": {
-    "editor.defaultFormatter": "haskell.haskell"
-  },
-  "haskell.languageServerVariant": "haskell-ide-engine",
   // hide activity bar by default (icon by thingy on the left)
   "workbench.activityBar.visible": false,
   "explorer.confirmDragAndDrop": false,
@@ -77,6 +74,13 @@
   "gitlens.codeLens.authors.enabled": false,
   // don't show git blame info for current line in the status bar
   "gitlens.statusBar.enabled": false,
+  // hide the buttons that gintlens adds to the top right of editors
+  "gitlens.menus": {
+    "editorGroup": {
+      "blame": false,
+      "compare": false
+    }
+  },
   // Reason
   // ------
   // "reason.formatOnSave": true,
@@ -84,15 +88,11 @@
   "prettier.tabWidth": 4,
   "prettier.semi": false,
   "kotlin.compiler.jvm.target": "1.8",
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/nick/.dotfiles/vscode/vscode.vim",
-  // This must be false for keys to work in file explorer with neovim plugin
-  "workbench.list.automaticKeyboardNavigation": false,
-  // hide the buttons that gintlens adds to the top right of editors
-  "gitlens.menus": {
-    "editorGroup": {
-      "blame": false,
-      "compare": false
-    }
-  }
+  "go.formatTool": "goimports",
+  "go.useLanguageServer": true,
+  "haskell.formattingProvider": "floskell",
+  "[haskell]": {
+    "editor.defaultFormatter": "haskell.haskell"
+  },
+  "haskell.languageServerVariant": "haskell-ide-engine"
 }
