@@ -87,5 +87,12 @@
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
   "vscode-neovim.neovimInitVimPaths.darwin": "/Users/nick/.dotfiles/vscode/vscode.vim",
   // This must be false for keys to work in file explorer with neovim plugin
-  "workbench.list.automaticKeyboardNavigation": false
+  "workbench.list.automaticKeyboardNavigation": false,
+  // hide the buttons that gintlens adds to the top right of editors
+  "gitlens.menus": {
+    "editorGroup": {
+      "blame": false,
+      "compare": false
+    }
+  }
 }
