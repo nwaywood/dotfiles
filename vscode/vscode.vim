@@ -63,10 +63,11 @@ nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
 " will make navigation of wrapped lines worked as you'd expect
-nnoremap <silent> j gj
-nnoremap <silent> k gk
-nnoremap <silent> ^ g^
-nnoremap <silent> $ g$
+" In VSCode it seems they need to be nmap and and nnoremap
+nmap <silent> j gj
+nmap <silent> k gk
+nmap <silent> ^ g^
+nmap <silent> $ g$
 
 nnoremap <silent> <C-w>o :<C-u>call <SID>closeOtherEditors()<CR>
 function! s:closeOtherEditors()
