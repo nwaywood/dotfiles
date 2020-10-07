@@ -6,10 +6,10 @@
   "window.zoomLevel": 0,
   // hide stupid open editors section in file explorer
   "explorer.openEditors.visible": 0,
-  "editor.fontSize": 14.5,
+  "editor.fontSize": 14,
   "editor.cursorBlinking": "solid",
   "editor.fontFamily": "'FiraMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
-  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorTheme": "One Dark Pro",
   "editor.lineNumbers": "relative",
   "workbench.iconTheme": "file-icons",
   "editor.minimap.enabled": false,
@@ -50,15 +50,19 @@
   // indent nested folder in explorer by 12 pixels (default 8)
   "workbench.tree.indent": 12,
   "workbench.editor.enablePreviewFromQuickOpen": false,
-  // when opening json version of setting, also open default settings
-  "workbench.settings.openDefaultSettings": true,
   // when opening a project, open readme by default if it exists
   "workbench.startupEditor": "readme",
   // still show line numbers in zen mode
   "zenMode.hideLineNumbers": false,
   "window.title": "${rootName}${separator}${activeEditorMedium}",
-  "terminal.integrated.fontSize": 14.5,
+  "terminal.integrated.fontSize": 14,
   "telemetry.enableTelemetry": false,
+  // always automatically show intellisense suggestions
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
   // hide spotify buttons
   "spotify.showNextButton": false,
   "spotify.showPreviousButton": false,
@@ -67,6 +71,16 @@
   "spotify.showPlayPauseButton": false,
   "spotify.showSignInButton": false,
   "spotify.showSignOutButton": false,
+  // errorLens
+  // ---------
+  "errorLens.gutterIconsEnabled": true,
+  "errorLens.gutterIconSet": "circle",
+  "errorLens.gutterIconSize": "90%",
+  "errorLens.statusBarMessageEnabled": true,
+  "errorLens.statusBarColorsEnabled": true,
+  "errorLens.delay": 10,
+  // don't show the error message inline
+  "errorLens.messageEnabled": false,
   // gitlens
   // -------
   "gitlens.currentLine.enabled": false,
