@@ -51,6 +51,12 @@
     "command": "workbench.action.closeQuickOpen",
     "when": "inQuickOpen"
   },
+  // NOTE: Opening horizontal split is not possible
+  {
+    "key": "ctrl+v",
+    "command": "workbench.action.alternativeAcceptSelectedQuickOpenItem",
+    "when": "inQuickOpen"
+  },
   // explorer commands
   {
     "key": "j",
@@ -117,6 +123,7 @@
     "command": "filesExplorer.paste",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
   },
+  // NOTE: Opening horizontal split is not possible
   {
     "key": "v",
     "command": "explorer.openToSide",
@@ -160,6 +167,7 @@
     "key": "ctrl+cmd+p",
     "command": "projectManager.listProjectsNewWindow"
   },
+  // intellisense shortcuts
   {
     "key": "tab",
     "command": "selectNextSuggestion",
@@ -167,6 +175,16 @@
   },
   {
     "key": "shift+tab",
+    "command": "selectPrevSuggestion",
+    "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "selectNextSuggestion",
+    "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+k",
     "command": "selectPrevSuggestion",
     "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
   },

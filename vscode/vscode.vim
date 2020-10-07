@@ -27,7 +27,8 @@ set smartcase " case sensitive if search term explicilty contains a captital
 nnoremap <silent> <leader>e :<C-u>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
 nnoremap <silent> <leader>f :<C-u>call VSCodeNotify('workbench.action.quickOpen')<CR>
 nnoremap <silent> <leader>a :<C-u>call VSCodeNotify('workbench.view.search')<CR>
-nnoremap <silent> <leader>d :<C-u>call VSCodeNotify('workbench.actions.view.problems')<CR>
+" nnoremap <silent> <leader>d :<C-u>call VSCodeNotify('workbench.actions.view.problems')<CR>
+nnoremap <silent> <leader>d :<C-u>call VSCodeNotify('workbench.actions.view.toggleProblems')<CR>
 " https://stackoverflow.com/questions/44932361/it-is-possible-to-filter-the-symbols-by-type
 nnoremap <silent> <leader>s :<C-u>call VSCodeNotify('workbench.action.quickOpen', '@:')<CR>
 nnoremap <silent> <leader>S :<C-u>call VSCodeNotify('workbench.action.showAllSymbols')<CR>
