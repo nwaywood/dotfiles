@@ -1,7 +1,6 @@
 " plugins
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
 Plug 'tpope/vim-surround' " mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
 Plug 'tpope/vim-repeat' " adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
@@ -23,6 +22,12 @@ set clipboard=unnamed " for copy/paste with osx
 
 set ignorecase " case insensitive searching
 set smartcase " case sensitive if search term explicilty contains a captital
+
+" vim-commentary binding for VSCode (from plugins readme)
+xmap gc  <Plug>VSCodeCommentary
+nmap gc  <Plug>VSCodeCommentary
+omap gc  <Plug>VSCodeCommentary
+nmap gcc <Plug>VSCodeCommentaryLine
 
 nnoremap <silent> <leader>e :<C-u>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
 nnoremap <silent> <leader>f :<C-u>call VSCodeNotify('workbench.action.quickOpen')<CR>
