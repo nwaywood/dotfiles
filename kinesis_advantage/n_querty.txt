@@ -11,8 +11,6 @@
 * ARROW KEYS (including cmd key hack with karibiner)
 *
 [obrack]>[up]
-* old up binding from when left arrow was also command
-* [up]>[rwin]
 [up]>[left]
 [cbrack]>[right]
 *

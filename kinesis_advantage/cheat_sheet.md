@@ -1,4 +1,5 @@
 https://www.kinesis-ergo.com/advantage2-resources/
+https://kinesis-ergo.com/wp-content/uploads/Adv2-Users-Manual-fw1.0.521.us-9-16-20.pdf
 
 ## Power user mode
 
@@ -54,6 +55,15 @@ e.g. Execute `shift-h` when `pup` is pressed: `{pup}>{-shift}{h}{+shift}`
 
 `-` indicates the depression of the key and `+` the release. This can be used for any key that needs
 to be held, control, alt, cmd and shift
+
+## Print info
+
+`Progm + Esc` will output the current keyboard status into a text box
+
+## Hard reset
+
+To initiate a Hard Reset, hold progm+F9 while plugging the keyboard. Once all four LED Indicator Lights start
+to flash, release progm+F9. The LEDs will flash four times to signal that the Hard Reset is complete.
 
 
 ## NOTE:
