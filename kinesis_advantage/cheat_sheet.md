@@ -1,6 +1,8 @@
 https://www.kinesis-ergo.com/advantage2-resources/
 https://kinesis-ergo.com/wp-content/uploads/Adv2-Users-Manual-fw1.0.521.us-9-16-20.pdf
 
+firmware update: https://kinesis-ergo.com/wp-content/uploads/Adv2-Firmware-Update-Instructions-4-2-19.pdf
+
 ## Power user mode
 
 `Progm + Shift + Esc`

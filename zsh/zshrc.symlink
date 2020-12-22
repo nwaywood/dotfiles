@@ -96,7 +96,7 @@ unsetopt share_history
 test -r /Users/nick/.opam/opam-init/init.zsh && . /Users/nick/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # fnm
-eval "$(fnm env --multi)"
+eval "$(fnm env)"
 
 # Base16 shell
 if [ -z "$THEME" ]; then

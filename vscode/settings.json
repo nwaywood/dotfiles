@@ -108,5 +108,11 @@
   "[haskell]": {
     "editor.defaultFormatter": "haskell.haskell"
   },
-  "haskell.languageServerVariant": "haskell-ide-engine"
+  "haskell.languageServerVariant": "haskell-ide-engine",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
