@@ -3,19 +3,15 @@ https://kinesis-ergo.com/wp-content/uploads/Adv2-Users-Manual-fw1.0.521.us-9-16-
 
 firmware update: https://kinesis-ergo.com/wp-content/uploads/Adv2-Firmware-Update-Instructions-4-2-19.pdf
 
+## Print info
+
+`Progm + Esc` will output the current keyboard status into a text box
+
 ## Power user mode
 
 `Progm + Shift + Esc`
 
 Lights will flash 4 times to indicate activated and 2 times to indicate deactivated
-
-## Remapping a key
-
-NOTE: For remapping of the thumb clusters, the default windows layout is used.
-
-`Source action > Destination key`
-
-Press the `Progm` key to exit remap mode.
 
 ## Opening the v-drive
 
@@ -26,6 +22,14 @@ To mount/unmount:
 `Progm + F1`
 
 Lights will flash 4 times to indicate activated and 2 times to indicate deactivated
+
+## Remapping a key
+
+NOTE: For remapping of the thumb clusters, the default windows layout is used.
+
+`Source action > Destination key`
+
+Press the `Progm` key to exit remap mode.
 
 ## Creating a custom hotkey layout
 
@@ -58,9 +62,6 @@ e.g. Execute `shift-h` when `pup` is pressed: `{pup}>{-shift}{h}{+shift}`
 `-` indicates the depression of the key and `+` the release. This can be used for any key that needs
 to be held, control, alt, cmd and shift
 
-## Print info
-
-`Progm + Esc` will output the current keyboard status into a text box
 
 ## Hard reset
 
