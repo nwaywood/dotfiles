@@ -6,6 +6,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
 
+" Plug 'preservim/nerdcommenter'
 " utilities
 Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 " NOTE: A newer version of nerdtree breaks teh nerdtree-git-plugin fork
@@ -243,6 +244,19 @@ nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\
 " }}}
 
 " Functions {{{
+
+" nnoremap gC :call Test()<cr>
+" function! Test()
+"    :call NERDComment('n', 'yank')
+"    exec 'normal! p'
+" endfunc
+
+" xnoremap gC :call Test2()<cr>
+" function! Test2()
+"    :call NERDComment('x', 'yank')
+"     exec "normal! '>"
+"     exec 'normal! p'
+" endfunc
 
 function! NumberToggle()
     if(&relativenumber == 1)
