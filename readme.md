@@ -34,7 +34,7 @@ ZSH is configured in the `zshrc.symlink` file, which will be symlinked to the ho
 - Add the ~/bin and $DOTFILES/bin directories to the path
 - And more...
 
-`nick.zsh-theme` contains my custom terminal prompt. If you would like to use it, manually copy it into `~/.oh-my-zsh/custom/themes` or change `ZSH_THEME` in `zshrc.symlink` from `nick` to one of the built-in themes (e.g. `robbyrussell`)
+`nick-pure.zsh-theme` contains my custom terminal prompt. If you would like to use it, manually copy it into `~/.oh-my-zsh/custom/themes` or change `ZSH_THEME` in `zshrc.symlink` from `nick` to one of the built-in themes (e.g. `robbyrussell`). My `zshrc` config also relies on a custom plugin `my-vi-mode` which should be copied into `~/.oh-my-zsh/custom/plugins`
 
 ## Tmux Setup
 
