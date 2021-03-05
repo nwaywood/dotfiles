@@ -53,3 +53,6 @@ Tmux plugins are managed with [tpm](https://github.com/tmux-plugins/tpm). To ins
 
 from within tmux. This installs the `tmux-resurrect` plugin which lets tmux sessions/windows/panes be persisted across OS reboots. `prefix - ^s` to save the tmux environment and `prefix - ^r` to restore the tmux environent.
 
+## Font
+
+My neovim and zsh setups both make use patched [nerd fonts](https://github.com/ryanoasis/nerd-fonts). It is recommended to use one, otherwise some characters will look funky. I personally use `Fira Mono Nerd Font`.
