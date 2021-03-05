@@ -50,8 +50,6 @@ export DOTFILES=$HOME/.dotfiles
 # load .zsh files
 for config ($DOTFILES/zsh/**/*.zsh) source $config
 
-# nix
-source /Users/nick/.nix-profile/etc/profile.d/nix.sh
 # editor
 export EDITOR='nvim'
 
@@ -62,9 +60,6 @@ export NNN_BMS='d:~/Downloads'
 # PATH
 # ====
 
-# GOPATH
-export GOPATH=$HOME/code
-export PATH=$PATH:$GOPATH/bin
 # add brew path to the start of PATH env var
 export PATH=/usr/local/bin:$PATH
 # adding path directory for custom scripts
@@ -73,15 +68,10 @@ export PATH=$DOTFILES/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$HOME/.ghcup/bin:$PATH
-# doom bins
-export PATH=$HOME/.emacs.d/bin:$PATH
 # add /usr/local/sbin
 if [[ -d /usr/local/sbin ]]; then
 	export PATH=/usr/local/sbin:$PATH
 fi
-# setup up java stuff
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home
-export PATH=/opt/apache-maven-3.5.0/bin:$PATH
 
 # [ -z "$TMUX" ] && export TERM=xterm-256color
 # for iTerm/tmux/vim use xterm-256color
@@ -92,11 +82,8 @@ export PATH=/opt/apache-maven-3.5.0/bin:$PATH
 unsetopt inc_append_history
 unsetopt share_history
 
-# opam configuration
-test -r /Users/nick/.opam/opam-init/init.zsh && . /Users/nick/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
 # fnm
-eval "$(fnm env)"
+# eval "$(fnm env)"
 
 # Base16 shell
 if [ -z "$THEME" ]; then
@@ -158,3 +145,5 @@ bindkey -s "^[Ok" "+"
 bindkey -s "^[Om" "-"
 bindkey -s "^[Oj" "*"
 bindkey -s "^[Oo" "/"
+
+
