@@ -18,8 +18,8 @@ if [ "$(uname)" == "Darwin" ]; then
 	source install/brew.sh
 fi
 
-echo "Adding base16-shell project into .config"
-git clone https://github.com/chriskempson/base16-shell.git $HOME/.dotfiles/.config/base16-shell
+# echo "Adding base16-shell project into .config"
+# git clone https://github.com/chriskempson/base16-shell.git $HOME/.dotfiles/.config/base16-shell
 
 echo "Installing tpm (tmux package manager)"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
