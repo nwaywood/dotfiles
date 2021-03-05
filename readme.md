@@ -1,6 +1,6 @@
 # Dotfiles
 
-This repo is a collection of my Neovim, tmux, zsh and atom configurations. This dotfile project is heavily inspired by [Nick Nisi's dotfile project](https://github.com/nicknisi/dotfiles). See his talk [vim + tmux - OMG!](https://www.youtube.com/watch?v=5r6yzFEXajQ) if you want to be inspired.
+This repo is a collection of my Neovim, tmux, zsh, etc. configurations. This dotfile project is heavily inspired by [Nick Nisi's dotfile project](https://github.com/nicknisi/dotfiles). See his talk [vim + tmux - OMG!](https://www.youtube.com/watch?v=5r6yzFEXajQ) if you want to be inspired.
 
 ## Install
 
@@ -16,16 +16,7 @@ In `install/` folder there are other scripts for installing `go`, `atom`, and `n
 
 ## Neovim Setup
 
-[Neovim](https://neovim.io/) is a fork and drop-in replacement for vim. in most cases, you would not notice a difference between the two, other than Neovim allows plugins to run asynchronously so that they do not freeze the editor, which is the main reason I have switched over to it. Vim and Neovim both use Vimscript and most plugins will work in both (all of the plugins I use do work in both Vim and Neovim). For this reason, they share the same configuration files in this setup. Neovim uses the [XDG base directory specification](http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html) which means it won't look for a `.vimrc` in your home directory. Instead, its configuration looks like the following:
-
-|                         | Vim        | Neovim                    |
-|-------------------------|------------|---------------------------|
-| Main Configuratin File  | `~/.vimrc` | `~/.config/nvim/init.vim` |
-| Configuration directory | `~/.vim`   | `~/.config/nvim`          |
-
-Vim is likely already installed on your system. If using a Mac, MacVim will be installed from Homebrew. Neovim will also be installed from Homebrew by default on a Mac. For other systems, you may need to install Neovim manually. See their [web site](https://neovim.io) for more information.
-
-[`link.sh`](install/link.sh) will symlink the XDG configuration directory into your home directory. Inside of [`.zshrc`](zsh/zshrc.symlink), the `EDITOR` shell variable is set to `nvim`, defaulting to Neovim for editor tasks, such as git commit messages. Additionally, I have aliased `vim` to `nvim` in [`aliases.zsh`](zsh/aliases.zsh) You can remove this if you would rather not alias the `vim` command to `nvim`.
+[Neovim](https://neovim.io/) config is symlinked to `~/.config/nvim` directory by the `install/link.sh` script. Inside of [`.zshrc`](zsh/zshrc.symlink), the `EDITOR` shell variable is set to `nvim`, defaulting to Neovim for editor tasks, such as git commit messages. Additionally, I have aliased `vim` to `nvim` in [`aliases.zsh`](zsh/aliases.zsh) You can remove this if you would rather not alias the `vim` command to `nvim`.
 
 ### Installation
 
