@@ -1,6 +1,6 @@
 {
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/nick/.dotfiles/vscode/vscode.vim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/nick.waywood/.dotfiles/vscode/vscode.vim",
   // This must be false for keys to work in file explorer with neovim plugin
   "workbench.list.automaticKeyboardNavigation": false,
   "window.zoomLevel": 0,
