@@ -14,7 +14,7 @@ alias gs='nvim -c "G | %bd | e# | bd#"'
 # alias gs='git status'
 alias g='git'
 alias lg='lazygit'
-alias github='hub browse'
+alias github='gh repo view --web'
 
 # finder
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'

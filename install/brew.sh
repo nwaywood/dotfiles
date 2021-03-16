@@ -8,6 +8,7 @@ echo "Installing homebrew packages..."
 # core development tools
 brew install git
 brew install tmux
+brew install gh
 brew install zsh
 
 # CLI tools
