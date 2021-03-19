@@ -22,6 +22,8 @@ brew install bat # good cat
 brew install the_silver_searcher # good grep
 brew install ripgrep # good grep
 brew install --HEAD https://raw.githubusercontent.com/junegunn/blsd/master/blsd.rb
+brew install tldr # good man
+brew install thefuck
 
 # neovim
 brew install neovim
