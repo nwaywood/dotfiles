@@ -26,8 +26,6 @@
   // don't auto highlight occurences on hover
   "editor.occurrencesHighlight": false,
   "terminal.integrated.shell.osx": "/bin/zsh",
-  // hide activity bar by default (icon by thingy on the left)
-  "workbench.activityBar.visible": false,
   "explorer.confirmDragAndDrop": false,
   // only show colors for git changes and errors, not the numbers and letters
   "explorer.decorations.badges": false,
@@ -114,5 +112,11 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "files.watcherExclude": {
+    "**/.bloop": true,
+    "**/.metals": true,
+    "**/.ammonite": true
+  },
+  "metals.javaHome": "/usr/local/opt/openjdk@11"
 }
