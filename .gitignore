@@ -2,6 +2,7 @@ aliases-local.zsh
 settings-local.zsh
 .config
 .netrwhist
+zsh/work.zsh
 
 config/karabiner/automatic_backups
 config/karabiner/karabiner.json

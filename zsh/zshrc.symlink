@@ -104,6 +104,9 @@ fi
 
 source ~/.config/up/up.sh
 
+# thefuck
+eval $(thefuck --alias)
+
 # load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # export FZF_DEFAULT_COMMAND='ag -g ""'
@@ -145,5 +148,4 @@ bindkey -s "^[Ok" "+"
 bindkey -s "^[Om" "-"
 bindkey -s "^[Oj" "*"
 bindkey -s "^[Oo" "/"
-
 
