@@ -3,7 +3,8 @@
 
 tm_color_active='#d19a66' # onedark 'yellow'
 # tm_color_active=colour198 # nisi magenta
-tm_color_inactive=colour241 # grey
+# tm_color_inactive=colour241 # grey
+tm_color_inactive="#777d87" # random grey
 tm_color_feature='#61afef' # onedark 'blue'
 tm_color_music='#e06c75' # onedark 'red'
 # tm_color_music=colour203 # red
