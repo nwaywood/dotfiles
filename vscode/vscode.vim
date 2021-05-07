@@ -41,6 +41,7 @@ nnoremap <silent> <leader>t :<C-u>call VSCodeNotify('workbench.action.toggleActi
 nnoremap <silent> <leader>gs :<C-u>call VSCodeNotify('gitlens.showQuickRepoStatus')<CR>
 nnoremap <silent> <leader>gb :<C-u>call VSCodeNotify('gitlens.toggleFileBlame')<CR>
 nnoremap <silent> <leader>n :<C-u>call VSCodeNotify('workbench.files.action.focusFilesExplorer')<CR>
+nnoremap <silent> <leader>. :<C-u>call VSCodeNotify('settings.cycle.relativeLineNumbers')<CR>
 
 
 nmap <silent> gv :<C-u>call VSCodeNotify('editor.action.revealDefinitionAside')<CR>

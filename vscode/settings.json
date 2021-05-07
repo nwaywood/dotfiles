@@ -93,6 +93,20 @@
       "compare": false
     }
   },
+  "settings.cycle": [
+    {
+      "id": "relativeLineNumbers", // must be unique
+      "overrideWorkspaceSettings": false,
+      "values": [
+        {
+          "editor.lineNumbers": "on"
+        },
+        {
+          "editor.lineNumbers": "relative"
+        }
+      ]
+    }
+  ],
   // Reason
   // ------
   // "reason.formatOnSave": true,
@@ -118,5 +132,6 @@
     "**/.metals": true,
     "**/.ammonite": true
   },
-  "metals.javaHome": "/usr/local/opt/openjdk@11"
+  "metals.javaHome": "/usr/local/opt/openjdk@11",
+  "ruby.useLanguageServer": true
 }
