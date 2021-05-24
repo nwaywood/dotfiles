@@ -220,7 +220,7 @@
 
 # autocomplete-plus
 # =================
-'atom-text-editor.autocomplete-active':
+'body atom-text-editor.autocomplete-active':
     'ctrl-j': 'autocomplete-plus:move-down'
     'ctrl-k': 'autocomplete-plus:move-up'
     'ctrl-g': 'autocomplete-plus:cancel'
