@@ -14,6 +14,7 @@ brew install zsh
 # CLI tools
 brew install z
 brew install fzf
+brew install fzy
 brew install tree
 brew install jq
 brew install fd # good find
