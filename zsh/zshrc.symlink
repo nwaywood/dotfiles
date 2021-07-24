@@ -60,7 +60,8 @@ source ~/.config/up/up.sh
 # export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS="--inline-info --cycle"
+export FZF_DEFAULT_OPTS="--inline-info --cycle --reverse --color='gutter:0,pointer:1,hl:5,hl+:5'"
+# for some reason its really slow with tmux on
 export FZF_TMUX=0
 # https://github.com/junegunn/fzf/issues/986
 command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
