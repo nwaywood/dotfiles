@@ -110,23 +110,16 @@ lvim.builtin.which_key.mappings.n = { "<cmd>NvimTreeFindFile<cr>", "Show In Expl
 lvim.builtin.which_key.mappings["."] = { "<cmd>set rnu!<cr>", "Toggle Numbers" }
 lvim.builtin.which_key.mappings["/"] = { "<cmd>set hlsearch!<CR>", "No Highlight" }
 lvim.builtin.which_key.mappings.h = nil
+lvim.builtin.which_key.mappings.s.w = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "Search word" }
 lvim.builtin.which_key.mappings.g.y = { '<cmd>lua require"gitlinker".get_buf_range_url("n", {print_url= false, action_callback = require"gitlinker.actions".open_in_browser})<cr>', "Gitlinker"}
 lvim.builtin.which_key.vmappings.g = { ':lua require"gitlinker".get_buf_range_url("v", {print_url= false, action_callback = require"gitlinker.actions".open_in_browser})<cr>', "Gitlinker"}
 
 -- lvim.builtin.which_key.mappings.f = { "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files,--iglob,!.git<CR>", "Find files" }
 -- lvim.builtin.which_key.mappings.m = {
 --     name = "+custoM telescope",
---     b = { "<cmd>Telescope buffers<cr>", "Search buffers' titles" },
---     d = { "<cmd>Telescope lsp_document_diagnostics<cr>", "Search diagnostics" },
---     f = { "<cmd>Telescope git_files<cr>", "Search diagnostics" },
---     h = { "<cmd>Telescope command_history<cr>", "Search command history" },
---     j = { "<cmd>Telescope jumplist<cr>", "Search jumplist" },
---     l = { "<cmd>Telescope lsp_document_symbols<cr>", "Search symbols" },
---     q = { "<cmd>Telescope quickfix<cr>", "Search Quickfix list" },
 --     s = {
 --       "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<cr>",
 --       "Search string",
 --     },
---     w = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "Search this word" },
 --     z = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search symbols" },
 --   }
