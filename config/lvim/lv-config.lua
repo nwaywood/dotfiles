@@ -12,6 +12,8 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- My non leader keymappings
 vim.api.nvim_set_keymap("n", "\\", '"_', { silent = true }) -- blackhole register shortcut
 vim.api.nvim_set_keymap("n", "Y", "y$", { silent = true })
+vim.api.nvim_set_keymap("n", "j", "gj", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "k", "gk", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<C-e>", "3<C-e>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<C-y>", "3<C-y>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "gh", ":lua vim.lsp.buf.hover()<CR>", { silent = true, noremap = true })
@@ -58,14 +60,13 @@ lvim.builtin.telescope.defaults.path_display.shorten = 20 -- don't truncate path
 -- lvim.builtin.telescope.defaults.borderchars = {
 -- 	{ "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 -- 	-- prompt = {'t', 'r', 'b', 'l', 'c', 'c', 'c', 'c' },
-	-- prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
-	-- results = { "─", "│", "─", "│", "│", "│", "┘", "└" },
+-- prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+-- results = { "─", "│", "─", "│", "│", "│", "┘", "└" },
 -- 	-- preview = {'', '', '', '', '', '', '', '' },
 -- }
 -- lvim.builtin.telescope.defaults.color_devicons = false
 
 lvim.plugins = {
-	-- { "navarasu/onedark.nvim" },
 	-- "christianchiarulli/nvcode-color-schemes.vim",
 	-- better quickfix bqf is a must have!
 	{ "lunarvim/colorschemes" },
@@ -76,6 +77,10 @@ lvim.plugins = {
 			require("lsp_signature").on_attach()
 		end,
 		event = "InsertEnter",
+	},
+	{
+		"ruifm/gitlinker.nvim",
+		requires = "nvim-lua/plenary.nvim",
 	},
 	{
 		"unblevable/quick-scope",
@@ -98,10 +103,6 @@ lvim.plugins = {
 	{ "kana/vim-textobj-line" }, -- Adds the text objects 'il' and 'al'
 }
 
--- TODO
--- gitlinker
--- telescope to have prompt at the top with sorting order fixed
-
 -- Additional Leader bindings for WhichKey
 lvim.builtin.which_key.mappings.x = { "<cmd>x<cr>", "Save and Exit" }
 lvim.builtin.which_key.mappings.a = { "<cmd>Telescope live_grep<cr>", "Grep Project" }
@@ -109,6 +110,9 @@ lvim.builtin.which_key.mappings.n = { "<cmd>NvimTreeFindFile<cr>", "Show In Expl
 lvim.builtin.which_key.mappings["."] = { "<cmd>set rnu!<cr>", "Toggle Numbers" }
 lvim.builtin.which_key.mappings["/"] = { "<cmd>set hlsearch!<CR>", "No Highlight" }
 lvim.builtin.which_key.mappings.h = nil
+lvim.builtin.which_key.mappings.g.y = { '<cmd>lua require"gitlinker".get_buf_range_url("n", {print_url= false, action_callback = require"gitlinker.actions".open_in_browser})<cr>', "Gitlinker"}
+lvim.builtin.which_key.vmappings.g = { ':lua require"gitlinker".get_buf_range_url("v", {print_url= false, action_callback = require"gitlinker.actions".open_in_browser})<cr>', "Gitlinker"}
+
 -- lvim.builtin.which_key.mappings.f = { "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files,--iglob,!.git<CR>", "Find files" }
 -- lvim.builtin.which_key.mappings.m = {
 --     name = "+custoM telescope",
