@@ -51,8 +51,17 @@ lvim.builtin.telescope.defaults.mappings = {
 	},
 }
 lvim.builtin.telescope.defaults.prompt_prefix = "❯ "
+lvim.builtin.telescope.defaults.selection_caret = "> "
 lvim.builtin.telescope.defaults.layout_config.prompt_position = "top"
 lvim.builtin.telescope.defaults.sorting_strategy = "ascending"
+lvim.builtin.telescope.defaults.path_display.shorten = 20 -- don't truncate path names
+-- lvim.builtin.telescope.defaults.borderchars = {
+-- 	{ "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+-- 	-- prompt = {'t', 'r', 'b', 'l', 'c', 'c', 'c', 'c' },
+	-- prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+	-- results = { "─", "│", "─", "│", "│", "│", "┘", "└" },
+-- 	-- preview = {'', '', '', '', '', '', '', '' },
+-- }
 -- lvim.builtin.telescope.defaults.color_devicons = false
 
 lvim.plugins = {
@@ -74,7 +83,7 @@ lvim.plugins = {
 			vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
 		end,
 	}, -- Improve usability of f,F,t,T
-  -- vim essentials
+	-- vim essentials
 	{
 		"tpope/vim-surround",
 		config = function()
