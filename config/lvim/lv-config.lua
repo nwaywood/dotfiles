@@ -19,6 +19,7 @@ vim.api.nvim_set_keymap("n", "<S-k>", ":BufferNext<CR>", { noremap = true, silen
 vim.api.nvim_set_keymap("n", "<S-j>", ":BufferPrevious<CR>", { noremap = true, silent = true })
 
 -- lvim settings
+lvim.leader = "space"
 lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.colorscheme = "spacegray"
@@ -31,9 +32,6 @@ lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.lsp.diagnostics.virtual_text = false
-
--- keymappings
-lvim.leader = "space"
 
 -- telescope config
 local status_ok, ts_actions = pcall(require, "telescope.actions")
@@ -52,22 +50,31 @@ lvim.builtin.telescope.defaults.mappings = {
 		["<esc>"] = ts_actions.close,
 	},
 }
+lvim.builtin.telescope.defaults.prompt_prefix = "❯ "
+lvim.builtin.telescope.defaults.layout_config.prompt_position = "top"
+lvim.builtin.telescope.defaults.sorting_strategy = "ascending"
+-- lvim.builtin.telescope.defaults.color_devicons = false
 
 lvim.plugins = {
-    {"lunarvim/colorschemes"},
+	-- { "navarasu/onedark.nvim" },
+	-- "christianchiarulli/nvcode-color-schemes.vim",
+	-- better quickfix bqf is a must have!
+	{ "lunarvim/colorschemes" },
 	{ "christoomey/vim-tmux-navigator" },
-   {
-        "ray-x/lsp_signature.nvim",
-        config = function() require"lsp_signature".on_attach() end,
-        event = "InsertEnter"
-    },
-
+	{
+		"ray-x/lsp_signature.nvim",
+		config = function()
+			require("lsp_signature").on_attach()
+		end,
+		event = "InsertEnter",
+	},
 	{
 		"unblevable/quick-scope",
 		config = function()
 			vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
 		end,
 	}, -- Improve usability of f,F,t,T
+  -- vim essentials
 	{
 		"tpope/vim-surround",
 		config = function()
@@ -80,39 +87,18 @@ lvim.plugins = {
 	{ "kana/vim-textobj-user" }, -- Allows custom text objects
 	{ "kana/vim-textobj-entire" }, -- Adds the text objects 'ie' and 'ae'
 	{ "kana/vim-textobj-line" }, -- Adds the text objects 'il' and 'al'
-	-- { "navarasu/onedark.nvim" },
-	-- "christianchiarulli/nvcode-color-schemes.vim",
-  -- better quickfix bqf is a must have!
 }
 
 -- TODO
 -- gitlinker
--- leader s s for symbol search
--- nvim tree to show git status of files
 -- telescope to have prompt at the top with sorting order fixed
-
--- CHANGE DEFAULT BINDINGS
--- gh to hover instead of K
--- J and K to switch buffers instead of H and L
-
--- generic LSP settings
--- you can set a custom on_attach function that will be used for all the language servers
--- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
--- lvim.lsp.on_attach_callback = function(client, bufnr)
---   local function buf_set_option(...)
---     vim.api.nvim_buf_set_option(bufnr, ...)
---   end
---   --Enable completion triggered by <c-x><c-o>
---   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
--- end
-
 
 -- Additional Leader bindings for WhichKey
 lvim.builtin.which_key.mappings.x = { "<cmd>x<cr>", "Save and Exit" }
 lvim.builtin.which_key.mappings.a = { "<cmd>Telescope live_grep<cr>", "Grep Project" }
 lvim.builtin.which_key.mappings.n = { "<cmd>NvimTreeFindFile<cr>", "Show In Explorer" }
 lvim.builtin.which_key.mappings["."] = { "<cmd>set rnu!<cr>", "Toggle Numbers" }
-lvim.builtin.which_key.mappings["/"] = { '<cmd>set hlsearch!<CR>', "No Highlight" }
+lvim.builtin.which_key.mappings["/"] = { "<cmd>set hlsearch!<CR>", "No Highlight" }
 lvim.builtin.which_key.mappings.h = nil
 -- lvim.builtin.which_key.mappings.f = { "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files,--iglob,!.git<CR>", "Find files" }
 -- lvim.builtin.which_key.mappings.m = {
