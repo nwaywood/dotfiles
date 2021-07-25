@@ -78,7 +78,7 @@ bind -r p previous-window
 # | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
 # https://github.com/junegunn/fzf/pull/582
 not_tmux="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?(g?(view|n?vim?x?)(diff)?|fzf)$'"
-is_vim='`echo "#{pane_current_command}" | grep -iqE "(^|\/)g?(view|n?vim?x?)(diff)?$"` || `echo "#{pane_start_command}" | grep -iqE "fzf"` || `echo "#{pane_current_command}" | grep -iqE "fzf"`'
+# is_vim='`echo "#{pane_current_command}" | grep -iqE "(^|\/)g?(view|n?vim?x?)(diff)?$"` || `echo "#{pane_start_command}" | grep -iqE "fzf"` || `echo "#{pane_current_command}" | grep -iqE "fzf"`'
 bind-key -n C-h if-shell "$not_tmux" "send-keys C-h"  "select-pane -L"
 bind-key -n C-j if-shell "$not_tmux" "send-keys C-j"  "select-pane -D"
 bind-key -n C-k if-shell "$not_tmux" "send-keys C-k"  "select-pane -U"
