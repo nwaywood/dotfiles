@@ -1,8 +1,8 @@
 # NOTE: Uncomment these four lines and comment out zplug lines to get oh-my-zsh back
 # export ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="nick_pure"
-# # ZSH_THEME="nick_old"
-# plugins=(my-vi-mode history-substring-search zsh-syntax-highlighting)
+# # plugins=(my-vi-mode history-substring-search zsh-syntax-highlighting)
+# plugins=(my-vi-mode git-auto-fetch)
 # source $ZSH/oh-my-zsh.sh
 
 eval "$(starship init zsh)"
