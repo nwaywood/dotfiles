@@ -88,6 +88,7 @@ lvim.plugins = {
 			vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
 		end,
 	}, -- Improve usability of f,F,t,T
+  -- jeffkreeftmeijer/vim-numbertoggle -- to only show relativenumber when focused
 	-- vim essentials
 	{
 		"tpope/vim-surround",

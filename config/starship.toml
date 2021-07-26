@@ -21,7 +21,19 @@ $character"""
 symbol = "\uf418 "
 style = "purple"
 
+[git_status]
+style = "red"
+behind = "↓"
+ahead = ""
+diverged = "↕"
+
 [directory]
 truncate_to_repo = false
 truncation_length = 10
 
+# $git_status_simplified\
+# [custom.git_status_simplified]
+# when = 'test -n "$(git status --porcelain)"'
+# symbol = '*'
+# style = 'purple'
+# format = '[$symbol$ahead_behind]($style)'
