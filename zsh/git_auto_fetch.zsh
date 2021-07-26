@@ -1,3 +1,4 @@
+# Yoinked from https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git-auto-fetch
 # Default auto-fetch interval: 60 seconds
 : ${GIT_AUTO_FETCH_INTERVAL:=60}
 
