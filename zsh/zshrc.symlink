@@ -6,6 +6,16 @@
 # source $ZSH/oh-my-zsh.sh
 
 eval "$(starship init zsh)"
+# autoload -U promptinit; promptinit
+# zstyle :prompt:pure:path color cyan
+# zstyle :prompt:pure:prompt:success color green
+# zstyle :prompt:pure:git:branch color magenta
+# zstyle :prompt:pure:git:dirty color magenta
+# zstyle :prompt:pure:git:arrow color red
+# PURE_GIT_DOWN_ARROW='↓'
+# PURE_GIT_UP_ARROW=''
+# prompt pure
+
 # customize vi mode
 # ==============
 # enable vi mode (when using oh-my-zsh, vi-mode plugin enabling it)

@@ -34,6 +34,7 @@ lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.lsp.diagnostics.virtual_text = false
+-- lvim.lsp.override = "scala"
 
 -- telescope config
 local status_ok, ts_actions = pcall(require, "telescope.actions")
