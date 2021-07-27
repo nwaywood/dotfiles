@@ -89,7 +89,7 @@ lvim.plugins = {
 			vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
 		end,
 	}, -- Improve usability of f,F,t,T
-  -- jeffkreeftmeijer/vim-numbertoggle -- to only show relativenumber when focused
+	-- jeffkreeftmeijer/vim-numbertoggle -- to only show relativenumber when focused
 	-- vim essentials
 	{
 		"tpope/vim-surround",
@@ -113,8 +113,14 @@ lvim.builtin.which_key.mappings["."] = { "<cmd>set rnu!<cr>", "Toggle Numbers" }
 lvim.builtin.which_key.mappings["/"] = { "<cmd>set hlsearch!<CR>", "No Highlight" }
 lvim.builtin.which_key.mappings.h = nil
 lvim.builtin.which_key.mappings.s.w = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "Search word" }
-lvim.builtin.which_key.mappings.g.y = { '<cmd>lua require"gitlinker".get_buf_range_url("n", {print_url= false, action_callback = require"gitlinker.actions".open_in_browser})<cr>', "Gitlinker"}
-lvim.builtin.which_key.vmappings.g = { ':lua require"gitlinker".get_buf_range_url("v", {print_url= false, action_callback = require"gitlinker.actions".open_in_browser})<cr>', "Gitlinker"}
+lvim.builtin.which_key.mappings.g.y = {
+	'<cmd>lua require"gitlinker".get_buf_range_url("n", {print_url= false, action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+	"Gitlinker",
+}
+lvim.builtin.which_key.vmappings.g = {
+	':lua require"gitlinker".get_buf_range_url("v", {print_url= false, action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+	"Gitlinker",
+}
 
 -- lvim.builtin.which_key.mappings.f = { "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files,--iglob,!.git<CR>", "Find files" }
 -- lvim.builtin.which_key.mappings.m = {
@@ -125,3 +131,8 @@ lvim.builtin.which_key.vmappings.g = { ':lua require"gitlinker".get_buf_range_ur
 --     },
 --     z = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search symbols" },
 --   }
+
+-- autocommands
+lvim.autocommands.custom_groups = {
+	{ "FileType", "markdown", "set nospell" },
+}
