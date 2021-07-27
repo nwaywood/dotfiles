@@ -135,12 +135,16 @@ prompt_pure_preprompt_render() {
 	[[ -n $prompt_pure_state[username] ]] && preprompt_parts+=($prompt_pure_state[username])
 
 	# Set the path.
-	preprompt_parts+=('%F{${prompt_pure_colors[path]}}%~%f')
+  # NW: From the docs https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html#Visual-effects
+  # %B and %b toggle bold on and off so I wraped this whole path string in %B and %b
+	preprompt_parts+=('%B%F{${prompt_pure_colors[path]}}%~%f%b')
 
 	# Git branch and dirty status info.
 	typeset -gA prompt_pure_vcs_info
 	if [[ -n $prompt_pure_vcs_info[branch] ]]; then
-		preprompt_parts+=("%F{$git_color}"'${prompt_pure_vcs_info[branch]}'"%F{$git_dirty_color}"'${prompt_pure_git_dirty}%f')
+    # NW: I added the on word and the branch symbol before printing the branch name. I put
+    # the branch symbol after the %F color map changed the color to purple
+		preprompt_parts+=("on %F{$git_color} "'${prompt_pure_vcs_info[branch]}'"%F{$git_dirty_color}"'${prompt_pure_git_dirty}%f')
 	fi
 	# Git action (for example, merge).
 	if [[ -n $prompt_pure_vcs_info[action] ]]; then
@@ -183,7 +187,8 @@ prompt_pure_preprompt_render() {
 
 	if [[ $1 == precmd ]]; then
 		# Initial newline, for spaciousness.
-		print
+    # NW: Remove the newline between prompt instances
+		# print
 	elif [[ $prompt_pure_last_prompt != $expanded_prompt ]]; then
 		# Redraw the prompt.
 		prompt_pure_reset_prompt
