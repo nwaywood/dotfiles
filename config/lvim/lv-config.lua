@@ -24,16 +24,31 @@ vim.api.nvim_set_keymap("n", "<S-j>", ":BufferPrevious<CR>", { noremap = true, s
 lvim.leader = "space"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "spacegray"
+lvim.colorscheme = "onedark"
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.compe.autocomplete = true
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = "maintained"
-lvim.builtin.treesitter.ignore_install = { "haskell" }
+lvim.builtin.treesitter.ensure_installed = {
+	"lua",
+	"scala",
+	"bash",
+	"dockerfile",
+	"html",
+	"css",
+	"java",
+	"javascript",
+	"json",
+	"regex",
+	"ruby",
+	"toml",
+	"yaml",
+	"typescript",
+} -- :TSInstallInfo to see all options
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.lsp.diagnostics.virtual_text = false
+-- to setup scala with nvim-metals instead of default
 -- lvim.lsp.override = "scala"
 
 -- telescope config
@@ -68,9 +83,9 @@ lvim.builtin.telescope.defaults.path_display.shorten = 20 -- don't truncate path
 -- lvim.builtin.telescope.defaults.color_devicons = false
 
 lvim.plugins = {
-	-- "christianchiarulli/nvcode-color-schemes.vim",
 	-- better quickfix bqf is a must have!
-	{ "lunarvim/colorschemes" },
+	-- { "lunarvim/colorschemes" },
+	{ "ChristianChiarulli/nvcode-color-schemes.vim" },
 	{ "christoomey/vim-tmux-navigator" },
 	{
 		"ray-x/lsp_signature.nvim",
