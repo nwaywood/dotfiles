@@ -44,6 +44,9 @@ vim.api.nvim_set_keymap("n", "<C-y>", "3<C-y>", { silent = true, noremap = true 
 vim.api.nvim_set_keymap("n", "gh", ":lua vim.lsp.buf.hover()<CR>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<S-k>", ":BufferNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-j>", ":BufferPrevious<CR>", { noremap = true, silent = true })
+-- keep current search result in center of viewport
+vim.api.nvim_set_keymap("n", "n", "nzzzv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "N", "Nzzzv", { noremap = true, silent = true })
 
 -- lvim settings
 lvim.leader = "space"
