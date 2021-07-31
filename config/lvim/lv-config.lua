@@ -1,3 +1,28 @@
+-- disable useless builtin nvim plugins
+local disabled_built_ins = {
+	"netrw",
+	"netrwPlugin",
+	"netrwSettings",
+	"netrwFileHandlers",
+	"gzip",
+	"zip",
+	"zipPlugin",
+	"tar",
+	"tarPlugin", -- 'man',
+	"getscript",
+	"getscriptPlugin",
+	"vimball",
+	"vimballPlugin",
+	"2html_plugin",
+	"logipat",
+	"rrhelper",
+	"spellfile_plugin",
+	-- 'matchit', 'matchparen', 'shada_plugin',
+}
+for _, _plugin in pairs(disabled_built_ins) do
+	vim.g["loaded_" .. _plugin] = 1
+end
+
 -- vim settings
 vim.opt.cursorline = false
 vim.opt.wrap = true
@@ -83,6 +108,7 @@ lvim.builtin.telescope.defaults.path_display.shorten = 20 -- don't truncate path
 -- lvim.builtin.telescope.defaults.color_devicons = false
 
 lvim.plugins = {
+	-- https://github.com/rockerBOO/awesome-neovim
 	-- better quickfix bqf is a must have!
 	-- { "lunarvim/colorschemes" },
 	{ "ChristianChiarulli/nvcode-color-schemes.vim" },
@@ -127,7 +153,18 @@ lvim.builtin.which_key.mappings.n = { "<cmd>NvimTreeFindFile<cr>", "Show In Expl
 lvim.builtin.which_key.mappings["."] = { "<cmd>set rnu!<cr>", "Toggle Numbers" }
 lvim.builtin.which_key.mappings["/"] = { "<cmd>set hlsearch!<CR>", "No Highlight" }
 lvim.builtin.which_key.mappings.h = nil
-lvim.builtin.which_key.mappings.s.w = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "Search word" }
+lvim.builtin.which_key.mappings.s.w =
+	{
+		"<cmd>lua require('telescope.builtin').grep_string()<cr>",
+		"Search current word",
+	}
+lvim.builtin.which_key.mappings.s.s = {
+	"<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<cr>",
+	"Search string",
+}
+lvim.builtin.which_key.mappings.s.l = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search file" }
+lvim.builtin.which_key.mappings.s.b = nil
+lvim.builtin.which_key.mappings.s.p = nil
 lvim.builtin.which_key.mappings.g.y = {
 	'<cmd>lua require"gitlinker".get_buf_range_url("n", {print_url= false, action_callback = require"gitlinker.actions".open_in_browser})<cr>',
 	"Gitlinker",
@@ -138,14 +175,6 @@ lvim.builtin.which_key.vmappings.g = {
 }
 
 -- lvim.builtin.which_key.mappings.f = { "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files,--iglob,!.git<CR>", "Find files" }
--- lvim.builtin.which_key.mappings.m = {
---     name = "+custoM telescope",
---     s = {
---       "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<cr>",
---       "Search string",
---     },
---     z = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search symbols" },
---   }
 
 -- autocommands
 lvim.autocommands.custom_groups = {
