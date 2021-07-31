@@ -153,11 +153,10 @@ lvim.builtin.which_key.mappings.n = { "<cmd>NvimTreeFindFile<cr>", "Show In Expl
 lvim.builtin.which_key.mappings["."] = { "<cmd>set rnu!<cr>", "Toggle Numbers" }
 lvim.builtin.which_key.mappings["/"] = { "<cmd>set hlsearch!<CR>", "No Highlight" }
 lvim.builtin.which_key.mappings.h = nil
-lvim.builtin.which_key.mappings.s.w =
-	{
-		"<cmd>lua require('telescope.builtin').grep_string()<cr>",
-		"Search current word",
-	}
+lvim.builtin.which_key.mappings.s.w = {
+	"<cmd>lua require('telescope.builtin').grep_string()<cr>",
+	"Search current word",
+}
 lvim.builtin.which_key.mappings.s.s = {
 	"<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<cr>",
 	"Search string",
@@ -165,6 +164,7 @@ lvim.builtin.which_key.mappings.s.s = {
 lvim.builtin.which_key.mappings.s.l = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search file" }
 lvim.builtin.which_key.mappings.s.b = nil
 lvim.builtin.which_key.mappings.s.p = nil
+-- gitlinker
 lvim.builtin.which_key.mappings.g.y = {
 	'<cmd>lua require"gitlinker".get_buf_range_url("n", {print_url= false, action_callback = require"gitlinker.actions".open_in_browser})<cr>',
 	"Gitlinker",
