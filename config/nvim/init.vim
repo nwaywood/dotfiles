@@ -45,6 +45,8 @@ set magic " make searching use normal regex (grep)
 
 
 " misc
+set nofoldenable " don't fold by default
+set foldlevel=99 " https://stackoverflow.com/a/5786588/2580566
 set mouse+=a " lets mouse resize vim windows
 if !has('nvim')
     set ttymouse=xterm2 " lets mouse resize vim windows
