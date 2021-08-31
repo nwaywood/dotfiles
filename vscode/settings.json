@@ -133,5 +133,6 @@
     "**/.ammonite": true
   },
   "metals.javaHome": "/usr/local/opt/openjdk@11",
-  "ruby.useLanguageServer": true
+  "ruby.useLanguageServer": true,
+  "git.confirmSync": false
 }
