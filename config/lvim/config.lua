@@ -9,6 +9,7 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false -- don't fold by default
 vim.opt.foldlevel = 99 -- https://stackoverflow.com/a/5786588/2580566
+vim.opt_global.shortmess:remove("F") -- metals prereq
 
 -- My non leader keymappings
 vim.api.nvim_set_keymap("n", "\\", '"_', { silent = true }) -- blackhole register shortcut
@@ -66,19 +67,19 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- telescope config
 lvim.builtin.telescope.on_config_done = function()
-  local actions = require "telescope.actions"
-  -- for input mode
-  lvim.builtin.telescope.defaults.mappings.i["<C-j>"] = actions.move_selection_next
-  lvim.builtin.telescope.defaults.mappings.i["<C-k>"] = actions.move_selection_previous
-  lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
-  lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
-  lvim.builtin.telescope.defaults.mappings.i["<C-g>"] = actions.close
-  lvim.builtin.telescope.defaults.mappings.i["<esc>"] = actions.close
-  -- for normal mode
-  lvim.builtin.telescope.defaults.mappings.n["<C-j>"] = actions.move_selection_next
-  lvim.builtin.telescope.defaults.mappings.n["<C-k>"] = actions.move_selection_previous
-  lvim.builtin.telescope.defaults.mappings.n["<C-g>"] = actions.close
-  lvim.builtin.telescope.defaults.mappings.n["<esc>"] = actions.close
+	local actions = require("telescope.actions")
+	-- for input mode
+	lvim.builtin.telescope.defaults.mappings.i["<C-j>"] = actions.move_selection_next
+	lvim.builtin.telescope.defaults.mappings.i["<C-k>"] = actions.move_selection_previous
+	lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
+	lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
+	lvim.builtin.telescope.defaults.mappings.i["<C-g>"] = actions.close
+	lvim.builtin.telescope.defaults.mappings.i["<esc>"] = actions.close
+	-- for normal mode
+	lvim.builtin.telescope.defaults.mappings.n["<C-j>"] = actions.move_selection_next
+	lvim.builtin.telescope.defaults.mappings.n["<C-k>"] = actions.move_selection_previous
+	lvim.builtin.telescope.defaults.mappings.n["<C-g>"] = actions.close
+	lvim.builtin.telescope.defaults.mappings.n["<esc>"] = actions.close
 end
 
 lvim.builtin.telescope.defaults.prompt_prefix = "❯ "
@@ -135,14 +136,28 @@ lvim.builtin.which_key.vmappings.g = {
 --   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnosticss" },
 -- }
 
+-- lang specific settings
+lvim.lang.lua.formatters = {
+	{
+		exe = "stylua",
+	},
+}
+lvim.lang.scala.linters = {}
+
 -- Additional Plugins
 lvim.plugins = {
 	-- https://github.com/rockerBOO/awesome-neovim
 	-- better quickfix bqf is a must have!
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
+	--     {
+	--       "folke/trouble.nvim",
+	--       cmd = "TroubleToggle",
+	--     },
+	{
+		"scalameta/nvim-metals",
+		config = function()
+			require("metals").initialize_or_attach({})
+		end,
+	},
 	{ "christoomey/vim-tmux-navigator" },
 	{
 		"ray-x/lsp_signature.nvim",
