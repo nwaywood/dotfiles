@@ -79,20 +79,21 @@ lvim.builtin.telescope.on_config_done = function()
   lvim.builtin.telescope.defaults.mappings.n["<C-k>"] = actions.move_selection_previous
   lvim.builtin.telescope.defaults.mappings.n["<C-g>"] = actions.close
   lvim.builtin.telescope.defaults.mappings.n["<esc>"] = actions.close
-  lvim.builtin.telescope.defaults.prompt_prefix = "❯ "
-  lvim.builtin.telescope.defaults.selection_caret = "> "
-  lvim.builtin.telescope.defaults.layout_config.prompt_position = "top"
-  lvim.builtin.telescope.defaults.sorting_strategy = "ascending"
-  lvim.builtin.telescope.defaults.path_display.shorten = {} -- 20 -- don't truncate path names
-  -- lvim.builtin.telescope.defaults.borderchars = {
-  -- 	{ "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-  -- 	-- prompt = {'t', 'r', 'b', 'l', 'c', 'c', 'c', 'c' },
-  -- prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
-  -- results = { "─", "│", "─", "│", "│", "│", "┘", "└" },
-  -- 	-- preview = {'', '', '', '', '', '', '', '' },
-  -- }
-  -- lvim.builtin.telescope.defaults.color_devicons = false
 end
+
+lvim.builtin.telescope.defaults.prompt_prefix = "❯ "
+lvim.builtin.telescope.defaults.selection_caret = "> "
+lvim.builtin.telescope.defaults.layout_config.prompt_position = "top"
+lvim.builtin.telescope.defaults.sorting_strategy = "ascending"
+lvim.builtin.telescope.defaults.path_display = {} -- don't truncate path names
+-- lvim.builtin.telescope.defaults.borderchars = {
+-- 	{ "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+-- 	-- prompt = {'t', 'r', 'b', 'l', 'c', 'c', 'c', 'c' },
+-- prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+-- results = { "─", "│", "─", "│", "│", "│", "┘", "└" },
+-- 	-- preview = {'', '', '', '', '', '', '', '' },
+-- }
+-- lvim.builtin.telescope.defaults.color_devicons = false
 
 -- Additional Leader bindings for WhichKey
 lvim.builtin.which_key.mappings.x = { "<cmd>x<cr>", "Save and Exit" }
