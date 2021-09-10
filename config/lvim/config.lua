@@ -145,9 +145,12 @@ lvim.lang.lua.formatters = {
 lvim.lang.scala.linters = {}
 
 -- Additional Plugins
+-- https://github.com/ChristianChiarulli/lvim/blob/master/config.lua
+-- https://github.com/abzcoding/lvim
+-- https://github.com/kylo252/dotfiles/tree/main/.config/lvim
+-- https://github.com/rebuilt/lvim
 lvim.plugins = {
 	-- https://github.com/rockerBOO/awesome-neovim
-	-- better quickfix bqf is a must have!
 	--     {
 	--       "folke/trouble.nvim",
 	--       cmd = "TroubleToggle",
@@ -155,7 +158,13 @@ lvim.plugins = {
 	{
 		"scalameta/nvim-metals",
 		config = function()
-			require("metals").initialize_or_attach({})
+			-- 	local metals_config = require("metals").bare_config
+			-- 	metals_config.init_options.statusBarProvider = "on"
+			-- 	require("metals").initialize_or_attach(metals_config)
+			vim.cmd([[augroup lsp]])
+			vim.cmd([[au!]])
+			vim.cmd([[au FileType scala,sbt lua require("metals").initialize_or_attach({})]])
+			vim.cmd([[augroup end]])
 		end,
 	},
 	{ "christoomey/vim-tmux-navigator" },
@@ -165,6 +174,10 @@ lvim.plugins = {
 			require("lsp_signature").on_attach()
 		end,
 		event = "InsertEnter",
+	},
+	{
+		"kevinhwang91/nvim-bqf",
+		event = "BufRead",
 	},
 	{
 		"ruifm/gitlinker.nvim",
