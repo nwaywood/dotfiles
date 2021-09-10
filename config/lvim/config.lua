@@ -142,7 +142,6 @@ lvim.lang.lua.formatters = {
 		exe = "stylua",
 	},
 }
-lvim.lang.scala.linters = {}
 
 -- Additional Plugins
 -- https://github.com/ChristianChiarulli/lvim/blob/master/config.lua
@@ -158,13 +157,17 @@ lvim.plugins = {
 	{
 		"scalameta/nvim-metals",
 		config = function()
-			-- 	local metals_config = require("metals").bare_config
-			-- 	metals_config.init_options.statusBarProvider = "on"
-			-- 	require("metals").initialize_or_attach(metals_config)
-			vim.cmd([[augroup lsp]])
-			vim.cmd([[au!]])
-			vim.cmd([[au FileType scala,sbt lua require("metals").initialize_or_attach({})]])
-			vim.cmd([[augroup end]])
+			local metals_config = require("metals").bare_config
+			metals_config.on_attach = function()
+				require("lsp").common_on_attach()
+			end
+			metals_config.settings = {
+				showImplicitArguments = false,
+				showInferredType = true,
+				excludedPackages = {},
+			}
+			metals_config.init_options.statusBarProvider = false
+			require("metals").initialize_or_attach({ metals_config })
 		end,
 	},
 	{ "christoomey/vim-tmux-navigator" },
