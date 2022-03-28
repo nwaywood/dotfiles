@@ -30,6 +30,9 @@ setw -g aggressive-resize on
 # nvim wants to option set
 set-option -sg escape-time 10
 
+# https://stackoverflow.com/questions/18760281/how-to-increase-scrollback-buffer-size-in-tmux
+set-option -g history-limit 5000
+
 # use vim shortcuts for copy mode
 setw -g mode-keys vi
 # more settings to make copy-mode more vim-like
