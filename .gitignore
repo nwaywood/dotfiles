@@ -9,3 +9,4 @@ config/nvim/projects.txt
 config/karabiner/automatic_backups
 config/karabiner/karabiner.json
 config/lvim/plugin/packer_compiled.lua
+config/nvim/plugin/packer_compiled.lua
