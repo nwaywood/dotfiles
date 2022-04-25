@@ -9,7 +9,7 @@
   "editor.cursorBlinking": "solid",
   "editor.fontFamily": "'FiraMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
   "workbench.colorTheme": "One Dark Pro",
-  "editor.lineNumbers": "relative",
+  "editor.lineNumbers": "on",
   "workbench.iconTheme": "file-icons",
   "editor.minimap.enabled": false,
   "editor.formatOnSave": true,
@@ -132,7 +132,8 @@
     "**/.metals": true,
     "**/.ammonite": true
   },
-  "metals.javaHome": "/usr/local/opt/openjdk@11",
   "ruby.useLanguageServer": true,
-  "git.confirmSync": false
+  "git.confirmSync": false,
+  "editor.bracketPairColorization.enabled": true,
+  "metals.javaHome": "/usr/local/opt/openjdk@11"
 }
