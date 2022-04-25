@@ -6,7 +6,7 @@ alias dc='docker-compose'
 alias d='docker'
 
 # neovim
-alias vim='lvim'
+alias vim='nvim'
 
 # git
 # https://stackoverflow.com/questions/4545275/vim-close-all-buffers-but-this-one#comment84748132_42071865
