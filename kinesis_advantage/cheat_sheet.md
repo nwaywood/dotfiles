@@ -27,6 +27,8 @@ Lights will flash 4 times to indicate activated and 2 times to indicate deactiva
 
 NOTE: For remapping of the thumb clusters, the default windows layout is used.
 
+`Progm + F12` to enter remap mode
+
 `Source action > Destination key`
 
 Press the `Progm` key to exit remap mode.
