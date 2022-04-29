@@ -4,6 +4,9 @@ settings-local.zsh
 .netrwhist
 zsh/work.zsh
 
+# ignore this because nvim config is lua now but vscode is still vimscript
+config/nvim/autoload/plug.vim
+
 config/nvim/plugged
 config/nvim/projects.txt
 config/karabiner/automatic_backups
