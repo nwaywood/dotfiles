@@ -39,4 +39,5 @@ vim.opt.numberwidth = 2                         -- set number column width to 2 
 vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
 vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
 
-vim.opt.shortmess:append "c"
+vim.opt_global.shortmess:append("c")
+vim.opt_global.shortmess:remove("F")            -- Required by nvim-metals

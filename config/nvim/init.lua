@@ -7,3 +7,4 @@ require "user.colorscheme" -- colorscheme
 require "user.plugins.cmp"
 require "user.plugins.treesitter"
 require "user.lsp"
+require "user.plugins.metals"
