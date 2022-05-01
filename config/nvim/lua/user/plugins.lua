@@ -43,12 +43,22 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
   
+  -- The bare necessities
   use "navarasu/onedark.nvim"
   use "christoomey/vim-tmux-navigator"
   use {
     "nvim-treesitter/nvim-treesitter",
      run = ':TSUpdate'
   }
+
+  -- Vim language enhancements
+  use 'tpope/vim-unimpaired' -- mappings which are simply short normal mode aliases for commonly used ex commands
+  use 'tpope/vim-surround' -- mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
+  use 'tpope/vim-commentary' -- Adds the operators 'gc' and '[count]gcc' to comment code
+  use 'tpope/vim-repeat' -- adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
+  use 'kana/vim-textobj-user' -- Allows custom text objects
+  use 'kana/vim-textobj-entire' -- Adds the text objects 'ie' and 'ae'
+  use 'kana/vim-textobj-line' -- Adds the text objects 'il' and 'al'
   
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
