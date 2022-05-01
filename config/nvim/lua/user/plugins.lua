@@ -61,6 +61,7 @@ return packer.startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use "akinsho/toggleterm.nvim"
+  use 'lewis6991/gitsigns.nvim'
 
   -- Vim language enhancements
   use 'tpope/vim-unimpaired' -- mappings which are simply short normal mode aliases for commonly used ex commands
