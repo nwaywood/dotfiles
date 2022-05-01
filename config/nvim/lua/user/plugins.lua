@@ -50,10 +50,20 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
      run = ':TSUpdate'
   }
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
   -- Vim language enhancements
   use 'tpope/vim-unimpaired' -- mappings which are simply short normal mode aliases for commonly used ex commands
-  use 'tpope/vim-surround' -- mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
+  use {
+    'tpope/vim-surround', -- mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
+    config = function()
+      -- these bindings cause <C-g> to hang
+			vim.g.surround_no_insert_mappings = true
+		end,
+  }
   use 'tpope/vim-commentary' -- Adds the operators 'gc' and '[count]gcc' to comment code
   use 'tpope/vim-repeat' -- adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
   use 'kana/vim-textobj-user' -- Allows custom text objects
