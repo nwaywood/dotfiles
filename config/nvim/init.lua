@@ -6,3 +6,4 @@ require "user.colorscheme" -- colorscheme
 -- plugin config
 require "user.plugins.cmp"
 require "user.plugins.treesitter"
+require "user.lsp"

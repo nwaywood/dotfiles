@@ -49,12 +49,15 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
      run = ':TSUpdate'
   }
+  use "neovim/nvim-lspconfig" -- enable LSP
+  use "williamboman/nvim-lsp-installer" -- wrapper around nvim-lspconfig for easy installation
   
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
   use "L3MON4D3/LuaSnip" --snippet engine
