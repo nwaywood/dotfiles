@@ -57,12 +57,16 @@ return packer.startup(function(use)
     }
   }
   use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+  use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use "akinsho/toggleterm.nvim"
   use 'lewis6991/gitsigns.nvim'
-
+  
   -- Vim language enhancements
   use 'tpope/vim-unimpaired' -- mappings which are simply short normal mode aliases for commonly used ex commands
   use {
