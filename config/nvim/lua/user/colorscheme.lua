@@ -5,7 +5,7 @@ if not status_ok then
 end
 
 onedark.setup {
-    toggle_style_key = "<NOP>"
+    toggle_style_key = "<NOP>" -- disable keybinding for cycling through themes
 }
 
 onedark.load()

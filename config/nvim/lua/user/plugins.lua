@@ -76,6 +76,10 @@ return packer.startup(function(use)
       }
     end
   }
+  use {
+    'ruifm/gitlinker.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+  }
   
   -- Vim language enhancements
   use 'tpope/vim-unimpaired' -- mappings which are simply short normal mode aliases for commonly used ex commands
