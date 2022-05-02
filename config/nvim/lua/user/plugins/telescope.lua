@@ -3,17 +3,16 @@ if not status_ok then
   return
 end
 
-
 local actions = require "telescope.actions"
+local wk = require("which-key")
 
 -- keymaps
 ----------
-local keymap = vim.api.nvim_set_keymap -- local alias for set_keymap function
-local opts = { noremap = true, silent = true }
-
-keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
-keymap("n", "<leader>s", "<cmd>lua require'telescope.builtin'.lsp_document_symbols(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
-keymap("n", "<leader>a", "<cmd>Telescope live_grep<cr>", opts)
+wk.register({
+  f = { "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", "Find File" },
+  a = { "<cmd>Telescope live_grep<cr>", "Grep Project" },
+  s = { "<cmd>lua require'telescope.builtin'.lsp_document_symbols(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", "File Symbols"},
+}, { prefix = "<leader>"})
 
 -- settings
 -----------

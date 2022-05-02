@@ -1,3 +1,5 @@
+local wk = require("which-key")
+
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
@@ -17,15 +19,20 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
-keymap("n", "<leader>w", ":w<CR>", opts)
-keymap("n", "<leader>x", ":x<CR>", opts)
-keymap("n", "<leader>q", ":q<CR>", opts)
+
+-- leader mappings
+wk.register({
+  w = { ":w<cr>", "Save" },
+  x = { ":x<cr>", "Save and Quit" },
+  q = { ":x<cr>", "Quit" },
+  ["/"] = { ":set hlsearch! hlsearch?<cr>", "Toggle Highlight" },
+}, { prefix = "<leader>"})
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<Up>", ":resize +2<CR>", opts)
+keymap("n", "<Down>", ":resize -2<CR>", opts)
+keymap("n", "<Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<Right>", ":vertical resize +2<CR>", opts)
 
 -- faster window splitting
 keymap("n", "<C-s>", ":split<CR>", opts)
@@ -45,7 +52,6 @@ keymap("n", "k", "gk", opts)
 keymap("n", "^", "g^", opts)
 keymap("n", "$", "g$", opts)
 
-keymap("n", "<leader>/", ":set hlsearch! hlsearch?<CR>", opts)
 keymap("n", "\\", "\"_", opts) -- blackhole register shortcut
 -- TODO: number toggle <leader>. binding
 

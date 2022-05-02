@@ -66,6 +66,16 @@ return packer.startup(function(use)
   }
   use "akinsho/toggleterm.nvim"
   use 'lewis6991/gitsigns.nvim'
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
   
   -- Vim language enhancements
   use 'tpope/vim-unimpaired' -- mappings which are simply short normal mode aliases for commonly used ex commands

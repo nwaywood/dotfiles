@@ -3,6 +3,8 @@ if not status_ok then
 	return
 end
 
+local wk = require("which-key")
+
 toggleterm.setup({
 	size = 20,
 	open_mapping = [[<c-t>]],
@@ -25,8 +27,9 @@ function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
 
--- keymap
-local keymap = vim.api.nvim_set_keymap -- local alias for set_keymap function
-local opts = { noremap = true, silent = true }
-
-keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", opts)
+wk.register({
+  g = {
+	  name = "git",
+	  g = { "<cmd>lua _LAZYGIT_TOGGLE()<cr>", "Lazygit" },
+  },
+}, { prefix = "<leader>"})

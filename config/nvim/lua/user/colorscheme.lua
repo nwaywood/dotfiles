@@ -4,4 +4,8 @@ if not status_ok then
   return
 end
 
+onedark.setup {
+    toggle_style_key = "<NOP>"
+}
+
 onedark.load()

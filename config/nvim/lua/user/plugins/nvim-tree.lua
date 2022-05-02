@@ -1,8 +1,11 @@
-local keymap = vim.api.nvim_set_keymap -- local alias for set_keymap function
-local opts = { noremap = true, silent = true }
+local wk = require("which-key")
 
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
-keymap("n", "<leader>n", ":NvimTreeFindFile<cr>", opts)
+-- keymaps
+----------
+wk.register({
+  e = { ":NvimTreeToggle<cr>", "Toggle Explorer" },
+  n = { ":NvimTreeFindFile<cr>", "Show in Explorer" },
+}, { prefix = "<leader>"})
 
 nvim_tree_config = require "nvim-tree.config"
 local tree_cb = nvim_tree_config.nvim_tree_callback
