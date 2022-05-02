@@ -1,5 +1,3 @@
-
--- vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 local lightbulb_group = vim.api.nvim_create_augroup("lightbulb", { clear = true })
 vim.api.nvim_create_autocmd("CursorHold,CursorHoldI", {
   pattern = "*",
