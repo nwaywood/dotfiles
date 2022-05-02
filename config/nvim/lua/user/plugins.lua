@@ -43,12 +43,17 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
   
-  -- The bare necessities
   use "navarasu/onedark.nvim"
-  use "christoomey/vim-tmux-navigator"
+
+  -- UI plugins
+  -------------
   use {
-    "nvim-treesitter/nvim-treesitter",
-     run = ':TSUpdate'
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {
+        -- your configuration comes here
+      }
+    end
   }
   use {
     'kyazdani42/nvim-tree.lua',
@@ -60,29 +65,18 @@ return packer.startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use "akinsho/toggleterm.nvim"
+  
+  -- Git
+  ------
   use 'lewis6991/gitsigns.nvim'
-  use {
-    "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  }
   use {
     'ruifm/gitlinker.nvim',
     requires = 'nvim-lua/plenary.nvim',
   }
-  use "kosayoda/nvim-lightbulb" -- lightbulb for code actions
-  
+  use 'f-person/git-blame.nvim'
+
   -- Vim language enhancements
+  ----------------------------
   use 'tpope/vim-unimpaired' -- mappings which are simply short normal mode aliases for commonly used ex commands
   use {
     'tpope/vim-surround', -- mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
@@ -98,21 +92,35 @@ return packer.startup(function(use)
   use 'kana/vim-textobj-line' -- Adds the text objects 'il' and 'al'
   
   -- LSP
+  ------
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- wrapper around nvim-lspconfig for easy installation
+  use "kosayoda/nvim-lightbulb" -- lightbulb for code actions
   use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
   
   -- cmp plugins
+  --------------
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
-
-  -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of out-of-the-box snippets
+
+  -- Misc
+  -------
+  use "christoomey/vim-tmux-navigator"
+  use {
+    "nvim-treesitter/nvim-treesitter",
+     run = ':TSUpdate'
+  }
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  use "akinsho/toggleterm.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
