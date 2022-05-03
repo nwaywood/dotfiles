@@ -27,6 +27,12 @@ require'nvim-tree'.setup {
     git = {
         ignore = false, -- display gitignored files
     },
+    -- settings for project.nvim
+    update_cwd = true,
+    update_focused_file = {
+      enable = true,
+      update_cwd = true
+    },
 }
 
 vim.g.nvim_tree_group_empty = 1 -- group empty dirs on one line like vscode

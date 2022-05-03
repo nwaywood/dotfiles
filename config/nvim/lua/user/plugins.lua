@@ -120,9 +120,13 @@ return packer.startup(function(use)
   }
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { 'nvim-lua/plenary.nvim' }
   }
   use "akinsho/toggleterm.nvim"
+  use {
+    "ahmedkhalf/project.nvim",
+    requires = { 'nvim-telescope/telescope.nvim' },
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
