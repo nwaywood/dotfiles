@@ -50,31 +50,21 @@ return packer.startup(function(use)
   use {
     "folke/which-key.nvim",
     config = function()
-      require("which-key").setup {
-        -- your configuration comes here
-      }
+      require("which-key").setup {}
     end
   }
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
-    }
-  }
+  use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons' }
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons' }
-
+  use { 'goolord/alpha-nvim', requires = 'kyazdani42/nvim-web-devicons' }
   
   -- Git
   ------
   use 'lewis6991/gitsigns.nvim'
-  use {
-    'ruifm/gitlinker.nvim',
-    requires = 'nvim-lua/plenary.nvim',
-  }
+  use { 'ruifm/gitlinker.nvim', requires = 'nvim-lua/plenary.nvim' }
   use 'f-person/git-blame.nvim'
 
   -- Vim language enhancements
