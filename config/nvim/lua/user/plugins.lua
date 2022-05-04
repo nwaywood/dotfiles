@@ -103,7 +103,7 @@ return packer.startup(function(use)
 
   -- Misc
   -------
-  use "christoomey/vim-tmux-navigator"
+  use 'numToStr/Navigator.nvim'
   use {
     "nvim-treesitter/nvim-treesitter",
      run = ':TSUpdate'
