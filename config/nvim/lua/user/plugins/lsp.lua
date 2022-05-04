@@ -62,6 +62,7 @@ keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+keymap('n', 'ga', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
@@ -75,6 +76,7 @@ wk.register({
 	  f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format" },
 	  a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Actions" },
 	  d = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "Diagnostics" },
+	  r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename Variable" },
   },
 }, { prefix = "<leader>"})
 
@@ -88,8 +90,6 @@ local on_attach = function(client, bufnr)
 --   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
 --   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
 --   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
---   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
---   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 end
 
 -- Add additional capabilities supported by nvim-cmp
