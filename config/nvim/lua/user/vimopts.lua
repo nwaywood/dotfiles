@@ -41,3 +41,4 @@ vim.opt.guifont = "FiraMono Nerd Font Mono:h17" -- the font used in graphical ne
 
 vim.opt_global.shortmess:append("c")
 vim.opt_global.shortmess:remove("F")            -- Required by nvim-metals
+

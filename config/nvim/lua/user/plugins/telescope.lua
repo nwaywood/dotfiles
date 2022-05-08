@@ -11,8 +11,22 @@ local wk = require("which-key")
 wk.register({
   f = { "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", "Find File" },
   a = { "<cmd>Telescope live_grep<cr>", "Grep Project" },
+  c = { "<cmd>Telescope commands<cr>", "Commands" },
   s = { "<cmd>lua require'telescope.builtin'.lsp_document_symbols(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", "File Symbols"},
+  -- lsp
+  l = { 
+    w = {"<cmd>lua require'telescope.builtin'.lsp_dynamic_workspace_symbols()<cr>", "Workspace Symbols"},
+  },
+  -- help
+  h = { 
+    v = {"<cmd>lua require'telescope.builtin'.help_tags()<cr>", "Vim Docs"},
+    h = {"<cmd>lua require'telescope.builtin'.highlights()<cr>", "Highlights"},
+    k = {"<cmd>lua require'telescope.builtin'.keymaps()<cr>", "Keymaps"},
+  }
 }, { prefix = "<leader>"})
+
+-- To make grep_string take an input instead of using the word under the cursor
+-- require ('telescope.builtin.files').grep_string({search = vim.fn.input("Search term: ")})
 
 -- settings
 -----------
