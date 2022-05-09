@@ -13,12 +13,12 @@ local wk = require("which-key")
 wk.register({
   t = { 
     name = "Trouble",
-    d = {"<cmd>Trouble document_diagnostics<cr>", "Diagnostics"},
-    w = {"<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics"},
-    q = {"<cmd>Trouble quickfix<cr>", "Quickfix List"},
-    l = {"<cmd>Trouble loclist<cr>", "Location List"},
-    r = {"<cmd>Trouble lsp_references<cr>", "LSP References"},
-    t = {"<cmd>Trouble lsp_type_definitions<cr>", "LSP Type Defs"},
+    d = {"<cmd>TroubleToggle document_diagnostics<cr>", "Diagnostics"},
+    w = {"<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics"},
+    q = {"<cmd>TroubleToggle quickfix<cr>", "Quickfix List"},
+    l = {"<cmd>TroubleToggle loclist<cr>", "Location List"},
+    r = {"<cmd>TroubleToggle lsp_references<cr>", "LSP References"},
+    t = {"<cmd>TroubleToggle lsp_type_definitions<cr>", "LSP Type Defs"},
     -- f = {"<cmd>Trouble lsp__definitions<cr>", "LSP Defs"},
   }
 }, { prefix = "<leader>"})
