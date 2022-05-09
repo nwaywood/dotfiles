@@ -19,6 +19,7 @@ wk.register({
   },
   -- help
   h = { 
+    name = "Help",
     v = {"<cmd>lua require'telescope.builtin'.help_tags()<cr>", "Vim Docs"},
     h = {"<cmd>lua require'telescope.builtin'.highlights()<cr>", "Highlights"},
     k = {"<cmd>lua require'telescope.builtin'.keymaps()<cr>", "Keymaps"},

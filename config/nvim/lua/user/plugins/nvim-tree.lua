@@ -7,7 +7,7 @@ wk.register({
   n = { ":NvimTreeFindFile<cr>", "Show in Explorer" },
 }, { prefix = "<leader>"})
 
-nvim_tree_config = require "nvim-tree.config"
+local nvim_tree_config = require "nvim-tree.config"
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 require'nvim-tree'.setup {
