@@ -22,6 +22,7 @@ require'nvim-tree'.setup {
             { key = "v", cb = tree_cb "vsplit" },
             { key = "s", cb = tree_cb "split" },
             { key = { "<tab>", "go" }, cb = tree_cb "preview" }, -- tab is default, want to add `go`
+            { key = { "g?", "?" }, cb = tree_cb "toggle_help" }, -- g? is default, want to add `?`
           },
         },
     },
