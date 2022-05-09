@@ -114,6 +114,7 @@ return packer.startup(function(use)
   -- Misc
   -------
   use 'numToStr/Navigator.nvim'
+  use 'szw/vim-maximizer'
   use {
     "nvim-treesitter/nvim-treesitter",
      run = ':TSUpdate'
