@@ -18,7 +18,18 @@ wk.register({
     q = {"<cmd>TroubleToggle quickfix<cr>", "Quickfix List"},
     l = {"<cmd>TroubleToggle loclist<cr>", "Location List"},
     r = {"<cmd>TroubleToggle lsp_references<cr>", "LSP References"},
-    t = {"<cmd>TroubleToggle lsp_type_definitions<cr>", "LSP Type Defs"},
+    a = {"<cmd>TroubleToggle lsp_type_definitions<cr>", "LSP Type Defs"},
+    t = {"<cmd>TroubleToggle<cr>", "Toggle"},
     -- f = {"<cmd>Trouble lsp__definitions<cr>", "LSP Defs"},
   }
 }, { prefix = "<leader>"})
+-- jump to the next item, skipping the groups
+require("trouble").next({skip_groups = true, jump = true});
+
+-- jump to the previous item, skipping the groups
+require("trouble").previous({skip_groups = true, jump = true});
+
+wk.register({
+  ["]t"] = {"<cmd>lua require('trouble').next({skip_groups = true, jump = true})<cr>", "Trouble Next"},
+  ["[t"] = {"<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<cr>", "Trouble Prev"},
+})

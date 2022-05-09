@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 local actions = require "telescope.actions"
+local trouble = require("trouble.providers.telescope")
 local wk = require("which-key")
 
 -- keymaps
@@ -63,6 +64,8 @@ telescope.setup {
 
         ["<C-b>"] = actions.results_scrolling_up,
         ["<C-f>"] = actions.results_scrolling_down,
+        
+        ["<c-t>"] = trouble.open_with_trouble,
       },
 
       n = {
@@ -76,6 +79,8 @@ telescope.setup {
         ["<C-f>"] = actions.results_scrolling_down,
 
         ["?"] = actions.which_key,
+        
+        ["<c-t>"] = trouble.open_with_trouble,
       },
     },
   },
