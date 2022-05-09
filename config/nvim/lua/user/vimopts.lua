@@ -37,7 +37,7 @@ vim.opt.foldenable = false                      -- don't fold by default
 vim.opt.relativenumber = true                   -- set relative numbered lines
 vim.opt.numberwidth = 2                         -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
-vim.opt.guifont = "FiraMono Nerd Font Mono:h17" -- the font used in graphical neovim applications
+vim.opt.guifont = "FiraMono Nerd Font Mono:h15" -- the font used in graphical neovim applications
 
 vim.opt_global.shortmess:append("c")
 vim.opt_global.shortmess:remove("F")            -- Required by nvim-metals
