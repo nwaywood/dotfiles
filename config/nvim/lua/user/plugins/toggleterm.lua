@@ -19,21 +19,16 @@ toggleterm.setup({
 		},
 	},
 })
--- function _G.set_terminal_keymaps()
---   local opts = {noremap = true}
---   vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
---   NOTE: this makes lazygit hang when pressing j
---   vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
---   vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
---   vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
---   vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
---   vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
--- end
-
--- vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+local lazygit = Terminal:new({ 
+	cmd = "lazygit", 
+	hidden = true,
+	on_close = function(term)
+		-- reload nvim-tree git status (colors etc) when lazygit window closes
+        require'nvim-tree.actions.reloaders'.reload_git()
+    end,
+})
 
 function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
