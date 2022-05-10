@@ -41,6 +41,10 @@ telescope.setup {
         horizontal = {
             -- put the prompt at the top instead of the bottom
             prompt_position = "top"
+        },
+        center =  {
+          -- anchor the dropdown layout to the top of the screen instead of the center
+          anchor = "N"
         }
     },
     prompt_prefix = "❯ ",
@@ -86,11 +90,6 @@ telescope.setup {
   },
   pickers = {
     -- Default configuration for builtin pickers goes here:
-    -- live_grep = {
-    --   prompt_position = "top",
-    -- }
-    -- Now the picker_config_key will be applied every time you call this
-    -- builtin picker
   },
   extensions = {
     fzf = {
