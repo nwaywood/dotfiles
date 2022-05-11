@@ -105,3 +105,9 @@ telescope.setup {
 
 telescope.load_extension("fzf")
 telescope.load_extension('live_grep_raw')
+
+-- https://github.com/nvim-telescope/telescope.nvim/blob/master/plugin/telescope.lua
+vim.api.nvim_set_hl(0, "TelescopeTitle", { link = "Keyword" }) -- keyword = Purple
+vim.api.nvim_set_hl(0, "TelescopePromptBorder", { link = "Keyword" })
+vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { link = "Keyword" })
+vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { link = "Keyword" })
