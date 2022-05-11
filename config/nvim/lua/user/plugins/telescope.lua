@@ -11,7 +11,8 @@ local wk = require("which-key")
 ----------
 wk.register({
   f = { "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", "Find File" },
-  a = { "<cmd>Telescope live_grep<cr>", "Grep Project" },
+  -- a = { "<cmd>Telescope live_grep<cr>", "Grep Project" },
+  a = { "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", "Grep Project" },
   c = { "<cmd>Telescope commands<cr>", "Commands" },
   s = { "<cmd>lua require'telescope.builtin'.lsp_document_symbols(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", "File Symbols"},
   -- lsp
@@ -103,3 +104,4 @@ telescope.setup {
 }
 
 telescope.load_extension("fzf")
+telescope.load_extension('live_grep_raw')
