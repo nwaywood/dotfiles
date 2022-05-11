@@ -30,6 +30,6 @@ require("trouble").next({skip_groups = true, jump = true});
 require("trouble").previous({skip_groups = true, jump = true});
 
 wk.register({
-  ["]t"] = {"<cmd>lua require('trouble').next({skip_groups = true, jump = true})<cr>", "Trouble Next"},
-  ["[t"] = {"<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<cr>", "Trouble Prev"},
+  ["]]"] = {"<cmd>lua require('trouble').next({skip_groups = true, jump = true})<cr>", "Trouble Next"},
+  ["[["] = {"<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<cr>", "Trouble Prev"},
 })
