@@ -93,6 +93,12 @@ return packer.startup(function(use)
   use 'kana/vim-textobj-user' -- Allows custom text objects
   use 'kana/vim-textobj-entire' -- Adds the text objects 'ie' and 'ae'
   use 'kana/vim-textobj-line' -- Adds the text objects 'il' and 'al'
+  use {
+    "unblevable/quick-scope",
+    config = function()
+      vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T'}
+    end
+  }
   
   -- LSP
   ------
