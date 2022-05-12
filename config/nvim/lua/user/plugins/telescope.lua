@@ -12,6 +12,8 @@ local wk = require("which-key")
 wk.register({
   f = { "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", "Find File" },
   -- a = { "<cmd>Telescope live_grep<cr>", "Grep Project" },
+  -- z = { "<cmd>lua require'telescope.builtin'.live_grep({ glob_pattern = 'config/nvim/lua/**/*'})<cr>", "Grep Project" },
+  -- z = { "<cmd>lua require'telescope.builtin'.live_grep({ search_dirs = {'/Users/nick.waywood/.dotfiles/config/nvim/lua'}})<cr>", "Grep Project" },
   a = { "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", "Grep Project" },
   c = { "<cmd>Telescope commands<cr>", "Commands" },
   s = { "<cmd>lua require'telescope.builtin'.lsp_document_symbols(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", "File Symbols"},

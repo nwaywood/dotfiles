@@ -23,6 +23,10 @@ require'nvim-tree'.setup {
             { key = "s", cb = tree_cb "split" },
             { key = { "<tab>", "go" }, cb = tree_cb "preview" }, -- tab is default, want to add `go`
             { key = { "g?", "?" }, cb = tree_cb "toggle_help" }, -- g? is default, want to add `?`
+            { key = "gs", action = "search_dir_in_telescope", action_cb = function(node)
+                require'telescope.builtin'.live_grep({ search_dirs = { node.absolute_path}})
+              end
+            },
           },
         },
     },
