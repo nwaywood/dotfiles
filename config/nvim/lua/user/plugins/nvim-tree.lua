@@ -30,6 +30,9 @@ local strip_filename_from_dir = function(path)
   return "/" .. table.concat(res, "/")
 end
 
+vim.g.nvim_tree_group_empty = 1 -- group empty dirs on one line like vscode
+vim.g.nvim_tree_git_hl = 1 -- color folder/file name to match its git status
+
 require'nvim-tree'.setup {
     disable_netrw = true, -- nvim-tree to override netrw
     view = {
@@ -62,7 +65,12 @@ require'nvim-tree'.setup {
     },
 }
 
-vim.g.nvim_tree_group_empty = 1 -- group empty dirs on one line like vscode
-vim.g.nvim_tree_git_hl = 1 -- color folder/file name to match its git status
--- close vim if nvim-tree is last buffer open
-vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
+-- autocmd to close vim if nvim-tree is last buffer open
+vim.api.nvim_create_autocmd("BufEnter", {
+  nested = true,
+  callback = function()
+    if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
+      vim.cmd "quit"
+    end
+  end
+})

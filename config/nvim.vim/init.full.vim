@@ -277,6 +277,7 @@ function! SearchTwo(search1, search2)
 endfunc
 command! -nargs=+ SearchTwo set hlsearch | call SearchTwo(<f-args>)
 
+" alt https://stackoverflow.com/questions/6876850/how-to-highlight-all-occurrences-of-a-word-in-vim-on-double-clicking
 " https://stackoverflow.com/questions/3431184/highlight-all-occurrence-of-a-selected-word
 fun! CountWordFunction()
     try
