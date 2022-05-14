@@ -88,7 +88,7 @@ return packer.startup(function(use)
 			vim.g.surround_no_insert_mappings = true
 		end,
   }
-  use 'tpope/vim-commentary' -- Adds the operators 'gc' and '[count]gcc' to comment code
+  use 'numToStr/Comment.nvim'
   use 'tpope/vim-repeat' -- adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
   use 'kana/vim-textobj-user' -- Allows custom text objects
   use 'kana/vim-textobj-entire' -- Adds the text objects 'ie' and 'ae'

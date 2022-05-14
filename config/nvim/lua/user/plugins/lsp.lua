@@ -60,7 +60,7 @@ local keymap = vim.api.nvim_set_keymap -- local alias for set_keymap function
 keymap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+keymap('n', 'gE', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
 keymap('n', 'ga', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
