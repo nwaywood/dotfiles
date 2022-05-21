@@ -58,6 +58,10 @@ keymap("n", "\\", "\"_", opts) -- blackhole register shortcut
 -- https://stackoverflow.com/questions/6876850/how-to-highlight-all-occurrences-of-a-word-in-vim-on-double-clicking
 keymap("n", "<2-LeftMouse>", ":let @/='\\V\\<'.escape(expand('<cword>'), '\\').'\\>'<cr>:set hls<cr>", opts)
 
+-- open URI under cursor
+-- https://www.reddit.com/r/neovim/comments/ro6oye/open_link_from_neovim/
+keymap("n", "gx", [[:silent execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
+
 -- TODO: number toggle <leader>. binding
 
 -- Insert --
