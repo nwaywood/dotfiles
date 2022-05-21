@@ -49,4 +49,5 @@ wk.register({
   ["7"] = "which_key_ignore",
   ["8"] = "which_key_ignore",
   ["9"] = "which_key_ignore",
+  c = {"<cmd>bdelete!<cr>", "Close Buffer"},
 }, { prefix = "<leader>" })
