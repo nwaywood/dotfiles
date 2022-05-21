@@ -53,6 +53,11 @@ keymap("n", "^", "g^", opts)
 keymap("n", "$", "g$", opts)
 
 keymap("n", "\\", "\"_", opts) -- blackhole register shortcut
+
+-- highlight word by double clicking
+-- https://stackoverflow.com/questions/6876850/how-to-highlight-all-occurrences-of-a-word-in-vim-on-double-clicking
+keymap("n", "<2-LeftMouse>", ":let @/='\\V\\<'.escape(expand('<cword>'), '\\').'\\>'<cr>:set hls<cr>", opts)
+
 -- TODO: number toggle <leader>. binding
 
 -- Insert --
