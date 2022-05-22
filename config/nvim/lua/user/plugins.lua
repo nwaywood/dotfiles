@@ -71,6 +71,11 @@ return packer.startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
   }
   use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
+  use { 
+    -- 'matbme/JABS.nvim',
+    "ChristianChiarulli/JABS.nvim",
+  }
+
 
   -- Git
   ------
