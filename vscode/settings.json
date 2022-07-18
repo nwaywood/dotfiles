@@ -136,5 +136,6 @@
   "metals.javaHome": "/usr/local/opt/openjdk@11",
   // don't show indent guides in the editor
   "editor.guides.indentation": false,
-  "window.newWindowDimensions": "maximized"
+  "window.newWindowDimensions": "maximized",
+  "editor.padding.top": 4
 }
