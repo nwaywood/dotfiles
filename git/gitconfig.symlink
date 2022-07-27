@@ -13,7 +13,7 @@
 	aa = add -A
 [core]
 	excludesfile = ~/.gitignore_global
-  pager = delta
+  pager = delta --diff-so-fancy
 # delta settings start
 [interactive]
     diffFilter = delta --color-only

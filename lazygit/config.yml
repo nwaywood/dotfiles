@@ -1,0 +1,13 @@
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --diff-so-fancy --paging=never
+# pager: delta --paging=never --24-bit-color=never
+# git:
+#   paging:
+#     colorArg: always
+#     pager: diff-so-fancy
+# git:
+#   paging:
+#     colorArg: always
+#     useConfig: true
