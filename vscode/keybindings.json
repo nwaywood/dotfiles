@@ -238,6 +238,29 @@
   //   "when": "editorTextFocus && neovim.mode != insert",
   //   "args": "<C-y>"
   // },
+  // https://github.com/vscode-neovim/vscode-neovim/issues/361
+  {
+    "key": "ctrl+y",
+    "command": "editorScroll",
+    "when": "textInputFocus",
+    "args": {
+      "to": "up",
+      "value": 3,
+      "by": "line",
+      "revealCursor": true
+    }
+  },
+  {
+    "key": "ctrl+e",
+    "command": "editorScroll",
+    "when": "textInputFocus",
+    "args": {
+      "to": "down",
+      "value": 3,
+      "by": "line",
+      "revealCursor": true
+    }
+  },
   // vim window commands
   {
     "key": "ctrl+w m",
