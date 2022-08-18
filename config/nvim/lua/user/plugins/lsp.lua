@@ -70,7 +70,6 @@ keymap('n', 'gH', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 
 local wk = require("which-key")
 wk.register({
-	d = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "Diagnostics" },
   l = {
 	  name = "LSP",
 	  f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format" },

@@ -30,9 +30,6 @@ local strip_filename_from_dir = function(path)
   return "/" .. table.concat(res, "/")
 end
 
-vim.g.nvim_tree_group_empty = 1 -- group empty dirs on one line like vscode
-vim.g.nvim_tree_git_hl = 1 -- color folder/file name to match its git status
-
 require'nvim-tree'.setup {
     disable_netrw = true, -- nvim-tree to override netrw
     view = {
@@ -56,6 +53,10 @@ require'nvim-tree'.setup {
     },
     git = {
         ignore = false, -- display gitignored files
+    },
+    renderer = {
+      group_empty = true, -- group empty dirs on one line like vscode
+      highlight_git = true, -- color folder/file name to match its git status
     },
     -- settings for project.nvim
     update_cwd = true,

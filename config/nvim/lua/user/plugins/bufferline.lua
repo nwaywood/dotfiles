@@ -14,7 +14,7 @@ bufferline.setup {
   },
   highlights = {
         fill = {
-            guibg = { attribute = "bg", highlight = "FloatBorder" }, -- the "empty" part of the bufferline
+            bg = { attribute = "bg", highlight = "FloatBorder" }, -- the "empty" part of the bufferline
         },
   }
 }

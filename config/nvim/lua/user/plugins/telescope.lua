@@ -14,7 +14,7 @@ wk.register({
   -- a = { "<cmd>Telescope live_grep<cr>", "Grep Project" },
   -- z = { "<cmd>lua require'telescope.builtin'.live_grep({ glob_pattern = 'config/nvim/lua/**/*'})<cr>", "Grep Project" },
   -- z = { "<cmd>lua require'telescope.builtin'.live_grep({ search_dirs = {'/Users/nick.waywood/.dotfiles/config/nvim/lua'}})<cr>", "Grep Project" },
-  a = { "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", "Grep Project" },
+  a = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", "Grep Project" },
   c = { "<cmd>Telescope commands<cr>", "Commands" },
   s = { "<cmd>lua require'telescope.builtin'.lsp_document_symbols(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", "File Symbols"},
   -- lsp
@@ -102,14 +102,14 @@ telescope.setup {
       case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
                                        -- the default case_mode is "smart_case"
     },
-    live_grep_raw = {
+    live_grep_args = {
       auto_quoting = false, -- enable/disable auto-quoting
     }
   },
 }
 
 telescope.load_extension("fzf")
-telescope.load_extension('live_grep_raw')
+telescope.load_extension('live_grep_args')
 
 -- https://github.com/nvim-telescope/telescope.nvim/blob/master/plugin/telescope.lua
 vim.api.nvim_set_hl(0, "TelescopeTitle", { link = "Keyword" }) -- keyword = Purple

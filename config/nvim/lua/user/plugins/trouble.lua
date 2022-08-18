@@ -11,6 +11,7 @@ local wk = require("which-key")
 -- keymaps
 ----------
 wk.register({
+  d = {"<cmd>TroubleToggle document_diagnostics<cr>", "Diagnostics"},
   t = { 
     name = "Trouble",
     d = {"<cmd>TroubleToggle document_diagnostics<cr>", "Diagnostics"},
