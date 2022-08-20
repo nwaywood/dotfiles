@@ -25,3 +25,8 @@ require "user.plugins.trouble"
 require "user.plugins.vim-maximizer"
 require "user.plugins.comment"
 require "user.plugins.jabs"
+
+-- neovide gui
+if (vim.g.neovide) then
+    require "user.neovide"
+end
