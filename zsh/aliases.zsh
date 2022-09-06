@@ -31,6 +31,8 @@ alias ls="exa"
 alias la="exa -a"
 alias ll="exa -la"
 alias cat="bat -pp --theme=TwoDark"
+alias k="kubectl"
+alias ka="kubectl --as admin --as-group system:masters"
 # alias vimg='open -a emacs'
 
 mkcd () {
