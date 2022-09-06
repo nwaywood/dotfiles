@@ -33,6 +33,8 @@ brew install python3
 brew install node # for coc.nvim
 brew install go # for hexokinase
 
+# macos apps
+brew install --cask raycast
 # gif creation app
 # used by t9md - https://www.cockos.com/licecap/
 # https://giphy.com/apps/giphycapture
