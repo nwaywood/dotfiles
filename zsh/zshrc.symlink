@@ -95,6 +95,8 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 # Note: To get zsh-vi-mode to work, need to do both things mentioned in this gh comment
 # https://github.com/jeffreytse/zsh-vi-mode/issues/124#issuecomment-1239033673
+# Note: This breaks the pure < and > icons working when switching between insert and normal
+# mode. But zsh-vi-mode makes the cursor switch from line to block so it's not a deal breaker
 function zle-line-init zle-keymap-select {
     RPS1="${${KEYMAP/vicmd/}/(main|viins)/}"
     RPS2=$RPS1
