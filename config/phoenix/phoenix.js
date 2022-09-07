@@ -1,3 +1,4 @@
+// https://github.com/kasper/phoenix
 Phoenix.set({
   daemon: true,
   openAtLogin: true
