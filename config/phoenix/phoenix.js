@@ -30,3 +30,7 @@ Key.on('e', MOD2, function(){
 Key.on('z', MOD2, function(){
   App.launch('zoom.us').focus();
 });
+
+Key.on('b', MOD2, function(){
+  App.launch('Bear').focus();
+});
