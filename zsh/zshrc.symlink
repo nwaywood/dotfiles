@@ -88,11 +88,14 @@ z() {
 	cd "$(_z -l 2>&1 | fzf-tmux --height 40% --reverse +s --tac --query "$*" | sed 's/^[0-9,.]* *//')"
 }
 
-# setup history-substring-search and syntax-highlighting
+# setup history-substring-search and syntax-highlighting and vi-mode
 # the paths sourced here will be correct if installed via brew
 zle -N history-substring-search-up
 zle -N history-substring-search-down
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+# source ~/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
