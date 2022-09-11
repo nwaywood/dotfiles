@@ -12,9 +12,13 @@ zstyle :prompt:pure:prompt:success color green
 zstyle :prompt:pure:git:branch color magenta
 zstyle :prompt:pure:git:dirty color magenta
 zstyle :prompt:pure:git:arrow color red
+zstyle :prompt:pure:git:stash color red
 PURE_GIT_DOWN_ARROW='↓'
 PURE_GIT_UP_ARROW=''
-PURE_CMD_MAX_EXEC_TIME=10000
+zstyle :prompt:pure:git:stash show yes # enable showing the git stash symbol
+# only fetch upstream of current local branch for faster git status arrows
+zstyle :prompt:pure:git:fetch only_upstream yes 
+PURE_CMD_MAX_EXEC_TIME=10 # seconds
 prompt pure
 
 # customize vi mode
