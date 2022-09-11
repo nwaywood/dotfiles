@@ -4,7 +4,6 @@
 #     eval "$(starship init zsh)"
 # fi
 
-
 # pure prompt
 fpath+=$HOME/.dotfiles/pure
 autoload -U promptinit; promptinit
@@ -20,13 +19,15 @@ prompt pure
 
 # customize vi mode
 # ==============
-# enable vi mode (when using oh-my-zsh, vi-mode plugin enabling it)
+# enable vi mode
 bindkey -v
+# fix bug where backspace stops working after normal mode
+# https://github.com/spaceship-prompt/spaceship-prompt/issues/91#issuecomment-327996599
+bindkey "^?" backward-delete-char
 
 # map jk to enter normal mode in zsh
 # https://dougblack.io/words/zsh-vi-mode.html
-# bindkey -M viins 'jk' vi-cmd-mode
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jk # make jk work with zsh-vi-mode
+bindkey -M viins 'jk' vi-cmd-mode
 
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
@@ -34,7 +35,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 # User configuration
 export DOTFILES=$HOME/.dotfiles
 # load .zsh files
-for config ($DOTFILES/zsh/**/*.zsh) source $config
+for config ($DOTFILES/zsh/*.zsh) source $config
 # editor
 export EDITOR='nvim'
 
@@ -85,6 +86,23 @@ z() {
 	cd "$(_z -l 2>&1 | fzf-tmux --height 40% --reverse +s --tac --query "$*" | sed 's/^[0-9,.]* *//')"
 }
 
+# ZVM_VI_INSERT_ESCAPE_BINDKEY=jk # make jk work with zsh-vi-mode
+# Note: To get zsh-vi-mode to work, need to do both things mentioned in this gh comment
+# https://github.com/jeffreytse/zsh-vi-mode/issues/124#issuecomment-1239033673
+# Note: This breaks the pure < and > icons working when switching between insert and normal
+# mode. But zsh-vi-mode makes the cursor switch from line to block so it's not a deal breaker
+# function zle-line-init zle-keymap-select {
+#     RPS1="${${KEYMAP/vicmd/}/(main|viins)/}"
+#     RPS2=$RPS1
+#     zle reset-prompt
+# }
+# zle -N zle-line-init
+# zle -N zle-keymap-select
+# # version of jeffreytse/zsh-vi-mode checked out at PR 180
+# source ~/.dotfiles/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+
 # setup history-substring-search and syntax-highlighting and vi-mode
 # the paths sourced here will be correct if installed via brew
 zle -N history-substring-search-up
@@ -93,18 +111,3 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-# Note: To get zsh-vi-mode to work, need to do both things mentioned in this gh comment
-# https://github.com/jeffreytse/zsh-vi-mode/issues/124#issuecomment-1239033673
-# Note: This breaks the pure < and > icons working when switching between insert and normal
-# mode. But zsh-vi-mode makes the cursor switch from line to block so it's not a deal breaker
-function zle-line-init zle-keymap-select {
-    RPS1="${${KEYMAP/vicmd/}/(main|viins)/}"
-    RPS2=$RPS1
-    zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
-# version of jeffreytse/zsh-vi-mode checked out at PR 180
-source ~/.dotfiles/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-# source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
