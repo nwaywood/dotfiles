@@ -62,6 +62,7 @@ lvim.builtin.treesitter.ensure_installed = {
 	"toml",
 	"yaml",
 	"typescript",
+  "tsx",
 } -- :TSInstallInfo to see all options
 lvim.builtin.treesitter.highlight.enabled = true
 
