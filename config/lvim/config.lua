@@ -40,13 +40,18 @@ lvim.builtin.telescope.defaults.mappings = {
 		["<C-k>"] = actions.move_selection_previous,
 		["<C-n>"] = actions.cycle_history_next,
 		["<C-p>"] = actions.cycle_history_prev,
+		["<C-g>"] = actions.close,
+		["<esc>"] = actions.close,
 	},
 	-- for normal mode
 	n = {
 		["<C-j>"] = actions.move_selection_next,
 		["<C-k>"] = actions.move_selection_previous,
+		["<C-g>"] = actions.close,
+		["<esc>"] = actions.close,
 	},
 }
+lvim.builtin.telescope.defaults.prompt_prefix = "❯ "
 
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
@@ -64,11 +69,14 @@ lvim.builtin.telescope.defaults.mappings = {
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.bufferline.options.always_show_bufferline = true
+lvim.builtin.bufferline.options.always_show_bufferline = false
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.nvimtree.setup.renderer.highlight_git = true
+lvim.builtin.nvimtree.setup.renderer.group_empty = true
+lvim.builtin.nvimtree.setup.view.width = 40
 lvim.builtin.breadcrumbs.active = true
 
 -- :TSInstallInfo to see all options
@@ -157,6 +165,17 @@ lvim.plugins = {
 	-- 	"folke/trouble.nvim",
 	-- 	cmd = "TroubleToggle",
 	-- },
+	{
+		"tpope/vim-surround",
+		config = function()
+			vim.g.surround_no_insert_mappings = true
+		end,
+	},
+	{ "tpope/vim-repeat" },
+	{ "tpope/vim-unimpaired" },
+	{ "kana/vim-textobj-user" }, -- Allows custom text objects
+	{ "kana/vim-textobj-entire" }, -- Adds the text objects 'ie' and 'ae'
+	{ "kana/vim-textobj-line" }, -- Adds the text objects 'il' and 'al'
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -172,3 +191,12 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+-- autocmd to close vim if nvim-tree is last buffer open
+vim.api.nvim_create_autocmd("BufEnter", {
+	nested = true,
+	callback = function()
+		if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
+			vim.cmd("quit")
+		end
+	end,
+})
