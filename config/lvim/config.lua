@@ -166,6 +166,12 @@ lvim.plugins = {
 	-- 	cmd = "TroubleToggle",
 	-- },
 	{
+		"scalameta/nvim-metals",
+		config = function()
+			require("user.metals").config()
+		end,
+	},
+	{
 		"tpope/vim-surround",
 		config = function()
 			vim.g.surround_no_insert_mappings = true
@@ -198,5 +204,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
 			vim.cmd("quit")
 		end
+	end,
+})
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = { "*.scala", "*.sbt", "*.sc" },
+	callback = function()
+		require("user.metals").config()
 	end,
 })
