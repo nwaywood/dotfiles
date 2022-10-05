@@ -2,7 +2,9 @@
 vim.opt.timeoutlen = 200
 vim.opt.cmdheight = 1
 vim.opt.scrolloff = 0 -- let cursor go to top and bottom of viewport
-vim.opt_global.shortmess:remove("F") -- metals prereq
+vim.opt_global.shortmess:append("c")
+-- vim.opt_global.shortmess:remove("F") -- metals prereq
+
 -- general lvim settings
 lvim.log.level = "warn"
 lvim.format_on_save = true
@@ -78,7 +80,24 @@ lvim.builtin.nvimtree.setup.renderer.highlight_git = true
 lvim.builtin.nvimtree.setup.renderer.group_empty = true
 lvim.builtin.nvimtree.setup.view.width = 40
 lvim.builtin.breadcrumbs.active = true
+-- change lsp hover mapping
+lvim.lsp.buffer_mappings.normal_mode["K"] = nil
+lvim.lsp.buffer_mappings.normal_mode["gh"] = { vim.lsp.buf.hover, "Show hover" }
 
+local components = require("lvim.core.lualine.components")
+local function metals_status()
+	local status = vim.g["metals_status"]
+	if status == nil then
+		return "hi"
+	else
+		return status
+	end
+end
+lvim.builtin.lualine.sections.lualine_c = {
+	components.diff,
+	components.python_env,
+	metals_status,
+}
 -- :TSInstallInfo to see all options
 lvim.builtin.treesitter.ensure_installed = {
 	"lua",
@@ -167,9 +186,16 @@ lvim.plugins = {
 	-- },
 	{
 		"scalameta/nvim-metals",
-		config = function()
-			require("user.metals").config()
-		end,
+		-- config = function()
+		-- 	require("user.metals").config()
+		-- end,
+		-- config = function()
+		-- 	local metals_config = require("metals").bare_config()
+		-- 	metals_config.on_attach = require("lvim.lsp").common_on_attach
+		-- 	-- for this to work the statusline must to setup to display this info
+		-- 	metals_config.init_options.statusBarProvider = "on"
+		-- 	require("metals").initialize_or_attach(metals_config)
+		-- end,
 	},
 	{
 		"tpope/vim-surround",
@@ -206,9 +232,32 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		end
 	end,
 })
+-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+-- 	pattern = { "*.scala", "*.sbt", "*.sc" },
+-- 	callback = function()
+-- 		require("user.metals").config()
+-- 	end,
+-- })
+-- local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	-- NOTE: You may or may not want java included here. You will need it if you
+-- 	-- want basic Java support but it may also conflict if you are using
+-- 	-- something like nvim-jdtls which also works on a java filetype autocmd.
+-- 	pattern = { "scala", "sbt", "java" },
+-- 	callback = function()
+-- 		-- require("user.metals").config()
+-- 		vim.notify("heluooop")
+-- 	end,
+-- 	group = nvim_metals_group,
+-- })
+
+local metals_config = require("metals").bare_config()
+metals_config.on_attach = require("lvim.lsp").common_on_attach
+metals_config.init_options.statusBarProvider = "on"
+
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "*.scala", "*.sbt", "*.sc" },
 	callback = function()
-		require("user.metals").config()
+		require("metals").initialize_or_attach(metals_config)
 	end,
 })
