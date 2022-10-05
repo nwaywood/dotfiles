@@ -88,7 +88,7 @@ local components = require("lvim.core.lualine.components")
 local function metals_status()
 	local status = vim.g["metals_status"]
 	if status == nil then
-		return "hi"
+		return ""
 	else
 		return status
 	end
@@ -232,32 +232,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		end
 	end,
 })
--- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
--- 	pattern = { "*.scala", "*.sbt", "*.sc" },
--- 	callback = function()
--- 		require("user.metals").config()
--- 	end,
--- })
--- local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
--- vim.api.nvim_create_autocmd("FileType", {
--- 	-- NOTE: You may or may not want java included here. You will need it if you
--- 	-- want basic Java support but it may also conflict if you are using
--- 	-- something like nvim-jdtls which also works on a java filetype autocmd.
--- 	pattern = { "scala", "sbt", "java" },
--- 	callback = function()
--- 		-- require("user.metals").config()
--- 		vim.notify("heluooop")
--- 	end,
--- 	group = nvim_metals_group,
--- })
-
-local metals_config = require("metals").bare_config()
-metals_config.on_attach = require("lvim.lsp").common_on_attach
-metals_config.init_options.statusBarProvider = "on"
-
+local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "*.scala", "*.sbt", "*.sc" },
 	callback = function()
-		require("metals").initialize_or_attach(metals_config)
+		require("user.metals").config()
 	end,
+	group = nvim_metals_group,
 })
