@@ -6,8 +6,7 @@ local function load_plugins()
   require("packer").startup {
     {
       "wbthomason/packer.nvim",
-      "kyazdani42/nvim-tree.lua",
-      "kyazdani42/nvim-web-devicons",
+      "akinsho/toggleterm.nvim",
       -- ADD PLUGINS THAT ARE _NECESSARY_ FOR REPRODUCING THE ISSUE
     },
     config = {
@@ -29,5 +28,30 @@ vim.opt.cursorline = true
 
 -- MODIFY NVIM-TREE SETTINGS THAT ARE _NECESSARY_ FOR REPRODUCING THE ISSUE
 _G.setup = function()
-  require("nvim-tree").setup {}
+  local toggleterm = require("toggleterm")
+
+  toggleterm.setup({
+    size = 20,
+    open_mapping = [[<c-\>]],
+    direction = "float",
+    close_on_exit = true,
+    float_opts = {
+      border = "curved",
+      winblend = 0,
+      highlights = {
+        border = "Normal",
+        background = "Normal",
+      },
+    },
+  })
+
+  local Terminal = require("toggleterm.terminal").Terminal
+  local lazygit = Terminal:new({ 
+    cmd = "lazygit", 
+    hidden = true,
+  })
+
+  function _LAZYGIT_TOGGLE()
+    lazygit:toggle()
+  end
 end
