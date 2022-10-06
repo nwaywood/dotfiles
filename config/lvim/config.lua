@@ -55,6 +55,13 @@ lvim.builtin.telescope.defaults.mappings = {
 }
 lvim.builtin.telescope.defaults.prompt_prefix = "❯ "
 
+lvim.builtin.which_key.mappings["m"] = {
+	name = "Metals",
+	u = { "<Cmd>MetalsUpdate<CR>", "Update Metals" },
+	i = { "<Cmd>MetalsInfo<CR>", "Metals Info" },
+	r = { "<Cmd>MetalsRestartBuild<CR>", "Restart Build Server" },
+	d = { "<Cmd>MetalsRunDoctor<CR>", "Metals Doctor" },
+}
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["t"] = {
@@ -186,16 +193,6 @@ lvim.plugins = {
 	-- },
 	{
 		"scalameta/nvim-metals",
-		-- config = function()
-		-- 	require("user.metals").config()
-		-- end,
-		-- config = function()
-		-- 	local metals_config = require("metals").bare_config()
-		-- 	metals_config.on_attach = require("lvim.lsp").common_on_attach
-		-- 	-- for this to work the statusline must to setup to display this info
-		-- 	metals_config.init_options.statusBarProvider = "on"
-		-- 	require("metals").initialize_or_attach(metals_config)
-		-- end,
 	},
 	{
 		"tpope/vim-surround",
@@ -216,13 +213,7 @@ lvim.plugins = {
 --   -- enable wrap mode for json files only
 --   command = "setlocal wrap",
 -- })
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "zsh",
---   callback = function()
---     -- let treesitter use bash highlight for zsh files as well
---     require("nvim-treesitter.highlight").attach(0, "bash")
---   end,
--- })
+
 -- autocmd to close vim if nvim-tree is last buffer open
 vim.api.nvim_create_autocmd("BufEnter", {
 	nested = true,
@@ -232,6 +223,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		end
 	end,
 })
+
 local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "*.scala", "*.sbt", "*.sc" },
