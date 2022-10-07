@@ -1,9 +1,15 @@
 -- general vim settings
+-- vim.opt.cursorline = false
+-- vim.opt.wrap = true
+-- vim.opt.relativenumber = true
 vim.opt.timeoutlen = 200
 vim.opt.cmdheight = 1
 vim.opt.scrolloff = 0 -- let cursor go to top and bottom of viewport
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false -- don't fold by default
+vim.opt.foldlevel = 99 -- https://stackoverflow.com/a/5786588/2580566
 vim.opt_global.shortmess:append("c")
--- vim.opt_global.shortmess:remove("F") -- metals prereq
 
 -- general lvim settings
 lvim.log.level = "warn"
@@ -11,24 +17,26 @@ lvim.format_on_save = {
 	pattern = { "*.lua", "*.scala" },
 }
 lvim.colorscheme = "tokyonight"
-
--- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
--- core mappings
-lvim.keys.insert_mode["jk"] = "<ESC>"
-lvim.keys.normal_mode["\\"] = '"_' -- blackhole register shortcut
-lvim.keys.normal_mode["Y"] = "y$"
-lvim.keys.normal_mode["j"] = "gj"
-lvim.keys.normal_mode["k"] = "gk"
-lvim.keys.normal_mode["<C-e>"] = "3<C-e>"
-lvim.keys.normal_mode["<C-y>"] = "3<C-y>"
--- keep current search result in center of viewport
-lvim.keys.normal_mode["n"] = "nzzzv"
-lvim.keys.normal_mode["N"] = "Nzzzv"
+lvim.lsp.diagnostics.virtual_text = true
 
-lvim.keys.normal_mode["<D-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<S-k>"] = ":BufferLineCycleNext<CR>"
-lvim.keys.normal_mode["<S-j>"] = ":BufferLineCyclePrev<CR>"
+-- core mappings
+vim.api.nvim_set_keymap("i", "jk", "<ESC>", { silent = true })
+vim.api.nvim_set_keymap("n", "\\", '"_', { silent = true }) -- blackhole register shortcut
+vim.api.nvim_set_keymap("n", "Y", "y$", { silent = true })
+vim.api.nvim_set_keymap("n", "j", "gj", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "k", "gk", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<C-e>", "3<C-e>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<C-y>", "3<C-y>", { silent = true, noremap = true })
+-- keep current search result in center of viewport
+vim.api.nvim_set_keymap("n", "n", "nzzzv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "N", "Nzzzv", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "gh", ":lua vim.lsp.buf.hover()<CR>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<S-k>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-j>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<D-s>", ":w<cr>", { noremap = true, silent = true })
+
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -64,6 +72,12 @@ lvim.builtin.which_key.mappings["m"] = {
 	r = { "<Cmd>MetalsRestartBuild<CR>", "Restart Build Server" },
 	d = { "<Cmd>MetalsRunDoctor<CR>", "Metals Doctor" },
 }
+lvim.builtin.which_key.mappings.x = { "<cmd>x<cr>", "Save and Exit" }
+lvim.builtin.which_key.mappings.a = { "<cmd>Telescope live_grep<cr>", "Grep Project" }
+lvim.builtin.which_key.mappings.n = { "<cmd>NvimTreeFindFile<cr>", "Show In Explorer" }
+lvim.builtin.which_key.mappings["."] = { "<cmd>set rnu!<cr>", "Toggle Numbers" }
+lvim.builtin.which_key.mappings["/"] = { "<cmd>set hlsearch!<CR>", "No Highlight" }
+lvim.builtin.which_key.mappings.h = nil
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["t"] = {
@@ -197,6 +211,16 @@ lvim.plugins = {
 	{
 		"scalameta/nvim-metals",
 	},
+	{
+		"kevinhwang91/nvim-bqf",
+		event = "BufRead",
+	},
+	{
+		"unblevable/quick-scope",
+		config = function()
+			vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
+		end,
+	}, -- Improve usability of f,F,t,T
 	{
 		"tpope/vim-surround",
 		config = function()
