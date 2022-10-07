@@ -7,7 +7,9 @@ vim.opt_global.shortmess:append("c")
 
 -- general lvim settings
 lvim.log.level = "warn"
-lvim.format_on_save = true
+lvim.format_on_save = {
+	pattern = { "*.lua", "*.scala" },
+}
 lvim.colorscheme = "tokyonight"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
