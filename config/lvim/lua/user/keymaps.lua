@@ -1,22 +1,45 @@
--- core mappings
-vim.api.nvim_set_keymap("i", "jk", "<ESC>", { silent = true })
-vim.api.nvim_set_keymap("n", "\\", '"_', { silent = true }) -- blackhole register shortcut
-vim.api.nvim_set_keymap("n", "Y", "y$", { silent = true })
-vim.api.nvim_set_keymap("n", "j", "gj", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "k", "gk", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<C-e>", "3<C-e>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<C-y>", "3<C-y>", { silent = true, noremap = true })
--- keep current search result in center of viewport
-vim.api.nvim_set_keymap("n", "n", "nzzzv", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "N", "Nzzzv", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<D-s>", ":w<cr>", { noremap = true, silent = true })
+local opts = { noremap = true, silent = true }
+local keymap = vim.api.nvim_set_keymap
 
-vim.api.nvim_set_keymap("n", "<S-k>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<S-j>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+keymap("i", "jk", "<ESC>", { silent = true })
+keymap("n", "<D-s>", ":w<cr>", { noremap = true, silent = true })
+
+-- Resize with arrows
+keymap("n", "<Up>", ":resize +2<CR>", opts)
+keymap("n", "<Down>", ":resize -2<CR>", opts)
+keymap("n", "<Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<Right>", ":vertical resize +2<CR>", opts)
+
+-- faster window splitting
+keymap("n", "<C-s>", ":split<CR>", opts)
+keymap("n", "<C-v>", ":vsplit<CR>", opts)
+
+-- navigate buffers
+-- keymap("n", "<S-k>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+-- keymap("n", "<S-j>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+keymap("n", "<S-k>", ":bnext<CR>", opts)
+keymap("n", "<S-j>", ":bprevious<CR>", opts)
+
+-- make navigation of wrapped lines worked as you'd expect
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
+keymap("n", "^", "g^", opts)
+keymap("n", "$", "g$", opts)
+
+-- faster viewport scrolling
+keymap("n", "<C-e>", "3<C-e>", { silent = true, noremap = true })
+keymap("n", "<C-y>", "3<C-y>", { silent = true, noremap = true })
+
+keymap("n", "\\", '"_', { silent = true }) -- blackhole register shortcut
+keymap("n", "Y", "y$", { silent = true })
+
+-- keep current search result in center of viewport
+keymap("n", "n", "nzzzv", { noremap = true, silent = true })
+keymap("n", "N", "Nzzzv", { noremap = true, silent = true })
 
 lvim.builtin.which_key.mappings.x = { "<cmd>x<cr>", "Save and Exit" }
 lvim.builtin.which_key.mappings["."] = { "<cmd>set rnu!<cr>", "Toggle Numbers" }
-lvim.builtin.which_key.mappings["/"] = { "<cmd>set hlsearch!<CR>", "No Highlight" }
+lvim.builtin.which_key.mappings["/"] = { "<cmd>set hlsearch!<CR>", "Toggle Highlight" }
 lvim.builtin.which_key.mappings.h = nil
 
 -- unmap a default keymapping
