@@ -7,6 +7,7 @@ lvim.colorscheme = "tokyonight"
 lvim.leader = "space"
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
+-- lvim.builtin.bufferline.active = false
 lvim.builtin.bufferline.options.always_show_bufferline = false
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true

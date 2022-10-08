@@ -5,6 +5,7 @@
 vim.opt.timeoutlen = 200
 vim.opt.cmdheight = 1
 vim.opt.scrolloff = 0 -- let cursor go to top and bottom of viewport
+-- vim.opt.showtabline = 0
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false -- don't fold by default
