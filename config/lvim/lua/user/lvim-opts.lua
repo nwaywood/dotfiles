@@ -17,6 +17,10 @@ lvim.builtin.nvimtree.setup.renderer.group_empty = true
 lvim.builtin.nvimtree.setup.view.width = 40
 lvim.builtin.breadcrumbs.active = true
 
+local dashboard = require("alpha.themes.dashboard")
+local dashboardTable = lvim.builtin.alpha.dashboard.section.buttons.val
+table.insert(dashboardTable, 3, dashboard.button("e", lvim.icons.ui.Note .. "  Open Explorer", ":NvimTreeToggle<CR>"))
+
 -- :TSInstallInfo to see all options
 lvim.builtin.treesitter.ensure_installed = {
 	"lua",
