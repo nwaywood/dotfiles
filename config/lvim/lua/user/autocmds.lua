@@ -14,12 +14,3 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		end
 	end,
 })
-
-local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-	pattern = { "*.scala", "*.sbt", "*.sc" },
-	callback = function()
-		require("user.plugins.metals").config()
-	end,
-	group = nvim_metals_group,
-})

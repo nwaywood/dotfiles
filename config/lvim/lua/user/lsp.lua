@@ -1,50 +1,7 @@
--- general lvim settings
-lvim.log.level = "warn"
-lvim.format_on_save = {
-	pattern = { "*.lua", "*.scala" },
-}
-lvim.colorscheme = "tokyonight"
-lvim.leader = "space"
-lvim.builtin.alpha.active = true
-lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.bufferline.options.always_show_bufferline = false
-lvim.builtin.notify.active = true
-lvim.builtin.terminal.active = true
-lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
-lvim.builtin.nvimtree.setup.renderer.highlight_git = true
-lvim.builtin.nvimtree.setup.renderer.group_empty = true
-lvim.builtin.nvimtree.setup.view.width = 40
-lvim.builtin.breadcrumbs.active = true
-
-vim.api.nvim_set_keymap("n", "gh", ":lua vim.lsp.buf.hover()<CR>", { silent = true, noremap = true })
-
+-- vim.api.nvim_set_keymap("n", "gh", ":lua vim.lsp.buf.hover()<CR>", { silent = true, noremap = true })
 -- change lsp hover mapping
 lvim.lsp.buffer_mappings.normal_mode["K"] = nil
 lvim.lsp.buffer_mappings.normal_mode["gh"] = { vim.lsp.buf.hover, "Show hover" }
-
--- :TSInstallInfo to see all options
-lvim.builtin.treesitter.ensure_installed = {
-	"lua",
-	"scala",
-	"bash",
-	"dockerfile",
-	"html",
-	"css",
-	"java",
-	"javascript",
-	"json",
-	"regex",
-	"ruby",
-	"toml",
-	"yaml",
-	"typescript",
-	"tsx",
-}
-
-lvim.builtin.treesitter.highlight.enable = true
-
--- generic LSP settings
 
 -- make sure server will always be installed even if the server is in skipped_servers list
 lvim.lsp.installer.setup.ensure_installed = {
