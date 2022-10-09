@@ -8,3 +8,9 @@ require("user.autocmds")
 -- plugin config
 require("user.plugins.telescope")
 require("user.plugins.metals")
+-- cybu
+-- jabs
+-- gitlinker
+-- sessions plugin
+-- harpoon?
+-- navigator
