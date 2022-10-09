@@ -14,3 +14,6 @@ require("user.plugins.metals")
 -- sessions plugin
 -- harpoon?
 -- navigator
+-- trouble
+-- telescope-live-grep-args
+-- nvim tree `go` binding

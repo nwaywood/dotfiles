@@ -10,7 +10,7 @@ lvim.plugins = {
 	},
 	{
 		"kevinhwang91/nvim-bqf",
-		event = "BufRead",
+		ft = "qf",
 	},
 	{
 		"unblevable/quick-scope",
