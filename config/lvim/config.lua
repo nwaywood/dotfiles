@@ -17,3 +17,9 @@ require("user.plugins.metals")
 -- trouble
 -- telescope-live-grep-args
 -- nvim tree `go` binding
+
+-- neovide gui
+if vim.g.neovide then
+	-- disable the stupid cursor animation
+	vim.g.neovide_cursor_animation_length = 0
+end

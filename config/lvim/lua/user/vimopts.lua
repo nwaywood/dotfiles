@@ -11,3 +11,4 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false -- don't fold by default
 vim.opt.foldlevel = 99 -- https://stackoverflow.com/a/5786588/2580566
 vim.opt_global.shortmess:append("c")
+vim.o.guifont = "FiraMono Nerd Font Mono"
