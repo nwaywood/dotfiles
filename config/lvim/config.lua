@@ -7,15 +7,14 @@ require("user.autocmds")
 
 -- plugin config
 require("user.plugins.telescope")
+require("user.plugins.gitlinker")
 require("user.plugins.metals")
 -- cybu
 -- jabs
--- gitlinker
 -- sessions plugin
 -- harpoon?
 -- navigator
 -- trouble
--- telescope-live-grep-args
 -- nvim tree `go` binding
 
 -- neovide gui

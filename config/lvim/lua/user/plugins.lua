@@ -2,6 +2,7 @@
 lvim.plugins = {
 	{ "christoomey/vim-tmux-navigator" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
+	{ "ruifm/gitlinker.nvim" },
 	-- {
 	-- 	"folke/trouble.nvim",
 	-- 	cmd = "TroubleToggle",
