@@ -8,14 +8,15 @@ require("user.autocmds")
 -- plugin config
 require("user.plugins.telescope")
 require("user.plugins.gitlinker")
+require("user.plugins.navigator")
 require("user.plugins.metals")
 -- cybu
 -- jabs
 -- sessions plugin
 -- harpoon?
--- navigator
 -- trouble
 -- nvim tree `go` binding
+-- better git colors in nvim-tree
 
 -- neovide gui
 if vim.g.neovide then

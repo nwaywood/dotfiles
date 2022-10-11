@@ -1,8 +1,8 @@
 -- Additional Plugins
 lvim.plugins = {
-	{ "christoomey/vim-tmux-navigator" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
 	{ "ruifm/gitlinker.nvim" },
+	{ "numToStr/Navigator.nvim" },
 	-- {
 	-- 	"folke/trouble.nvim",
 	-- 	cmd = "TroubleToggle",
