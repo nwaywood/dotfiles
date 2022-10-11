@@ -25,6 +25,19 @@ lvim.builtin.telescope.defaults.mappings = {
 		["dd"] = actions.delete_buffer,
 	},
 }
+lvim.builtin.telescope.extensions.live_grep_args = {
+	auto_quoting = false,
+	mappings = {
+		i = {
+			-- need to override the default keymap for adding quotes
+			["<C-k>"] = actions.move_selection_previous,
+		},
+	},
+}
 lvim.builtin.telescope.defaults.prompt_prefix = "❯ "
 
 lvim.builtin.which_key.mappings.b = { "<cmd>Telescope buffers<cr>", "Buffers" }
+lvim.builtin.which_key.mappings.a = {
+	"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>",
+	"Grep Project",
+}
