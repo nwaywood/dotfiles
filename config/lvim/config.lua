@@ -15,13 +15,13 @@ require("user.plugins.nvim-ufo")
 -- cybu
 -- jabs
 -- sessions plugin
--- harpoon?
+-- harpoon? (leader m to mark file, tab to view)
 -- trouble
--- nvim tree `go` binding
--- better git colors in nvim-tree
 -- git-blame file
 -- smooth scroll
 -- scrollbar
+-- leader s for symbols
+-- leader h bindings for help (from leader s)
 
 -- neovide gui
 if vim.g.neovide then

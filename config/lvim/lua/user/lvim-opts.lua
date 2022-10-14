@@ -34,7 +34,8 @@ local strip_filename_from_dir = function(path)
 	return "/" .. table.concat(res, "/")
 end
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
+lvim.builtin.nvimtree.setup.renderer.icons.glyphs.git.untracked = "★"
 lvim.builtin.nvimtree.setup.renderer.highlight_git = true
 lvim.builtin.nvimtree.setup.renderer.group_empty = true
 lvim.builtin.nvimtree.setup.view.width = 40
