@@ -10,6 +10,8 @@ require("user.plugins.telescope")
 require("user.plugins.gitlinker")
 require("user.plugins.navigator")
 require("user.plugins.metals")
+require("user.plugins.nvim-ufo")
+
 -- cybu
 -- jabs
 -- sessions plugin
@@ -17,6 +19,9 @@ require("user.plugins.metals")
 -- trouble
 -- nvim tree `go` binding
 -- better git colors in nvim-tree
+-- git-blame file
+-- smooth scroll
+-- scrollbar
 
 -- neovide gui
 if vim.g.neovide then
