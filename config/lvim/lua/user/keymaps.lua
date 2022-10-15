@@ -56,6 +56,7 @@ lvim.builtin.which_key.mappings["h"] = {
 -- override a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
 
+lvim.builtin.which_key.mappings.T = nil
 lvim.builtin.which_key.mappings.n = { "<cmd>NvimTreeFindFile<cr>", "Show In Explorer" }
 lvim.builtin.which_key.setup.plugins.presets.z = true
 lvim.builtin.which_key.setup.plugins.presets.g = true

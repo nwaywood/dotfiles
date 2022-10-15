@@ -3,6 +3,8 @@
 lvim.lsp.buffer_mappings.normal_mode["K"] = nil
 lvim.lsp.buffer_mappings.normal_mode["gh"] = { vim.lsp.buf.hover, "Show hover" }
 lvim.builtin.which_key.mappings.s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" }
+lvim.builtin.which_key.mappings["ld"] = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" }
+lvim.builtin.which_key.mappings["lD"] = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" }
 
 -- make sure server will always be installed even if the server is in skipped_servers list
 lvim.lsp.installer.setup.ensure_installed = {

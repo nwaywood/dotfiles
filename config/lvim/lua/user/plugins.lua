@@ -3,10 +3,10 @@ lvim.plugins = {
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
 	{ "ruifm/gitlinker.nvim" },
 	{ "numToStr/Navigator.nvim" },
-	-- {
-	-- 	"folke/trouble.nvim",
-	-- 	cmd = "TroubleToggle",
-	-- },
+	{
+		"folke/trouble.nvim",
+		cmd = "TroubleToggle",
+	},
 	{
 		"scalameta/nvim-metals",
 	},
