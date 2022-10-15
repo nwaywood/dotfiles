@@ -21,8 +21,6 @@ require("user.plugins.nvim-ufo")
 -- git-blame file
 -- smooth scroll
 -- scrollbar
--- leader s for symbols
--- leader h bindings for help (from leader s)
 
 -- neovide gui
 if vim.g.neovide then

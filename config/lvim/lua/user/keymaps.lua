@@ -40,7 +40,16 @@ keymap("n", "N", "Nzzzv", { noremap = true, silent = true })
 lvim.builtin.which_key.mappings.x = { "<cmd>x<cr>", "Save and Exit" }
 lvim.builtin.which_key.mappings["."] = { "<cmd>set rnu!<cr>", "Toggle Numbers" }
 lvim.builtin.which_key.mappings["/"] = { "<cmd>set hlsearch!<CR>", "Toggle Highlight" }
-lvim.builtin.which_key.mappings.h = nil
+
+-- lvim.builtin.which_key.mappings.h = nil
+lvim.builtin.which_key.mappings["h"] = {
+	name = "+Help",
+	h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+	H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
+	M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+	k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+	c = { "<cmd>Telescope commands<cr>", "Commands" },
+}
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
