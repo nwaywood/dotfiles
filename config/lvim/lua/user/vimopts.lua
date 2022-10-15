@@ -1,6 +1,6 @@
 -- general vim settings
 -- vim.opt.cursorline = false
--- vim.opt.wrap = true
+vim.opt.wrap = true
 -- vim.opt.relativenumber = true
 vim.opt.timeoutlen = 200
 vim.opt.cmdheight = 1
