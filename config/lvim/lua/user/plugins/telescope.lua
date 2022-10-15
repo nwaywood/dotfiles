@@ -4,6 +4,12 @@ local ok, actions = pcall(require, "telescope.actions")
 if not ok then
 	return
 end
+
+local ok1, trouble = pcall(require, "trouble.providers.telescope")
+if not ok1 then
+	return
+end
+
 lvim.builtin.telescope.defaults.mappings = {
 	-- for input mode
 	i = {
@@ -14,6 +20,7 @@ lvim.builtin.telescope.defaults.mappings = {
 		["<C-g>"] = actions.close,
 		["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 		["<esc>"] = actions.close,
+		["<c-t>"] = trouble.open_with_trouble,
 	},
 	-- for normal mode
 	n = {
@@ -23,6 +30,7 @@ lvim.builtin.telescope.defaults.mappings = {
 		["<esc>"] = actions.close,
 		["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 		["dd"] = actions.delete_buffer,
+		["<c-t>"] = trouble.open_with_trouble,
 	},
 }
 lvim.builtin.telescope.extensions.live_grep_args = {

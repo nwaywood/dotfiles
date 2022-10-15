@@ -17,7 +17,6 @@ require("user.plugins.nvim-ufo")
 -- jabs
 -- sessions plugin
 -- harpoon? (leader m to mark file, tab to view)
--- trouble with C-t from telescope
 -- git-blame file
 -- smooth scroll
 -- scrollbar
