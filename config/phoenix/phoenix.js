@@ -35,3 +35,7 @@ Key.on('z', MOD2, function(){
 Key.on('b', MOD2, function(){
   App.launch('Bear').focus();
 });
+
+Key.on('o', MOD2, function(){
+  App.launch('Obsidian').focus();
+});
