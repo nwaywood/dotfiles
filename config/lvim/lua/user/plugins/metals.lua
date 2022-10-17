@@ -1,4 +1,4 @@
-lvim.builtin.which_key.mappings["m"] = {
+lvim.builtin.which_key.mappings["M"] = {
 	name = "Metals",
 	u = { "<Cmd>MetalsUpdate<CR>", "Update Metals" },
 	i = { "<Cmd>MetalsInfo<CR>", "Metals Info" },
@@ -26,7 +26,10 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "*.scala", "*.sbt", "*.sc" },
 	callback = function()
 		local metals_config = require("metals").bare_config()
-		metals_config.on_attach = require("lvim.lsp").common_on_attach
+		metals_config.on_attach = function(client, bufnr)
+			require("lvim.lsp").common_on_attach(client, bufnr)
+			require("metals").setup_dap()
+		end
 		metals_config.init_options.statusBarProvider = "on"
 		-- metals_config.settings = {
 		-- 	showImplicitArguments = false,
