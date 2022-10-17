@@ -15,11 +15,12 @@ require("user.plugins.nvim-ufo")
 
 -- cybu
 -- jabs
--- sessions plugin
+-- sessions plugin "rmagatti/auto-session" and "rmagatti/session-lens"
 -- harpoon? (leader m to mark file, tab to view)
 -- git-blame file
 -- smooth scroll
 -- scrollbar
+-- figure out how to run tests with metals and dap https://github.com/scalameta/nvim-metals/discussions/279#discussioncomment-1774771
 
 -- neovide gui
 if vim.g.neovide then
