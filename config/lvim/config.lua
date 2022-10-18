@@ -24,4 +24,6 @@ require("user.plugins.nvim-ufo")
 if vim.g.neovide then
 	-- disable the stupid cursor animation
 	vim.g.neovide_cursor_animation_length = 0
+	-- make Option key work like Alt
+	vim.g.neovide_input_macos_alt_is_meta = 1
 end
