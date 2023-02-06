@@ -46,6 +46,7 @@ nnoremap <silent> <leader>. :<C-u>call VSCodeNotify('settings.cycle.relativeLine
 
 nmap <silent> gv :<C-u>call VSCodeNotify('editor.action.revealDefinitionAside')<CR>
 nmap <silent> gr :<C-u>call VSCodeNotify('references-view.findReferences')<CR>
+nmap <silent> gl :<C-u>call VSCodeNotify('editor.action.showHover')<CR>
 
 " clear search highlighting and clear any message already displayed
 noremap <silent> <leader>/ :set hlsearch! hlsearch?<cr>
