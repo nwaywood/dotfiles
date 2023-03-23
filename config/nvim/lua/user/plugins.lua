@@ -107,7 +107,9 @@ return packer.startup(function(use)
 	-- LSP
 	------
 	use("neovim/nvim-lspconfig") -- enable LSP
-	use("williamboman/nvim-lsp-installer") -- wrapper around nvim-lspconfig for easy installation
+	-- use("williamboman/nvim-lsp-installer") -- wrapper around nvim-lspconfig for easy installation
+  use("williamboman/mason-lspconfig.nvim")
+  use("williamboman/mason.nvim")
 	use("kosayoda/nvim-lightbulb") -- lightbulb for code actions
 	use({ "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } })
 

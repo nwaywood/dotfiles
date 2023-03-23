@@ -4,7 +4,7 @@ local metals_config = require("metals").bare_config()
 
 -- setup cmp with metals
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-metals_config.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -- for this to work the statusline must to setup to display this info
 metals_config.init_options.statusBarProvider = "on"
