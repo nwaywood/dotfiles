@@ -11,7 +11,7 @@ require("user.plugins.nvimtree")
 require("user.plugins.gitlinker")
 require("user.plugins.navigator")
 require("user.plugins.metals")
-require("user.plugins.nvim-ufo")
+-- require("user.plugins.nvim-ufo")
 
 -- cybu
 -- sessions plugin "rmagatti/auto-session" and "rmagatti/session-lens"

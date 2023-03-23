@@ -26,7 +26,7 @@ lvim.plugins = {
 			vim.g.surround_no_insert_mappings = true
 		end,
 	},
-	{ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" },
+	-- { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" },
 	{ "tpope/vim-repeat" },
 	{ "tpope/vim-unimpaired" },
 	{ "kana/vim-textobj-user" }, -- Allows custom text objects
