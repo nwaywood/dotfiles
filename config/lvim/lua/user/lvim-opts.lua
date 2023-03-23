@@ -3,7 +3,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = {
 	pattern = { "*.lua", "*.scala" },
 }
-lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "lunar"
 lvim.leader = "space"
 -- lvim.builtin.bufferline.active = false
 lvim.builtin.bufferline.options.always_show_bufferline = false
