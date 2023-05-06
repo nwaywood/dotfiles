@@ -28,6 +28,10 @@ brew install zsh-history-substring-search
 brew install zsh-syntax-highlighting
 brew install zsh-vi-mode
 
+# nerd font
+brew tap homebrew/cask-fonts
+brew install font-fira-mono-nerd-font
+
 # neovim
 brew install neovim
 brew install python3
