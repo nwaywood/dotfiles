@@ -4,6 +4,11 @@
 #     eval "$(starship init zsh)"
 # fi
 
+# needed to fix "complete:13: command not found: compdef" error
+autoload -Uz compinit
+compinit
+
+
 # pure prompt
 fpath+=$HOME/.dotfiles/pure
 autoload -U promptinit; promptinit
@@ -38,15 +43,13 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 # User configuration
 export DOTFILES=$HOME/.dotfiles
-# load .zsh files
-for config ($DOTFILES/zsh/*.zsh) source $config
-# editor
 export EDITOR='nvim'
 
 # PATH
 # ====
 # add brew path to the start of PATH env var
 export PATH=/usr/local/bin:$PATH
+export PATH=/opt/homebrew/bin:$PATH
 # adding path directory for custom scripts
 export PATH=$DOTFILES/bin:$PATH
 # add .local to PATH (haskell binaries go here)
@@ -58,6 +61,10 @@ if [[ -d /usr/local/sbin ]]; then
 	export PATH=/usr/local/sbin:$PATH
 fi
 
+# load .zsh files
+for config ($DOTFILES/zsh/*.zsh) source $config
+
+# editor
 # [ -z "$TMUX" ] && export TERM=xterm-256color
 
 # http://apple.stackexchange.com/questions/75571/the-history-is-shared-between-my-iterm2-terminal-tabs-how-can-i-switch-that-off
