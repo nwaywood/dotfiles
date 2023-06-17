@@ -1,14 +1,7 @@
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
-local ok, actions = pcall(require, "telescope.actions")
-if not ok then
-	return
-end
-
-local ok1, trouble = pcall(require, "trouble.providers.telescope")
-if not ok1 then
-	return
-end
+local actions = require "telescope.actions"
+-- local trouble = require "trouble.providers.telescope"
 
 lvim.builtin.telescope.defaults.mappings = {
 	-- for input mode
@@ -20,7 +13,7 @@ lvim.builtin.telescope.defaults.mappings = {
 		["<C-g>"] = actions.close,
 		["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 		["<esc>"] = actions.close,
-		["<c-t>"] = trouble.open_with_trouble,
+		-- ["<c-t>"] = trouble.open_with_trouble,
 	},
 	-- for normal mode
 	n = {
@@ -30,7 +23,7 @@ lvim.builtin.telescope.defaults.mappings = {
 		["<esc>"] = actions.close,
 		["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 		["dd"] = actions.delete_buffer,
-		["<c-t>"] = trouble.open_with_trouble,
+		-- ["<c-t>"] = trouble.open_with_trouble,
 	},
 }
 lvim.builtin.telescope.extensions.live_grep_args = {
