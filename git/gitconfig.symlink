@@ -3,6 +3,8 @@
 	email = nick.waywood@zendesk.com
 [github]
 	user = nwaywood
+[commit]
+  template = /Users/nick.waywood/.gitmessage
 [alias]
 	co = checkout
 	s = status
@@ -40,3 +42,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
