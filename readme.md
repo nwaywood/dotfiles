@@ -56,4 +56,10 @@ from within tmux. This installs the `tmux-resurrect` plugin which lets tmux sess
 
 ## Font
 
-My neovim and zsh setups both make use patched [nerd fonts](https://github.com/ryanoasis/nerd-fonts). It is recommended to use one, otherwise some characters will look funky. I personally use `Fira Mono Nerd Font`.
+My neovim and zsh setups both make use patched [nerd fonts](https://github.com/ryanoasis/nerd-fonts). 
+It is recommended to use one, otherwise some characters will look funky. I personally use `Fira Mono Nerd Font`. It can be installed with:
+
+```bash
+brew tap homebrew/cask-fonts
+brew install font-fira-mono-nerd-font
+```
