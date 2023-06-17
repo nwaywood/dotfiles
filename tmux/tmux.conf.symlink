@@ -3,9 +3,11 @@
 
 # Need for theme https://github.com/rakr/vim-one#tmux-support
 # Add truecolor support
-set-option -ga terminal-overrides ",xterm-256color:Tc"
+# set-option -ga terminal-overrides ",xterm-256color:Tc"
+# https://github.com/LunarVim/LunarVim/issues/3973
+set -g default-terminal xterm-256color
 # tmux display things in 256 colors
-set -g default-terminal "screen-256color"
+# set -g default-terminal "screen-256color"
 
 # make vim cursor display properly in insert mode
 # https://github.com/neovim/neovim/wiki/FAQ#cursor-shape-doesnt-change-in-tmux
@@ -80,7 +82,7 @@ bind -r p previous-window
 # is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
 # | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
 # https://github.com/junegunn/fzf/pull/582
-not_tmux="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?(g?(view|n?vim?x?)(diff)?|fzf)$'"
+not_tmux="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?(g?(view|(n|l)?vim?x?)(diff)?|fzf)$'"
 # is_vim='`echo "#{pane_current_command}" | grep -iqE "(^|\/)g?(view|n?vim?x?)(diff)?$"` || `echo "#{pane_start_command}" | grep -iqE "fzf"` || `echo "#{pane_current_command}" | grep -iqE "fzf"`'
 bind-key -n C-h if-shell "$not_tmux" "send-keys C-h"  "select-pane -L"
 bind-key -n C-j if-shell "$not_tmux" "send-keys C-j"  "select-pane -D"
