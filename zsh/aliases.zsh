@@ -30,6 +30,7 @@ alias tree='tree -I "node_modules"'
 alias ls="exa"
 alias la="exa -a"
 alias ll="exa -la"
+alias lg="lazygit"
 alias cat="bat -pp --theme=TwoDark"
 alias k="kubectl"
 alias ka="kubectl --as admin --as-group system:masters"
