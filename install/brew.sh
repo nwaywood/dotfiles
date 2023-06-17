@@ -31,6 +31,8 @@ brew install zsh-vi-mode
 # nerd font
 brew tap homebrew/cask-fonts
 brew install font-fira-mono-nerd-font
+brew tap epk/epk
+brew install --cask font-sf-mono-nerd-font
 
 # neovim
 brew install neovim
