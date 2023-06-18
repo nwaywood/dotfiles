@@ -25,14 +25,14 @@ lvim.builtin.nvimtree.setup.renderer.icons.glyphs.git.untracked = "★"
 lvim.builtin.nvimtree.setup.renderer.highlight_git = true
 lvim.builtin.nvimtree.setup.renderer.group_empty = true
 lvim.builtin.nvimtree.setup.view.width = 40
-lvim.builtin.nvimtree.setup.view.mappings.list = {
-	{ key = { "<tab>", "go" }, cb = tree_cb("preview") }, -- tab is default, want to add `go`
-	{
-		key = "gs",
-		action = "search_dir_in_telescope",
-		action_cb = function(node)
-			local final_path = strip_filename_from_dir(node.absolute_path)
-			require("telescope.builtin").live_grep({ search_dirs = { final_path } })
-		end,
-	},
-}
+-- lvim.builtin.nvimtree.setup.view.mappings.list = {
+-- 	{ key = { "<tab>", "go" }, cb = tree_cb("preview") }, -- tab is default, want to add `go`
+-- 	{
+-- 		key = "gs",
+-- 		action = "search_dir_in_telescope",
+-- 		action_cb = function(node)
+-- 			local final_path = strip_filename_from_dir(node.absolute_path)
+-- 			require("telescope.builtin").live_grep({ search_dirs = { final_path } })
+-- 		end,
+-- 	},
+-- }

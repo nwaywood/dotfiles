@@ -10,7 +10,8 @@ require("user.plugins.telescope")
 require("user.plugins.nvimtree")
 require("user.plugins.gitlinker")
 require("user.plugins.navigator")
-require("user.plugins.metals")
+-- require("user.plugins.metals")
+
 -- require("user.plugins.nvim-ufo")
 
 -- cybu
