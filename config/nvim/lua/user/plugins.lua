@@ -94,9 +94,9 @@ return packer.startup(function(use)
 	})
 	use("numToStr/Comment.nvim")
 	use("tpope/vim-repeat") -- adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
-	use("kana/vim-textobj-user") -- Allows custom text objects
-	use("kana/vim-textobj-entire") -- Adds the text objects 'ie' and 'ae'
-	use("kana/vim-textobj-line") -- Adds the text objects 'il' and 'al'
+	-- use("kana/vim-textobj-user") -- Allows custom text objects
+	-- use("kana/vim-textobj-entire") -- Adds the text objects 'ie' and 'ae'
+	-- use("kana/vim-textobj-line") -- Adds the text objects 'il' and 'al'
 	use({
 		"unblevable/quick-scope",
 		config = function()
