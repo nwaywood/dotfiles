@@ -32,29 +32,35 @@ local strip_filename_from_dir = function(path)
 	return "/" .. table.concat(res, "/")
 end
 
+local function on_attach(bufnr)
+  local api = require('nvim-tree.api')
+
+  local function opts(desc)
+    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
+  vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
+  vim.keymap.set('n', 'o', api.node.open.edit, opts('Open'))
+  vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Directory'))
+  vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
+  vim.keymap.set('n', 's', api.node.open.horizontal, opts('Open: Horizontal Split'))
+  vim.keymap.set('n', '<tab>', api.node.open.preview, opts('Open Preview'))
+  vim.keymap.set('n', 'go', api.node.open.preview, opts('Open Preview'))
+  vim.keymap.set('n', 'g?', api.tree.toggle_help, opts('Help'))
+  vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
+  vim.keymap.set('n', 'gs', function()
+    local node = api.tree.get_node_under_cursor()
+    local final_path = strip_filename_from_dir(node.absolute_path)
+    require("telescope.builtin").live_grep({ search_dirs = { final_path } })
+  end, opts('search_dir_in_telescope'))
+end
+
 require("nvim-tree").setup({
+  on_attach = on_attach,
 	disable_netrw = true, -- nvim-tree to override netrw
 	view = {
 		width = 40,
-		mappings = {
-			custom_only = false,
-			list = {
-				{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
-				{ key = "h", cb = tree_cb("close_node") },
-				{ key = "v", cb = tree_cb("vsplit") },
-				{ key = "s", cb = tree_cb("split") },
-				{ key = { "<tab>", "go" }, cb = tree_cb("preview") }, -- tab is default, want to add `go`
-				{ key = { "g?", "?" }, cb = tree_cb("toggle_help") }, -- g? is default, want to add `?`
-				{
-					key = "gs",
-					action = "search_dir_in_telescope",
-					action_cb = function(node)
-						local final_path = strip_filename_from_dir(node.absolute_path)
-						require("telescope.builtin").live_grep({ search_dirs = { final_path } })
-					end,
-				},
-			},
-		},
 	},
 	git = {
 		ignore = false, -- display gitignored files
