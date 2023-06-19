@@ -27,19 +27,22 @@ keymap("n", "^", "g^", opts)
 keymap("n", "$", "g$", opts)
 
 -- faster viewport scrolling
-keymap("n", "<C-e>", "3<C-e>", { silent = true, noremap = true })
-keymap("n", "<C-y>", "3<C-y>", { silent = true, noremap = true })
+keymap("n", "<C-e>", "3<C-e>", opts)
+keymap("n", "<C-y>", "3<C-y>", opts)
 
 keymap("n", "\\", '"_', { silent = true }) -- blackhole register shortcut
 keymap("n", "Y", "y$", { silent = true })
 
 -- keep current search result in center of viewport
-keymap("n", "n", "nzzzv", { noremap = true, silent = true })
-keymap("n", "N", "Nzzzv", { noremap = true, silent = true })
+keymap("n", "n", "nzzzv", opts)
+keymap("n", "N", "Nzzzv", opts)
 
 lvim.builtin.which_key.mappings.x = { "<cmd>x<cr>", "Save and Exit" }
 lvim.builtin.which_key.mappings["."] = { "<cmd>set rnu!<cr>", "Toggle Numbers" }
 lvim.builtin.which_key.mappings["/"] = { "<cmd>set hlsearch!<CR>", "Toggle Highlight" }
+-- Add alternative join lines keymap
+keymap("n", "<space>j", "J", opts)
+lvim.builtin.which_key.mappings["j"] = { "Join Lines" }
 
 -- lvim.builtin.which_key.mappings.h = nil
 lvim.builtin.which_key.mappings["h"] = {
