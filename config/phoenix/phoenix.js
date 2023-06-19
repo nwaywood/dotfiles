@@ -46,6 +46,12 @@ function frameOfNextScreen(window) {
   return window.screen().next().flippedVisibleFrame();
 }
 
+function frameOfPreviousScreen(window) {
+  if (!window || !window.screen().previous()) {
+    return;
+  }
+  return window.screen().previous().flippedVisibleFrame();
+}
 
 // Key.on("j", MOD1, function () {
 //   debug("Centering in screen");
@@ -95,7 +101,8 @@ Key.on("l", MOD1, function () {
   });
 });
 
-Key.on("n", MOD1, function () {
+// this command cycles
+Key.on("right", MOD1, function () {
   debug("Center in next screen");
   const window = Window.focused();
   const nextScreenFrame = frameOfNextScreen(window);
@@ -108,6 +115,22 @@ Key.on("n", MOD1, function () {
     maximizeWindowInFrame(window, nextScreenFrame);
   }
 });
+
+// this command cycles
+Key.on("left", MOD1, function () {
+  debug("Center in previous screen");
+  const window = Window.focused();
+  const nextScreenFrame = frameOfPreviousScreen(window);
+  if (!window || !nextScreenFrame) {
+    return;
+  }
+  if (windowFitsInFrame(window, nextScreenFrame)) {
+    centerWindowInFrame(window, nextScreenFrame);
+  } else {
+    maximizeWindowInFrame(window, nextScreenFrame);
+  }
+});
+
 
 // Application shortcuts
 // ---------------------
