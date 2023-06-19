@@ -14,6 +14,10 @@ Next, the script will check to see if the OS is MacOS. If so, it will install Ho
 
 In `install/` folder there are other scripts for installing `go`, `atom`, and `npm` packages which are not automatated. If you want to install any of these packages, manually run the file (e.g. `bash install/atom.sh`).
 
+## VSCode Setup
+
+Need to symlink files into VSCode folder. See readme in vscode folder for details
+
 ## Neovim Setup
 
 [Neovim](https://neovim.io/) config is symlinked to `~/.config/nvim` directory by the `install/link.sh` script. Inside of [`.zshrc`](zsh/zshrc.symlink), the `EDITOR` shell variable is set to `nvim`, defaulting to Neovim for editor tasks, such as git commit messages. Additionally, I have aliased `vim` to `nvim` in [`aliases.zsh`](zsh/aliases.zsh) You can remove this if you would rather not alias the `vim` command to `nvim`.
