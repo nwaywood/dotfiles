@@ -9,7 +9,7 @@ Phoenix.set({
 const MOD1 = ['cmd', 'ctrl', 'alt'];
 const MOD2 = ['alt', 'shift'];
 
-const debugMode = true;
+const debugMode = false;
 
 function debug(message) {
   if (debugMode) Phoenix.log(message);
@@ -47,38 +47,29 @@ function frameOfNextScreen(window) {
 }
 
 
-Key.on("j", MOD1, function () {
-  debug("Centering in screen");
-  const window = Window.focused(),
-    nextScreenFrame = window.screen().flippedVisibleFrame();
-  centerWindowInFrame(window, nextScreenFrame);
-});
+// Key.on("j", MOD1, function () {
+//   debug("Centering in screen");
+//   const window = Window.focused(),
+//     nextScreenFrame = window.screen().flippedVisibleFrame();
+//   centerWindowInFrame(window, nextScreenFrame);
+// });
 
 Key.on("k", MOD1, function () {
   debug("Maximizing current window");
   Window.focused().maximize();
 });
 
-Key.on("n", MOD1, function () {
-  debug("Center in next screen");
-  const window = Window.focused();
-  const nextScreenFrame = frameOfNextScreen(window);
-  if (!window || !nextScreenFrame) {
-    return;
-  }
-  if (windowFitsInFrame(window, nextScreenFrame)) {
-    centerWindowInFrame(window, nextScreenFrame);
-  } else {
-    maximizeWindowInFrame(window, nextScreenFrame);
-  }
+Key.on("j", MOD1, function () {
+  debug("Centering in screen");
+  const window = Window.focused(),
+    screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x + screenFrame.width / 5,
+    y: screenFrame.y + screenFrame.height / 6,
+    width: screenFrame.width * 0.6,
+    height: screenFrame.height * 0.7,
+  });
 });
-
-// Key.on("w", triple, function () {
-//   debug("Moving to top-left");
-//   const window = Window.focused();
-//   const screenFrame = window.screen().flippedVisibleFrame();
-//   window.setTopLeft({ x: screenFrame.x, y: screenFrame.y });
-// });
 
 Key.on("h", MOD1, function () {
   debug("Moving to left-half");
@@ -104,30 +95,22 @@ Key.on("l", MOD1, function () {
   });
 });
 
-// Key.on("u", triple, function () {
-//   debug("Moving to upper-half");
-//   const window = Window.focused();
-//   const screenFrame = window.screen().flippedVisibleFrame();
-//   window.setFrame({
-//     x: screenFrame.x,
-//     y: screenFrame.y,
-//     width: screenFrame.width,
-//     height: screenFrame.height / 2,
-//   });
-// });
+Key.on("n", MOD1, function () {
+  debug("Center in next screen");
+  const window = Window.focused();
+  const nextScreenFrame = frameOfNextScreen(window);
+  if (!window || !nextScreenFrame) {
+    return;
+  }
+  if (windowFitsInFrame(window, nextScreenFrame)) {
+    centerWindowInFrame(window, nextScreenFrame);
+  } else {
+    maximizeWindowInFrame(window, nextScreenFrame);
+  }
+});
 
-// Key.on("d", triple, function () {
-//   debug("Moving to lower-half");
-//   const window = Window.focused();
-//   const screenFrame = window.screen().flippedVisibleFrame();
-//   window.setFrame({
-//     x: screenFrame.x,
-//     y: screenFrame.y + screenFrame.height / 2,
-//     width: screenFrame.width,
-//     height: screenFrame.height / 2,
-//   });
-// });
-
+// Application shortcuts
+// ---------------------
 Key.on('t', MOD2, function() {
     App.launch("Kitty").focus();
 });
