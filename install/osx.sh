@@ -14,6 +14,7 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15 # lower = faster, 1 delta
 echo "Make the dock autoshow after half a second"
 # https://apple.stackexchange.com/questions/59556/is-there-a-way-to-completely-disable-dock
 # float value is in seconds
+# Need to run `killall Dock` to pick up changes
 defaults write com.apple.dock autohide-delay -float 0.5
 
 echo "Disable swoosh animation when changing workspaces"
