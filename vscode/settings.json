@@ -138,5 +138,7 @@
   "breadcrumbs.enabled": true,
   // turn off filepath in breadcrumbs since I display it in "window.title" instead
   "breadcrumbs.filePath": "off",
-  "redhat.telemetry.enabled": false
+  "redhat.telemetry.enabled": false,
+  "githubPullRequests.pullBranch": "never",
+  "metals.enableSemanticHighlighting": false
 }
