@@ -146,6 +146,10 @@ Key.on('c', MOD2, function(){
   App.launch('Google Chrome').focus();
 });
 
+Key.on('b', MOD2, function(){
+  App.launch('Google Chrome').focus();
+});
+
 Key.on('f', MOD2, function(){
   App.launch('Firefox').focus();
 });
@@ -158,10 +162,14 @@ Key.on('z', MOD2, function(){
   App.launch('zoom.us').focus();
 });
 
-Key.on('b', MOD2, function(){
-  App.launch('Bear').focus();
-});
-
 Key.on('o', MOD2, function(){
   App.launch('Obsidian').focus();
+});
+
+Key.on('n', MOD2, function(){
+  App.launch('Obsidian').focus();
+});
+
+Key.on('p', MOD2, function(){
+  App.launch('Postman').focus();
 });
