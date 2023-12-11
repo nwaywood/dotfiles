@@ -9,7 +9,7 @@ Plug 'kana/vim-textobj-user' " Allows custom text objects
 Plug 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae'
 Plug 'kana/vim-textobj-line' " Adds the text objects 'il' and 'al'
 
-" TODO sneak
+Plug 'ggandor/leap.nvim', { 'branch': 'main' }
 Plug 'unblevable/quick-scope' " Improve usability of f,F,t,T
 Plug 'machakann/vim-highlightedyank' " Visually shows yank area
 
@@ -86,8 +86,10 @@ endfunction
 
 " Plugin settings
 " ===============
-
 let g:highlightedyank_highlight_duration = 200
+
+" Enable default leap keybindings
+lua require('leap').add_default_mappings()
 
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 highlight QuickScopePrimary guifg='#61afef' gui=underline ctermfg=155 cterm=underline
