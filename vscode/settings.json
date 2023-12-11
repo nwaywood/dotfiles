@@ -3,8 +3,6 @@
   "vscode-neovim.neovimInitVimPaths.darwin": "/Users/nick.waywood/.dotfiles/vscode/vscode.vim",
   // This must be false for keys to work in file explorer with neovim plugin
   "workbench.list.automaticKeyboardNavigation": false,
-  // hide stupid open editors section in file explorer
-  "explorer.openEditors.visible": 0,
   "editor.fontSize": 14,
   "editor.cursorBlinking": "solid",
   "editor.fontFamily": "'FiraMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
@@ -140,5 +138,7 @@
   "breadcrumbs.filePath": "off",
   "redhat.telemetry.enabled": false,
   "githubPullRequests.pullBranch": "never",
-  "metals.enableSemanticHighlighting": false
+  "metals.enableSemanticHighlighting": false,
+  "editor.accessibilitySupport": "off",
+  "explorer.openEditors.visible": 1
 }
