@@ -9,6 +9,7 @@ Plug 'kana/vim-textobj-user' " Allows custom text objects
 Plug 'kana/vim-textobj-entire' " Adds the text objects 'ie' and 'ae'
 Plug 'kana/vim-textobj-line' " Adds the text objects 'il' and 'al'
 
+" TODO: Switch from leap to flash
 Plug 'ggandor/leap.nvim', { 'branch': 'main' }
 Plug 'unblevable/quick-scope' " Improve usability of f,F,t,T
 Plug 'machakann/vim-highlightedyank' " Visually shows yank area
