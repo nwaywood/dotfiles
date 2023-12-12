@@ -5,9 +5,12 @@
 # Add truecolor support
 # set-option -ga terminal-overrides ",xterm-256color:Tc"
 # https://github.com/LunarVim/LunarVim/issues/3973
-set -g default-terminal xterm-256color
+# set -g default-terminal xterm-256color
 # tmux display things in 256 colors
 # set -g default-terminal "screen-256color"
+# Below is how lazyvim says to set it up
+set-option -g default-terminal "screen-256color"
+set-option -sa terminal-features ',xterm-kitty:RGB'
 
 # make vim cursor display properly in insert mode
 # https://github.com/neovim/neovim/wiki/FAQ#cursor-shape-doesnt-change-in-tmux
