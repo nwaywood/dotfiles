@@ -6,6 +6,7 @@ zsh/work.zsh
 
 # ignore this because nvim config is lua now but vscode is still vimscript
 config/nvim/autoload/plug.vim
+vscode/plugged
 
 config/nvim/plugged
 config/nvim/projects.txt
