@@ -1,5 +1,8 @@
+" append to the runtimepath so that autoload/plug.vim can be in vscode dir
+let &runtimepath.=','.expand('~/.dotfiles/vscode')
+
 " plugins
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.dotfiles/vscode/plugged')
 
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
 Plug 'tpope/vim-surround' " mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
