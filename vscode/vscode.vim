@@ -65,6 +65,16 @@ nnoremap <silent> J :<C-u>call VSCodeNotify('workbench.action.previousEditorInGr
 " Map J to gJ instead since I use J to navigate tabs
 nnoremap <silent> gJ :<C-u>call VSCodeNotify('editor.action.joinLines')<CR>
 
+" Folding keybindings
+" https://github.com/vscode-neovim/vscode-neovim/issues/58#issuecomment-1229279216
+nnoremap zM :call VSCodeNotify('editor.foldAll')<CR>
+nnoremap zR :call VSCodeNotify('editor.unfoldAll')<CR>
+nnoremap zc :call VSCodeNotify('editor.fold')<CR>
+nnoremap zC :call VSCodeNotify('editor.foldRecursively')<CR>
+nnoremap zo :call VSCodeNotify('editor.unfold')<CR>
+nnoremap zO :call VSCodeNotify('editor.unfoldRecursively')<CR>
+nnoremap za :call VSCodeNotify('editor.toggleFold')<CR>
+
 " make Y have the same behavior as C and D
 nnoremap Y y$
 
@@ -77,10 +87,28 @@ nnoremap <C-y> 3<C-y>
 
 " will make navigation of wrapped lines worked as you'd expect
 " In VSCode it seems they need to be nmap and and nnoremap
-nmap <silent> j gj
-nmap <silent> k gk
 nmap <silent> ^ g^
 nmap <silent> $ g$
+" Replace j and k remappings to moveCursor function so it works with folds
+" https://github.com/vscode-neovim/vscode-neovim/issues/58#issuecomment-1229279216
+" nmap <silent> j gj
+" nmap <silent> k gk
+lua << EOF
+  local function moveCursor(direction)
+    if (vim.fn.reg_recording() == '' and vim.fn.reg_executing() == '') then
+        return ('g' .. direction)
+    else
+        return direction
+    end
+  end
+
+  vim.keymap.set('n', 'k', function()
+      return moveCursor('k')
+  end, { expr = true, remap = true })
+  vim.keymap.set('n', 'j', function()
+      return moveCursor('j')
+  end, { expr = true, remap = true })
+EOF
 
 nnoremap <silent> <C-w>o :<C-u>call <SID>closeOtherEditors()<CR>
 function! s:closeOtherEditors()
