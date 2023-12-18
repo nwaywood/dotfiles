@@ -1,52 +1,65 @@
 local Util = require("lazyvim.util")
-local actions = require "telescope.actions"
-  -- change some telescope options and a keymap to browse plugin files
+local actions = require("telescope.actions")
+
 return {
-    "nvim-telescope/telescope.nvim",
-    keys = {
-      { "<leader>a", Util.telescope("live_grep"), desc = "Grep project" },
-    },
-    opts = {
-      defaults = {
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
-        sorting_strategy = "ascending",
-        path_display = { "smart" },
-        mappings = {
-          i = {
-            ["<C-n>"] = actions.cycle_history_next,
-            ["<C-p>"] = actions.cycle_history_prev,
+  "nvim-telescope/telescope.nvim",
+  keys = {
+    { "<leader>a", Util.telescope("live_grep"), desc = "Grep project" },
+    {"<leader>fb", false},
+    {"<leader>fc", false},
+    {"<leader>fF", false},
+    {"<leader>ff", false},
+    {"<leader>fr", false},
+    {"<leader>fR", false},
+    { "<leader>f", Util.telescope("files"), desc = "Find Files" },
+    -- {
+    --   "<leader>f",
+    --   "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+    --   desc = "Find files",
+    -- },
+  },
+  opts = {
+    defaults = {
+      layout_strategy = "horizontal",
+      layout_config = { prompt_position = "top" },
+      sorting_strategy = "ascending",
+      path_display = { "smart" },
+      mappings = {
+        i = {
+          ["<C-n>"] = actions.cycle_history_next,
+          ["<C-p>"] = actions.cycle_history_prev,
 
-            ["<C-j>"] = actions.move_selection_next,
-            ["<C-k>"] = actions.move_selection_previous,
+          ["<C-j>"] = actions.move_selection_next,
+          ["<C-k>"] = actions.move_selection_previous,
 
-            ["<C-g>"] = actions.close, -- default is C-c
-            ["<C-s>"] = actions.select_horizontal, -- default is C-x
+          ["<C-g>"] = actions.close, -- default is C-c
+          ["<C-s>"] = actions.select_horizontal, -- default is C-x
 
-            ["<C-u>"] = actions.preview_scrolling_up,
-            ["<C-d>"] = actions.preview_scrolling_down,
+          ["<C-u>"] = actions.preview_scrolling_up,
+          ["<C-d>"] = actions.preview_scrolling_down,
 
-            ["<C-b>"] = actions.results_scrolling_up,
-            ["<C-f>"] = actions.results_scrolling_down,
-            
-            -- ["<c-t>"] = trouble.open_with_trouble,
-          },
+          ["<C-b>"] = actions.results_scrolling_up,
+          ["<C-f>"] = actions.results_scrolling_down,
 
-          n = {
-            ["<C-g>"] = actions.close, -- default is C-c
-            ["<C-s>"] = actions.select_horizontal, -- default is C-x
+          -- ["<c-t>"] = trouble.open_with_trouble,
+        },
 
-            ["<C-u>"] = actions.preview_scrolling_up,
-            ["<C-d>"] = actions.preview_scrolling_down,
+        n = {
+          ["<C-g>"] = actions.close, -- default is C-c
+          ["<C-s>"] = actions.select_horizontal, -- default is C-x
 
-            ["<C-b>"] = actions.results_scrolling_up,
-            ["<C-f>"] = actions.results_scrolling_down,
+          ["<C-u>"] = actions.preview_scrolling_up,
+          ["<C-d>"] = actions.preview_scrolling_down,
 
-            ["?"] = actions.which_key,
-            
-            -- ["<c-t>"] = trouble.open_with_trouble,
-          },
+          ["<C-b>"] = actions.results_scrolling_up,
+          ["<C-f>"] = actions.results_scrolling_down,
+
+          ["?"] = actions.which_key,
+
+          -- ["<c-t>"] = trouble.open_with_trouble,
         },
       },
     },
+  },
 }
+

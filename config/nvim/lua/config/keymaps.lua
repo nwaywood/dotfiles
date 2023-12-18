@@ -6,3 +6,7 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 keymap("i", "jk", "<ESC>", opts)
+
+vim.keymap.del("n", "<leader>ft")
+vim.keymap.del("n", "<leader>fT")
+vim.keymap.del("n", "<leader>fn")
