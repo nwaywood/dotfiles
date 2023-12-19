@@ -6,6 +6,11 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 keymap("i", "jk", "<ESC>", opts)
+keymap("n", "\\", "\"_", opts) -- blackhole register shortcut
+
+local lazyterm = function() Util.terminal(nil, { cwd = Util.root() }) end
+keymap("n", "<c-`>", lazyterm, { desc = "Terminal (root dir)" })
+keymap("t", "<C-`>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 vim.keymap.del("n", "<leader>ft")
 vim.keymap.del("n", "<leader>fT")
