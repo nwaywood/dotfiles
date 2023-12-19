@@ -3,6 +3,7 @@ local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 
 return {
+    {
   "nvim-telescope/telescope.nvim",
   keys = {
     { "<leader>a", Util.telescope("live_grep"), desc = "Grep project" },
@@ -70,5 +71,18 @@ return {
       },
     },
   },
+},
+  -- add telescope-fzf-native
+  {
+    "telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension("fzf")
+      end,
+    },
+  },
+
 }
 
