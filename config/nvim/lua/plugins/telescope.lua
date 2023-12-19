@@ -13,7 +13,8 @@ return {
     {"<leader>ff", false},
     {"<leader>fr", false},
     {"<leader>fR", false},
-    -- { "<leader>f", Util.telescope("files"), desc = "Find Files" },
+    -- { "<leader>f", Util.telescope("files", {previewer = false}), desc = "Find Files" },
+    -- { "<leader>F", Util.telescope("files", {previewer = false, cwd = false}), desc = "Find Files 2" },
     {
       "<leader>f",
       "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
