@@ -14,6 +14,13 @@ local lazyterm = function() Util.terminal(nil, { cwd = Util.root() }) end
 keymap("n", "<c-`>", lazyterm, { desc = "Terminal (root dir)" })
 keymap("t", "<C-`>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
+
+-- faster window splitting
+keymap("n", "<C-s>", "<C-W>s", { desc = "Split window below", remap = true })
+keymap("n", "<C-v>", "<C-W>v", { desc = "Split window right", remap = true })
+
 vim.keymap.del("n", "<leader>ft")
 vim.keymap.del("n", "<leader>fT")
 vim.keymap.del("n", "<leader>fn")
+vim.keymap.del("n", "<leader>|")
+vim.keymap.del("n", "<leader>-")
