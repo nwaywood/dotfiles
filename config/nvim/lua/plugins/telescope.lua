@@ -6,13 +6,17 @@ return {
     {
   "nvim-telescope/telescope.nvim",
   keys = {
-    { "<leader>a", Util.telescope("live_grep"), desc = "Grep project" },
     {"<leader>fb", false},
     {"<leader>fc", false},
     {"<leader>fF", false},
     {"<leader>ff", false},
     {"<leader>fr", false},
     {"<leader>fR", false},
+    -- replace <leader>/ with <leader>a
+    {"<leader>/", false},
+    { "<leader>a", Util.telescope("live_grep"), desc = "Grep project" },
+    -- replace <leader><space> with <leader>f
+    {"<leader><space>", false},
     -- { "<leader>f", Util.telescope("files", {previewer = false}), desc = "Find Files" },
     -- { "<leader>F", Util.telescope("files", {previewer = false, cwd = false}), desc = "Find Files 2" },
     {
