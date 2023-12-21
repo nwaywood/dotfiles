@@ -7,6 +7,7 @@ local Op = require('Comment.opfunc')
 local A = vim.api
 local opt = { silent = true, noremap = true }
 
+-- https://github.com/numToStr/Comment.nvim/issues/70
 function _G.___gdc(vmode)
     local range = U.get_region(vmode)
     local cfg = {}
