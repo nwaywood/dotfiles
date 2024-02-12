@@ -22,7 +22,7 @@
   // multi select with alt so that cmd+click goes to def
   "editor.multiCursorModifier": "alt",
   // don't auto highlight occurences on hover
-  "editor.occurrencesHighlight": false,
+  "editor.occurrencesHighlight": "off",
   "terminal.integrated.shell.osx": "/bin/zsh",
   "explorer.confirmDragAndDrop": false,
   // only show colors for git changes and errors, not the numbers and letters
@@ -140,5 +140,6 @@
   "githubPullRequests.pullBranch": "never",
   "metals.enableSemanticHighlighting": false,
   "editor.accessibilitySupport": "off",
-  "explorer.openEditors.visible": 1
+  "explorer.openEditors.visible": 1,
+  "window.customTitleBarVisibility": "never"
 }
