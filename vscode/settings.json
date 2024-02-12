@@ -141,5 +141,8 @@
   "metals.enableSemanticHighlighting": false,
   "editor.accessibilitySupport": "off",
   "explorer.openEditors.visible": 1,
-  "window.customTitleBarVisibility": "never"
+  "window.customTitleBarVisibility": "never",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  }
 }
