@@ -12,18 +12,6 @@
   //     "command": "workbench.action.quickOpen",
   //     "when": "!editorTextFocus && !terminalFocus"
   // },
-  {
-    "command": "vscode-neovim.compositeEscape1",
-    "key": "j",
-    "when": "neovim.mode == insert && editorTextFocus",
-    "args": "j"
-  },
-  {
-    "command": "vscode-neovim.compositeEscape2",
-    "key": "k",
-    "when": "neovim.mode == insert && editorTextFocus",
-    "args": "k"
-  },
   // splits
   {
     "key": "ctrl+v",

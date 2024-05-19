@@ -1,9 +1,13 @@
 {
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "vscode-neovim.neovimInitVimPaths.darwin": "/Users/nick.waywood/.dotfiles/vscode/vscode.vim",
+  "vscode-neovim.compositeKeys": {
+    "jk": {
+      "command": "vscode-neovim.escape"
+    }
+  },
   // This must be false for keys to work in file explorer with neovim plugin
   "workbench.list.automaticKeyboardNavigation": false,
-  "editor.fontSize": 14,
   "editor.cursorBlinking": "solid",
   "editor.fontFamily": "'FiraMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
   "workbench.colorTheme": "One Dark Pro",
@@ -144,5 +148,11 @@
   "window.customTitleBarVisibility": "never",
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
   }
 }
