@@ -1,6 +1,6 @@
 local Util = require("lazyvim.util")
 local actions = require("telescope.actions")
-local trouble = require("trouble.providers.telescope")
+-- local trouble = require("trouble.sources.telescope")
 
 return {
     {
@@ -14,7 +14,7 @@ return {
     {"<leader>fR", false},
     -- replace <leader>/ with <leader>a
     {"<leader>/", false},
-    { "<leader>a", Util.telescope("live_grep"), desc = "Grep project" },
+    { "<leader>a", Util.pick("live_grep"), desc = "Grep project" },
     -- replace <leader><space> with <leader>f
     {"<leader><space>", false},
     -- { "<leader>f", Util.telescope("files", {previewer = false}), desc = "Find Files" },
@@ -56,7 +56,8 @@ return {
           ["<C-b>"] = actions.results_scrolling_up,
           ["<C-f>"] = actions.results_scrolling_down,
 
-          ["<c-t>"] = trouble.open_with_trouble,
+          -- TODO: Fix this
+          -- ["<c-t>"] = actions.open_with_trouble,
         },
 
         n = {
@@ -71,7 +72,7 @@ return {
 
           ["?"] = actions.which_key,
 
-          ["<c-t>"] = trouble.open_with_trouble,
+          -- ["<c-t>"] = trouble.open(),
         },
       },
     },
