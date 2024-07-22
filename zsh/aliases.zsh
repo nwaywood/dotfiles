@@ -27,9 +27,9 @@ alias wiki='nvim +VimwikiIndex'
 alias vimf='nvim "+Denite file_rec"'
 alias vimn='nvim +NERDTreeToggle'
 alias tree='tree -I "node_modules"'
-alias ls="exa"
-alias la="exa -a"
-alias ll="exa -la"
+alias ls="eza"
+alias la="eza -a"
+alias ll="eza -la"
 alias lg="lazygit"
 alias cat="bat -pp --theme=TwoDark"
 alias k="kubectl"
