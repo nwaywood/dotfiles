@@ -9,6 +9,8 @@ autoload -Uz compinit
 compinit
 
 
+source ~/.zprofile
+
 # pure prompt
 fpath+=$HOME/.dotfiles/pure
 autoload -U promptinit; promptinit
@@ -78,6 +80,8 @@ if hash brew 2>/dev/null; then
 fi
 
 source ~/.config/up/up.sh
+
+eval "$(jenv init -)"
 
 # load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
