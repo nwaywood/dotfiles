@@ -1,6 +1,6 @@
 local Util = require("lazyvim.util")
 local actions = require("telescope.actions")
--- local trouble = require("trouble.sources.telescope")
+local open_with_trouble = require("trouble.sources.telescope").open
 
 return {
     {
@@ -56,8 +56,7 @@ return {
           ["<C-b>"] = actions.results_scrolling_up,
           ["<C-f>"] = actions.results_scrolling_down,
 
-          -- TODO: Fix this
-          -- ["<c-t>"] = actions.open_with_trouble,
+          ["<c-t>"] = open_with_trouble,
         },
 
         n = {
@@ -72,7 +71,7 @@ return {
 
           ["?"] = actions.which_key,
 
-          -- ["<c-t>"] = trouble.open(),
+          ["<c-t>"] = open_with_trouble,
         },
       },
     },
