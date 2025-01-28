@@ -85,7 +85,9 @@ bind -r p previous-window
 # is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
 # | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
 # https://github.com/junegunn/fzf/pull/582
-not_tmux="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?(g?(view|(n|l)?vim?x?)(diff)?|fzf)$'"
+# not_tmux="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?(g?(view|(n|l)?vim?x?)(diff)?|fzf)$'"
+# Mix of https://github.com/junegunn/fzf/pull/582 and https://github.com/christoomey/vim-tmux-navigator/issues/417
+not_tmux="ps -o tty= -o state= -o comm= | grep -iqE '^#{s|/dev/||:pane_tty} ^[^TXZ ]+ +(\\S+\\/)?(g?(view|(n|l)?vim?x?)(diff)?|fzf)$'"
 # is_vim='`echo "#{pane_current_command}" | grep -iqE "(^|\/)g?(view|n?vim?x?)(diff)?$"` || `echo "#{pane_start_command}" | grep -iqE "fzf"` || `echo "#{pane_current_command}" | grep -iqE "fzf"`'
 bind-key -n C-h if-shell "$not_tmux" "send-keys C-h"  "select-pane -L"
 bind-key -n C-j if-shell "$not_tmux" "send-keys C-j"  "select-pane -D"
