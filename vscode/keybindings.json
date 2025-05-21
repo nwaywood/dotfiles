@@ -305,21 +305,21 @@
   {
     "key": "left",
     "command": "workbench.action.decreaseViewSize",
-    "when": "textInputFocus && neovim.mode != insert"
+    "when": "editorFocus && neovim.mode != insert"
   },
   {
     "key": "right",
     "command": "workbench.action.increaseViewSize",
-    "when": "textInputFocus && neovim.mode != insert"
+    "when": "editorFocus && neovim.mode != insert"
   },
   {
     "key": "down",
     "command": "workbench.action.decreaseViewSize",
-    "when": "textInputFocus && neovim.mode != insert"
+    "when": "editorFocus && neovim.mode != insert"
   },
   {
     "key": "up",
     "command": "workbench.action.increaseViewSize",
-    "when": "textInputFocus && neovim.mode != insert"
+    "when": "editorFocus && neovim.mode != insert"
   }
 ]
