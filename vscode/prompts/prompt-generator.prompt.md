@@ -1,6 +1,6 @@
 ---
 description: Create a new prompt using best practices for AI prompt engineering
-mode: agent
+mode: 'agent'
 ---
 
 # Prompt Engineering Assistant
