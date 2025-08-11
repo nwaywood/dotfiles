@@ -321,5 +321,13 @@
     "key": "up",
     "command": "workbench.action.increaseViewSize",
     "when": "editorFocus && neovim.mode != insert"
-  }
+},
+{
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+        "text": "\\\r\n"
+    },
+    "when": "terminalFocus"
+}
 ]

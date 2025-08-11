@@ -4,6 +4,9 @@ Files are symlinked to
 
 `/Users/nick/Library/Application\ Support/Code/User`
 
+
+e.g. `ln -s ~/.dotfiles/vscode/prompts ~/Library/Application\ Support/Code/User/prompts`
+
 ## Adding vim/nvim plugins into VSCode
 
 1. Add new plugin into `~/.dotfiles/vscode/vscode.vim`

@@ -155,5 +155,7 @@
     "markdown": false,
     "scminput": false
   },
-  "github.copilot.editor.enableAutoCompletions": true
+  "tabstronaut.confirmRemoveAndClose": false,
+  "github.copilot.advanced": {},
+  "chat.agent.enabled": true,
 }
