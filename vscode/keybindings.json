@@ -79,12 +79,12 @@
   {
     "key": "l",
     "command": "list.select",
-    "when": "!inputFocus"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
     "key": "o",
     "command": "list.toggleExpand",
-    "when": "!inputFocus"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
     "key": "h",
@@ -321,13 +321,13 @@
     "key": "up",
     "command": "workbench.action.increaseViewSize",
     "when": "editorFocus && neovim.mode != insert"
-},
-{
+  },
+  {
     "key": "shift+enter",
     "command": "workbench.action.terminal.sendSequence",
     "args": {
-        "text": "\\\r\n"
+      "text": "\\\r\n"
     },
     "when": "terminalFocus"
-}
+  }
 ]
