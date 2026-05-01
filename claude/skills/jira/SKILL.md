@@ -76,7 +76,20 @@ jira issue create -p KOOPA -tStory -s"Story title" -yHigh --no-input
 jira issue edit KOOPA-123 -s"New Summary" --no-input
 jira issue edit KOOPA-123 -yHigh --no-input
 jira issue edit KOOPA-456 --parent KOOPA-123 --no-input
+
+# Edit custom fields (use --custom key=value)
+jira issue edit KOOPA-123 --custom customfield_19300="Acceptance criteria text" --no-input
 ```
+
+**Standard flags:** `-s` summary, `-b` body (description), `-y` priority, `-a` assignee, `-l` label, `-C` component, `--parent`, `--fix-version`, `--affects-version`
+
+### Custom Field IDs (KOOPA project)
+
+| Field | Custom Field ID |
+|-------|----------------|
+| Acceptance Criteria | `customfield_19300` |
+
+**Important:** When editing a ticket, `-b` and piped input write to the **Description** field. Use `--custom customfield_19300="..."` to write to the **Acceptance Criteria** field separately.
 
 ## Link Issues
 
