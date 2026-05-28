@@ -24,6 +24,10 @@ unbind C-b
 set -g prefix C-a
 bind C-a send-prefix
 
+# For Pi harness
+set -g extended-keys on
+set -g extended-keys-format csi-u
+
 # https://github.com/tmux-plugins/vim-tmux-focus-events
 set -g focus-events on
 
