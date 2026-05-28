@@ -138,6 +138,10 @@ Key.on('t', MOD2, function() {
     App.launch("Kitty").focus();
 });
 
+Key.on('a', MOD2, function() {
+    App.launch("Cmux").focus();
+});
+
 Key.on('s', MOD2, function() {
     App.launch("Slack").focus();
 });
