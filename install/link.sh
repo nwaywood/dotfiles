@@ -32,20 +32,20 @@ for config in $DOTFILES/config/*; do
   fi
 done
 
-echo -e "\n\ninstalling to ~/.claude"
-echo "=============================="
-while IFS= read -r -d '' file; do
-  relative="${file#$DOTFILES/claude/}"
-  target="$HOME/.claude/$relative"
-  target_dir="$(dirname $target)"
-  if [ ! -d "$target_dir" ]; then
-    echo "Creating $target_dir"
-    mkdir -p "$target_dir"
-  fi
-  if [ -e "$target" ]; then
-    echo "~${target#$HOME} already exists... Skipping."
-  else
-    echo "Creating symlink for $file"
-    ln -s "$file" "$target"
-  fi
-done < <(find -H "$DOTFILES/claude" -type f -print0)
+# echo -e "\n\ninstalling to ~/.claude"
+# echo "=============================="
+# while IFS= read -r -d '' file; do
+#   relative="${file#$DOTFILES/claude/}"
+#   target="$HOME/.claude/$relative"
+#   target_dir="$(dirname $target)"
+#   if [ ! -d "$target_dir" ]; then
+#     echo "Creating $target_dir"
+#     mkdir -p "$target_dir"
+#   fi
+#   if [ -e "$target" ]; then
+#     echo "~${target#$HOME} already exists... Skipping."
+#   else
+#     echo "Creating symlink for $file"
+#     ln -s "$file" "$target"
+#   fi
+# done < <(find -H "$DOTFILES/claude" -type f -print0)
