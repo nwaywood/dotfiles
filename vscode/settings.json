@@ -51,7 +51,6 @@
   "zenMode.hideLineNumbers": false,
   "window.title": "${rootName}${separator}${activeEditorMedium}",
   "terminal.integrated.fontSize": 14,
-  "telemetry.enableTelemetry": false,
   // always automatically show intellisense suggestions
   "editor.quickSuggestions": {
     "other": true,
@@ -104,13 +103,9 @@
       ]
     }
   ],
-  // Reason
-  // ------
-  // "reason.formatOnSave": true,
   // eslint and prettier
   "prettier.tabWidth": 4,
   "prettier.semi": false,
-  "kotlin.compiler.jvm.target": "1.8",
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "haskell.formattingProvider": "floskell",
@@ -129,7 +124,6 @@
     "**/.metals": true,
     "**/.ammonite": true
   },
-  "ruby.useLanguageServer": true,
   "git.confirmSync": false,
   "editor.bracketPairColorization.enabled": true,
   "metals.javaHome": "/opt/homebrew/opt/openjdk@11",
@@ -140,12 +134,11 @@
   "breadcrumbs.enabled": true,
   // turn off filepath in breadcrumbs since I display it in "window.title" instead
   "breadcrumbs.filePath": "off",
-  "redhat.telemetry.enabled": false,
   "githubPullRequests.pullBranch": "never",
   "metals.enableSemanticHighlighting": false,
   "editor.accessibilitySupport": "off",
   "explorer.openEditors.visible": 1,
-  "window.customTitleBarVisibility": "never",
+  // "window.customTitleBarVisibility": "never",
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
@@ -156,6 +149,5 @@
     "scminput": false
   },
   "tabstronaut.confirmRemoveAndClose": false,
-  "github.copilot.advanced": {},
   "chat.agent.enabled": true,
 }
