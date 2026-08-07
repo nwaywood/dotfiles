@@ -135,7 +135,8 @@ Key.on("left", MOD1, function () {
 // Application shortcuts
 // ---------------------
 Key.on('t', MOD2, function() {
-    App.launch("Kitty").focus();
+    // App.launch("Kitty").focus();
+    App.launch("Ghostty").focus();
 });
 
 Key.on('a', MOD2, function() {

@@ -1,0 +1,7 @@
+macos-option-as-alt = true
+
+theme = "Atom One Dark"
+font-family = "FiraMono Nerd Font Mono"
+font-size = 14.5
+cursor-style = block
+cursor-style-blink = false
