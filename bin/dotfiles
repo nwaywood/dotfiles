@@ -1,0 +1,193 @@
+#!/usr/bin/env bash
+# Safe GNU Stow interface for this repository. It manages links only.
+set -euo pipefail
+
+DOTFILES_ROOT="${DOTFILES_ROOT:-$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)}"
+STOW_DIR="$DOTFILES_ROOT/stow"
+DEFAULT_PACKAGES_FILE="$STOW_DIR/packages.default"
+OPT_IN_PACKAGES_FILE="$STOW_DIR/packages.opt-in"
+PACKAGE_TARGETS_FILE="$STOW_DIR/packages.targets"
+
+usage() {
+  cat <<'EOF'
+Usage:
+  bin/dotfiles bootstrap
+  bin/dotfiles packages
+  bin/dotfiles check [--all] <package>...
+  bin/dotfiles link [--all] <package>...
+  bin/dotfiles unlink <package>...
+
+All Stow operations use --no-folding and target a package-specific path under
+$HOME. `link` simulates every requested package before creating any links.
+Provisioning, macOS defaults, TPM setup, and shell changes are intentionally
+outside this command.
+EOF
+}
+
+die() {
+  printf 'error: %s\n' "$*" >&2
+  exit 1
+}
+
+require_stow() {
+  command -v stow >/dev/null 2>&1 || die 'GNU Stow is required. Install it with: brew install stow'
+}
+
+read_package_file() {
+  local file="$1"
+  [[ -f "$file" ]] || return 0
+  grep -Ev '^[[:space:]]*(#|$)' "$file" || true
+}
+
+package_target_relative() {
+  local package="$1"
+  local listed_package relative_target
+  local target="."
+  local matched=false
+
+  if [[ -f "$PACKAGE_TARGETS_FILE" ]]; then
+    while IFS=$'\t' read -r listed_package relative_target; do
+      [[ -z "$listed_package" || "$listed_package" == \#* ]] && continue
+      [[ "$listed_package" == "$package" ]] || continue
+      [[ "$matched" == false ]] || die "duplicate target mapping for package: $package"
+      [[ -n "$relative_target" ]] || die "missing target mapping for package: $package"
+      target="$relative_target"
+      matched=true
+    done < "$PACKAGE_TARGETS_FILE"
+  fi
+
+  [[ "$target" != /* ]] || die "target must be relative to HOME: $target"
+  case "/$target/" in
+    *'/../'*) die "target must not escape HOME: $target" ;;
+  esac
+  printf '%s\n' "$target"
+}
+
+package_target_path() {
+  local relative_target
+  relative_target="$(package_target_relative "$1")"
+  if [[ "$relative_target" == '.' ]]; then
+    printf '%s\n' "$HOME"
+  else
+    printf '%s/%s\n' "$HOME" "$relative_target"
+  fi
+}
+
+package_target_display() {
+  local relative_target
+  relative_target="$(package_target_relative "$1")"
+  if [[ "$relative_target" == '.' ]]; then
+    printf '~\n'
+  else
+    printf '~/%s\n' "$relative_target"
+  fi
+}
+
+validate_package() {
+  local package="$1"
+  [[ "$package" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || die "invalid package name: $package"
+  [[ -d "$STOW_DIR/$package" ]] || die "unknown package: $package"
+}
+
+run_stow_package() {
+  local package="$1"
+  shift
+  stow --dir="$STOW_DIR" --target="$(package_target_path "$package")" --no-folding --verbose "$@" "$package"
+}
+
+collect_packages() {
+  local allow_all="$1"
+  shift
+  local -a packages=("$@")
+
+  if [[ "$allow_all" == true ]]; then
+    (( ${#packages[@]} == 0 )) || die '--all cannot be combined with package names'
+    packages=()
+    local listed_package
+    while IFS= read -r listed_package; do
+      [[ -n "$listed_package" ]] && packages+=("$listed_package")
+    done < <(read_package_file "$DEFAULT_PACKAGES_FILE")
+  fi
+
+  (( ${#packages[@]} > 0 )) || die 'specify at least one package, or use --all'
+  local package
+  for package in "${packages[@]}"; do
+    validate_package "$package"
+  done
+  printf '%s\n' "${packages[@]}"
+}
+
+bootstrap() {
+  if command -v stow >/dev/null 2>&1; then
+    stow --version | head -n 1
+    return 0
+  fi
+
+  cat <<'EOF'
+GNU Stow is not installed.
+Install it explicitly with:
+  brew install stow
+EOF
+  return 1
+}
+
+list_packages() {
+  local package
+  printf '%-24s %-10s %s\n' 'PACKAGE' 'KIND' 'TARGET'
+  while IFS= read -r package; do
+    [[ -n "$package" ]] && printf '%-24s %-10s %s\n' "$package" 'default' "$(package_target_display "$package")"
+  done < <(read_package_file "$DEFAULT_PACKAGES_FILE")
+  while IFS= read -r package; do
+    [[ -n "$package" ]] && printf '%-24s %-10s %s\n' "$package" 'opt-in' "$(package_target_display "$package")"
+  done < <(read_package_file "$OPT_IN_PACKAGES_FILE")
+}
+
+command_name="${1:-}"
+[[ -n "$command_name" ]] || { usage; exit 1; }
+shift
+
+case "$command_name" in
+  bootstrap)
+    (( $# == 0 )) || die 'bootstrap accepts no arguments'
+    bootstrap
+    ;;
+  packages)
+    (( $# == 0 )) || die 'packages accepts no arguments'
+    list_packages
+    ;;
+  check|link)
+    require_stow
+    all=false
+    if [[ "${1:-}" == '--all' ]]; then
+      all=true
+      shift
+    fi
+    packages=()
+    while IFS= read -r package; do
+      [[ -n "$package" ]] && packages+=("$package")
+    done < <(collect_packages "$all" "$@")
+    for package in "${packages[@]}"; do
+      run_stow_package "$package" --simulate
+    done
+    if [[ "$command_name" == 'link' ]]; then
+      for package in "${packages[@]}"; do
+        run_stow_package "$package"
+      done
+    fi
+    ;;
+  unlink)
+    require_stow
+    (( $# > 0 )) || die 'specify at least one package to unlink'
+    for package in "$@"; do
+      validate_package "$package"
+      run_stow_package "$package" --delete
+    done
+    ;;
+  -h|--help|help)
+    usage
+    ;;
+  *)
+    usage >&2
+    die "unknown command: $command_name"
+    ;;
+esac

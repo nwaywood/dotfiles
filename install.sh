@@ -1,37 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-command_exists() {
-	type "$1" > /dev/null 2>&1
+cat >&2 <<'EOF'
+install.sh has been retired as part of the GNU Stow migration.
 
-}
+Link configuration explicitly:
+  ./bin/dotfiles bootstrap
+  ./bin/dotfiles check --all
+  ./bin/dotfiles link --all
 
-echo "Symlinking dotfiles"
-source install/link.sh
-
-if [ "$(uname)" == "Darwin" ]; then
-	echo -e "\n\nRunning on OSX"
-
-	echo "Setting up osx settings"
-	source install/osx.sh
-
-	echo "Brewing all the things"
-	source install/brew.sh
-fi
-
-# echo "Adding base16-shell project into .config"
-# git clone https://github.com/chriskempson/base16-shell.git $HOME/.dotfiles/.config/base16-shell
-
-echo "Installing tpm (tmux package manager)"
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-
-# zsh setup
-if ! command_exists zsh; then
-    echo "zsh not found. Please install and then re-run installation scripts"
-    exit 1
-elif ! [[ $SHELL =~ .*zsh.* ]]; then
-    echo "Configuring zsh as default shell"
-    chsh -s $(which zsh)
-fi
-
-echo "Done!"
+Provisioning is deliberately separate and must be explicitly requested:
+  ./install/brew.sh    # Homebrew packages
+  ./install/osx.sh     # macOS defaults
+  ./install/tmux.sh    # TPM setup
+EOF
+exit 1

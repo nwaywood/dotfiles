@@ -1,0 +1,7 @@
+# Packages that require explicit opt-in because they are platform- or application-specific.
+macos-windowing
+karabiner
+gh
+vscode
+oh-my-zsh
+claude

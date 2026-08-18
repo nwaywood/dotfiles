@@ -1,14 +1,23 @@
-# vscode
+# VS Code
 
-Files are symlinked to
+VS Code is a GNU Stow opt-in package because it uses the macOS-specific target:
 
-`/Users/nick/Library/Application\ Support/Code/User`
+```text
+~/Library/Application Support/Code/User
+```
 
+Link the managed files with:
 
-e.g. `ln -s ~/.dotfiles/vscode/prompts ~/Library/Application\ Support/Code/User/prompts`
+```bash
+cd ~/.dotfiles
+./bin/dotfiles check vscode
+./bin/dotfiles link vscode
+```
 
-## Adding vim/nvim plugins into VSCode
+The package manages `settings.json`, `keybindings.json`, and `prompts/`. It deliberately does not manage VS Code extensions, caches, or machine-local application state.
 
-1. Add new plugin into `~/.dotfiles/vscode/vscode.vim`
-2. `nvim -u vscode.vim` to launch nvim with this config
-3. Execute `:PlugInstall` to install plugin list from `vscode.vim` 
+## Adding Vim/Neovim plugins in VS Code
+
+1. Add the plugin to `vscode/vscode.vim`.
+2. Run `nvim -u vscode/vscode.vim`.
+3. Execute `:PlugInstall`.

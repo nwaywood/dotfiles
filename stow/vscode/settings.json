@@ -120,9 +120,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "files.watcherExclude": {
-    "**/.bloop": true,
-    "**/.metals": true,
-    "**/.ammonite": true
+    "**/.ammonite": true,
+    "**/.bloop/**": true,
+    "**/.metals/**/*.{java,scala}": true
   },
   "git.confirmSync": false,
   "editor.bracketPairColorization.enabled": true,
@@ -150,4 +150,9 @@
   },
   "tabstronaut.confirmRemoveAndClose": false,
   "chat.agent.enabled": true,
+  "claudeCode.preferredLocation": "panel",
+  "claudeCode.environmentVariables": [],
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "chat.viewSessions.orientation": "stacked",
+  "git.detectWorktrees": true,
 }

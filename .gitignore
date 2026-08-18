@@ -1,6 +1,5 @@
 aliases-local.zsh
 settings-local.zsh
-.config
 .netrwhist
 zsh/work.zsh
 
@@ -10,7 +9,20 @@ vscode/plugged
 
 config/nvim/plugged
 config/nvim/projects.txt
-config/karabiner/automatic_backups
-config/karabiner/karabiner.json
+# Karabiner's active profile and automatic backups are machine-local state.
+/config/karabiner/
+/stow/karabiner/.config/karabiner/automatic_backups/
+/stow/karabiner/.config/karabiner/karabiner.json
 config/lvim/plugin/packer_compiled.lua
 config/nvim/plugin/packer_compiled.lua
+
+# GitHub CLI host data may contain OAuth credentials; only config.yml is Stow-managed.
+/config/gh/
+/stow/gh/.config/gh/hosts.yml
+
+# Herdr configuration is Stow-managed; runtime state remains local to ~/.config/herdr.
+/config/herdr/
+/stow/herdr/.config/herdr/.plugins.lock
+/stow/herdr/.config/herdr/*.log
+/stow/herdr/.config/herdr/*.sock
+/stow/herdr/.config/herdr/session.json

@@ -1,0 +1,18 @@
+# Packages linked by `bin/dotfiles link --all`.
+git
+starship
+alacritty
+cmux
+doom
+ghostty
+ideavim
+kitty
+lazygit
+lvim
+nnn
+nvim
+nvim.personal
+up
+shell
+tmux
+herdr

@@ -1,51 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-DOTFILES=$HOME/.dotfiles
+cat >&2 <<'EOF'
+install/link.sh has been retired as part of the GNU Stow migration.
 
-echo -e "\nCreating symlinks"
-echo "=============================="
-linkables=$(find -H "$DOTFILES" -maxdepth 3 -name '*.symlink')
-for file in $linkables; do
-  target="$HOME/.$(basename $file ".symlink")"
-  if [ -e $target ]; then
-    echo "~${target#$HOME} already exists... Skipping."
-  else
-    echo "Creating symlink for $file"
-    ln -s $file $target
-  fi
-done
+Use the Stow interface instead:
+  ./bin/dotfiles check --all
+  ./bin/dotfiles link --all
 
-echo -e "\n\ninstalling to ~/.config"
-echo "=============================="
-if [ ! -d $HOME/.config ]; then
-  echo "Creating ~/.config"
-  mkdir -p $HOME/.config
-fi
-# configs=$( find -path "$DOTFILES/config.symlink" -maxdepth 1 )
-for config in $DOTFILES/config/*; do
-  target=$HOME/.config/$(basename $config)
-  if [ -e $target ]; then
-    echo "~${target#$HOME} already exists... Skipping."
-  else
-    echo "Creating symlink for $config"
-    ln -s $config $target
-  fi
-done
-
-# echo -e "\n\ninstalling to ~/.claude"
-# echo "=============================="
-# while IFS= read -r -d '' file; do
-#   relative="${file#$DOTFILES/claude/}"
-#   target="$HOME/.claude/$relative"
-#   target_dir="$(dirname $target)"
-#   if [ ! -d "$target_dir" ]; then
-#     echo "Creating $target_dir"
-#     mkdir -p "$target_dir"
-#   fi
-#   if [ -e "$target" ]; then
-#     echo "~${target#$HOME} already exists... Skipping."
-#   else
-#     echo "Creating symlink for $file"
-#     ln -s "$file" "$target"
-#   fi
-# done < <(find -H "$DOTFILES/claude" -type f -print0)
+This legacy script intentionally performs no filesystem changes.
+EOF
+exit 1

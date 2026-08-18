@@ -1,0 +1,20 @@
+[include]
+	path = ~/.gitconfig.local
+[alias]
+	co = checkout
+	s = status
+	l = log
+	b = branch
+	cm = commit -m
+	ca = commit -am
+	aa = add -A
+[core]
+	excludesfile = ~/.gitignore_global
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
+[push]
+	default = simple
+[url "git@github.com:"]
+	insteadOf = https://github.com/

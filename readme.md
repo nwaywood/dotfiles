@@ -4,23 +4,71 @@ This repo is a collection of my Neovim, tmux, zsh, etc. configurations. This dot
 
 ## Install
 
+This repository is being migrated to [GNU Stow](https://www.gnu.org/software/stow/). Stow manages symlinks only; Homebrew provisioning, macOS defaults, TPM setup, and login-shell changes are deliberately separate operations.
+
 1. `git clone https://github.com/nwaywood/dotfiles.git ~/.dotfiles`
 1. `cd ~/.dotfiles`
-1. `bash install.sh`
+1. `brew install stow`
+1. `./test/dotfiles-test.sh`
+1. `./bin/dotfiles check --all`
+1. `./bin/dotfiles link --all`
 
-This `install.sh` script will start by installing all symbolic links into your home directory. Every file with a `.symlink` extension will be symlinked to the home directory with a `.` in front of it. As an example, `zshrc.symlink` will be symlinked in the home directory as `~/.zshrc`. Then, all files in the `$DOTFILES/config` directory will be symlinked to the `~/.config/` directory for applications that follow the [XDG base directory specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html), such as Neovim.
+`bin/dotfiles link` runs a Stow simulation before it creates links. Every operation targets `$HOME`, uses `--no-folding`, and only manages the packages explicitly named. `--all` links only the packages listed in `stow/packages.default`; special targets remain opt-in.
 
-Next, the script will check to see if the OS is MacOS. If so, it will install Homebrew (if its not already installed) and will install all the packages listed in `install/brew.sh`. Then, `install/osx.sh` will run and change some OSX configurations. Finally, `zsh` is configured and `oh-my-zsh` is installed.
+Useful commands:
 
-In `install/` folder there are other scripts for installing `go`, `atom`, and `npm` packages which are not automatated. If you want to install any of these packages, manually run the file (e.g. `bash install/atom.sh`).
+```bash
+./bin/dotfiles bootstrap             # verify GNU Stow is available
+./bin/dotfiles packages              # show default and opt-in packages
+./bin/dotfiles check git starship    # dry-run and report conflicts
+./bin/dotfiles link git starship     # link named packages
+./bin/dotfiles unlink starship       # remove only Stow-created links
+```
 
-## VSCode Setup
+For maintainer instructions on adding a package or safely migrating a new symlink—including XDG, home-dotfile, and application-specific target examples—see [`stow/README.md`](stow/README.md).
 
-Need to symlink files into VSCode folder. See readme in vscode folder for details
+The current default packages are `git`, `starship`, shell, tmux, Herdr, and the migrated standalone XDG editor, terminal, and tool configurations. Run `./bin/dotfiles packages` for the authoritative list. macOS-only and special-target configurations remain separate opt-in migrations. Do **not** run `install.sh`: it is now a safe deprecation message rather than a combined installer.
+
+### Conflict handling and rollback
+
+Never use `stow --adopt`: it can silently absorb machine-local configuration into the repository. Before linking a package, inspect any conflict and back up only user-owned paths under `~/.dotfiles-backup/<timestamp>/`. Existing links owned by this checkout may be replaced after their target is confirmed.
+
+Rollback is package-scoped:
+
+```bash
+./bin/dotfiles unlink <package>
+```
+
+Restore that package's recorded backup only when needed. Runtime state, logs, sockets, caches, and credentials are not Stow-managed.
+
+### Herdr runtime state
+
+Only `~/.config/herdr/config.toml` is Stow-managed. `~/.config/herdr` itself remains a real local directory, so session data, logs, sockets, and plugin state stay out of the checkout. Herdr runtime state is backed up under `~/.dotfiles-backup/` before a migration and must never be added to a Stow package.
+
+### Explicit provisioning
+
+Stow manages links only. Run provisioning steps independently and only when wanted:
+
+```bash
+./install/brew.sh  # Homebrew packages and applications
+./install/osx.sh   # macOS defaults
+./install/tmux.sh  # idempotent TPM setup
+```
+
+## VS Code setup
+
+VS Code is an opt-in package because its target is macOS-specific. It manages only `settings.json`, `keybindings.json`, and `prompts/` beneath `~/Library/Application Support/Code/User`:
+
+```bash
+./bin/dotfiles check vscode
+./bin/dotfiles link vscode
+```
+
+Use `./bin/dotfiles unlink vscode` to remove only the Stow-created links.
 
 ## Neovim Setup
 
-[Neovim](https://neovim.io/) config is symlinked to `~/.config/nvim` directory by the `install/link.sh` script. Inside of [`.zshrc`](zsh/zshrc.symlink), the `EDITOR` shell variable is set to `nvim`, defaulting to Neovim for editor tasks, such as git commit messages. Additionally, I have aliased `vim` to `nvim` in [`aliases.zsh`](zsh/aliases.zsh) You can remove this if you would rather not alias the `vim` command to `nvim`.
+[Neovim](https://neovim.io/) config is managed by the `nvim` Stow package at `~/.config/nvim`. Inside of [`.zshrc`](stow/shell/.zshrc), the `EDITOR` shell variable is set to `nvim`, defaulting to Neovim for editor tasks, such as git commit messages. Additionally, I have aliased `vim` to `nvim` in [`aliases.zsh`](zsh/aliases.zsh). You can remove this if you would rather not alias the `vim` command to `nvim`.
 
 ### Installation
 
@@ -30,7 +78,7 @@ Neovim plugins are managed with [vim-plug](https://github.com/junegunn/vim-plug)
 
 ## ZSH Setup
 
-ZSH is configured in the `zshrc.symlink` file, which will be symlinked to the home directory. The following occurs in this file:
+ZSH is configured in [`stow/shell/.zshrc`](stow/shell/.zshrc), which the `shell` package links to `~/.zshrc`. The following occurs in this file:
 
 - set the EDITOR to nvim
 - Recursively search the $DOTFILES/zsh directory for files ending in .zsh and source them
@@ -38,12 +86,11 @@ ZSH is configured in the `zshrc.symlink` file, which will be symlinked to the ho
 - Add the ~/bin and $DOTFILES/bin directories to the path
 - And more...
 
-`nick-pure.zsh-theme` contains my custom terminal prompt. If you would like to use it, manually symlink it into `~/.oh-my-zsh/custom/themes` or change `ZSH_THEME` in `zshrc.symlink` from `nick` to one of the built-in themes (e.g. `robbyrussell`). My `zshrc` config also relies on a custom plugin `my-vi-mode` which should be copied into `~/.oh-my-zsh/custom/plugins`
+`nick-pure.zsh-theme` and the custom `my-vi-mode` plugin are in the opt-in `oh-my-zsh` package. Install Oh My Zsh first—the package targets its existing `~/.oh-my-zsh` directory but does not create or install it:
 
-For example:
-```
-ln -s /Users/nick.waywood/.dotfiles/oh-my-zsh/custom/themes/nick_pure.zsh-theme /Users/nick.waywood/.oh-my-zsh/custom/themes/nick_pure.zsh-theme
-ln -s /Users/nick.waywood/.dotfiles/oh-my-zsh/custom/plugins/my-vi-mode /Users/nick.waywood/.oh-my-zsh/custom/plugins/my-vi-mode
+```bash
+./bin/dotfiles check oh-my-zsh
+./bin/dotfiles link oh-my-zsh
 ```
 
 ## Tmux Setup

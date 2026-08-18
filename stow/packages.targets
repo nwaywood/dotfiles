@@ -1,0 +1,4 @@
+# Package<TAB>target path relative to $HOME. Unlisted packages target $HOME.
+vscode	Library/Application Support/Code/User
+oh-my-zsh	.oh-my-zsh
+claude	.claude
