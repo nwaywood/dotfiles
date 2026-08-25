@@ -1,0 +1,392 @@
+# # User Configuration
+#
+# Create with `wt config create`. Values shown are defaults unless noted otherwise.
+#
+# Location:
+#
+# - macOS/Linux: `~/.config/worktrunk/config.toml` (or `$XDG_CONFIG_HOME` if set)
+# - Windows: `%APPDATA%\worktrunk\config.toml`
+#
+# ## Worktree path template
+#
+# Controls where new worktrees are created.
+#
+# **Available template variables:**
+#
+# - `{{ repo_path }}` — absolute path to the repository root (e.g., `/Users/me/code/myproject`. Or for bare repos, the bare directory itself)
+# - `{{ repo }}` — repository directory name (e.g., `myproject`)
+# - `{{ owner }}` — primary remote owner path (may include subgroups like `group/subgroup`)
+# - `{{ branch }}` — raw branch name (e.g., `feature/auth`)
+# - `{{ branch | sanitize }}` — filesystem-safe: `/` and `\` become `-` (e.g., `feature-auth`)
+# - `{{ branch | sanitize_db }}` — database-safe: lowercase, underscores, hash suffix (e.g., `feature_auth_x7k`)
+# - `{{ branch | codename(2) }}` — deterministic friendly name from a ~1.26M-combo pool (e.g., `malleable-opah`)
+#
+# This is a smaller set than the variables hooks and aliases get (https://worktrunk.dev/hook/#template-variables).
+#
+# **Examples** for repo at `~/code/myproject`, branch `feature/auth`:
+#
+# Default — sibling directory (`~/code/myproject.feature-auth`):
+#
+# worktree-path = "{{ repo_path }}/../{{ repo }}.{{ branch | sanitize }}"
+#
+# Inside the repository (`~/code/myproject/.worktrees/feature-auth`):
+#
+# worktree-path = "{{ repo_path }}/.worktrees/{{ branch | sanitize }}"
+#
+# Friendly branch-derived names (`~/code/myproject.malleable-opah`):
+#
+# worktree-path = "{{ repo_path }}/../{{ repo }}.{{ branch | codename(2) }}"
+#
+# Friendly names with branch identity in a parent directory (`~/code/worktrees/feature-auth/malleable-opah`):
+#
+# worktree-path = "{{ repo_path }}/../worktrees/{{ branch | sanitize }}/{{ branch | codename(2) }}"
+#
+# Centralized worktrees directory (`~/worktrees/myproject/feature-auth`):
+#
+# worktree-path = "~/worktrees/{{ repo }}/{{ branch | sanitize }}"
+#
+# By remote owner path (`~/development/max-sixty/myproject/feature/auth`):
+#
+# worktree-path = "~/development/{{ owner }}/{{ repo }}/{{ branch }}"
+#
+# Bare repository (`~/code/myproject/feature-auth`):
+#
+# worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
+#
+# `~` expands to the home directory. Relative paths resolve from `repo_path`.
+#
+# ## LLM commit messages
+#
+# Generate commit messages automatically during merge. Requires an external CLI tool.
+#
+# ### Claude Code
+#
+# [commit.generation]
+# command = "MAX_THINKING_TOKENS=0 claude -p --no-session-persistence --model=haiku --tools='' --safe-mode --setting-sources='user' --system-prompt=''"
+#
+# ### Codex
+#
+# [commit.generation]
+# command = "codex exec -m gpt-5.6-luna -c model_reasoning_effort='low' -c system_prompt='' --sandbox=read-only --json - | jq -sr '[.[] | select(.item.type? == \"agent_message\")] | last.item.text'"
+#
+# ### OpenCode
+#
+# [commit.generation]
+# command = "opencode run -m anthropic/claude-haiku-4.5 --variant fast"
+#
+# ### llm
+#
+# [commit.generation]
+# command = "llm -m claude-haiku-4.5"
+#
+# ### aichat
+#
+# [commit.generation]
+# command = "aichat -m claude:claude-haiku-4.5"
+#
+# See LLM commits docs (https://worktrunk.dev/llm-commits/) for setup and Custom prompt templates (#custom-prompt-templates) for template customization.
+#
+# ## Command config
+#
+# ### List
+#
+# Persistent flag values for `wt list`. Override on command line as needed.
+#
+# [list]
+# summary = false    # Enable LLM branch summaries (requires [commit.generation])
+#
+# full = false       # Show CI status and LLM summaries (--full)
+# branches = false   # Include branches without worktrees (--branches)
+# remotes = false    # Include remote-only branches (--remotes)
+#
+# json-schema = 2    # JSON output schema: 2 (envelope) or 1 (bare array, the current default); unset emits 1 with a warning
+#
+# columns = ["branch", "status", "ci", "path"]   # Columns to show, in order — built-ins or custom headers (omit for the default set)
+#
+# timeout-ms = 0     # Wall-clock budget for the entire collect phase; 0 disables
+#
+# `columns` selects and orders the columns to render; omit it for the default set.
+# It is meant to drive a per-invocation alias (https://worktrunk.dev/extending/#aliases)
+# (`wt --config-set 'list.columns=[…]' list`), giving a named view without
+# disturbing the default `wt list`. A static setting works but pins one layout
+# over a table that otherwise adapts to `--full` and terminal width.
+#
+# Valid built-in names:
+#
+# - `branch` — The branch name
+# - `status` — Git status symbols, plus any user-defined status
+# - `working-diff` — Uncommitted line changes against `HEAD` (header `HEAD±`)
+# - `ahead-behind` — Commits ahead of and behind the default branch (header `main↕`)
+# - `branch-diff` — Line changes against the default branch (header `main…±`)
+# - `summary` — An LLM-generated summary of the branch
+# - `upstream` — Commits ahead of and behind the upstream tracking branch (header `Remote⇅`)
+# - `ci` — CI status of the head commit
+# - `path` — The worktree's path
+# - `url` — Dev-server URL from the `[list] url` template
+# - `commit` — The head commit's short hash
+# - `age` — Time since the last commit
+# - `message` — The head commit's subject
+#
+# A selection mixes built-ins with custom columns (#custom-columns), each named
+# by its `[list.custom-columns]` header (`columns = ["branch", "Ticket", "ci"]`),
+# and is exhaustive: only the listed columns render. Omit `columns` to keep the
+# default set, where custom columns append automatically. A built-in name wins a
+# header collision; the gutter type indicator always shows.
+#
+# Listing a column forces it on, space permitting: `ci` shows without `--full`,
+# since `--full` only bundles columns into the default table rather than gating a
+# named one. A column whose data source is missing still stays hidden — `summary`
+# needs an LLM command (`[commit.generation]`), `url` needs a `[list] url`
+# template — since listing can't supply the data.
+#
+# The selection drives the table and the `wt switch` picker. `wt list --format
+# json` always emits every field, but a listed gated column (`ci`, `summary`)
+# still forces its data collection on, so the JSON carries the same data the
+# table shows.
+#
+# #### Custom columns [experimental]
+#
+# Custom columns add per-branch context to the `wt list` table. Each
+# `[list.custom-columns]` entry is a column: the key is the header, the template
+# renders each row's cell.
+#
+# [list.custom-columns.Ticket]
+# template = "{{ vars.ticket }}"   # Required; the result is the cell text
+# width = 20                       # Optional max display width (default: 40)
+# priority = 9                     # Optional drop order when the terminal narrows;
+#                                  # lower = kept longer (default: 9, the URL band)
+#
+# Templates may reference `{{ branch }}`, `{{ worktree_path }}`,
+# `{{ worktree_name }}` (empty for branch-only rows), and two per-branch
+# namespaces:
+#
+# - `{{ vars.* }}` — values stored with
+#   `wt config state vars set` (https://worktrunk.dev/config/#wt-config-state-vars).
+# - `{{ git.branch.* }}` — the branch's own git config under `branch.<name>.*`,
+#   read straight from `git config` (e.g. `{{ git.branch.jira }}` for a key you
+#   set yourself, or the git-native `description`). Git lowercases config variable
+#   names, so `branch.<name>.nvciShelf` reads as `{{ git.branch.nvcishelf }}`.
+#
+# All standard filters work (`sanitize`, `hash_port`, `codename`, …). A row
+# where the template renders empty (e.g. a branch without the key) shows an
+# empty cell; a column that is empty for every row is dropped from the table.
+# `wt list --format json` includes the rendered values under `columns`.
+#
+# A `Jira` column reading a key kept in git config, and a `Summary` column
+# showing just the first line of the git-native branch description:
+#
+# [list.custom-columns.Jira]
+# template = "{{ git.branch.jira }}"
+#
+# [list.custom-columns.Summary]
+# template = "{{ git.branch.description | lines | first }}"
+#
+# ### Commit
+#
+# Shared by `wt step commit`, `wt step squash`, and `wt merge`.
+#
+# [commit]
+# stage = "all"      # What to stage before commit: "all", "tracked", or "none"
+#
+# ### Merge
+#
+# Most flags are on by default. Set to false to change default behavior.
+#
+# [merge]
+# squash = true      # Squash commits into one (--no-squash to preserve history)
+# commit = true      # Commit uncommitted changes first (--no-commit to skip)
+# rebase = true      # Rebase onto target before merge (--no-rebase to skip)
+# remove = true      # Remove worktree after merge (--no-remove to keep)
+# verify = true      # Run project hooks (--no-hooks to skip)
+# ff = true          # Fast-forward merge (--no-ff to create a merge commit instead)
+#
+# ### Remove
+#
+# Persistent flag values for `wt remove`. Override on command line as needed.
+#
+# [remove]
+# delete-branch = true   # Delete branch after removal (--no-delete-branch to keep)
+#
+# ### Switch
+#
+# [switch]
+# cd = true          # Change directory after switching (--no-cd to skip)
+#
+# [switch.picker]
+# pager = "delta --paging=never"   # Example: override git's core.pager for diff preview
+#
+# ### Step
+#
+# [step.copy-ignored]
+# exclude = []   # Additional excludes (e.g., [".cache/", ".turbo/"])
+#
+# Built-in excludes (VCS metadata and tool-state directories) always apply; the `wt step copy-ignored` docs (https://worktrunk.dev/step/#wt-step-copy-ignored) list them. User config and project config exclusions are combined.
+#
+# ### Aliases
+#
+# Command templates that run as `wt <name>`. See the Extending Worktrunk guide (https://worktrunk.dev/extending/#aliases) for usage and flags.
+#
+[aliases]
+s = "wt switch"
+# greet = "echo Hello from {{ branch }}"
+# url = "echo http://localhost:{{ branch | hash_port }}"
+#
+# Aliases defined here apply to all projects. For project-specific aliases, use the project config (https://worktrunk.dev/config/#project-configuration) `[aliases]` section instead.
+#
+# ### User project-specific settings
+#
+# User config can include a `[projects]` table for project-specific settings — worktree layout, setting overrides, anything else — separate from the project config (https://worktrunk.dev/config/#project-configuration) shared with teammates.
+#
+# Entries are keyed by project identifier — `<host>/<owner>/<repo>` derived from the primary remote URL (no `.git` suffix), or the canonical repo path when there is no remote. Run `wt config show` inside the repo to see the identifier for the current project; it appears in the `PROJECT CONFIG` section as `Identifier: …`.
+#
+# Scalar values (like `worktree-path`) replace the global value; everything else (hooks, aliases, etc.) appends, global first.
+#
+# [projects."github.com/user/repo"]
+# worktree-path = ".worktrees/{{ branch | sanitize }}"
+# list.full = true
+# merge.squash = false
+# remove.delete-branch = false
+# pre-start.env = "cp .env.example .env"
+# step.copy-ignored.exclude = [".repo-local-cache/"]
+# aliases.deploy = "make deploy BRANCH={{ branch }}"
+#
+# Hooks support all three hook forms (https://worktrunk.dev/hook/#hook-forms). A table runs multiple commands concurrently; an array-of-tables pipeline runs steps in sequence. The dotted-key examples below are equivalent to the table forms — TOML treats `projects."github.com/user/repo".post-start.server = "..."` and a `[projects."github.com/user/repo".post-start]` table the same way:
+#
+# # Single command
+# [projects."github.com/user/repo"]
+# post-start = "mise trust"
+#
+# # Multiple commands, running concurrently
+# [projects."github.com/user/repo".post-start]
+# mise = "mise trust"
+# server = "npm run dev"
+#
+# # Pipeline: steps run in sequence
+# [[projects."github.com/user/repo".post-start]]
+# install = "npm ci"
+#
+# [[projects."github.com/user/repo".post-start]]
+# build = "npm run build"
+# server = "npm run dev"
+#
+# ### Custom prompt templates
+#
+# Templates use minijinja (https://docs.rs/minijinja/) syntax.
+#
+# #### Commit template
+#
+# Available variables:
+#
+# - `{{ git_diff }}`, `{{ git_diff_stat }}` — diff content
+# - `{{ branch }}`, `{{ repo }}` — context
+# - `{{ recent_commits }}` — recent commit messages
+# - `{{ user_guidance }}`, `{{ project_guidance }}` — rendered append fragments (see Appending to the prompt (https://worktrunk.dev/config/#appending-to-the-prompt))
+#
+# Default template:
+#
+# <!-- DEFAULT_TEMPLATE_START -->
+# [commit.generation]
+# template = """
+# <task>Write a commit message for the staged changes below.</task>
+#
+# <format>
+# - Subject line under 50 chars
+# - For material changes, add a blank line then a body paragraph explaining the change
+# - Output only the commit message, no quotes or code blocks
+# </format>
+#
+# <style>
+# - Imperative mood: "Add feature" not "Added feature"
+# - Match recent commit style (conventional commits if used)
+# - Describe the change, not the intent or benefit
+# </style>
+# {% if user_guidance %}
+# <user-guidance>
+# {{ user_guidance }}
+# </user-guidance>
+# {% endif %}{% if project_guidance %}
+# <project-guidance>
+# {{ project_guidance }}
+# </project-guidance>
+# {% endif %}
+# <diffstat>
+# {{ git_diff_stat }}
+# </diffstat>
+#
+# <diff>
+# {{ git_diff }}
+# </diff>
+#
+# <context>
+# Branch: {{ branch }}
+# {% if recent_commits %}<recent_commits>
+# {% for commit in recent_commits %}- {{ commit }}
+# {% endfor %}</recent_commits>{% endif %}
+# </context>
+#
+# """
+# <!-- DEFAULT_TEMPLATE_END -->
+#
+# #### Squash template
+#
+# Available variables (in addition to commit template variables):
+#
+# - `{{ commit_details }}` — list of commits being squashed; each renders as its subject and exposes `.subject` / `.body`
+# - `{{ target_branch }}` — merge target branch
+#
+# Default template:
+#
+# <!-- DEFAULT_SQUASH_TEMPLATE_START -->
+# [commit.generation]
+# squash-template = """
+# <task>Write a commit message for the combined effect of these commits.</task>
+#
+# <format>
+# - Subject line under 50 chars
+# - For material changes, add a blank line then a body paragraph explaining the change
+# - Output only the commit message, no quotes or code blocks
+# </format>
+#
+# <style>
+# - Imperative mood: "Add feature" not "Added feature"
+# - Match the style of commits being squashed (conventional commits if used)
+# - Describe the change, not the intent or benefit
+# </style>
+# {% if user_guidance %}
+# <user-guidance>
+# {{ user_guidance }}
+# </user-guidance>
+# {% endif %}{% if project_guidance %}
+# <project-guidance>
+# {{ project_guidance }}
+# </project-guidance>
+# {% endif %}
+# <commits branch="{{ branch }}" target="{{ target_branch }}">
+# {% for detail in commit_details %}- {{ detail.subject }}
+# {% endfor %}</commits>
+#
+# <diffstat>
+# {{ git_diff_stat }}
+# </diffstat>
+#
+# <diff>
+# {{ git_diff }}
+# </diff>
+#
+# """
+# <!-- DEFAULT_SQUASH_TEMPLATE_END -->
+#
+# #### Appending to the prompt [experimental]
+#
+# `template-append` adds personal conventions to the commit and squash prompts without restating the whole template:
+#
+# [commit.generation]
+# template-append = """
+# - Explain the rationale in the body, not just the change
+# """
+#
+# How the fragment renders, and the project-config counterpart: the LLM commits guide (https://worktrunk.dev/llm-commits/#appending-to-the-prompt).
+#
+# ## Hooks
+#
+# See `wt hook` (https://worktrunk.dev/hook/) for hook types, execution order, template variables, and examples. User hooks apply to all projects; project hooks (https://worktrunk.dev/config/#project-configuration) apply only to that repository.
