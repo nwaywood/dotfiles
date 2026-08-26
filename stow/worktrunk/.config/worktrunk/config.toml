@@ -227,7 +227,7 @@
 # Command templates that run as `wt <name>`. See the Extending Worktrunk guide (https://worktrunk.dev/extending/#aliases) for usage and flags.
 #
 [aliases]
-s = "wt switch"
+s = "wt switch {{ args }}"
 # greet = "echo Hello from {{ branch }}"
 # url = "echo http://localhost:{{ branch | hash_port }}"
 #
