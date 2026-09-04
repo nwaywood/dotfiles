@@ -84,6 +84,9 @@ source ~/.config/up/up.sh
 # worktrunk setup
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 
+# pi config
+export PI_ASK_USER_DISPLAY_MODE=inline
+
 # load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # export FZF_DEFAULT_COMMAND='ag -g ""'
