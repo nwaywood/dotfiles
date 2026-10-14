@@ -164,7 +164,7 @@ Key.on('e', MOD2, function(){
 });
 
 Key.on('z', MOD2, function(){
-  App.launch('zoom.us').focus();
+  App.launch('Google Meet').focus();
 });
 
 Key.on('o', MOD2, function(){

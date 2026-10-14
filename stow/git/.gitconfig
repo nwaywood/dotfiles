@@ -2,7 +2,7 @@
 	path = ~/.gitconfig.local
 [alias]
 	co = checkout
-	s = status
+	s = switch
 	l = log
 	b = branch
 	cm = commit -m
